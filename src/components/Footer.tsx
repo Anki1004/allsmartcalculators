@@ -48,6 +48,7 @@ export default function Footer() {
               links: [
                 { label: 'Trending',    href: '/trending' },
                 { label: 'Categories',  href: '/categories' },
+                { label: 'Blog',        href: '/blog' },
                 { label: 'About',       href: '/about' },
                 { label: 'Contact',     href: '/contact' },
               ],

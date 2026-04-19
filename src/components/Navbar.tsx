@@ -72,6 +72,12 @@ export default function Navbar() {
           >
             About
           </Link>
+          <Link
+            href="/blog"
+            className="text-sm font-medium text-on-surface/80 hover:text-primary transition-colors"
+          >
+            Blog
+          </Link>
         </nav>
 
         {/* Actions */}
@@ -123,6 +129,13 @@ export default function Navbar() {
               className="text-base font-medium text-on-surface hover:text-primary transition-colors"
             >
               About
+            </Link>
+            <Link
+              href="/blog"
+              onClick={() => setMobileOpen(false)}
+              className="text-base font-medium text-on-surface hover:text-primary transition-colors"
+            >
+              Blog
             </Link>
           </nav>
         </div>
