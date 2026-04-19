@@ -10,6 +10,7 @@ import { CATEGORIES, CalculatorCategory } from '@/lib/calculator-types';
 import CalculatorEngine from '@/components/CalculatorEngine';
 import CalculatorCard from '@/components/CalculatorCard';
 import GlassCard from '@/components/GlassCard';
+import CalculatorCMS from '@/components/CalculatorCMS';
 
 export function generateStaticParams() {
   return allCalculators.map((calc) => ({
@@ -72,6 +73,9 @@ export default function CalculatorPage({
 
         {/* CALCULATOR — pass slug only; engine looks up the config client-side */}
         <CalculatorEngine slug={calc.slug} />
+
+        {/* CMS content from Strapi (intro, tips, formula, FAQs) */}
+        <CalculatorCMS slug={calc.slug} />
 
         {/* Formula & FAQs */}
         {(calc.formula || calc.faqs) && (
