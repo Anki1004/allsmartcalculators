@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { CurrencyProvider } from '@/lib/currency-context';
 import SearchModal from '@/components/SearchModal';
+import CookieConsent from '@/components/CookieConsent';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -59,6 +60,7 @@ export default function RootLayout({
         {/* Main content */}
         <CurrencyProvider>
           <SearchModal />
+          <CookieConsent />
           <div className="relative z-10">
             <Navbar />
             <main className="min-h-screen">{children}</main>

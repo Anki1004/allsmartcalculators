@@ -76,8 +76,8 @@ export default function PrivacyPage() {
                 <p className="text-sm text-on-surface-variant leading-relaxed">We may use privacy-respecting tools like Plausible or Fathom to understand site usage. These tools may set cookies and collect anonymized usage data. We prefer tools that don't fingerprint or identify individual users.</p>
               </div>
               <div>
-                <p className="text-sm font-semibold text-on-surface mb-1">Advertising (if applicable).</p>
-                <p className="text-sm text-on-surface-variant leading-relaxed">If CalcVerse displays ads, those are served by Google AdSense or similar networks. These networks use cookies to show relevant ads and measure performance. You can control personalized advertising through your browser settings or by visiting Google Ads Settings or YourAdChoices.com.</p>
+                <p className="text-sm font-semibold text-on-surface mb-1">Advertising.</p>
+                <p className="text-sm text-on-surface-variant leading-relaxed">We may use Google AdSense to display ads on CalcVerse. Google AdSense uses cookies to show relevant ads based on your visits to this and other websites. These networks use cookies to show relevant ads and measure performance. You can control personalized advertising through your browser settings or by visiting <a href="https://adssettings.google.com" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Google Ads Settings</a> or YourAdChoices.com.</p>
               </div>
               <div>
                 <p className="text-sm font-semibold text-on-surface mb-1">Fonts and icons.</p>

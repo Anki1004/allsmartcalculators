@@ -45,7 +45,19 @@ export default function CalculatorPage({
     .filter((c) => c.slug !== calc.slug)
     .slice(0, 4);
 
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: calc.name,
+    description: calc.description,
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'Any',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  };
+
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
     <div className="pt-28 pb-16 px-5 md:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Breadcrumb */}
@@ -123,5 +135,6 @@ export default function CalculatorPage({
         )}
       </div>
     </div>
+    </>
   );
 }
