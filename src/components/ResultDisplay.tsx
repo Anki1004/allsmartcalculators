@@ -66,7 +66,7 @@ export default function ResultDisplay({
   const formatted =
     typeof displayValue === 'number'
       ? displayValue.toLocaleString('en-US', {
-          minimumFractionDigits: decimals,
+          minimumFractionDigits: 0,
           maximumFractionDigits: decimals,
         })
       : displayValue;

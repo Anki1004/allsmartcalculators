@@ -47,9 +47,11 @@ export default function SliderInput({
     tertiary: { start: '#58e7ab', end: '#9bffce', text: 'text-tertiary' },
   };
 
-  const displayValue = formatValue
-    ? formatValue(value)
-    : `${prefix ?? ''}${formatNumber(value, 0)}${suffix ? ` ${suffix}` : ''}`;
+  const displayValue = raw === ''
+    ? ''
+    : formatValue
+      ? formatValue(value)
+      : `${prefix ?? ''}${formatNumber(value, 0)}${suffix ? ` ${suffix}` : ''}`;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const str = e.target.value;
