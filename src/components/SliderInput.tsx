@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { cn, formatNumber } from '@/lib/utils';
 
 interface SliderInputProps {
@@ -27,6 +28,13 @@ export default function SliderInput({
   formatValue,
   color = 'primary',
 }: SliderInputProps) {
+  const [raw, setRaw] = useState(String(value));
+
+  // Keep raw in sync when slider or external change updates value
+  useEffect(() => {
+    setRaw(String(value));
+  }, [value]);
+
   const percentage = ((value - min) / (max - min)) * 100;
 
   const colorMap = {
@@ -38,6 +46,25 @@ export default function SliderInput({
   const displayValue = formatValue
     ? formatValue(value)
     : `${prefix ?? ''}${formatNumber(value, 0)}${suffix ? ` ${suffix}` : ''}`;
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const str = e.target.value;
+    setRaw(str);
+    const num = parseFloat(str);
+    if (!isNaN(num)) onChange(num);
+  };
+
+  const handleBlur = () => {
+    const num = parseFloat(raw);
+    if (isNaN(num) || raw.trim() === '') {
+      onChange(min);
+      setRaw(String(min));
+    } else {
+      const clamped = Math.min(max, Math.max(min, num));
+      onChange(clamped);
+      setRaw(String(clamped));
+    }
+  };
 
   return (
     <div className="flex flex-col gap-3">
@@ -54,8 +81,9 @@ export default function SliderInput({
       <div className="relative">
         <input
           type="number"
-          value={value}
-          onChange={(e) => onChange(Number(e.target.value) || 0)}
+          value={raw}
+          onChange={handleInputChange}
+          onBlur={handleBlur}
           min={min}
           max={max}
           step={step}
