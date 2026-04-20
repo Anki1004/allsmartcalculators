@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { cn, formatNumber } from '@/lib/utils';
 
 interface SliderInputProps {
@@ -28,11 +28,15 @@ export default function SliderInput({
   formatValue,
   color = 'primary',
 }: SliderInputProps) {
-  const [raw, setRaw] = useState(String(value));
+  const [raw, setRaw] = useState('');
+  const fromSlider = useRef(false);
 
-  // Keep raw in sync when slider or external change updates value
+  // Only sync raw when slider moves, not on initial mount
   useEffect(() => {
-    setRaw(String(value));
+    if (fromSlider.current) {
+      setRaw(String(value));
+      fromSlider.current = false;
+    }
   }, [value]);
 
   const percentage = ((value - min) / (max - min)) * 100;
@@ -101,7 +105,7 @@ export default function SliderInput({
         <input
           type="range"
           value={value}
-          onChange={(e) => onChange(Number(e.target.value))}
+          onChange={(e) => { fromSlider.current = true; onChange(Number(e.target.value)); }}
           min={min}
           max={max}
           step={step}
