@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
@@ -7,6 +8,7 @@ import {
   getCalculatorsByCategory,
 } from '@/lib/calculator-registry';
 import { CATEGORIES, CalculatorCategory } from '@/lib/calculator-types';
+import { getCalcContent } from '@/lib/strapi';
 import CalculatorEngine from '@/components/CalculatorEngine';
 import CalculatorCard from '@/components/CalculatorCard';
 import GlassCard from '@/components/GlassCard';
@@ -19,20 +21,48 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
   params: { category: string; slug: string };
-}) {
+}): Promise<Metadata> {
   const calc = getCalculatorBySlug(params.slug);
   if (!calc) return { title: 'Not Found' };
+
+  const cms = await getCalcContent(params.slug);
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://calcverse.app';
+  const pageUrl = `${siteUrl}/${params.category}/${params.slug}`;
+
+  const title = cms?.pageTitle ?? calc.name;
+  const description = cms?.metaDescription ?? calc.description;
+  const canonicalUrl = cms?.linkCanonical ?? pageUrl;
+
   return {
-    title: `${calc.name} — CalcVerse`,
-    description: calc.description,
+    title: `${title} — CalcVerse`,
+    description,
+    keywords: cms?.metaKeywords ?? undefined,
+    authors: [{ name: cms?.metaAuthor ?? 'CalcVerse Team' }],
+    robots: cms?.metaRobots ?? 'index, follow',
+    alternates: { canonical: canonicalUrl },
+    openGraph: {
+      title: cms?.metaOgTitle ?? title,
+      description: cms?.metaOgDescription ?? description,
+      type: (cms?.metaOgType as 'website') ?? 'website',
+      url: cms?.metaOgUrl ?? canonicalUrl,
+      siteName: cms?.metaOgSiteName ?? 'CalcVerse',
+      ...(cms?.metaOgImage && { images: [{ url: cms.metaOgImage, width: 1200, height: 630, alt: title }] }),
+    },
+    twitter: {
+      card: (cms?.metaTwitterCard as 'summary_large_image') ?? 'summary_large_image',
+      title: cms?.metaTwitterTitle ?? title,
+      description: cms?.metaTwitterDescription ?? description,
+      site: cms?.metaTwitterSite ?? '@CalcVerse',
+      ...(cms?.metaTwitterImage && { images: [cms.metaTwitterImage] }),
+    },
   };
 }
 
-export default function CalculatorPage({
+export default async function CalculatorPage({
   params,
 }: {
   params: { category: string; slug: string };
@@ -45,7 +75,9 @@ export default function CalculatorPage({
     .filter((c) => c.slug !== calc.slug)
     .slice(0, 4);
 
-  const schema = {
+  const cms = await getCalcContent(params.slug);
+
+  const schema = cms?.customSchema ?? {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
     name: calc.name,

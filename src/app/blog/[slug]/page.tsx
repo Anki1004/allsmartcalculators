@@ -21,31 +21,37 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   try {
     const post = await getPostBySlug(params.slug);
     if (!post) return {};
-    const title = `${post.seoTitle ?? post.title} — CalcVerse`;
-    const description = post.seoDescription ?? post.excerpt;
-    const imgUrl = post.coverImage ? getStrapiImageUrl(post.coverImage.url) : undefined;
+
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://calcverse.app';
+    const canonicalUrl = post.linkCanonical ?? `${siteUrl}/blog/${post.slug}`;
+    const title = post.pageTitle ?? post.title;
+    const description = post.metaDescription ?? post.excerpt;
+    const coverImg = post.coverImage ? getStrapiImageUrl(post.coverImage.url) : undefined;
+    const ogImg = post.metaOgImage ?? coverImg;
+    const twitterImg = post.metaTwitterImage ?? coverImg;
 
     return {
-      title,
+      title: `${title} — CalcVerse`,
       description,
+      keywords: post.metaKeywords ?? undefined,
+      authors: [{ name: post.metaAuthor ?? 'CalcVerse Team' }],
+      robots: post.metaRobots ?? 'index, follow',
+      alternates: { canonical: canonicalUrl },
       openGraph: {
-        title,
-        description,
-        type: 'article',
-        url: `${siteUrl}/blog/${post.slug}`,
+        title: post.metaOgTitle ?? title,
+        description: post.metaOgDescription ?? description,
+        type: (post.metaOgType as 'article') ?? 'article',
+        url: post.metaOgUrl ?? canonicalUrl,
+        siteName: post.metaOgSiteName ?? 'CalcVerse',
         publishedTime: post.publishedAt,
-        authors: [post.author],
-        ...(imgUrl && { images: [{ url: imgUrl, width: 1200, height: 630, alt: post.title }] }),
+        ...(ogImg && { images: [{ url: ogImg, width: 1200, height: 630, alt: title }] }),
       },
       twitter: {
-        card: 'summary_large_image',
-        title,
-        description,
-        ...(imgUrl && { images: [imgUrl] }),
-      },
-      alternates: {
-        canonical: `${siteUrl}/blog/${post.slug}`,
+        card: (post.metaTwitterCard as 'summary_large_image') ?? 'summary_large_image',
+        title: post.metaTwitterTitle ?? title,
+        description: post.metaTwitterDescription ?? description,
+        site: post.metaTwitterSite ?? '@CalcVerse',
+        ...(twitterImg && { images: [twitterImg] }),
       },
     };
   } catch {
@@ -64,11 +70,24 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
   if (!post) notFound();
 
   const imgUrl = post.coverImage ? getStrapiImageUrl(post.coverImage.url) : null;
-  const date = new Date(post.publishedAt).toLocaleDateString('en-US', {
+  const displayDate = post.publishedOn ?? post.publishedAt;
+  const date = new Date(displayDate).toLocaleDateString('en-US', {
     month: 'long', day: 'numeric', year: 'numeric',
   });
 
+  const jsonLd = post.customSchema ?? {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.pageTitle ?? post.title,
+    description: post.metaDescription ?? post.excerpt,
+    author: { '@type': 'Person', name: post.metaAuthor ?? 'CalcVerse Team' },
+    datePublished: post.publishedAt,
+    ...(imgUrl && { image: imgUrl }),
+  };
+
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     <div className="pt-28 pb-20 px-5 md:px-8">
       <div className="max-w-3xl mx-auto">
 
@@ -101,7 +120,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             <span className="text-xs font-bold px-2 py-0.5 rounded-full text-primary bg-primary/10">
               {post.category}
             </span>
-            {post.featured && (
+            {post.showOnHome && (
               <span className="text-xs font-bold px-2 py-0.5 rounded-full text-yellow-400 bg-yellow-400/10">
                 Featured
               </span>
@@ -116,7 +135,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           <div className="flex items-center gap-5 text-sm text-on-surface-variant/60 pb-6 border-b border-white/5">
             <span className="flex items-center gap-1.5">
               <User className="w-4 h-4" />
-              {post.author}
+              {post.metaAuthor ?? 'CalcVerse Team'}
             </span>
             <span className="flex items-center gap-1.5">
               <Calendar className="w-4 h-4" />
@@ -163,5 +182,6 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
 
       </div>
     </div>
+    </>
   );
 }

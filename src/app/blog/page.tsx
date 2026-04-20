@@ -48,7 +48,7 @@ function PostCard({ post }: { post: StrapiPost }) {
             <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${categoryStyle}`}>
               {post.category}
             </span>
-            {post.featured && (
+            {post.showOnHome && (
               <span className="text-xs font-bold px-2 py-0.5 rounded-full text-yellow-400 bg-yellow-400/10">
                 Featured
               </span>
@@ -64,7 +64,7 @@ function PostCard({ post }: { post: StrapiPost }) {
             <div className="flex items-center gap-3">
               <span className="flex items-center gap-1">
                 <User className="w-3 h-3" />
-                {post.author}
+                {post.metaAuthor ?? 'CalcVerse Team'}
               </span>
               <span className="flex items-center gap-1">
                 <Clock className="w-3 h-3" />
@@ -87,8 +87,8 @@ export default async function BlogPage() {
     // Strapi offline or no posts yet
   }
 
-  const featured = posts.filter((p) => p.featured);
-  const rest = posts.filter((p) => !p.featured);
+  const featured = posts.filter((p) => p.showOnHome);
+  const rest = posts.filter((p) => !p.showOnHome);
 
   return (
     <div className="pt-28 pb-20 px-5 md:px-8">

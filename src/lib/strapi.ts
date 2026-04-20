@@ -1,6 +1,27 @@
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL ?? 'http://localhost:1337';
 
-export interface StrapiPost {
+interface SeoFields {
+  pageTitle: string | null;
+  metaDescription: string | null;
+  metaKeywords: string | null;
+  metaRobots: string | null;
+  metaOgTitle: string | null;
+  metaOgDescription: string | null;
+  metaOgImage: string | null;
+  metaOgUrl: string | null;
+  metaOgType: string | null;
+  metaOgSiteName: string | null;
+  metaTwitterCard: string | null;
+  metaTwitterTitle: string | null;
+  metaTwitterDescription: string | null;
+  metaTwitterImage: string | null;
+  metaTwitterSite: string | null;
+  linkCanonical: string | null;
+  metaAuthor: string | null;
+  customSchema: Record<string, unknown> | null;
+}
+
+export interface StrapiPost extends SeoFields {
   id: number;
   documentId: string;
   title: string;
@@ -8,11 +29,9 @@ export interface StrapiPost {
   excerpt: string;
   content: string;
   category: string;
-  author: string;
   readTime: number;
-  featured: boolean;
-  seoTitle: string | null;
-  seoDescription: string | null;
+  showOnHome: boolean;
+  publishedOn: string | null;
   publishedAt: string;
   createdAt: string;
   coverImage: {
@@ -53,7 +72,7 @@ export async function getPostBySlug(slug: string): Promise<StrapiPost | null> {
 
 export async function getFeaturedPosts(): Promise<StrapiPost[]> {
   const data = await strapiGet<StrapiResponse<StrapiPost[]>>(
-    '/posts?filters[featured][$eq]=true&populate=coverImage&sort=publishedAt:desc'
+    '/posts?filters[showOnHome][$eq]=true&populate=coverImage&sort=publishedAt:desc'
   );
   return data.data ?? [];
 }
@@ -63,7 +82,7 @@ export function getStrapiImageUrl(url: string): string {
   return `${STRAPI_URL}${url}`;
 }
 
-export interface StrapiCalcContent {
+export interface StrapiCalcContent extends SeoFields {
   id: number;
   slug: string;
   calculatorName: string;
@@ -72,8 +91,6 @@ export interface StrapiCalcContent {
   formulaExplanation: string | null;
   faqs: { id: number; question: string; answer: string }[];
   relatedCalculators: string[] | null;
-  seoTitle: string | null;
-  seoDescription: string | null;
 }
 
 export async function getCalcContent(slug: string): Promise<StrapiCalcContent | null> {
