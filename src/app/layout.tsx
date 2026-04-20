@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { CurrencyProvider } from '@/lib/currency-context';
+import { ThemeProvider } from '@/lib/theme-context';
 import SearchModal from '@/components/SearchModal';
 import CookieConsent from '@/components/CookieConsent';
 
@@ -52,21 +53,24 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`dark ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
+      <head>
+        {/* Prevent flash of wrong theme */}
+        <script dangerouslySetInnerHTML={{ __html: `(function(){var t=localStorage.getItem('cv-theme');document.documentElement.classList.remove('dark','light');document.documentElement.classList.add(t||'dark');})()` }} />
+      </head>
       <body className="bg-surface text-on-surface font-body antialiased min-h-screen overflow-x-hidden">
-        {/* Ambient background layers */}
         <div className="aurora-bg" />
         <div className="cosmic-grain" />
-
-        {/* Main content */}
-        <CurrencyProvider>
-          <SearchModal />
-          <CookieConsent />
-          <div className="relative z-10">
-            <Navbar />
-            <main className="min-h-screen">{children}</main>
-            <Footer />
-          </div>
-        </CurrencyProvider>
+        <ThemeProvider>
+          <CurrencyProvider>
+            <SearchModal />
+            <CookieConsent />
+            <div className="relative z-10">
+              <Navbar />
+              <main className="min-h-screen">{children}</main>
+              <Footer />
+            </div>
+          </CurrencyProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

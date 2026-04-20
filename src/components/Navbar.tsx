@@ -2,12 +2,14 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { Search, Menu, X } from 'lucide-react';
+import { Search, Menu, X, Sun, Moon } from 'lucide-react';
 import NavCurrencyPicker from './NavCurrencyPicker';
+import { useTheme } from '@/lib/theme-context';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { theme, toggle } = useTheme();
 
   useEffect(() => {
     const handle = () => setScrolled(window.scrollY > 20);
@@ -83,6 +85,17 @@ export default function Navbar() {
         {/* Actions */}
         <div className="flex items-center gap-2">
           <NavCurrencyPicker />
+
+          <button
+            aria-label="Toggle theme"
+            onClick={toggle}
+            className="p-2.5 rounded-xl glass glass-border hover:bg-white/5 transition-colors press"
+          >
+            {theme === 'dark'
+              ? <Sun className="w-4 h-4 text-primary" />
+              : <Moon className="w-4 h-4 text-primary" />
+            }
+          </button>
 
           <button
             aria-label="Search"
