@@ -54,7 +54,7 @@ export default function SliderInput({
       : `${prefix ?? ''}${formatNumber(value, 0)}${suffix ? ` ${suffix}` : ''}`;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const str = e.target.value;
+    const str = e.target.value.replace(/[^0-9.\-]/g, '');
     setRaw(str);
     const num = parseFloat(str);
     if (!isNaN(num)) onChange(num);
@@ -86,14 +86,13 @@ export default function SliderInput({
       {/* Number input */}
       <div className="relative">
         <input
-          type="number"
+          type="text"
+          inputMode="decimal"
           value={raw}
           onChange={handleInputChange}
           onBlur={handleBlur}
-          min={min}
-          max={max}
-          step={step}
-          className="w-full bg-surface-container-lowest border border-outline-variant/20 rounded-xl px-4 py-3 pr-12 font-mono text-base font-semibold text-on-surface focus:outline-none focus:border-primary/40 focus:shadow-[0_0_0_3px_rgba(189,157,255,0.15)] transition-all"
+          placeholder="—"
+          className="w-full bg-surface-container-lowest border border-outline-variant/20 rounded-xl px-4 py-3 pr-12 font-mono text-base font-semibold text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none focus:border-primary/40 focus:shadow-[0_0_0_3px_rgba(189,157,255,0.15)] transition-all"
         />
         {suffix && (
           <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm font-mono text-on-surface-variant pointer-events-none">
