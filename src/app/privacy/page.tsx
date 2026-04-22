@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import GlassCard from '@/components/GlassCard';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — CalcVerse',
+  title: 'Privacy Policy — AllSmartCalculator',
   description: "Here's exactly what we do (and don't do) with any information you might share with us.",
 };
 
@@ -29,7 +29,7 @@ export default function PrivacyPage() {
           <GlassCard className="p-6 md:p-8 border-l-2 border-primary/60">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-3">The short version</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed mb-3">
-              All calculations on CalcVerse happen directly in your browser. The numbers you enter — your salary, weight, loan amount, whatever — never leave your device. We don't store them, we don't see them, and we can't access them. That's not a marketing claim; it's how the site is technically built.
+              All calculations on AllSmartCalculator happen directly in your browser. The numbers you enter — your salary, weight, loan amount, whatever — never leave your device. We don't store them, we don't see them, and we can't access them. That's not a marketing claim; it's how the site is technically built.
             </p>
             <p className="text-sm text-on-surface-variant leading-relaxed mb-3">
               What we do collect is basic analytics (pages visited, device type, country) so we know which calculators people find useful and where to improve. If we ever run ads on the site, those ad networks collect their own data under their own policies. We don't sell your data, we don't email you unless you ask us to, and we don't use dark patterns to trick you into anything.
@@ -45,7 +45,7 @@ export default function PrivacyPage() {
             <div className="flex flex-col gap-4">
               <div>
                 <p className="text-sm font-semibold text-on-surface mb-1">Calculator inputs: Nothing.</p>
-                <p className="text-sm text-on-surface-variant leading-relaxed">Every calculator on CalcVerse runs entirely in your browser using JavaScript. When you move a slider or type a number, only your device sees it. The numbers never get sent to our servers because our servers don't need them.</p>
+                <p className="text-sm text-on-surface-variant leading-relaxed">Every calculator on AllSmartCalculator runs entirely in your browser using JavaScript. When you move a slider or type a number, only your device sees it. The numbers never get sent to our servers because our servers don't need them.</p>
               </div>
               <div>
                 <p className="text-sm font-semibold text-on-surface mb-1">Analytics data.</p>
@@ -77,7 +77,7 @@ export default function PrivacyPage() {
               </div>
               <div>
                 <p className="text-sm font-semibold text-on-surface mb-1">Advertising.</p>
-                <p className="text-sm text-on-surface-variant leading-relaxed">We may use Google AdSense to display ads on CalcVerse. Google AdSense uses cookies to show relevant ads based on your visits to this and other websites. These networks use cookies to show relevant ads and measure performance. You can control personalized advertising through your browser settings or by visiting <a href="https://adssettings.google.com" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Google Ads Settings</a> or YourAdChoices.com.</p>
+                <p className="text-sm text-on-surface-variant leading-relaxed">We may use Google AdSense to display ads on AllSmartCalculator. Google AdSense uses cookies to show relevant ads based on your visits to this and other websites. These networks use cookies to show relevant ads and measure performance. You can control personalized advertising through your browser settings or by visiting <a href="https://adssettings.google.com" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Google Ads Settings</a> or YourAdChoices.com.</p>
               </div>
               <div>
                 <p className="text-sm font-semibold text-on-surface mb-1">Fonts and icons.</p>
@@ -113,7 +113,7 @@ export default function PrivacyPage() {
           <GlassCard className="p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-3">Advertising and personalization</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed mb-3">
-              If CalcVerse runs ads, here's what you should know: ad networks like Google AdSense use cookies to serve ads based on your previous visits to our site and other websites. This is called "personalized advertising" and is standard across most of the web.
+              If AllSmartCalculator runs ads, here's what you should know: ad networks like Google AdSense use cookies to serve ads based on your previous visits to our site and other websites. This is called "personalized advertising" and is standard across most of the web.
             </p>
             <p className="text-sm text-on-surface-variant leading-relaxed mb-3">
               You can opt out of personalized advertising from Google by visiting Google Ads Settings. For opt-outs from other networks, visit aboutads.info/choices (US) or youronlinechoices.com (EU).
@@ -150,7 +150,7 @@ export default function PrivacyPage() {
           <GlassCard className="p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-3">Children's privacy</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed">
-              CalcVerse is intended for general audiences and is not specifically directed at children under 13. We don't knowingly collect personal information from children under 13. If you're a parent and believe your child has provided us with personal information, contact us and we'll delete it promptly.
+              AllSmartCalculator is intended for general audiences and is not specifically directed at children under 13. We don't knowingly collect personal information from children under 13. If you're a parent and believe your child has provided us with personal information, contact us and we'll delete it promptly.
             </p>
           </GlassCard>
 

@@ -1,6 +1,6 @@
 import { allCalculators } from '@/lib/calculator-registry';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://calcverse.app';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
 
 export const dynamic = 'force-static';
 
@@ -23,9 +23,9 @@ export function GET() {
   };
 
   const lines: string[] = [
-    `# CalcVerse — Free Online Calculators`,
+    `# AllSmartCalculator — Free Online Calculators`,
     ``,
-    `> CalcVerse is a free collection of ${allCalculators.length}+ interactive calculators covering finance, health, math, crypto, engineering, education, and everyday life. All calculators are instant, mobile-friendly, and require no login.`,
+    `> AllSmartCalculator is a free collection of ${allCalculators.length}+ interactive calculators covering finance, health, math, crypto, engineering, education, and everyday life. All calculators are instant, mobile-friendly, and require no login.`,
     ``,
     `## URL`,
     ``,
@@ -33,7 +33,7 @@ export function GET() {
     ``,
     `## About`,
     ``,
-    `CalcVerse helps users make better decisions with fast, accurate calculators. Every calculator provides real-time results as you adjust sliders, with clear output labels and no ads cluttering the experience.`,
+    `AllSmartCalculator helps users make better decisions with fast, accurate calculators. Every calculator provides real-time results as you adjust sliders, with clear output labels and no ads cluttering the experience.`,
     ``,
     `## Calculators by Category`,
     ``,

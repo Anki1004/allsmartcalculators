@@ -30,7 +30,7 @@ export async function generateMetadata({
   if (!calc) return { title: 'Not Found' };
 
   const cms = await getCalcContent(params.slug);
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://calcverse.app';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
   const pageUrl = `${siteUrl}/${params.category}/${params.slug}`;
 
   const title = cms?.pageTitle ?? calc.name;
@@ -38,10 +38,10 @@ export async function generateMetadata({
   const canonicalUrl = cms?.linkCanonical ?? pageUrl;
 
   return {
-    title: `${title} — CalcVerse`,
+    title: `${title} — AllSmartCalculator`,
     description,
     keywords: cms?.metaKeywords ?? undefined,
-    authors: [{ name: cms?.metaAuthor ?? 'CalcVerse Team' }],
+    authors: [{ name: cms?.metaAuthor ?? 'AllSmartCalculator Team' }],
     robots: cms?.metaRobots ?? 'index, follow',
     alternates: { canonical: canonicalUrl },
     openGraph: {
@@ -49,14 +49,14 @@ export async function generateMetadata({
       description: cms?.metaOgDescription ?? description,
       type: (cms?.metaOgType as 'website') ?? 'website',
       url: cms?.metaOgUrl ?? canonicalUrl,
-      siteName: cms?.metaOgSiteName ?? 'CalcVerse',
+      siteName: cms?.metaOgSiteName ?? 'AllSmartCalculator',
       ...(cms?.metaOgImage && { images: [{ url: cms.metaOgImage, width: 1200, height: 630, alt: title }] }),
     },
     twitter: {
       card: (cms?.metaTwitterCard as 'summary_large_image') ?? 'summary_large_image',
       title: cms?.metaTwitterTitle ?? title,
       description: cms?.metaTwitterDescription ?? description,
-      site: cms?.metaTwitterSite ?? '@CalcVerse',
+      site: cms?.metaTwitterSite ?? '@AllSmartCalculator',
       ...(cms?.metaTwitterImage && { images: [cms.metaTwitterImage] }),
     },
   };

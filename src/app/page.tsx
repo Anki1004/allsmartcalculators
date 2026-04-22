@@ -13,12 +13,12 @@ import HomeSearchBar from '@/components/HomeSearchBar';
 import { ArrowRight, Flame, TrendingUp } from 'lucide-react';
 import { getHomepage } from '@/lib/strapi';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://calcverse.app';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
 
 export async function generateMetadata(): Promise<Metadata> {
   const hp = await getHomepage();
 
-  const title = hp?.pageTitle ?? 'CalcVerse — 100+ Calculators. One Beautiful Place.';
+  const title = hp?.pageTitle ?? 'AllSmartCalculator — 100+ Calculators. One Beautiful Place.';
   const description =
     hp?.metaDescription ??
     'Premium calculator hub with 100+ trending calculators for Finance, Health, Math, Crypto, Engineering, Education and more. Beautiful, fast, and free.';
@@ -32,7 +32,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title,
     description,
     keywords,
-    authors: hp?.metaAuthor ? [{ name: hp.metaAuthor }] : [{ name: 'CalcVerse Team' }],
+    authors: hp?.metaAuthor ? [{ name: hp.metaAuthor }] : [{ name: 'AllSmartCalculator Team' }],
     robots,
     alternates: { canonical },
     openGraph: {
@@ -40,14 +40,14 @@ export async function generateMetadata(): Promise<Metadata> {
       description: hp?.metaOgDescription ?? description,
       type: (hp?.metaOgType as 'website') ?? 'website',
       url: hp?.linkCanonical ?? SITE_URL,
-      siteName: hp?.metaOgSiteName ?? 'CalcVerse',
+      siteName: hp?.metaOgSiteName ?? 'AllSmartCalculator',
       ...(hp?.metaOgImage ? { images: [{ url: hp.metaOgImage }] } : {}),
     },
     twitter: {
       card: (hp?.metaTwitterCard as 'summary_large_image') ?? 'summary_large_image',
       title: hp?.metaTwitterTitle ?? title,
       description: hp?.metaTwitterDescription ?? description,
-      site: hp?.metaTwitterSite ?? '@CalcVerse',
+      site: hp?.metaTwitterSite ?? '@AllSmartCalculator',
       ...(hp?.metaTwitterImage ? { images: [hp.metaTwitterImage] } : {}),
     },
   };

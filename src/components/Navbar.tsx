@@ -49,7 +49,7 @@ export default function Navbar() {
             </svg>
           </div>
           <span className="font-headline text-2xl font-black tracking-tighter text-gradient">
-            CalcVerse
+            AllSmartCalculator
           </span>
         </Link>
 

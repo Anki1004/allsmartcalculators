@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  title: 'CalcVerse — 100+ Calculators. One Beautiful Place.',
+  title: 'AllSmartCalculator — 100+ Calculators. One Beautiful Place.',
   description:
     'Premium calculator hub with 100+ trending calculators for Finance, Health, Math, Crypto, Engineering, Education and more. Beautiful, fast, and free.',
   keywords: [
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     'math calculator',
   ],
   openGraph: {
-    title: 'CalcVerse — 100+ Calculators',
+    title: 'AllSmartCalculator — 100+ Calculators',
     description: 'Calculate anything. Beautifully.',
     type: 'website',
   },

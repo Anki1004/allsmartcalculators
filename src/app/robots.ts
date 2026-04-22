@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/'],
     },
-    sitemap: 'https://calcverse.app/sitemap.xml',
+    sitemap: 'https://allsmartcalculator.tech/sitemap.xml',
   };
 }

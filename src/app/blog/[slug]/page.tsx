@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     const post = await getPostBySlug(params.slug);
     if (!post) return {};
 
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://calcverse.app';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
     const canonicalUrl = post.linkCanonical ?? `${siteUrl}/blog/${post.slug}`;
     const title = post.pageTitle ?? post.title;
     const description = post.metaDescription ?? post.excerpt;
@@ -31,10 +31,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     const twitterImg = post.metaTwitterImage ?? coverImg;
 
     return {
-      title: `${title} — CalcVerse`,
+      title: `${title} — AllSmartCalculator`,
       description,
       keywords: post.metaKeywords ?? undefined,
-      authors: [{ name: post.metaAuthor ?? 'CalcVerse Team' }],
+      authors: [{ name: post.metaAuthor ?? 'AllSmartCalculator Team' }],
       robots: post.metaRobots ?? 'index, follow',
       alternates: { canonical: canonicalUrl },
       openGraph: {
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         description: post.metaOgDescription ?? description,
         type: (post.metaOgType as 'article') ?? 'article',
         url: post.metaOgUrl ?? canonicalUrl,
-        siteName: post.metaOgSiteName ?? 'CalcVerse',
+        siteName: post.metaOgSiteName ?? 'AllSmartCalculator',
         publishedTime: post.publishedAt,
         ...(ogImg && { images: [{ url: ogImg, width: 1200, height: 630, alt: title }] }),
       },
@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         card: (post.metaTwitterCard as 'summary_large_image') ?? 'summary_large_image',
         title: post.metaTwitterTitle ?? title,
         description: post.metaTwitterDescription ?? description,
-        site: post.metaTwitterSite ?? '@CalcVerse',
+        site: post.metaTwitterSite ?? '@AllSmartCalculator',
         ...(twitterImg && { images: [twitterImg] }),
       },
     };
@@ -80,7 +80,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     '@type': 'Article',
     headline: post.pageTitle ?? post.title,
     description: post.metaDescription ?? post.excerpt,
-    author: { '@type': 'Person', name: post.metaAuthor ?? 'CalcVerse Team' },
+    author: { '@type': 'Person', name: post.metaAuthor ?? 'AllSmartCalculator Team' },
     datePublished: post.publishedAt,
     ...(imgUrl && { image: imgUrl }),
   };
@@ -135,7 +135,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           <div className="flex items-center gap-5 text-sm text-on-surface-variant/60 pb-6 border-b border-white/5">
             <span className="flex items-center gap-1.5">
               <User className="w-4 h-4" />
-              {post.metaAuthor ?? 'CalcVerse Team'}
+              {post.metaAuthor ?? 'AllSmartCalculator Team'}
             </span>
             <span className="flex items-center gap-1.5">
               <Calendar className="w-4 h-4" />

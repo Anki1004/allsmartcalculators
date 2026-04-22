@@ -4,7 +4,7 @@ import GlassCard from '@/components/GlassCard';
 import { Flame, TrendingUp } from 'lucide-react';
 
 export const metadata = {
-  title: 'Trending Calculators — CalcVerse',
+  title: 'Trending Calculators — AllSmartCalculator',
   description: 'The most-used calculators right now.',
 };
 

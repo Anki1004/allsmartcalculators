@@ -11,7 +11,7 @@ export default function Footer() {
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-dim to-primary" />
               <span className="font-headline text-xl font-black tracking-tighter text-gradient">
-                CalcVerse
+                AllSmartCalculator
               </span>
             </div>
             <p className="text-sm text-on-surface-variant max-w-xs mb-6">
@@ -84,7 +84,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-on-surface-variant/60">
-            © {new Date().getFullYear()} CalcVerse. All calculations made with care.
+            © {new Date().getFullYear()} AllSmartCalculator. All calculations made with care.
           </p>
           <p className="text-xs text-on-surface-variant/60 font-mono">
             v1.0.0 · Made with stars ✦

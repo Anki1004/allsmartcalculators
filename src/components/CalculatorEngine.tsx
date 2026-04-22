@@ -83,7 +83,7 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
 
   const handleShare = useCallback(async () => {
     const url = window.location.href;
-    const title = `${config.name} — CalcVerse`;
+    const title = `${config.name} — AllSmartCalculator`;
     try {
       if (navigator.share) {
         await navigator.share({ title, url });
@@ -98,7 +98,7 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
 
   const handleExport = useCallback(() => {
     const lines: string[] = [
-      `CalcVerse — ${config.name}`,
+      `AllSmartCalculator — ${config.name}`,
       `Exported: ${new Date().toLocaleString()}`,
       '',
       '── INPUTS ──',
@@ -118,7 +118,7 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
         return `${out.label}: ${prefix}${typeof val === 'number' ? val.toLocaleString() : val}${suffix}`;
       }),
       '',
-      'calcverse.app',
+      'allsmartcalculator.tech',
     ];
     const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
     const a = document.createElement('a');

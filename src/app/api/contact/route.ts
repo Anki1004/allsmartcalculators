@@ -19,18 +19,18 @@ export async function POST(req: NextRequest) {
     }
 
     const categoryLabel = CATEGORY_LABELS[category] ?? 'General';
-    const from = process.env.RESEND_FROM ?? 'CalcVerse <onboarding@resend.dev>';
-    const to = process.env.CONTACT_TO_EMAIL ?? 'hello@calcverse.app';
+    const from = process.env.RESEND_FROM ?? 'AllSmartCalculator <onboarding@resend.dev>';
+    const to = process.env.CONTACT_TO_EMAIL ?? 'hello@allsmartcalculator.tech';
 
     await resend.emails.send({
       from,
       to,
       replyTo: email,
-      subject: `[CalcVerse · ${categoryLabel}] ${subject}`,
+      subject: `[AllSmartCalculator · ${categoryLabel}] ${subject}`,
       html: `
         <div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#1a1a2e">
           <div style="background:#080c25;padding:24px 32px;border-radius:12px 12px 0 0">
-            <h1 style="color:#bd9dff;margin:0;font-size:20px">CalcVerse — New Message</h1>
+            <h1 style="color:#bd9dff;margin:0;font-size:20px">AllSmartCalculator — New Message</h1>
             <p style="color:#a6a9c9;margin:4px 0 0;font-size:13px">${categoryLabel}</p>
           </div>
           <div style="background:#0c112d;padding:32px;border-radius:0 0 12px 12px">

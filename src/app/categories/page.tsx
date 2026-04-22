@@ -5,7 +5,7 @@ import CalculatorCard from '@/components/CalculatorCard';
 import GlassCard from '@/components/GlassCard';
 
 export const metadata = {
-  title: 'All Categories — CalcVerse',
+  title: 'All Categories — AllSmartCalculator',
   description: 'Browse 100+ calculators across 8 categories.',
 };
 

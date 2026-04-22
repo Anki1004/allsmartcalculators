@@ -3,8 +3,8 @@ import { TOTAL_CALCULATORS } from '@/lib/calculator-registry';
 import { Sparkles, Zap, Shield, Heart } from 'lucide-react';
 
 export const metadata = {
-  title: 'About — CalcVerse',
-  description: 'The story behind CalcVerse.',
+  title: 'About — AllSmartCalculator',
+  description: 'The story behind AllSmartCalculator.',
 };
 
 const values = [
@@ -36,7 +36,7 @@ export default function AboutPage() {
       <div className="max-w-5xl mx-auto">
         <h1 className="font-headline font-black text-4xl md:text-7xl tracking-tighter mb-6">
           <span className="text-on-surface">We built</span>{' '}
-          <span className="text-gradient">CalcVerse</span>
+          <span className="text-gradient">AllSmartCalculator</span>
           <br />
           <span className="text-on-surface">because math deserves better.</span>
         </h1>

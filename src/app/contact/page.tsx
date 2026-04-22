@@ -217,8 +217,8 @@ export default function ContactPage() {
               <p className="text-xs text-on-surface-variant leading-relaxed mb-2">
                 You can reach us directly at the address below. We read everything.
               </p>
-              <a href="mailto:hello@calcverse.app" className="text-xs text-primary font-mono hover:underline">
-                hello@calcverse.app
+              <a href="mailto:hello@allsmartcalculator.tech" className="text-xs text-primary font-mono hover:underline">
+                hello@allsmartcalculator.tech
               </a>
             </div>
           </GlassCard>

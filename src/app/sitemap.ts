@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 import { allCalculators } from '@/lib/calculator-registry';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://calcverse.app';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [

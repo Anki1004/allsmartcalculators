@@ -19,7 +19,7 @@ export async function generateMetadata({
   if (!cat) return { title: 'Not Found' };
   const calcs = getCalculatorsByCategory(cat.id as CalculatorCategory);
   return {
-    title: `${cat.name} Calculators — CalcVerse`,
+    title: `${cat.name} Calculators — AllSmartCalculator`,
     description: `${calcs.length} free ${cat.name.toLowerCase()} calculators. ${cat.description}`,
   };
 }

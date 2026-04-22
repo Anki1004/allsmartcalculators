@@ -6,7 +6,7 @@ import GlassCard from '@/components/GlassCard';
 import { Clock, User, ArrowRight, BookOpen } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Blog — CalcVerse',
+  title: 'Blog — AllSmartCalculator',
   description: 'Tips, guides, and insights on finance, health, math, crypto, and more.',
 };
 
@@ -64,7 +64,7 @@ function PostCard({ post }: { post: StrapiPost }) {
             <div className="flex items-center gap-3">
               <span className="flex items-center gap-1">
                 <User className="w-3 h-3" />
-                {post.metaAuthor ?? 'CalcVerse Team'}
+                {post.metaAuthor ?? 'AllSmartCalculator Team'}
               </span>
               <span className="flex items-center gap-1">
                 <Clock className="w-3 h-3" />
