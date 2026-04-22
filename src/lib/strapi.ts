@@ -1,5 +1,3 @@
-import { localBlogPosts } from './blog-data';
-
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL ?? 'http://localhost:1337';
 
 interface SeoFields {
@@ -59,45 +57,24 @@ async function strapiGet<T>(path: string): Promise<T> {
 }
 
 export async function getAllPosts(): Promise<StrapiPost[]> {
-  try {
-    const data = await strapiGet<StrapiResponse<StrapiPost[]>>(
-      '/posts?populate=coverImage&sort=publishedAt:desc'
-    );
-    const remote = data.data ?? [];
-    if (remote.length > 0) return remote;
-  } catch {
-    // fall through to local data
-  }
-  return [...localBlogPosts].sort(
-    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  const data = await strapiGet<StrapiResponse<StrapiPost[]>>(
+    '/posts?populate=coverImage&sort=publishedAt:desc'
   );
+  return data.data ?? [];
 }
 
 export async function getPostBySlug(slug: string): Promise<StrapiPost | null> {
-  try {
-    const data = await strapiGet<StrapiResponse<StrapiPost[]>>(
-      `/posts?filters[slug][$eq]=${slug}&populate=coverImage`
-    );
-    if (data.data?.[0]) return data.data[0];
-  } catch {
-    // fall through to local data
-  }
-  return localBlogPosts.find((p) => p.slug === slug) ?? null;
+  const data = await strapiGet<StrapiResponse<StrapiPost[]>>(
+    `/posts?filters[slug][$eq]=${slug}&populate=coverImage`
+  );
+  return data.data?.[0] ?? null;
 }
 
 export async function getFeaturedPosts(): Promise<StrapiPost[]> {
-  try {
-    const data = await strapiGet<StrapiResponse<StrapiPost[]>>(
-      '/posts?filters[showOnHome][$eq]=true&populate=coverImage&sort=publishedAt:desc'
-    );
-    const remote = data.data ?? [];
-    if (remote.length > 0) return remote;
-  } catch {
-    // fall through to local data
-  }
-  return localBlogPosts
-    .filter((p) => p.showOnHome)
-    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+  const data = await strapiGet<StrapiResponse<StrapiPost[]>>(
+    '/posts?filters[showOnHome][$eq]=true&populate=coverImage&sort=publishedAt:desc'
+  );
+  return data.data ?? [];
 }
 
 export function getStrapiImageUrl(url: string): string {
