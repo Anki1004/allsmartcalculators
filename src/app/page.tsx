@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import {
   allCalculators,
@@ -10,10 +11,62 @@ import CalculatorCard from '@/components/CalculatorCard';
 import GlassCard from '@/components/GlassCard';
 import HomeSearchBar from '@/components/HomeSearchBar';
 import { ArrowRight, Flame, TrendingUp } from 'lucide-react';
+import { getHomepage } from '@/lib/strapi';
 
-export default function HomePage() {
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://calcverse.app';
+
+export async function generateMetadata(): Promise<Metadata> {
+  const hp = await getHomepage();
+
+  const title = hp?.pageTitle ?? 'CalcVerse — 100+ Calculators. One Beautiful Place.';
+  const description =
+    hp?.metaDescription ??
+    'Premium calculator hub with 100+ trending calculators for Finance, Health, Math, Crypto, Engineering, Education and more. Beautiful, fast, and free.';
+  const keywords = hp?.metaKeywords
+    ? hp.metaKeywords.split(',').map((k) => k.trim())
+    : ['calculator', 'EMI calculator', 'SIP calculator', 'BMI calculator', 'crypto calculator'];
+  const robots = hp?.metaRobots ?? 'index, follow';
+  const canonical = hp?.linkCanonical ?? SITE_URL;
+
+  return {
+    title,
+    description,
+    keywords,
+    authors: hp?.metaAuthor ? [{ name: hp.metaAuthor }] : [{ name: 'CalcVerse Team' }],
+    robots,
+    alternates: { canonical },
+    openGraph: {
+      title: hp?.metaOgTitle ?? title,
+      description: hp?.metaOgDescription ?? description,
+      type: (hp?.metaOgType as 'website') ?? 'website',
+      url: hp?.linkCanonical ?? SITE_URL,
+      siteName: hp?.metaOgSiteName ?? 'CalcVerse',
+      ...(hp?.metaOgImage ? { images: [{ url: hp.metaOgImage }] } : {}),
+    },
+    twitter: {
+      card: (hp?.metaTwitterCard as 'summary_large_image') ?? 'summary_large_image',
+      title: hp?.metaTwitterTitle ?? title,
+      description: hp?.metaTwitterDescription ?? description,
+      site: hp?.metaTwitterSite ?? '@CalcVerse',
+      ...(hp?.metaTwitterImage ? { images: [hp.metaTwitterImage] } : {}),
+    },
+  };
+}
+
+export default async function HomePage() {
   const trending = getTrendingCalculators(8);
   const popular = getPopularCalculators(4);
+  const hp = await getHomepage();
+
+  const heroChip = hp?.heroChip ?? '2.4M+ Calculations Today';
+  const heroHeadline = hp?.heroHeadline ?? `${TOTAL_CALCULATORS}+ Calculators.`;
+  const heroSubheadline = hp?.heroSubheadline ?? 'One Beautiful Place.';
+  const heroDescription =
+    hp?.heroDescription ??
+    'Premium financial, health, crypto, and scientific calculators crafted with obsessive attention to detail. Calculate anything, beautifully.';
+  const ctaHeadline = hp?.ctaHeadline ?? 'Calculate Anything.';
+  const ctaDescription =
+    hp?.ctaDescription ?? 'Free forever. No signups. No ads. Just beautiful calculators that work.';
 
   return (
     <div className="relative">
@@ -24,23 +77,22 @@ export default function HomePage() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass glass-border mb-8 animate-fade-up">
             <span className="w-2 h-2 rounded-full bg-tertiary animate-pulse" />
             <span className="text-xs font-mono font-bold tracking-[0.15em] uppercase text-tertiary">
-              2.4M+ Calculations Today
+              {heroChip}
             </span>
           </div>
 
           {/* Hero headline */}
           <h1 className="font-headline font-black tracking-tighter text-5xl md:text-7xl lg:text-8xl leading-[0.95] mb-6 animate-fade-up">
-            <span className="text-on-surface">{TOTAL_CALCULATORS}+ Calculators.</span>
+            <span className="text-on-surface">{heroHeadline}</span>
             <br />
-            <span className="text-gradient">One Beautiful Place.</span>
+            <span className="text-gradient">{heroSubheadline}</span>
           </h1>
 
           <p
             className="text-lg md:text-xl text-on-surface-variant max-w-2xl mb-10 leading-relaxed animate-fade-up"
             style={{ animationDelay: '0.1s' }}
           >
-            Premium financial, health, crypto, and scientific calculators crafted with
-            obsessive attention to detail. Calculate anything, beautifully.
+            {heroDescription}
           </p>
 
           {/* Search bar */}
@@ -176,11 +228,11 @@ export default function HomePage() {
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-primary/20 blur-3xl" />
             <div className="relative">
               <h3 className="font-headline font-black text-3xl md:text-5xl tracking-tighter mb-4">
-                <span className="text-on-surface">Calculate Anything.</span>{' '}
+                <span className="text-on-surface">{ctaHeadline}</span>{' '}
                 <span className="text-gradient">Beautifully.</span>
               </h3>
               <p className="text-base md:text-lg text-on-surface-variant max-w-xl mx-auto mb-8">
-                Free forever. No signups. No ads. Just beautiful calculators that work.
+                {ctaDescription}
               </p>
               <Link
                 href="/categories"

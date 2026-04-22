@@ -28,8 +28,8 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
   },
   title: 'CalcVerse — 100+ Calculators. One Beautiful Place.',
   description:

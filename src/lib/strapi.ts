@@ -1,3 +1,5 @@
+import { localBlogPosts } from './blog-data';
+
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL ?? 'http://localhost:1337';
 
 interface SeoFields {
@@ -57,24 +59,45 @@ async function strapiGet<T>(path: string): Promise<T> {
 }
 
 export async function getAllPosts(): Promise<StrapiPost[]> {
-  const data = await strapiGet<StrapiResponse<StrapiPost[]>>(
-    '/posts?populate=coverImage&sort=publishedAt:desc'
+  try {
+    const data = await strapiGet<StrapiResponse<StrapiPost[]>>(
+      '/posts?populate=coverImage&sort=publishedAt:desc'
+    );
+    const remote = data.data ?? [];
+    if (remote.length > 0) return remote;
+  } catch {
+    // fall through to local data
+  }
+  return [...localBlogPosts].sort(
+    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
   );
-  return data.data ?? [];
 }
 
 export async function getPostBySlug(slug: string): Promise<StrapiPost | null> {
-  const data = await strapiGet<StrapiResponse<StrapiPost[]>>(
-    `/posts?filters[slug][$eq]=${slug}&populate=coverImage`
-  );
-  return data.data?.[0] ?? null;
+  try {
+    const data = await strapiGet<StrapiResponse<StrapiPost[]>>(
+      `/posts?filters[slug][$eq]=${slug}&populate=coverImage`
+    );
+    if (data.data?.[0]) return data.data[0];
+  } catch {
+    // fall through to local data
+  }
+  return localBlogPosts.find((p) => p.slug === slug) ?? null;
 }
 
 export async function getFeaturedPosts(): Promise<StrapiPost[]> {
-  const data = await strapiGet<StrapiResponse<StrapiPost[]>>(
-    '/posts?filters[showOnHome][$eq]=true&populate=coverImage&sort=publishedAt:desc'
-  );
-  return data.data ?? [];
+  try {
+    const data = await strapiGet<StrapiResponse<StrapiPost[]>>(
+      '/posts?filters[showOnHome][$eq]=true&populate=coverImage&sort=publishedAt:desc'
+    );
+    const remote = data.data ?? [];
+    if (remote.length > 0) return remote;
+  } catch {
+    // fall through to local data
+  }
+  return localBlogPosts
+    .filter((p) => p.showOnHome)
+    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 }
 
 export function getStrapiImageUrl(url: string): string {
@@ -99,6 +122,25 @@ export async function getCalcContent(slug: string): Promise<StrapiCalcContent | 
       `/calculator-contents?filters[slug][$eq]=${slug}&populate=faqs`
     );
     return data.data?.[0] ?? null;
+  } catch {
+    return null;
+  }
+}
+
+export interface StrapiHomepage extends SeoFields {
+  id: number;
+  heroChip: string | null;
+  heroHeadline: string | null;
+  heroSubheadline: string | null;
+  heroDescription: string | null;
+  ctaHeadline: string | null;
+  ctaDescription: string | null;
+}
+
+export async function getHomepage(): Promise<StrapiHomepage | null> {
+  try {
+    const data = await strapiGet<{ data: StrapiHomepage }>('/homepage');
+    return data.data ?? null;
   } catch {
     return null;
   }
