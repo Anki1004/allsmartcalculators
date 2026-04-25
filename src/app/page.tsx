@@ -58,7 +58,7 @@ export default async function HomePage() {
   const popular = getPopularCalculators(4);
   const hp = await getHomepage();
 
-  const heroChip = hp?.heroChip ?? '2.4M+ Calculations Today';
+  const heroChip = hp?.heroChip ?? `${TOTAL_CALCULATORS}+ free calculators · no ads, no signup`;
   const heroHeadline = hp?.heroHeadline ?? `${TOTAL_CALCULATORS}+ Calculators.`;
   const heroSubheadline = hp?.heroSubheadline ?? 'One Beautiful Place.';
   const heroDescription =
@@ -154,42 +154,65 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* CATEGORIES GRID */}
+      {/* CATEGORIES WITH CALCULATORS */}
       <section className="py-20 px-5 md:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-between mb-10">
+          <div className="flex items-center justify-between mb-12">
             <div>
               <h2 className="font-headline font-black text-3xl md:text-4xl tracking-tighter">
-                Explore Categories
+                Browse by Category
               </h2>
               <p className="text-sm text-on-surface-variant mt-1">
-                {TOTAL_CALCULATORS} calculators across 8 categories
+                {TOTAL_CALCULATORS} calculators across {CATEGORIES.length} categories
               </p>
             </div>
+            <Link
+              href="/categories"
+              className="hidden md:flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all"
+            >
+              View All <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          <div className="flex flex-col gap-16">
             {CATEGORIES.map((cat) => {
-              const count = allCalculators.filter((c) => c.category === cat.id).length;
+              const catCalcs = allCalculators
+                .filter((c) => c.category === cat.id)
+                .sort((a, b) => (b.usageCount ?? 0) - (a.usageCount ?? 0))
+                .slice(0, 4);
               return (
-                <Link key={cat.id} href={`/categories#${cat.id}`} className="group magnetic">
-                  <GlassCard className="p-6 h-full hover:bg-white/[0.06] transition-all group-hover:scale-[1.02]">
-                    <div
-                      className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${cat.color} flex items-center justify-center text-2xl mb-4 shadow-lg group-hover:scale-110 transition-transform`}
-                    >
-                      {cat.icon}
+                <div key={cat.id}>
+                  {/* Category header */}
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center gap-4">
+                      <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${cat.color} flex items-center justify-center text-xl shadow-lg`}>
+                        {cat.icon}
+                      </div>
+                      <div>
+                        <h3 className="font-headline font-black text-xl md:text-2xl tracking-tighter text-on-surface">
+                          {cat.name}
+                        </h3>
+                        <p className="text-xs text-on-surface-variant mt-0.5">
+                          {cat.description}
+                        </p>
+                      </div>
                     </div>
-                    <h3 className="font-headline font-bold text-lg text-on-surface mb-1">
-                      {cat.name}
-                    </h3>
-                    <p className="text-xs text-on-surface-variant mb-3 leading-relaxed">
-                      {cat.description}
-                    </p>
-                    <p className="text-xs font-mono font-bold text-primary">
-                      {count} tools →
-                    </p>
-                  </GlassCard>
-                </Link>
+                    <Link
+                      href={`/${cat.id}`}
+                      className="flex items-center gap-1.5 text-xs font-semibold text-primary hover:gap-2.5 transition-all whitespace-nowrap"
+                    >
+                      All {allCalculators.filter((c) => c.category === cat.id).length} tools
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
+
+                  {/* Top 4 calculators in this category */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                    {catCalcs.map((calc) => (
+                      <CalculatorCard key={calc.slug} calculator={calc} />
+                    ))}
+                  </div>
+                </div>
               );
             })}
           </div>

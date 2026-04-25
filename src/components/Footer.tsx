@@ -86,8 +86,17 @@ export default function Footer() {
           <p className="text-xs text-on-surface-variant/60">
             © {new Date().getFullYear()} AllSmartCalculator. All calculations made with care.
           </p>
-          <p className="text-xs text-on-surface-variant/60 font-mono">
-            v1.0.0 · Made with stars ✦
+          <p className="text-xs text-on-surface-variant/60">
+            Built by{' '}
+            <a
+              href="https://www.linkedin.com/in/ankit-gupta-data-analyst"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:underline font-semibold"
+            >
+              Ankit Gupta
+            </a>
+            {' '}— say hi.
           </p>
         </div>
       </div>

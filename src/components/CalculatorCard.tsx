@@ -36,16 +36,14 @@ export default function CalculatorCard({ calculator }: CalculatorCardProps) {
           {calculator.description}
         </p>
 
-        {calculator.usageCount && (
-          <div className="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
-            <span className="text-xs font-mono text-on-surface-variant">
-              {calculator.usageCount.toLocaleString()} uses
-            </span>
-            <span className="text-xs uppercase tracking-wider text-on-surface-variant/60">
-              {calculator.category}
-            </span>
-          </div>
-        )}
+        <div className="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
+          <span className="text-xs font-medium text-primary">
+            Open calculator →
+          </span>
+          <span className="text-xs uppercase tracking-wider text-on-surface-variant/60">
+            {calculator.category}
+          </span>
+        </div>
       </GlassCard>
     </Link>
   );

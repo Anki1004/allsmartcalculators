@@ -7,7 +7,7 @@ import SelectInput from './SelectInput';
 import ResultDisplay from './ResultDisplay';
 import GlassCard from './GlassCard';
 import DonutChart from './DonutChart';
-import { Save, Share2, FileDown, Check } from 'lucide-react';
+import { Save, Share2, FileDown, Check, Sparkles } from 'lucide-react';
 import { useCurrency } from '@/lib/currency-context';
 import CalculatorIcon from './CalculatorIcon';
 
@@ -33,6 +33,7 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
     }
     return initial;
   });
+  const [hasInteracted, setHasInteracted] = useState(false);
 
   // Recompute outputs whenever inputs change
   const results = useMemo(() => {
@@ -54,6 +55,7 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
 
   const updateValue = (key: string, v: number) => {
     setValues((prev) => ({ ...prev, [key]: v }));
+    if (!hasInteracted) setHasInteracted(true);
   };
 
   const [toast, setToast] = useState('');
@@ -169,7 +171,10 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
                   key={input.key}
                   label={input.label}
                   value={values[input.key]}
-                  onChange={(v) => setValues((prev) => ({ ...prev, [input.key]: v }))}
+                  onChange={(v) => {
+                    setValues((prev) => ({ ...prev, [input.key]: v }));
+                    if (!hasInteracted) setHasInteracted(true);
+                  }}
                   options={input.options ?? []}
                   color={input.color ?? 'primary'}
                 />
@@ -200,40 +205,58 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
         <GlassCard className="p-6 md:p-8 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
           <div className="relative">
-            <div className="text-center py-4">
-              <ResultDisplay
-                label={primaryOutput.label}
-                value={cvtVal(primaryOutput.prefix, results[primaryOutput.key] ?? 0)}
-                prefix={cvtPfx(primaryOutput.prefix)}
-                suffix={primaryOutput.suffix}
-                decimals={primaryOutput.decimals ?? 2}
-                size="xl"
-                color="white"
-              />
-            </div>
-
-            {/* Secondary results */}
-            {secondaryOutputs.length > 0 && (
-              <div className="grid grid-cols-2 gap-4 mt-6 pt-6 border-t border-white/5">
-                {secondaryOutputs.slice(0, 4).map((out) => (
+            {hasInteracted ? (
+              <>
+                <div className="text-center py-4">
                   <ResultDisplay
-                    key={out.key}
-                    label={out.label}
-                    value={cvtVal(out.prefix, results[out.key] ?? 0)}
-                    prefix={cvtPfx(out.prefix)}
-                    suffix={out.suffix}
-                    decimals={out.decimals ?? 2}
-                    size="sm"
-                    color={out.color ?? 'white'}
+                    label={primaryOutput.label}
+                    value={cvtVal(primaryOutput.prefix, results[primaryOutput.key] ?? 0)}
+                    prefix={cvtPfx(primaryOutput.prefix)}
+                    suffix={primaryOutput.suffix}
+                    decimals={primaryOutput.decimals ?? 2}
+                    size="xl"
+                    color="white"
                   />
-                ))}
+                </div>
+
+                {/* Secondary results */}
+                {secondaryOutputs.length > 0 && (
+                  <div className="grid grid-cols-2 gap-4 mt-6 pt-6 border-t border-white/5">
+                    {secondaryOutputs.slice(0, 4).map((out) => (
+                      <ResultDisplay
+                        key={out.key}
+                        label={out.label}
+                        value={cvtVal(out.prefix, results[out.key] ?? 0)}
+                        prefix={cvtPfx(out.prefix)}
+                        suffix={out.suffix}
+                        decimals={out.decimals ?? 2}
+                        size="sm"
+                        color={out.color ?? 'white'}
+                      />
+                    ))}
+                  </div>
+                )}
+              </>
+            ) : (
+              <div className="text-center py-12 md:py-16 flex flex-col items-center gap-4">
+                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
+                  <Sparkles className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <p className="font-headline font-bold text-lg text-on-surface mb-1">
+                    Ready when you are
+                  </p>
+                  <p className="text-sm text-on-surface-variant max-w-xs mx-auto leading-relaxed">
+                    Adjust the {config.inputs.length === 1 ? 'input' : 'inputs'} on the left to see your {primaryOutput.label.toLowerCase()}.
+                  </p>
+                </div>
               </div>
             )}
           </div>
         </GlassCard>
 
         {/* Chart */}
-        {config.chartType === 'donut' && donutData.length > 0 && (
+        {hasInteracted && config.chartType === 'donut' && donutData.length > 0 && (
           <GlassCard className="p-6 aspect-square max-h-[280px]">
             <DonutChart data={donutData} />
           </GlassCard>
@@ -250,7 +273,8 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
           <div className="grid grid-cols-3 gap-3">
             <button
               onClick={handleSave}
-              className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-br from-primary-dim to-primary text-white font-semibold text-sm shadow-glow-primary press hover:opacity-90 transition-opacity"
+              disabled={!hasInteracted}
+              className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-br from-primary-dim to-primary text-white font-semibold text-sm shadow-glow-primary press hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none"
             >
               <Save className="w-4 h-4" />
               <span className="hidden sm:inline">Save</span>
@@ -264,7 +288,8 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
             </button>
             <button
               onClick={handleExport}
-              className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl glass glass-border text-on-surface font-semibold text-sm hover:bg-white/5 transition-colors press"
+              disabled={!hasInteracted}
+              className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl glass glass-border text-on-surface font-semibold text-sm hover:bg-white/5 transition-colors press disabled:opacity-40 disabled:cursor-not-allowed"
             >
               <FileDown className="w-4 h-4" />
               <span className="hidden sm:inline">Export</span>
