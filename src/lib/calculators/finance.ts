@@ -116,7 +116,7 @@ export const financeCalculators: CalculatorConfig[] = [
     name: 'EMI Calculator',
     category: 'finance',
     icon: 'Landmark',
-    description: 'High-precision amortization for loans & mortgages.',
+    description: 'Calculate Equated Monthly Instalments for home, personal, car, and education loans — with interest split and total payable.',
     trending: true,
     usageCount: 124580,
     chartType: 'donut',
@@ -138,6 +138,66 @@ export const financeCalculators: CalculatorConfig[] = [
       const totalPayment = emi * n;
       return { emi, totalInterest: totalPayment - p, totalPayment };
     },
+    intro:
+      'EMI (Equated Monthly Instalment) is the fixed monthly payment a borrower makes to repay a loan over a chosen tenure. Each EMI is split between interest and principal: in the early years most of it goes to interest, and the principal share grows as the balance falls. Use this calculator to compare loan amounts, tenures, and rates side-by-side before you sign — change any slider to see how the monthly outflow and the total interest paid both move.',
+    formula: 'EMI = P × r × (1 + r)ⁿ ÷ ((1 + r)ⁿ − 1)',
+    howItWorks:
+      'P is the loan principal, r is the monthly interest rate (annual rate ÷ 12 ÷ 100), and n is the tenure in months (years × 12). For a ₹50 lakh home loan at 8.5% over 20 years, r = 0.0070833 and n = 240, giving an EMI of about ₹43,391. Over the full tenure you pay roughly ₹1.04 crore — about ₹54 lakh of which is interest. Stretching the tenure lowers the EMI but raises total interest sharply; shortening it does the opposite.',
+    ranges: {
+      title: 'Typical EMI rate brackets in India (April 2026)',
+      rows: [
+        { label: 'Home loan (salaried)', range: '8.35% – 9.50% p.a.', note: 'Repo-linked; ranges by bank, CIBIL, and LTV' },
+        { label: 'Home loan (self-employed)', range: '8.75% – 10.25% p.a.', note: 'Slightly higher risk loading' },
+        { label: 'Loan against property', range: '9.00% – 12.50% p.a.', note: 'Secured but priced above home loans' },
+        { label: 'Car loan (new)', range: '8.75% – 11.50% p.a.', note: 'Lower for select manufacturers' },
+        { label: 'Personal loan', range: '10.50% – 22.00% p.a.', note: 'Unsecured; CIBIL-driven' },
+        { label: 'Education loan (India)', range: '8.30% – 13.50% p.a.', note: 'Public-sector banks at the lower end' },
+      ],
+    },
+    limitations: [
+      "This calculator uses a simple reducing-balance EMI formula. It doesn't model processing fees, GST on those fees, prepayment penalties, late-payment charges, or insurance premiums that lenders sometimes bundle in.",
+      'It assumes the interest rate stays fixed for the whole tenure. Floating-rate loans (most home loans in India) reset whenever the RBI repo rate or the bank\'s spread changes, so your real EMI can move.',
+      'Loan eligibility is not the same as the EMI number. Banks typically cap your total EMIs at 40–50% of net monthly income, and they look at credit score, employer category, and existing obligations.',
+      'Prepayment changes everything. A single lump-sum prepayment in year 3 of a 20-year loan can cut total interest by 15–25% — model it separately if you plan to.',
+    ],
+    faqs: [
+      {
+        q: 'How is EMI calculated in India?',
+        a: 'Indian banks use the same standard EMI formula: EMI = P × r × (1+r)ⁿ ÷ ((1+r)ⁿ − 1), where P is the principal, r is the monthly interest rate, and n is the number of months. The result is your fixed monthly outflow on a reducing-balance loan.',
+      },
+      {
+        q: "What's the EMI for a ₹50 lakh home loan at 8.5% for 20 years?",
+        a: 'About ₹43,391 per month. Total payable over 20 years is roughly ₹1.04 crore — of which ₹54 lakh is interest and ₹50 lakh is principal. Plug your own amount, rate, and tenure into the calculator above to see the exact split.',
+      },
+      {
+        q: 'Does paying more EMIs reduce interest?',
+        a: 'Paying more than the EMI in any month is treated as a partial prepayment and goes directly to the principal, which cuts the interest you pay over the rest of the loan. Even small extra payments early in the tenure compound into large interest savings.',
+      },
+      {
+        q: 'Can I change my EMI mid-tenure?',
+        a: 'Yes — most Indian banks let you raise the EMI (which shortens the tenure) or extend the tenure (which lowers the EMI) once a year on home loans. Personal loans are usually fixed for the full tenure.',
+      },
+      {
+        q: 'Is the EMI from this calculator the same as what my bank will quote?',
+        a: 'It will be very close on the math, but bank quotes often include processing fees (0.25–1% of the loan), GST on those fees, and sometimes insurance. Use this number as the headline EMI; ask the bank for the all-in monthly outflow before you sign.',
+      },
+      {
+        q: 'Mortgage calculator vs EMI calculator — what\'s the difference?',
+        a: "Functionally the same math. 'EMI calculator' is the term used in India and South Asia for any reducing-balance instalment loan. 'Mortgage calculator' is the US/UK term and usually focuses on home loans, often adding property tax and insurance lines. The core monthly principal-and-interest figure is identical.",
+      },
+    ],
+    seo: {
+      title: 'EMI Calculator — Home, Personal, Car & Education Loan EMIs',
+      description:
+        'Free EMI calculator for home, personal, car, and education loans. See your monthly EMI, total interest, and full payment split with the standard reducing-balance formula.',
+      applicationCategory: 'FinanceApplication',
+      sources: [
+        { label: 'RBI — current repo rate & policy', url: 'https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx' },
+        { label: 'RBI — fair-practice code for retail loans', url: 'https://www.rbi.org.in/Scripts/NotificationUser.aspx' },
+      ],
+    },
+    lastUpdated: '2026-04-26',
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
   },
   {
     slug: 'sip-calculator',

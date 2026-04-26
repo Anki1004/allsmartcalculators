@@ -1,15 +1,21 @@
 'use client';
 
 import { useState, useMemo, useCallback } from 'react';
+import dynamic from 'next/dynamic';
 import { getCalculatorBySlug } from '@/lib/calculator-registry';
 import SliderInput from './SliderInput';
 import SelectInput from './SelectInput';
 import ResultDisplay from './ResultDisplay';
 import GlassCard from './GlassCard';
-import DonutChart from './DonutChart';
 import { Save, Share2, FileDown, Check, Sparkles } from 'lucide-react';
 import { useCurrency } from '@/lib/currency-context';
 import CalculatorIcon from './CalculatorIcon';
+
+// Defer recharts (~80KB gz) until the chart actually renders post-interaction.
+const DonutChart = dynamic(() => import('./DonutChart'), {
+  ssr: false,
+  loading: () => <div className="w-full h-full min-h-[240px]" aria-hidden />,
+});
 
 interface CalculatorEngineProps {
   slug: string;

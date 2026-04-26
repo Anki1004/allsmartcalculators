@@ -33,6 +33,25 @@ export interface CalculatorOutput {
   color?: 'primary' | 'secondary' | 'tertiary' | 'white';
 }
 
+export interface CalculatorRangeRow {
+  label: string;
+  range: string;
+  note?: string;
+}
+
+export interface CalculatorSeo {
+  /** 50–60 char title; keyword-front-loaded */
+  title?: string;
+  /** 150–160 char meta description */
+  description?: string;
+  /** WebApplication.applicationCategory — e.g. "FinanceApplication", "HealthApplication" */
+  applicationCategory?: string;
+  /** Aggregate rating exposed in JSON-LD */
+  rating?: { value: number; count: number };
+  /** Source citations rendered as outbound links (e.g. WHO, RBI, IT department) */
+  sources?: { label: string; url: string }[];
+}
+
 export interface CalculatorConfig {
   slug: string;
   name: string;
@@ -49,6 +68,22 @@ export interface CalculatorConfig {
   chartType?: 'donut' | 'bar' | 'line' | 'none';
   formula?: string;
   faqs?: { q: string; a: string }[];
+
+  // ── SEO / content layer ────────────────────────────────────────────
+  /** Indexable 80–120 word intro rendered above the calculator (for SEO + AI extraction). */
+  intro?: string;
+  /** "How [X] is calculated" prose; rendered alongside the formula. */
+  howItWorks?: string;
+  /** Reference table rows — categories, brackets, ranges, etc. */
+  ranges?: { title: string; rows: CalculatorRangeRow[] };
+  /** Honest caveats — builds E-E-A-T, especially for YMYL calcs. */
+  limitations?: string[];
+  /** Per-calc SEO overrides (title/description/JSON-LD). */
+  seo?: CalculatorSeo;
+  /** ISO date string ("2026-04-26"). Visible date + dateModified in schema. */
+  lastUpdated?: string;
+  /** "Reviewed by" attribution for YMYL pages. */
+  reviewedBy?: { name: string; credential: string; href?: string };
 }
 
 export const CATEGORIES: {

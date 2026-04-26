@@ -5,9 +5,21 @@ import { getAllPosts, getStrapiImageUrl, StrapiPost } from '@/lib/strapi';
 import GlassCard from '@/components/GlassCard';
 import { Clock, User, ArrowRight, BookOpen } from 'lucide-react';
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
+
 export const metadata: Metadata = {
   title: 'Blog — AllSmartCalculator',
-  description: 'Tips, guides, and insights on finance, health, math, crypto, and more.',
+  description:
+    'Practical guides on finance, health, math, and crypto — written to help you get more out of every calculation.',
+  alternates: { canonical: `${SITE_URL}/blog` },
+  openGraph: {
+    title: 'Blog — AllSmartCalculator',
+    description:
+      'Practical guides on finance, health, math, and crypto.',
+    url: `${SITE_URL}/blog`,
+    type: 'website',
+    siteName: 'AllSmartCalculator',
+  },
 };
 
 const CATEGORY_COLORS: Record<string, string> = {

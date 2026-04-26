@@ -1,9 +1,19 @@
 import { Metadata } from 'next';
 import GlassCard from '@/components/GlassCard';
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
+
 export const metadata: Metadata = {
   title: 'Privacy Policy — AllSmartCalculator',
   description: "Here's exactly what we do (and don't do) with any information you might share with us.",
+  alternates: { canonical: `${SITE_URL}/privacy` },
+  openGraph: {
+    title: 'Privacy Policy — AllSmartCalculator',
+    description: "What we do (and don't do) with your information.",
+    url: `${SITE_URL}/privacy`,
+    type: 'website',
+    siteName: 'AllSmartCalculator',
+  },
 };
 
 export default function PrivacyPage() {

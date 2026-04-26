@@ -1,9 +1,19 @@
 import { Metadata } from 'next';
 import GlassCard from '@/components/GlassCard';
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
+
 export const metadata: Metadata = {
   title: 'Disclaimer — AllSmartCalculator',
   description: "Important context about AllSmartCalculator calculator results — what they mean, what they don't, and when to go beyond them.",
+  alternates: { canonical: `${SITE_URL}/disclaimer` },
+  openGraph: {
+    title: 'Disclaimer — AllSmartCalculator',
+    description: 'Calculator results are estimates, not financial, medical, legal, or professional advice.',
+    url: `${SITE_URL}/disclaimer`,
+    type: 'website',
+    siteName: 'AllSmartCalculator',
+  },
 };
 
 export default function DisclaimerPage() {
@@ -50,7 +60,7 @@ export default function DisclaimerPage() {
               </div>
               <div>
                 <p className="text-sm font-semibold text-on-surface mb-1">How to use results well.</p>
-                <p className="text-sm text-on-surface-variant leading-relaxed">Use our numbers to build intuition, compare scenarios, and prepare for conversations with professionals — not to make final decisions on your own. A AllSmartCalculator result that makes you ask better questions has done its job.</p>
+                <p className="text-sm text-on-surface-variant leading-relaxed">Use our numbers to build intuition, compare scenarios, and prepare for conversations with professionals — not to make final decisions on your own. An AllSmartCalculator result that makes you ask better questions has done its job.</p>
               </div>
             </div>
           </GlassCard>

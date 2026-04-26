@@ -1,9 +1,19 @@
 import { Metadata } from 'next';
 import GlassCard from '@/components/GlassCard';
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
+
 export const metadata: Metadata = {
   title: 'Terms of Service — AllSmartCalculator',
   description: 'The rules of using AllSmartCalculator. Straightforward, fair, and written like a normal human wrote them.',
+  alternates: { canonical: `${SITE_URL}/terms` },
+  openGraph: {
+    title: 'Terms of Service — AllSmartCalculator',
+    description: 'Straightforward, fair terms of use.',
+    url: `${SITE_URL}/terms`,
+    type: 'website',
+    siteName: 'AllSmartCalculator',
+  },
 };
 
 export default function TermsPage() {

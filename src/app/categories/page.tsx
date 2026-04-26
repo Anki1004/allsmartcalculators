@@ -4,9 +4,21 @@ import { CATEGORIES } from '@/lib/calculator-types';
 import CalculatorCard from '@/components/CalculatorCard';
 import GlassCard from '@/components/GlassCard';
 
-export const metadata = {
+import type { Metadata } from 'next';
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
+
+export const metadata: Metadata = {
   title: 'All Categories — AllSmartCalculator',
-  description: 'Browse 100+ calculators across 8 categories.',
+  description: 'Browse 100+ free calculators across 8 categories — Finance, Health, Math, Crypto, Engineering, Daily Life, Education, and Business.',
+  alternates: { canonical: `${SITE_URL}/categories` },
+  openGraph: {
+    title: 'All Categories — AllSmartCalculator',
+    description: 'Browse 100+ free calculators across 8 categories.',
+    url: `${SITE_URL}/categories`,
+    type: 'website',
+    siteName: 'AllSmartCalculator',
+  },
 };
 
 export default function CategoriesPage() {

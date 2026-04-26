@@ -3,9 +3,21 @@ import CalculatorCard from '@/components/CalculatorCard';
 import GlassCard from '@/components/GlassCard';
 import { Flame, TrendingUp } from 'lucide-react';
 
-export const metadata = {
+import type { Metadata } from 'next';
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
+
+export const metadata: Metadata = {
   title: 'Trending Calculators — AllSmartCalculator',
-  description: 'The most-used calculators right now.',
+  description: 'The most-used calculators right now — EMI, SIP, BMI, mortgage, compound interest, and more. Updated continuously.',
+  alternates: { canonical: `${SITE_URL}/trending` },
+  openGraph: {
+    title: 'Trending Calculators — AllSmartCalculator',
+    description: 'The most-used calculators right now.',
+    url: `${SITE_URL}/trending`,
+    type: 'website',
+    siteName: 'AllSmartCalculator',
+  },
 };
 
 export default function TrendingPage() {

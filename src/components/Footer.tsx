@@ -50,6 +50,7 @@ export default function Footer() {
                 { label: 'Categories',  href: '/categories' },
                 { label: 'Blog',        href: '/blog' },
                 { label: 'About',       href: '/about' },
+                { label: 'Methodology', href: '/methodology' },
                 { label: 'Contact',     href: '/contact' },
               ],
             },
@@ -59,6 +60,7 @@ export default function Footer() {
                 { label: 'Privacy Policy',   href: '/privacy' },
                 { label: 'Terms of Service', href: '/terms' },
                 { label: 'Disclaimer',       href: '/disclaimer' },
+                { label: 'Author',           href: '/author/ankit-gupta' },
               ],
             },
           ].map((col) => (

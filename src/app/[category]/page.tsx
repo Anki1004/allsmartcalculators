@@ -18,9 +18,26 @@ export async function generateMetadata({
   const cat = CATEGORIES.find((c) => c.id === params.category);
   if (!cat) return { title: 'Not Found' };
   const calcs = getCalculatorsByCategory(cat.id as CalculatorCategory);
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
+  const url = `${siteUrl}/${cat.id}`;
+  const title = `${cat.name} Calculators — AllSmartCalculator`;
+  const description = `${calcs.length} free ${cat.name.toLowerCase()} calculators. ${cat.description}.`;
   return {
-    title: `${cat.name} Calculators — AllSmartCalculator`,
-    description: `${calcs.length} free ${cat.name.toLowerCase()} calculators. ${cat.description}`,
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: 'website',
+      siteName: 'AllSmartCalculator',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
   };
 }
 

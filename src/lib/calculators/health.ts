@@ -6,7 +6,7 @@ export const healthCalculators: CalculatorConfig[] = [
     name: 'BMI Calculator',
     category: 'health',
     icon: 'Activity',
-    description: 'Calculate your Body Mass Index.',
+    description: 'Calculate your Body Mass Index in seconds — with WHO categories and Asian-specific cutoffs.',
     trending: true,
     usageCount: 298000,
     inputs: [
@@ -29,6 +29,68 @@ export const healthCalculators: CalculatorConfig[] = [
       const idealMax = 24.9 * h * h;
       return { bmi, category, idealWeight: `${idealMin.toFixed(1)} - ${idealMax.toFixed(1)}` };
     },
+    intro:
+      'BMI (Body Mass Index) is a weight-for-height ratio used to screen adults for underweight, normal weight, overweight, and obesity. The number itself does not measure body fat directly, but population studies link BMI bands to broad health risks, which is why doctors and public-health agencies still use it. This calculator returns your BMI alongside both the global WHO categories and the lower Asian-specific cutoffs that the WHO recommends for South and East Asian populations.',
+    formula: 'BMI = weight (kg) ÷ height (m)²',
+    howItWorks:
+      'Convert your height to metres (170 cm → 1.70 m), square it, then divide your weight in kilograms by the result. A 70 kg person at 1.70 m has a BMI of 70 ÷ (1.70 × 1.70) = 24.2, which sits at the top of the global "Normal" range but is already in the "Overweight" range under the Asian cutoff (≥ 23). For pounds and inches, multiply (weight in lb ÷ height in in²) by 703.',
+    ranges: {
+      title: 'BMI categories — WHO global vs. Asian cutoffs',
+      rows: [
+        { label: 'Underweight', range: 'BMI < 18.5', note: 'Same under both standards' },
+        { label: 'Normal', range: '18.5 – 24.9 (global) · 18.5 – 22.9 (Asian)', note: 'Asian range is narrower' },
+        { label: 'Overweight', range: '25 – 29.9 (global) · 23 – 24.9 (Asian)', note: 'Indian guidance follows the Asian cutoff' },
+        { label: 'Obese — Class I', range: '30 – 34.9 (global) · ≥ 25 (Asian)', note: 'Asian threshold for action is much lower' },
+        { label: 'Obese — Class II', range: '35 – 39.9', note: 'High health risk' },
+        { label: 'Obese — Class III', range: '≥ 40', note: 'Very high risk; clinical follow-up advised' },
+      ],
+    },
+    limitations: [
+      "BMI doesn't distinguish muscle from fat — athletes and very muscular people often score 'overweight' or 'obese' despite low body-fat percentage.",
+      "It doesn't account for fat distribution. Two people with the same BMI can have very different visceral fat (the kind that drives metabolic risk).",
+      "Standard global cutoffs underestimate risk for South Asians, East Asians, and several other ethnic groups, which is why Indian and Asian guidance uses the lower cutoffs above.",
+      "BMI is less accurate for older adults (muscle loss inflates 'normal' readings) and for children, who need age- and sex-specific BMI percentile charts instead.",
+      "It says nothing about diet quality, fitness, blood pressure, blood sugar, or any other clinical marker. Treat it as one screening number, not a diagnosis.",
+    ],
+    faqs: [
+      {
+        q: 'What is a healthy BMI?',
+        a: 'For most adults, a BMI between 18.5 and 24.9 falls in the WHO "normal" range. For people of South Asian, East Asian, and several other ancestries, the WHO recommends a lower upper bound of 22.9, with 23–24.9 already counted as overweight.',
+      },
+      {
+        q: "What's the BMI range for Indian adults?",
+        a: 'Indian guidance follows the WHO Asian cutoffs: underweight < 18.5, normal 18.5–22.9, overweight 23–24.9, obese ≥ 25. These are tighter than the global ranges because South Asians develop diabetes, hypertension, and cardiovascular disease at lower BMIs than European populations.',
+      },
+      {
+        q: 'Does BMI work for athletes or very muscular people?',
+        a: "Not well. BMI uses total weight, so heavy muscle reads as 'overweight' or 'obese' even when body-fat percentage is low. Athletes, weightlifters, and bodybuilders should use body-fat percentage, waist-to-height ratio, or DEXA scans instead.",
+      },
+      {
+        q: 'Should men and women use the same BMI calculator?',
+        a: 'Yes — the formula and adult cutoffs are identical for men and women. Body composition does differ on average between sexes, but BMI itself is sex-neutral. For children and teens (under 20), use age- and sex-specific BMI percentile charts.',
+      },
+      {
+        q: 'What happens if my BMI is high — should I worry?',
+        a: 'A high BMI is a screening signal, not a diagnosis. It tells your doctor to look more carefully at metabolic markers (fasting glucose, lipid profile, blood pressure, waist circumference). Action depends on those tests, not on the BMI number alone.',
+      },
+      {
+        q: "Why doesn't BMI use waist size?",
+        a: "Because it pre-dates the research on visceral fat. Waist circumference and waist-to-height ratio are now considered better single indicators of metabolic risk, and many clinicians use them alongside BMI rather than instead of it.",
+      },
+    ],
+    seo: {
+      title: 'BMI Calculator — Body Mass Index for Adults (with Asian Cutoffs)',
+      description:
+        'Free BMI calculator with WHO categories and Asian-specific cutoffs for Indian adults. See your ideal weight range, healthy BMI, and what the result really means.',
+      applicationCategory: 'HealthApplication',
+      sources: [
+        { label: 'WHO — BMI classification (global)', url: 'https://www.who.int/data/gho/data/themes/topics/topic-details/GHO/body-mass-index' },
+        { label: 'WHO — Asian-specific BMI cutoffs (Lancet 2004)', url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(03)15268-3/fulltext' },
+        { label: 'CDC — About Adult BMI', url: 'https://www.cdc.gov/bmi/adult-calculator/index.html' },
+      ],
+    },
+    lastUpdated: '2026-04-26',
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
   },
   {
     slug: 'bmr-calculator',

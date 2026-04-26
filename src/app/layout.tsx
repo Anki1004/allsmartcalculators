@@ -27,7 +27,11 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  applicationName: 'AllSmartCalculator',
   robots: {
     index: true,
     follow: true,
@@ -40,14 +44,27 @@ export const metadata: Metadata = {
     'EMI calculator',
     'SIP calculator',
     'BMI calculator',
+    'GST calculator',
+    'HRA calculator',
+    'income tax calculator india',
     'crypto calculator',
     'financial calculator',
     'math calculator',
   ],
+  alternates: { canonical: SITE_URL },
   openGraph: {
     title: 'AllSmartCalculator — 100+ Calculators',
     description: 'Calculate anything. Beautifully.',
     type: 'website',
+    url: SITE_URL,
+    siteName: 'AllSmartCalculator',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@AllSmartCalculator',
+    title: 'AllSmartCalculator — 100+ Calculators',
+    description: 'Calculate anything. Beautifully.',
   },
 };
 
