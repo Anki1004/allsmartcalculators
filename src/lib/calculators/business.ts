@@ -6,11 +6,7 @@ export const businessCalculators: CalculatorConfig[] = [
     name: 'ROI Calculator',
     category: 'business',
     icon: 'TrendingUp',
-    description: 'Return on investment percentage.',
-    seo: {
-      title: 'ROI Calculator: Return on Investment Percentage',
-      description: 'Free ROI calculator. Compute return on investment as a percentage from initial cost and final value — works for marketing, real estate, or business projects.',
-    },
+    description: 'Compute Return on Investment as a percentage from initial cost and gain — for marketing campaigns, real estate, or any business project.',
     trending: true,
     usageCount: 98000,
     inputs: [
@@ -25,6 +21,57 @@ export const businessCalculators: CalculatorConfig[] = [
       roi: Number(i.cost) > 0 ? (Number(i.gain) / Number(i.cost)) * 100 : 0,
       netProfit: Number(i.gain),
     }),
+    intro:
+      'Return on Investment (ROI) is the simplest measure of how productive a spend was: gain divided by cost, expressed as a percentage. A 25% ROI means you got back 25 cents of profit for every dollar invested. ROI works for any decision where you put money in and want to compare what came out — marketing campaigns, real-estate deals, equipment purchases, training programs, even a personal MBA. The metric is simple to compute but has two important caveats: it ignores time (a 25% ROI over 6 months is twice as good as 25% over 12), and it doesn\'t adjust for risk. For investments, also look at annualised return (CAGR) and risk-adjusted measures like Sharpe ratio.',
+    formula: 'ROI = (gain ÷ cost) × 100',
+    howItWorks:
+      "If you invested ₹1,00,000 in a marketing campaign and the attributable revenue (less cost of goods, less the campaign spend itself) was ₹25,000, your ROI is (25,000 ÷ 1,00,000) × 100 = 25%. The variant ROAS (Return on Ad Spend) measures revenue ÷ cost without subtracting cost — so a 4x ROAS is roughly equivalent to 300% ROI when margins are 100%, less when margins are lower. Always confirm whether your team uses ROI or ROAS — they\'re very different numbers.",
+    ranges: {
+      title: 'ROI benchmarks by domain (directional, varies widely)',
+      rows: [
+        { label: 'Indian equity (long-run)', range: '11–13% annual', note: 'Rolling 10-year basis' },
+        { label: 'Real estate (Indian metro)', range: '5–8% annual + appreciation', note: 'Rental yield + capital growth' },
+        { label: 'Marketing campaign (good)', range: '300–500% (3–5x)', note: 'On margin-adjusted basis' },
+        { label: 'SaaS paid acquisition', range: 'LTV ÷ CAC > 3:1', note: 'Standard healthy ratio' },
+        { label: 'B2B trade show', range: '50–150%', note: 'Within 6 months of event' },
+        { label: 'Employee training', range: 'Hard to measure, often 200–700%', note: 'Productivity + retention gains' },
+      ],
+    },
+    limitations: [
+      'ROI ignores time. A 25% ROI over one year is meaningfully different from 25% over five. For multi-year comparisons, use CAGR (Compound Annual Growth Rate) instead.',
+      "Doesn't adjust for risk. A 25% ROI on a low-risk investment is much better than 25% on a speculative one. ROI alone can't tell you whether a return was earned or lucky.",
+      "Defining 'gain' is harder than it sounds. Marketing ROI requires attribution (what revenue is actually because of this campaign?). Real estate requires accounting for taxes, brokerage, holding costs. Be explicit about what's in and out of the gain figure.",
+      "ROI can be gamed by lowering the denominator. If you reduce the recorded \"cost\" by excluding overhead, training time, or opportunity cost, ROI looks higher. Compare like-for-like accounting.",
+    ],
+    faqs: [
+      {
+        q: 'What is a good ROI?',
+        a: 'Depends entirely on the domain and time horizon. For long-term equity investments, 11–13% annual ROI (Indian equity average) is solid. For marketing campaigns, 300%+ (3x+) is healthy. For business projects, 20–30% in the first year is good. Always benchmark against your alternatives (the next-best place that money could go).',
+      },
+      {
+        q: 'How is ROI different from ROAS?',
+        a: 'ROAS (Return on Ad Spend) is gross revenue ÷ ad cost. ROI subtracts costs first — typically (gross profit − ad cost) ÷ ad cost. A 4x ROAS at a 25% margin is actually a 0% ROI. Marketers often quote ROAS because it sounds bigger; finance teams use ROI.',
+      },
+      {
+        q: 'How do I annualise ROI?',
+        a: 'Use CAGR: ((1 + ROI)^(1 ÷ years) − 1) × 100. A 50% ROI over 3 years is CAGR = ((1.50)^(1/3) − 1) × 100 = 14.5% annual. Always compare investments on annualised return, not absolute ROI.',
+      },
+      {
+        q: 'Can ROI be negative?',
+        a: 'Yes. If your gain is less than zero (you lost money), ROI is negative. A −20% ROI means you lost 20 cents per dollar invested.',
+      },
+      {
+        q: "What's the difference between ROI and profit margin?",
+        a: 'Profit margin is profit ÷ revenue (how much of each sales rupee is profit). ROI is profit ÷ investment (how much profit per rupee invested). Both are useful but answer different questions.',
+      },
+    ],
+    seo: {
+      title: 'ROI Calculator: Return on Investment Percentage',
+      description: 'Free ROI calculator. Compute return on investment as a percentage from initial cost and final value — works for marketing, real estate, or business projects.',
+      applicationCategory: 'BusinessApplication',
+    },
+    lastUpdated: '2026-04-26',
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
   },
   {
     slug: 'break-even-calculator',
@@ -115,11 +162,7 @@ export const businessCalculators: CalculatorConfig[] = [
     name: 'Discount Calculator',
     category: 'business',
     icon: 'Tag',
-    description: 'Final price after discount.',
-    seo: {
-      title: 'Discount Calculator: Final Price After % Off',
-      description: 'Free discount calculator. Get the final price and savings amount after any percentage discount — useful for shopping, sales, and pricing decisions.',
-    },
+    description: 'Get the final price and amount saved after any percentage discount — also handles stacked discounts and reverse-calculates the original price.',
     trending: true,
     usageCount: 156000,
     inputs: [
@@ -134,6 +177,57 @@ export const businessCalculators: CalculatorConfig[] = [
       const saved = Number(i.original) * (Number(i.discount) / 100);
       return { final: Number(i.original) - saved, saved };
     },
+    intro:
+      'A discount calculator does the basic sale math: original price minus the discount percentage equals the final price, with the saved amount shown side by side. Use it to verify what a sticker price actually costs after a "30% off" tag, or to compare discounts across stores. Two things to watch out for: the difference between % off and flat amount off (a 25% discount on a ₹4,000 item saves ₹1,000, not ₹250), and stacked discounts (which multiply, not add — see FAQs).',
+    formula: 'final = original × (1 − discount ÷ 100) · saved = original − final',
+    howItWorks:
+      "₹2,500 item at 20% off: discount = 2,500 × 0.20 = ₹500; final = 2,500 − 500 = ₹2,000. To find the original price from a sale price (reverse): original = sale ÷ (1 − discount). So a ₹2,000 item at 20% off had original price 2,000 ÷ 0.80 = ₹2,500. To stack discounts (\"30% off, then extra 20% off\"), multiply: final = original × 0.70 × 0.80 = original × 0.56 — a 44% total discount, NOT 50%.",
+    ranges: {
+      title: 'Common discount benchmarks',
+      rows: [
+        { label: 'Standard retail sale', range: '20 – 30% off', note: 'End-of-season, festival sales' },
+        { label: 'Clearance', range: '40 – 60% off', note: 'Stock liquidation' },
+        { label: 'Flash / 24-hour sale', range: '15 – 25% off', note: 'Limited-time pressure' },
+        { label: 'Coupon stack', range: '30% + 10% → 37% effective', note: 'Multiplicative, not additive' },
+        { label: 'BOGO (buy 1 get 1 free)', range: '50% off effective', note: 'When items are equal price' },
+        { label: 'BOGO 50%', range: '25% off effective', note: 'Buy one, second at half — 25% across both' },
+      ],
+    },
+    limitations: [
+      "Calculator handles a single discount. For stacked discounts (\"30% then 20%\"), apply each multiplicatively, not additively. The most common math error in retail.",
+      "Doesn't include tax. If sales tax applies on the discounted price, multiply the final by (1 + tax%). Some discounts are coded to apply post-tax — check the fine print.",
+      'Discounts off "MRP" can be misleading — if the MRP is inflated 50% above true market price, even a 30% discount leaves you paying more than wholesale. Compare across stores, not against the MRP.',
+      'Doesn\'t handle minimum-purchase coupons, conditional discounts ("free shipping over ₹500"), or tiered discounts. Compute manually for those.',
+    ],
+    faqs: [
+      {
+        q: 'How do I calculate a discount?',
+        a: 'Multiply the original price by the discount as a decimal: ₹3,000 × 0.30 = ₹900 saved. Subtract from original: ₹3,000 − ₹900 = ₹2,100 final price. Or use the shortcut: final = original × (1 − discount).',
+      },
+      {
+        q: 'Why don\'t stacked discounts add together?',
+        a: 'Because each discount applies to the already-reduced price. "30% off, then 20% off" gives 0.70 × 0.80 = 0.56, so you pay 56% of original — a 44% total discount, not 50%. Stacking always under-delivers compared to the additive expectation.',
+      },
+      {
+        q: 'How do I find the original price from a discounted price?',
+        a: 'Divide the sale price by (1 − discount as decimal). A ₹2,800 item at 30% off: original = 2,800 ÷ 0.70 = ₹4,000. Useful for verifying whether a "% off" claim is genuine.',
+      },
+      {
+        q: 'What\'s the difference between MRP discount and dealer-price discount?',
+        a: 'MRP is the maximum the manufacturer allows the seller to charge — but the seller may actually buy the product 30–50% below MRP. A "30% off MRP" sale can still leave you paying above what the seller paid wholesale. For commodity goods, compare prices across sellers, not against MRP.',
+      },
+      {
+        q: 'Does discount apply before or after tax in India?',
+        a: 'Almost always before. GST is calculated on the discounted price. So ₹1,000 item at 20% off + 18% GST = (1,000 × 0.80) × 1.18 = ₹944. Some online platforms apply discounts post-tax via cashback, which works out the same on net but appears differently on the bill.',
+      },
+    ],
+    seo: {
+      title: 'Discount Calculator: Final Price After % Off',
+      description: 'Free discount calculator. Get the final price and savings amount after any percentage discount — useful for shopping, sales, and pricing decisions.',
+      applicationCategory: 'BusinessApplication',
+    },
+    lastUpdated: '2026-04-26',
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
   },
   {
     slug: 'cagr-calculator',

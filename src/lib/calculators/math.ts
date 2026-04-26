@@ -6,11 +6,7 @@ export const mathCalculators: CalculatorConfig[] = [
     name: 'Percentage Calculator',
     category: 'math',
     icon: 'Percent',
-    description: 'Calculate percentages, increases, and decreases.',
-    seo: {
-      title: 'Percentage Calculator: % of, Increase, Decrease',
-      description: 'Free percentage calculator. Find X% of a number, percent change between two values, and percentage increase or decrease — fast and accurate.',
-    },
+    description: 'Find X% of a number, percentage increase, percentage decrease, and percent difference — all in one tool.',
     trending: true,
     usageCount: 245000,
     inputs: [
@@ -28,6 +24,62 @@ export const mathCalculators: CalculatorConfig[] = [
       const result = (v * p) / 100;
       return { result, increased: v + result, decreased: v - result };
     },
+    intro:
+      'Percentages are everywhere — sales tax, tip, discounts, interest rates, exam scores, growth metrics — but the same word covers three different operations: finding X% of a value, increasing a value by X%, and computing the % change between two numbers. This calculator does all three from a single value+percent input. For more specific use cases (discount on a marked-up price, percent change between two arbitrary numbers), use the dedicated calculators in finance and business.',
+    formula: 'X% of value = (X ÷ 100) × value · increase = value × (1 + X/100) · decrease = value × (1 − X/100)',
+    howItWorks:
+      "20% of 250 is (20 ÷ 100) × 250 = 50. Increasing 250 by 20% gives 250 × 1.20 = 300. Decreasing 250 by 20% gives 250 × 0.80 = 200. Note: a 20% increase followed by a 20% decrease does NOT return you to the original — 250 → 300 → 240, not 250. This is the most common percentage trap and the reason cumulative discounts and \"% off then % off\" deals don't add linearly.",
+    ranges: {
+      title: 'Common percentage values to memorise',
+      rows: [
+        { label: '5%', range: 'value × 0.05', note: 'Sales tax, light tip' },
+        { label: '10%', range: 'value × 0.10 (move decimal)', note: 'Easy mental check' },
+        { label: '15%', range: 'value × 0.15', note: 'Standard US tip lower bound' },
+        { label: '18%', range: 'value × 0.18', note: 'Common GST slab in India; restaurant tip US' },
+        { label: '20%', range: 'value × 0.20', note: 'Standard US tip; common discount' },
+        { label: '25%', range: 'value ÷ 4', note: 'Quarter — easy mental math' },
+        { label: '50%', range: 'value ÷ 2', note: 'Half off' },
+        { label: '75%', range: 'value × 0.75', note: 'Three-quarters' },
+      ],
+    },
+    limitations: [
+      "Percentage increases and decreases are NOT symmetric. A 50% loss requires a 100% gain to recover (₹100 → ₹50 → need ×2 to get back). Always compute on the new base, not the original.",
+      "This calculator finds % of a value or applies it as ±. For finding what % one number is of another (e.g. \"what % is 47 of 200?\"), use: (47 ÷ 200) × 100 = 23.5%.",
+      "Stacked discounts don't add. \"30% off, then 20% off\" is NOT 50% off — it's 1 − (0.7 × 0.8) = 44% off. Multiplicative, not additive.",
+      'Percentages of percentages cause confusion. \"My CTR went from 2% to 3%\" — that\'s either +1 percentage point (additive) or +50% relative change. Specify which.',
+    ],
+    faqs: [
+      {
+        q: 'How do I calculate X% of a number?',
+        a: 'Multiply the number by X ÷ 100. So 18% of 4,500 = 4,500 × 0.18 = 810. The mental shortcut: 10% is "move the decimal one place left"; build other percentages from there (1% = ÷100, 5% = half of 10%, 20% = double 10%, etc.).',
+      },
+      {
+        q: 'How do I find the percentage change between two numbers?',
+        a: '% change = ((new − old) ÷ old) × 100. From 80 to 100 is ((100 − 80) ÷ 80) × 100 = 25% increase. From 100 to 80 is ((80 − 100) ÷ 100) × 100 = −20% decrease. The two are different because the base differs.',
+      },
+      {
+        q: 'Why do "30% off then 20% off" deals not equal 50% off?',
+        a: 'Because the second discount applies to the already-reduced price. ₹100 → ₹70 → ₹56 (a 44% total discount, not 50%). To compute stacked discounts: final price = original × (1 − d1) × (1 − d2) × ...',
+      },
+      {
+        q: "What's the difference between percent and percentage points?",
+        a: 'Percent is multiplicative; percentage points are additive. If a metric goes from 5% to 8%, it increased by 3 percentage points but by 60% (relative change). News headlines often confuse these.',
+      },
+      {
+        q: 'How do I reverse-calculate the original price before a discount?',
+        a: 'If you paid ₹560 after a 30% discount: original = paid ÷ (1 − discount) = 560 ÷ 0.70 = ₹800. Same logic for "tax-inclusive to tax-exclusive": divide by (1 + tax rate).',
+      },
+    ],
+    seo: {
+      title: 'Percentage Calculator: % of, Increase, Decrease',
+      description: 'Free percentage calculator. Find X% of a number, percent change between two values, and percentage increase or decrease — fast and accurate.',
+      applicationCategory: 'EducationalApplication',
+      sources: [
+        { label: 'NIST — fundamental units and notation', url: 'https://www.nist.gov/' },
+      ],
+    },
+    lastUpdated: '2026-04-26',
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
   },
   {
     slug: 'fraction-calculator',

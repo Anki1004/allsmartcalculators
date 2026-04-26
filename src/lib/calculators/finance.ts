@@ -56,11 +56,7 @@ export const financeCalculators: CalculatorConfig[] = [
     shortName: 'Currency',
     category: 'finance',
     icon: 'ArrowLeftRight',
-    description: 'Convert between 30 world currencies instantly. Rates are reference rates.',
-    seo: {
-      title: 'Currency Converter: 30 World Currencies, Live Rates',
-      description: 'Free currency converter for 30 major world currencies including USD, EUR, GBP, INR, JPY, AUD. See live conversion, exchange rate, and inverse rate.',
-    },
+    description: 'Convert between 30 major world currencies instantly with reference rates — see the converted amount, exchange rate, and inverse rate.',
     trending: true,
     usageCount: 198400,
     inputs: [
@@ -114,6 +110,61 @@ export const financeCalculators: CalculatorConfig[] = [
       const inverseDisplay = `1 ${to} = ${(1 / rate).toFixed(4)} ${from}`;
       return { convertedDisplay, rateDisplay, inverseDisplay, converted, rate };
     },
+    intro:
+      'A currency converter takes an amount in one currency and translates it to another using the current exchange rate. This calculator covers 30 major world currencies with reference rates updated periodically. Reference rates are accurate for budgeting, comparison, and travel planning — but they are not the rate you will get from your bank, credit card, or airport kiosk. Banks add a spread of 0.5–3%, cards add 1–3% conversion fees plus the network mid-rate, and airport exchanges are routinely 5–10% worse than reference. Use this tool to know the real value; use your bank or a service like Wise to actually transfer.',
+    formula: 'converted = amount × (rate_to ÷ rate_from)',
+    howItWorks:
+      "All rates are quoted against USD as the base. To convert from currency A to currency B, the calculator divides by A's USD rate and multiplies by B's USD rate. ₹1 lakh ÷ 83.4 (USD/INR) × 0.91 (USD/EUR) = ~€1,090. The inverse rate is just 1 divided by the forward rate, so 1 EUR = roughly 1.10 USD = ₹91. For real transactions, expect a 1–3% premium over the reference rate.",
+    ranges: {
+      title: 'Typical retail currency-conversion costs (April 2026)',
+      rows: [
+        { label: 'Reference / mid-market rate', range: '0% spread', note: 'What this calculator returns; what banks see' },
+        { label: 'Multi-currency cards (Wise, Revolut)', range: '0.3 – 0.8%', note: 'Closest to mid-market for retail' },
+        { label: 'Standard credit card abroad', range: '1.5 – 3.0%', note: 'Visa/Mastercard add ~1%, bank adds 1–2%' },
+        { label: 'Indian bank wire (SWIFT)', range: '0.5 – 1.5% + flat fee', note: 'Plus correspondent bank fees' },
+        { label: 'Airport currency exchange', range: '5 – 10%', note: 'Worst rates in retail; avoid' },
+        { label: 'Hotel front-desk exchange', range: '8 – 15%', note: 'Even worse than airport — only as last resort' },
+      ],
+    },
+    limitations: [
+      'Rates are reference rates updated periodically — they are not live interbank rates. For a transaction worth investigating in detail, check the rate at the moment of execution with your provider.',
+      "Rates do not include fees, spreads, or markups. Your bank will quote a worse rate; expect 1–3% above reference for cards, 0.5–1.5% for good remittance providers, 5%+ for airport exchanges.",
+      "Doesn't handle cryptocurrency conversions. Use the dedicated crypto-to-USD calculator for those.",
+      'For business invoicing and contract valuations, use the official RBI reference rate (for Indian rupees) or the ECB reference rate (for euros) on the relevant invoice date — not a retail converter.',
+    ],
+    faqs: [
+      {
+        q: 'Where do these exchange rates come from?',
+        a: 'They are reference (mid-market) rates updated periodically. Mid-market rate is the midpoint between the buy and sell rates banks use among themselves — it is the "true" rate before any retail markup.',
+      },
+      {
+        q: 'Why is the bank rate different from this calculator?',
+        a: 'Banks add a margin (typically 1–3% for retail) on top of the mid-market rate. Credit-card networks like Visa/Mastercard add ~1%, and your bank usually adds another 1–2%. The total spread between the rate you see here and what your bank charges is the bank\'s revenue.',
+      },
+      {
+        q: 'What is the cheapest way to convert currency?',
+        a: 'For travel: a multi-currency card from Wise, Revolut, or Niyo (in India) — usually 0.3–0.8% above mid-market. For one-time large transfers: Wise or OFX for retail; SWIFT wire for institutional. Avoid airport kiosks and hotel exchanges — they\'re the worst rates retail customers see.',
+      },
+      {
+        q: 'How often are these rates updated?',
+        a: 'Reference rates here are updated periodically and reflect recent market levels. For minute-by-minute trading rates, use a currency-trading platform. For most planning purposes (travel budgets, invoice estimates) the rates here are accurate within ±1%.',
+      },
+      {
+        q: 'Can I use this for invoices and tax filing?',
+        a: 'For directional reference, yes. For official filings, no — use the RBI reference rate (India), ECB reference rate (Eurozone), or your tax authority\'s prescribed rate on the transaction date. Tax authorities will not accept retail-converter rates.',
+      },
+    ],
+    seo: {
+      title: 'Currency Converter: 30 World Currencies, Live Rates',
+      description: 'Free currency converter for 30 major world currencies including USD, EUR, GBP, INR, JPY, AUD. See live conversion, exchange rate, and inverse rate.',
+      applicationCategory: 'FinanceApplication',
+      sources: [
+        { label: 'RBI — reference rates', url: 'https://www.rbi.org.in/Scripts/ReferenceRateArchive.aspx' },
+        { label: 'ECB — euro reference rates', url: 'https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html' },
+      ],
+    },
+    lastUpdated: '2026-04-26',
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
   },
   {
     slug: 'emi-calculator',
@@ -295,11 +346,7 @@ export const financeCalculators: CalculatorConfig[] = [
     name: 'Compound Interest Calculator',
     category: 'finance',
     icon: 'Percent',
-    description: 'See how your money grows with compounding.',
-    seo: {
-      title: 'Compound Interest Calculator: Daily, Monthly, Yearly',
-      description: 'Free compound interest calculator. See how a principal grows over years at any interest rate, with compounding frequency from yearly to daily.',
-    },
+    description: 'See how a one-time principal grows under compound interest at any rate, tenure, and compounding frequency (daily, monthly, quarterly, yearly).',
     trending: true,
     usageCount: 87530,
     chartType: 'line',
@@ -321,6 +368,61 @@ export const financeCalculators: CalculatorConfig[] = [
       const total = p * Math.pow(1 + r / n, n * t);
       return { total, interest: total - p };
     },
+    intro:
+      'Compound interest is interest that earns interest. A principal grows by the rate each period, and in the next period the new (larger) balance grows by the rate again — so growth accelerates. Albert Einstein supposedly called it the eighth wonder of the world; whether or not he did, the math is the single most important concept in personal finance. This calculator returns the future value of a one-time principal at any rate, tenure, and compounding frequency. For recurring contributions, use the SIP or RD calculators.',
+    formula: 'A = P × (1 + r/n)^(n×t)',
+    howItWorks:
+      "P is the principal, r is the annual rate as a decimal, n is the number of compounding periods per year, and t is the tenure in years. ₹1 lakh at 8% compounded annually for 10 years = 1,00,000 × 1.08^10 = ₹2,15,892. Same money compounded monthly grows to ₹2,21,964 — about ₹6K more, just from frequency. Compounding daily adds another ₹500. The compounding frequency matters less than people think; the rate and the tenure matter much more. Doubling either roughly doubles the gain.",
+    ranges: {
+      title: 'Rule of 72 — years for money to double at common rates',
+      rows: [
+        { label: '4% (savings, FD)', range: '~18 years to 2x', note: '72 ÷ 4 = 18' },
+        { label: '6% (debt funds, PPF approx)', range: '~12 years to 2x', note: '72 ÷ 6 = 12' },
+        { label: '8% (balanced)', range: '~9 years to 2x', note: '72 ÷ 8 = 9' },
+        { label: '10% (equity index)', range: '~7.2 years to 2x', note: '72 ÷ 10 = 7.2' },
+        { label: '12% (Indian equity historic)', range: '~6 years to 2x', note: '72 ÷ 12 = 6' },
+        { label: '15% (aggressive)', range: '~4.8 years to 2x', note: '72 ÷ 15 = 4.8' },
+        { label: '24% (credit-card debt)', range: '~3 years to 2x', note: 'Same math; this is why CC debt destroys' },
+      ],
+    },
+    limitations: [
+      "Calculator assumes a constant interest rate. Real fixed deposits and savings accounts have rates that change; investment returns swing dramatically. The longer the tenure, the more this assumption diverges from reality.",
+      "Doesn't model inflation. A real-return calculator subtracts inflation (typically 5–6% in India, 2–3% in developed markets) to give purchasing-power growth, not nominal growth.",
+      "Doesn't model taxes. Interest from FDs and savings is taxed at slab rate; debt-MF gains are slab-rate; equity LTCG is 12.5% above ₹1.25L. Always compare investments on post-tax compound returns.",
+      "For ongoing recurring contributions (SIP, RD), this formula understates final value because each new contribution also compounds. Use the dedicated SIP or RD calculator instead.",
+    ],
+    faqs: [
+      {
+        q: 'What is the formula for compound interest?',
+        a: 'A = P × (1 + r/n)^(n×t), where A is the final amount, P is the principal, r is the annual rate as a decimal, n is the number of compounding periods per year, and t is the tenure in years. The interest earned is A − P.',
+      },
+      {
+        q: 'How is compound interest different from simple interest?',
+        a: 'Simple interest is principal × rate × time — the principal earns the same amount each year. Compound interest reinvests the interest each period, so the base grows. Over 10 years at 10% on ₹1L: simple gives ₹2L; compound gives ₹2.59L. Over 30 years the gap is massive — ₹4L vs ₹17.4L.',
+      },
+      {
+        q: "What's the Rule of 72?",
+        a: 'A shortcut: years to double ≈ 72 ÷ annual return%. So at 12% your money doubles in ~6 years; at 8% in ~9 years. It\'s accurate within ~3% for rates between 6% and 20%.',
+      },
+      {
+        q: 'Does compounding more frequently meaningfully increase returns?',
+        a: 'Less than people expect. Going from yearly to monthly compounding at 10% adds about 0.4 percentage points to the effective annual rate. Going from monthly to daily adds another 0.05. Continuous compounding is the theoretical limit (e^rt) and only marginally better than daily.',
+      },
+      {
+        q: 'Should I assume my returns will compound at 12% forever?',
+        a: 'No. Long-run averages are useful starting points (Indian equity ~12%, US equity ~10%, debt 6–8%) but actual outcomes have wide variance. Always run sensitivity analysis at ±3% from your assumed rate before making a financial decision.',
+      },
+    ],
+    seo: {
+      title: 'Compound Interest Calculator: Daily, Monthly, Yearly',
+      description: 'Free compound interest calculator. See how a principal grows over years at any interest rate, with compounding frequency from yearly to daily.',
+      applicationCategory: 'FinanceApplication',
+      sources: [
+        { label: 'Investor.gov — compound interest explainer', url: 'https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator' },
+      ],
+    },
+    lastUpdated: '2026-04-26',
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
   },
   {
     slug: 'mortgage-calculator',
@@ -831,11 +933,7 @@ export const financeCalculators: CalculatorConfig[] = [
     name: 'Tip Calculator',
     category: 'finance',
     icon: 'Utensils',
-    description: 'Split bills and calculate tips fairly.',
-    seo: {
-      title: 'Tip Calculator: Split Bills & Tip Fairly',
-      description: 'Free tip calculator. Calculate tip amount, total bill, and per-person split for any bill amount, tip percentage, and group size.',
-    },
+    description: 'Split a restaurant bill fairly with tip — get tip amount, total, and per-person share for any group size.',
     trending: true,
     usageCount: 203400,
     inputs: [
@@ -853,6 +951,59 @@ export const financeCalculators: CalculatorConfig[] = [
       const total = Number(i.bill) + tip;
       return { tipAmount: tip, total, perPerson: Number(i.people) > 0 ? total / Number(i.people) : 0 };
     },
+    intro:
+      'A tip calculator handles the dinner-out math: take the pre-tax bill, multiply by the tip percentage, add it back to the total, and split among the diners. This calculator does all three. The defaults assume tipping is on the pre-tax amount (the standard convention) and that the split is equal. Tipping norms vary widely by country — 18–22% in the US, 10% in much of Europe, often built into service charge in India and Japan. The formula is the same; just dial the % to match where you are.',
+    formula: 'tip = bill × (tip% ÷ 100) · total = bill + tip · per-person = total ÷ people',
+    howItWorks:
+      "An $80 bill at 18% tip is $80 × 0.18 = $14.40 tip, $94.40 total, and split between two people gives $47.20 each. For service charges already added (common in India, UK), tip on the pre-service-charge subtotal — don't double-pay. For very large groups (8+), restaurants often auto-add gratuity — check the bill before tipping again.",
+    ranges: {
+      title: 'Tipping conventions by country (April 2026)',
+      rows: [
+        { label: 'United States — sit-down', range: '18 – 22%', note: 'On pre-tax subtotal; 20% is the new default' },
+        { label: 'United States — counter / takeaway', range: '0 – 10%', note: 'Tip jars optional; no expectation' },
+        { label: 'Canada', range: '15 – 20%', note: 'Tipping culture similar to US' },
+        { label: 'United Kingdom', range: '10 – 15%', note: 'Often included as "service charge"; check bill first' },
+        { label: 'Continental Europe', range: '5 – 10%', note: 'Round up; service often included' },
+        { label: 'India', range: '5 – 10%', note: '5–10% if no service charge; nothing if service charge already added' },
+        { label: 'Japan', range: '0%', note: 'Tipping is generally not customary; can offend' },
+        { label: 'Middle East / Gulf', range: '10 – 15%', note: 'Service charge often included; small extra appreciated' },
+      ],
+    },
+    limitations: [
+      'Calculator assumes equal split. For uneven splits (alcohol drinkers vs non-drinkers, dietary differences), use a per-item bill split — most apps like Splitwise handle this directly.',
+      'Tip is calculated on the pre-tax bill in the US convention. If your bill includes tax already and you tip on the tax-inclusive total, you\'re slightly over-tipping (about 8% over).',
+      'Doesn\'t check whether service charge is already included. Always inspect the bill — restaurants in India, UK, France, and several other countries auto-add 10–15% service charge.',
+      'For groups of 8+ in the US, gratuity is often auto-added to the bill (typically 18%). Don\'t tip on top.',
+    ],
+    faqs: [
+      {
+        q: 'How much should I tip in the US?',
+        a: 'For sit-down restaurants, 18–22% on the pre-tax subtotal is the current norm. 20% is the safe default. For exceptional service tip 25%; for poor service the etiquette is to leave 15% and speak to the manager — not to leave nothing.',
+      },
+      {
+        q: 'Should I tip on tax?',
+        a: 'No, by convention you tip on the pre-tax subtotal. In practice the difference is small (~8% of the tip amount) and many people just tip on the total. Both are accepted; tipping on subtotal is technically correct.',
+      },
+      {
+        q: 'How do I tip when paying with a credit card?',
+        a: 'Either write the tip on the slip or hand cash separately to the server. Cash tips usually reach the server faster and avoid card-processing deductions some restaurants take. Either is fine.',
+      },
+      {
+        q: 'Do I tip on a service charge?',
+        a: 'Generally no — the service charge is the tip. If the service was exceptional and you want to add more, that\'s optional. Always check the bill before tipping; "service charge included" lines are easy to miss.',
+      },
+      {
+        q: 'How do I split a bill unevenly when one person ordered more?',
+        a: 'Use a per-item bill splitter — list each item, assign to the person who ordered it, add proportional tax and tip. Apps like Splitwise, Tab, or even a quick spreadsheet handle this. This calculator only does equal splits.',
+      },
+    ],
+    seo: {
+      title: 'Tip Calculator: Split Bills & Tip Fairly',
+      description: 'Free tip calculator. Calculate tip amount, total bill, and per-person split for any bill amount, tip percentage, and group size.',
+      applicationCategory: 'UtilitiesApplication',
+    },
+    lastUpdated: '2026-04-26',
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
   },
   {
     slug: 'gst-calculator',

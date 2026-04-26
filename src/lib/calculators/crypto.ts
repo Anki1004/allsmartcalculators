@@ -6,11 +6,7 @@ export const cryptoCalculators: CalculatorConfig[] = [
     name: 'Crypto Profit Calculator',
     category: 'crypto',
     icon: 'TrendingUp',
-    description: 'Calculate profit/loss on crypto trades.',
-    seo: {
-      title: 'Crypto Profit Calculator: P&L on Any Coin Trade',
-      description: 'Free crypto profit/loss calculator. See gain or loss in dollars, percent return, and total invested for any buy/sell trade across BTC, ETH, or altcoins.',
-    },
+    description: 'Calculate profit, loss, and percent return on any crypto trade — Bitcoin, Ethereum, or altcoins — from buy price, sell price, and quantity.',
     trending: true,
     usageCount: 128000,
     inputs: [
@@ -33,6 +29,61 @@ export const cryptoCalculators: CalculatorConfig[] = [
         invested: bp * q,
       };
     },
+    intro:
+      'A crypto profit calculator computes the gain or loss on a buy/sell trade in any cryptocurrency — Bitcoin, Ethereum, Solana, altcoins. The math is simple ((sell − buy) × quantity), but it\'s easy to get wrong when juggling fractional quantities, USD-pair pricing, and conversion to your local currency. This calculator returns three numbers: the absolute profit in dollars, the percent return on your invested capital, and the total invested. For tax-aware calculations (capital gains, holding period, fees), use the dedicated crypto tax calculator.',
+    formula: 'profit = (sell − buy) × quantity · return% = ((sell − buy) ÷ buy) × 100 · invested = buy × quantity',
+    howItWorks:
+      "Bought 0.5 BTC at $30,000 each, sold at $45,000: profit = (45,000 − 30,000) × 0.5 = $7,500. Return = ((45,000 − 30,000) ÷ 30,000) × 100 = 50%. Invested = 30,000 × 0.5 = $15,000. The percent return is independent of quantity (50% gain is 50% whether you held 0.01 or 100 BTC). Trading fees (typically 0.1–0.5% per side on major exchanges) are not modelled — subtract roughly 1% from the return for a round-trip on a CEX, more on DEXs.",
+    ranges: {
+      title: 'Crypto trading-fee ranges (April 2026)',
+      rows: [
+        { label: 'Major CEX maker', range: '0.05 – 0.20%', note: 'Binance, Coinbase Pro, Kraken — depends on volume' },
+        { label: 'Major CEX taker', range: '0.10 – 0.50%', note: 'Higher than maker; both apply per side' },
+        { label: 'Coinbase retail (instant)', range: '~1.5%', note: 'Plus spread; expensive for active trading' },
+        { label: 'Indian exchange (CoinDCX, WazirX)', range: '0.10 – 0.40%', note: 'Plus 1% TDS on sale (mandatory)' },
+        { label: 'Uniswap / DEX', range: '0.30%', note: 'Plus gas fee (variable, can be $5–$50+)' },
+        { label: 'India 1% TDS on crypto sales', range: '1% mandatory', note: 'Deducted at source on every sale, refundable via ITR' },
+      ],
+    },
+    limitations: [
+      "Calculator doesn't subtract trading fees. For a true round-trip P&L, subtract 0.2–1% from the return depending on exchange.",
+      'Doesn\'t model India\'s 1% TDS on crypto sales (deducted automatically by Indian exchanges) or the 30% flat tax on crypto gains. Use the crypto tax calculator for tax-aware figures.',
+      "Assumes a single buy and single sell at fixed prices. For DCA (dollar-cost averaging) or laddered exits, your effective average buy/sell price differs — use a weighted-average calculation per lot.",
+      "USD-denominated. If you bought with INR or another currency, the FX rate at buy and sell time matters for your true rupee P&L. A crypto gain in USD can be a loss in INR if the rupee strengthens.",
+    ],
+    faqs: [
+      {
+        q: 'How do I calculate crypto profit?',
+        a: 'Profit = (sell price − buy price) × quantity. For 0.5 BTC bought at $30K and sold at $45K, profit = (45,000 − 30,000) × 0.5 = $7,500. Return % = ((sell − buy) ÷ buy) × 100 = 50% in this case.',
+      },
+      {
+        q: 'Are trading fees included in this calculator?',
+        a: 'No. Major CEX fees are 0.1–0.5% per side, so a round-trip costs roughly 0.2–1% of the trade value. For active trading or small profits, fees can dominate. Subtract them from your gross profit for the real P&L.',
+      },
+      {
+        q: 'How is crypto taxed in India?',
+        a: 'Flat 30% tax on gains from crypto (no slab rate, no offsetting losses). Plus 1% TDS deducted automatically by exchanges on every sale (refundable via ITR if your overall liability is lower). No long-term vs short-term distinction. This calculator does not model the tax — use the crypto tax calculator.',
+      },
+      {
+        q: 'How is crypto taxed in the US?',
+        a: 'Crypto is property. Held over 1 year: long-term capital gains rate (0–20% based on income). Held under 1 year: short-term, taxed at ordinary income rate. Each sale is a taxable event; even crypto-to-crypto swaps trigger tax. Track cost basis carefully.',
+      },
+      {
+        q: "What's the difference between this calculator and the crypto tax calculator?",
+        a: 'This one returns gross profit/loss without modelling tax or fees. The crypto tax calculator applies the relevant capital-gains treatment, holding period, and (for India) the 30% flat rate plus 1% TDS. Use this for trade analysis; that one for tax planning.',
+      },
+    ],
+    seo: {
+      title: 'Crypto Profit Calculator: P&L on Any Coin Trade',
+      description: 'Free crypto profit/loss calculator. See gain or loss in dollars, percent return, and total invested for any buy/sell trade across BTC, ETH, or altcoins.',
+      applicationCategory: 'FinanceApplication',
+      sources: [
+        { label: 'IT department of India — crypto taxation FAQ', url: 'https://www.incometax.gov.in/' },
+        { label: 'IRS — virtual currency tax guidance', url: 'https://www.irs.gov/businesses/small-businesses-self-employed/virtual-currencies' },
+      ],
+    },
+    lastUpdated: '2026-04-26',
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
   },
   {
     slug: 'bitcoin-mining-calculator',

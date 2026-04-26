@@ -1,0 +1,14 @@
+{
+  "name": "AllSmartCalculator",
+  "short_name": "AllSmartCalc",
+  "description": "101+ free online calculators for finance, health, math, crypto, engineering, education and business.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0613",
+  "theme_color": "#bd9dff",
+  "categories": ["utilities", "finance", "education", "productivity"],
+  "lang": "en",
+  "icons": []
+}

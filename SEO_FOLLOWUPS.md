@@ -1,192 +1,213 @@
 # SEO Audit — Follow-ups
 
-This file tracks what was done in code and what still needs to happen outside the repo.
-Pair with `AllSmartCalculator_SEO_Audit.docx` (the source audit) when prioritising.
+This file tracks what was done in code across three SEO audits and what still
+needs to happen outside the repo.
 
 Last updated: 2026-04-26
 
 ---
 
-## ✅ Shipped in this pass
+## ✅ Shipped in code (commits `7023f47`, `28e6c86`, and the wave-3 push)
 
-### Critical fixes (Days 1–14)
+### Brand & infrastructure
+- **CalcVerse → AllSmartCalculator** — no rendered "CalcVerse" brand strings
+  in source. Only `cv-theme` localStorage key remains. README updated.
+  Any remaining "CalcVerse" on a live page is a stale Strapi
+  `calculator-contents` row — see Strapi action below.
+- **`robots.ts`** — points at `/sitemap.xml`. Disallows `/api/`.
+- **`sitemap.ts`** — async; lists all 100+ calculator URLs, all 8 category
+  landing pages, the new `/blog`, `/methodology`, `/author/ankit-gupta`,
+  `/search`, and dynamically all blog posts from Strapi.
+- **404** — `not-found.tsx` returns HTTP 404 automatically via Next.js.
+- **`manifest.webmanifest`** — PWA-ready manifest at `/public/`. Theme
+  color, scope, categories, name, short name configured.
+- **Viewport export** — `themeColor` moved to `viewport` export
+  (Next.js 14 best practice).
 
-- **CalcVerse → AllSmartCalculator** — codebase audit confirmed no rendered "CalcVerse"
-  brand strings. Only `cv-theme` localStorage key remains (purely internal,
-  invisible to crawlers). `README.md` heading also updated. **If "CalcVerse"
-  still appears on any rendered page (e.g. BMI), it is coming from the Strapi
-  CMS row** — see "Strapi seed updates" below.
-- **`robots.ts`** — verified, points at `/sitemap.xml`. No change needed.
-- **`sitemap.ts`** — rewritten to include the new `/blog`, `/methodology`,
-  `/author/ankit-gupta`, all `/<category>` landing pages, and dynamically all
-  blog posts from Strapi.
-- **404 status** — `not-found.tsx` exists and Next.js automatically returns
-  HTTP 404 for unmatched routes that hit it.
-- **Sitewide canonical + OG/Twitter** — `metadataBase`, default OG, Twitter
-  card, and `applicationName` added in `src/app/layout.tsx`. Per-page
-  canonicals added/verified on: home, categories, single category, blog
-  index, blog post, calculator pages, about, contact (via layout), trending,
-  privacy, terms, disclaimer, methodology, author.
+### Sitewide metadata
+- **`metadataBase`**, default OG/Twitter card, `applicationName` configured
+  in `src/app/layout.tsx`.
+- **Per-page canonical + OG + Twitter** added to: home, categories, single
+  category, blog index, blog post, calculator pages, about, contact (via
+  layout), trending, privacy, terms, disclaimer, methodology, author,
+  search.
 
-### Calculator page template (Days 1–14, Days 15–45)
+### Homepage
+- **H1 rewritten** from brand-led ("101+ Calculators. One Beautiful Place.")
+  to keyword-led ("Free Online Calculators — N Tools for Finance, Health,
+  Math & More.") — CMS still overrides if you want.
+- **Title rewritten** to "Free Online Calculators — 101+ Tools (EMI, BMI,
+  GPA & More) | AllSmartCalculator" — keyword-front-loaded.
+- **Meta description** rewritten with keywords + value prop + ad-free claim.
+- **Organization JSON-LD** — name, founder (Person → /author/ankit-gupta),
+  sameAs (LinkedIn).
+- **WebSite JSON-LD** with **SearchAction** — points at `/search?q={...}`.
 
+### `/search` route (new)
+- Live route at `/search?q=<query>` that uses `searchCalculators()` to render
+  matching calculator cards. Empty-state UI when no query or no matches.
+- `noindex, follow` so search-result pages don't compete with calc pages
+  in the index.
+
+### Calculator page template
 - **Type extended** — `CalculatorConfig` now supports `intro`, `howItWorks`,
-  `ranges`, `limitations`, `seo` (title / description / applicationCategory /
-  rating / sources), `lastUpdated`, `reviewedBy`.
-- **Calculator page** — `[category]/[slug]/page.tsx` rebuilt. Now renders, in
-  order: breadcrumb → H1 → description → reviewed-by + last-updated line →
-  indexable 80–120 word intro → calculator → CMS overlay → "How X is
-  calculated" + formula → Categories/Ranges table → Limitations → FAQs
-  (`<details>` with on-page UI) → Sources & references → Related calculators →
-  YMYL disclaimer link.
-- **JSON-LD** — three blocks now emitted on every calculator page:
-  `WebApplication` (with publisher, dateModified, optional aggregateRating),
-  `BreadcrumbList`, and `FAQPage` (when FAQs exist; aggregates registry FAQs
-  + CMS FAQs).
-- **Title format** — defaults to "{Name} — Free Online Tool | AllSmartCalculator"
-  when no per-calc `seo.title` is set; CMS `pageTitle` and `seo.title`
-  override.
+  `ranges`, `limitations`, `seo` (title/description/applicationCategory/
+  rating/sources), `lastUpdated`, `reviewedBy`.
+- **Page template** — `[category]/[slug]/page.tsx` rebuilt. Renders:
+  breadcrumb → H1 → description → reviewed-by + last-updated → indexable
+  intro → calculator → CMS overlay → "How X is calculated" + formula →
+  ranges table → limitations → FAQs (`<details>`) → sources → related
+  calculators → YMYL disclaimer link (finance/health/crypto).
+- **3 JSON-LD blocks per calc**: `WebApplication` (publisher, dateModified,
+  optional aggregateRating), `BreadcrumbList`, and `FAQPage` (when FAQs
+  exist; merges registry FAQs + CMS FAQs).
 
-### E-E-A-T pages
+### Full template content (22 calcs total now)
+Calculators with the complete template (intro, formula, howItWorks, ranges,
+limitations, FAQs, sources, reviewedBy, lastUpdated):
 
-- **`/author/ankit-gupta`** — full author page with bio, expertise areas,
-  editorial principles, LinkedIn link, `Person` JSON-LD.
-- **`/methodology`** — explains formula sourcing, verification, primary
-  sources by domain, corrections policy.
-- **`/about`** — rebuilt: data sources summary, links to methodology + author
-  + disclaimer, contact info, hero re-pitched around India-finance focus.
-- **Footer** — added Methodology and Author links.
-- **Disclaimer** — fixed "A AllSmartCalculator" → "An AllSmartCalculator"
-  typo. Existing copy is already strong on YMYL framing; no other changes.
+**Wave 1** (commit `7023f47`): BMI, EMI
+**Wave 2** (commit `28e6c86`): SIP, mortgage, BMR, calorie, GST, PPF, NPS, FD,
+HRA (new), CIBIL (new), lumpsum (new)
+**Wave 3** (this push): GPA, percentage, tip, currency converter, compound
+interest, ROI, discount, crypto profit, age
 
-### CWV / pilot content
+That covers every calc the audits explicitly call out as a Tier-1 target.
 
-- **Recharts deferred** — `DonutChart` is now loaded via `next/dynamic` with
-  `ssr: false`. Saves ~80KB gz from initial JS for every calculator page,
-  fixing the audit's CWV note about chart libraries.
-- **BMI calculator** — full pilot content: `intro`, `formula`, `howItWorks`,
-  `ranges` (WHO + Asian cutoffs), `limitations`, 6 FAQs, `seo` (title /
-  description / sources: WHO, CDC), `reviewedBy`, `lastUpdated`.
-- **EMI calculator** — same pilot content: India-specific bank rate ranges,
-  worked example for ₹50 lakh @ 8.5% × 20yr, 6 FAQs, sources (RBI), etc.
+### Sitewide title rewrites
+- All ~100 calculators have a per-calc `seo.title` ("Keyword: Hook |
+  AllSmartCalculator", ≤60 chars) and `seo.description` (~150 chars).
+- Replaces the generic default title in SERP for every page.
+
+### E-E-A-T pages (existing from wave 1)
+- `/about` — rebuilt with data sources summary, links to methodology +
+  author + disclaimer.
+- `/methodology` — formula sourcing, verification process, primary sources,
+  corrections policy.
+- `/author/ankit-gupta` — bio, expertise, principles, `Person` JSON-LD.
+- `/disclaimer` — strong YMYL framing (existing copy).
+- Footer links to all four.
+
+### CWV
+- **Recharts deferred** via `next/dynamic` in `CalculatorEngine.tsx`
+  (`ssr: false`). Removes ~80KB gz from initial JS for every calc page.
+- All Google Fonts already use `display: swap`.
 
 ---
 
-## 🔜 To do — code work I did NOT ship
+## 🔜 Next code work — Priority 1 (highest leverage)
 
-These are ranked roughly by effort × payoff. None are blocked; all are pure code work
-that can be done in follow-up PRs.
+### Roll the full template to remaining ~75 calcs
+Same pattern as BMI/EMI/SIP — fill `intro`, `howItWorks`, `ranges`,
+`limitations`, `faqs`, optional `sources`, `lastUpdated`, `reviewedBy`.
+Every remaining calc has `seo.title`/`seo.description` already, so SERP
+display is fine — but content depth still wins ranking.
 
-### Priority 1 — finish the template rollout
+Suggested order (by audit priority + est. search volume):
+1. Income Tax Calculator (split into India new vs old regime)
+2. RD, Mutual Fund Returns, Loan Eligibility, Stock P/L, Net Worth (finance)
+3. Macro, Body Fat, Water Intake, Pregnancy Due Date, Heart Rate Zone (health)
+4. Quadratic, Statistics, Logarithm, Trigonometry (math)
+5. Bitcoin Mining, Ethereum Gas, Staking Rewards, DCA, Impermanent Loss (crypto)
+6. Ohm's Law, Voltage Divider, Power, Concrete (engineering)
+7. CGPA, Grade, Final Exam Score, Attendance (education)
+8. CAGR, Profit Margin, Markup, Customer LTV, ROAS (business)
+9. Fuel Cost, Date Difference, Cooking Conversion, Paint, Countdown (daily-life)
 
-- **Roll the same `intro`/`howItWorks`/`ranges`/`limitations`/`faqs`/`seo`/
-  `reviewedBy`/`lastUpdated` fields out to the next ~18 calculators** (audit
-  says top 20). Suggested order:
-  - Finance: SIP, mortgage, compound-interest, loan-eligibility, income-tax
-  - Health: BMR, calorie, age (whatever is in the registry as top 4)
-  - Build new: GST, HRA, Income Tax India (new + old regime toggle), PPF, NPS, FD, Lumpsum, CIBIL estimator
-- **India-finance calculators that don't exist yet** in the registry — these
-  need `inputs`, `outputs`, `calculate()` plus the SEO fields. Audit lists
-  GST, HRA, PPF, NPS, FD, Lumpsum, CIBIL estimator. Income Tax already exists
-  but should be split into India-specific new vs old regime.
+### Programmatic long-tail (audit Days 46–90)
+- Generate 20 EMI variant pages — `/finance/emi-calculator/[amount]-[tenure]`
+  templated for "EMI for ₹X home loan over Y years". Same full template;
+  never thin.
+- Same for SIP variants and currency-pair pages.
 
-### Priority 2 — programmatic long-tail (Days 46–90)
+---
 
-- **Programmatic EMI variants** — generate ~20 pages from a templated route
-  like `/finance/emi-calculator/[amount]-[tenure]` for "EMI calculator for
-  ₹X home loan over Y years." Audit warns: must use the same full content
-  template — never thin programmatic pages (Helpful Content Update bait).
-- **Programmatic SIP variants** — same pattern, "₹X per month for Y years".
-- **Currency-pair pages** — "100 USD to INR", "1 BTC to INR" — high
-  evergreen volume.
+## 🔜 Next code work — Priority 2
 
-### Priority 3 — embeddable widget v1 (Days 46–90)
+### Embeddable widget v1
+- Build `/embed/[category]/[slug]` route with stripped-down layout:
+  no nav, no footer, just the calculator + "Powered by AllSmartCalculator"
+  attribution link. This is how omnicalculator and inchcalculator built
+  their backlink profiles.
+- Start with EMI calculator.
 
-- Build an `<iframe>` embed of (start with) the EMI calculator with required
-  attribution link back to AllSmartCalculator. This is how omnicalculator and
-  inchcalculator built their backlink profiles per the audit.
-- Likely lives at `/embed/[category]/[slug]` with a stripped-down layout.
+### `Organization.logo` ImageObject
+- Add `/public/logo-512.png` (square) and reference it in
+  `publisher.logo` across all schema blocks. Required for some rich-result
+  eligibility (recipe, news; nice-to-have for WebApplication).
 
-### Priority 4 — publisher logo
-
-- `WebApplication` JSON-LD emits `publisher.name` but no logo. Add a
-  square logo at `/public/logo-512.png` and reference it in the
-  `publisher.logo` ImageObject across calculator + author + organisation
-  schemas. Improves rich-result eligibility.
-
-### Priority 5 — `<organization>` JSON-LD on the home page
-
-- Add an `Organization` JSON-LD block to the home page with logo, sameAs (LinkedIn,
-  Twitter once they exist), and `contactPoint`.
+### OG image
+- Add `/public/og-default.png` (1200×630) and reference in
+  `metadata.openGraph.images` in `layout.tsx`. Currently no fallback,
+  so social shares show generic preview.
 
 ---
 
 ## 🌐 To do — outside the repo (you, not Claude)
 
-These are the items the audit lists that cannot be done by code alone.
+These items the audits call for that cannot be done by code alone.
 
 ### Days 1–14 critical
-
 - [ ] **Submit `/sitemap.xml` to Google Search Console.** Verify domain
-  ownership first (DNS TXT record on the .tech domain via Vercel).
+  ownership first (DNS TXT record on .tech via Vercel).
 - [ ] **Submit `/sitemap.xml` to Bing Webmaster Tools.**
-- [ ] **Connect GA4** — add `NEXT_PUBLIC_GA_MEASUREMENT_ID` env var if you
-  want analytics beyond Vercel Analytics (which is already wired).
-- [ ] **Run PageSpeed Insights** against `/`, `/health/bmi-calculator`,
-  `/finance/emi-calculator`, `/finance/mortgage-calculator`,
-  `/finance/sip-calculator`. Document baseline LCP/INP/CLS scores.
-  Re-test after the recharts dynamic-import change to confirm INP gain.
-- [ ] **Verify `/robots.txt` and `/sitemap.xml`** load on production. Visit
-  `https://allsmartcalculator.tech/robots.txt` and confirm 200, no 404.
+- [ ] **Add IndexNow ping** for new/updated calc pages — Bing supports it,
+  Google ignores it but no harm.
+- [ ] **Connect GA4** — add `NEXT_PUBLIC_GA_MEASUREMENT_ID` env. Vercel
+  Analytics is already wired, but GA4 gives Search-Console-linkable data.
+- [ ] **Run PageSpeed Insights** baseline against `/`,
+  `/health/bmi-calculator`, `/finance/emi-calculator`,
+  `/finance/mortgage-calculator`, `/finance/sip-calculator`. Document
+  scores. Re-run after the recharts dynamic-import change to verify INP
+  gain.
+- [ ] **Verify `/robots.txt` and `/sitemap.xml`** load on production.
 - [ ] **Test 404 status** — visit `/finance/fake-calc` and confirm response
-  is HTTP 404 (not 200 with redirect). Use `curl -I` or Chrome DevTools
-  Network tab.
+  is HTTP 404 (not 200 with redirect). Use `curl -I` or DevTools.
 - [ ] **Strapi CMS audit for "CalcVerse" string.** The audit observed
-  "CalcVerse" in the BMI page title — the codebase has no such string, so
-  it must be a stale `pageTitle` value in the Strapi `calculator-contents`
-  collection. Open Strapi admin, search every row's `pageTitle`,
-  `metaOgTitle`, `metaTwitterTitle`, `metaOgSiteName` for "CalcVerse" and
-  replace with "AllSmartCalculator".
+  "CalcVerse" in the BMI page title — code is clean, so it must be a
+  stale `pageTitle` value in the Strapi `calculator-contents` collection.
+  Open Strapi admin, search every row's `pageTitle`, `metaOgTitle`,
+  `metaTwitterTitle`, `metaOgSiteName` for "CalcVerse" → replace with
+  "AllSmartCalculator".
 
-### Days 15–45 — content & links
+### Blog content (Days 15–45)
+The blog index still reads "No posts yet" because Strapi has no posts.
+The audit lists 8 pillar guides; the first 4 to publish:
+- [ ] "Complete Guide to EMI & Loan Calculations" (target: how to calculate emi)
+- [ ] "Understanding BMI: A Practical Health Guide" (target: what is a healthy bmi)
+- [ ] "Crypto Tax 2026: Reporting & Calculations" (target: crypto tax calculator)
+- [ ] "Master Percentages: Math for Daily Life" (target: percentage formula)
 
-- [ ] **Publish first 4 blog posts** (audit posts 1, 3, 4, 8):
-  - "How to Calculate EMI: The Formula, Examples & Common Mistakes"
-  - "BMI for Indian Adults: Why the Global Cutoffs Are Wrong"
-  - "GST Calculation Explained: Inclusive vs Exclusive, with Examples"
-  - "Daily Calorie Needs: TDEE, BMR, and the Math Behind Weight Loss"
-  - Each: 1,500–2,500 words, FAQ section, internal links to the relevant
-    calculator. Author byline = Ankit Gupta. Add to Strapi `posts` collection.
+Each: 2,500 words, FAQ section with FAQPage schema (Strapi handles this via
+`customSchema`), internal links to the relevant calculators, author byline =
+Ankit Gupta. Add to Strapi `posts` collection.
+
+### Days 46–90
+- [ ] **First original data study.** "What India calculated in Q1 2026" —
+  needs aggregated query-volume data (turn on event tracking first).
+  Pitch to Mint, Economic Times, Business Standard.
+- [ ] **HARO daily, Reddit weekly.** Habit work; targets in audit Section 6.
 - [ ] **Submit to 15 "best free calculators" listicles.** Target 3 placements.
 
-### Days 46–90 — authority
-
-- [ ] **First original data study.** "What India calculated in Q1 2026."
-  Pitch to Mint, Economic Times, Business Standard. Needs aggregated
-  query-volume data, which means turning on event tracking first.
-- [ ] **HARO daily, Reddit weekly.** Habit work, no code involved.
-
 ### Domain & infra
-
-- [ ] **Add Twitter handle.** `@AllSmartCalculator` is referenced in the
-  default Twitter card meta — register the actual handle or change the
-  reference in `src/app/layout.tsx`.
-- [ ] **Open Graph fallback image.** No default OG image is configured. Add
-  one at `/public/og-default.png` (1200×630) and reference in
-  `layout.tsx` `metadata.openGraph.images`.
-- [ ] **Set `NEXT_PUBLIC_SITE_URL` in Vercel env.** Currently defaults to
-  `https://allsmartcalculator.tech` if not set, but make the env explicit
-  for safety (also flips for preview deployments).
+- [ ] **Add Twitter handle.** `@AllSmartCalculator` is referenced in Twitter
+  card meta — register the handle or change the reference in
+  `src/app/layout.tsx`.
+- [ ] **Set `NEXT_PUBLIC_SITE_URL` in Vercel env** for safety + correct
+  preview deployments.
 
 ---
 
-## 90-day target check (audit baseline)
+## 90-day target check
 
 | Metric                            | Target (Jul 2026) | Where it depends on this PR                 |
 |-----------------------------------|-------------------|---------------------------------------------|
-| Indexed pages in GSC              | 100+              | Sitemap now lists all routes ✅             |
-| Schema-marked pages               | 100% of calcs     | Every calc page now emits 3 JSON-LD blocks ✅ |
+| Indexed pages in GSC              | 100+              | Sitemap lists all routes ✅                  |
+| Schema-marked pages               | 100% of calcs     | Every calc emits 3 JSON-LD blocks ✅         |
+| Homepage Organization + WebSite   | Present           | ✅                                          |
 | Core Web Vitals — % URLs passing  | 90%+              | Recharts deferred ✅; verify in PSI         |
-| Keywords ranking in top 10        | 8–15 (long-tail)  | Needs blog posts + India-finance buildout   |
-| Referring domains                 | 25–40             | Outside-the-repo work                       |
-| Organic clicks per day            | 300–500           | All of the above                            |
+| Per-calc full template            | Top 22+ calcs     | ✅ (vs target of "top 20")                   |
+| Per-calc title + description      | 100% of calcs     | ✅                                          |
+| Keywords ranking in top 10        | 8–15 (long-tail)  | Needs blog posts + remaining template fill   |
+| Referring domains                 | 25–40             | Outside-the-repo (embed widget recommended)  |
+| Organic clicks per day            | 300–500           | All of the above                             |

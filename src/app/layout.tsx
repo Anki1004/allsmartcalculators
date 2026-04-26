@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
@@ -32,6 +32,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   applicationName: 'AllSmartCalculator',
+  manifest: '/manifest.webmanifest',
   robots: {
     index: true,
     follow: true,
@@ -66,6 +67,12 @@ export const metadata: Metadata = {
     title: 'AllSmartCalculator — 100+ Calculators',
     description: 'Calculate anything. Beautifully.',
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: '#bd9dff',
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({

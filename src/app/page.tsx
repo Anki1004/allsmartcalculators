@@ -18,13 +18,25 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator
 export async function generateMetadata(): Promise<Metadata> {
   const hp = await getHomepage();
 
-  const title = hp?.pageTitle ?? 'AllSmartCalculator — 100+ Calculators. One Beautiful Place.';
+  const title =
+    hp?.pageTitle ?? 'Free Online Calculators — 101+ Tools (EMI, BMI, GPA & More) | AllSmartCalculator';
   const description =
     hp?.metaDescription ??
-    'Premium calculator hub with 100+ trending calculators for Finance, Health, Math, Crypto, Engineering, Education and more. Beautiful, fast, and free.';
+    '101+ free online calculators for finance, health, math, crypto, engineering, education and business. EMI, SIP, BMI, GST, GPA, percentage — fast, ad-free, no signup.';
   const keywords = hp?.metaKeywords
     ? hp.metaKeywords.split(',').map((k) => k.trim())
-    : ['calculator', 'EMI calculator', 'SIP calculator', 'BMI calculator', 'crypto calculator'];
+    : [
+        'free online calculators',
+        'online calculator',
+        'EMI calculator',
+        'SIP calculator',
+        'BMI calculator',
+        'GST calculator',
+        'mortgage calculator',
+        'GPA calculator',
+        'percentage calculator',
+        'crypto calculator',
+      ];
   const robots = hp?.metaRobots ?? 'index, follow';
   const canonical = hp?.linkCanonical ?? SITE_URL;
 
@@ -59,8 +71,12 @@ export default async function HomePage() {
   const hp = await getHomepage();
 
   const heroChip = hp?.heroChip ?? `${TOTAL_CALCULATORS}+ free calculators · no ads, no signup`;
-  const heroHeadline = hp?.heroHeadline ?? `${TOTAL_CALCULATORS}+ Calculators.`;
-  const heroSubheadline = hp?.heroSubheadline ?? 'One Beautiful Place.';
+  // Keyword-led H1 (default). CMS can still override via heroHeadline if you want
+  // to keep the brand-led version on a campaign.
+  const heroHeadline =
+    hp?.heroHeadline ?? `Free Online Calculators — ${TOTAL_CALCULATORS} Tools`;
+  const heroSubheadline =
+    hp?.heroSubheadline ?? 'for Finance, Health, Math & More.';
   const heroDescription =
     hp?.heroDescription ??
     'Premium financial, health, crypto, and scientific calculators crafted with obsessive attention to detail. Calculate anything, beautifully.';
@@ -68,8 +84,50 @@ export default async function HomePage() {
   const ctaDescription =
     hp?.ctaDescription ?? 'Free forever. No signups. No ads. Just beautiful calculators that work.';
 
+  // ── Site-wide JSON-LD: Organization + WebSite (with SearchAction) ──
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'AllSmartCalculator',
+    url: SITE_URL,
+    description:
+      '101+ free online calculators for finance, health, math, crypto, engineering, education and business.',
+    founder: {
+      '@type': 'Person',
+      name: 'Ankit Gupta',
+      url: `${SITE_URL}/author/ankit-gupta`,
+    },
+    sameAs: ['https://www.linkedin.com/in/ankit-gupta-data-analyst'],
+  };
+
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'AllSmartCalculator',
+    url: SITE_URL,
+    inLanguage: 'en',
+    publisher: { '@type': 'Organization', name: 'AllSmartCalculator', url: SITE_URL },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${SITE_URL}/search?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
+  };
+
   return (
     <div className="relative">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+
       {/* HERO */}
       <section className="pt-32 pb-20 md:pt-40 md:pb-32 px-5 md:px-8">
         <div className="max-w-7xl mx-auto">

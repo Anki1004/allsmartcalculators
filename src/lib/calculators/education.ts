@@ -6,11 +6,7 @@ export const educationCalculators: CalculatorConfig[] = [
     name: 'GPA Calculator',
     category: 'education',
     icon: 'GraduationCap',
-    description: 'Calculate GPA on 4.0 scale.',
-    seo: {
-      title: 'GPA Calculator: Semester GPA on 4.0 Scale',
-      description: 'Free GPA calculator on the 4.0 scale. Add courses with grades and credit hours, get your semester GPA — handles A, A-, B+, B and standard variations.',
-    },
+    description: 'Calculate your semester GPA on the 4.0 scale — weighted by credit hours, with the standard letter-to-GPA conversion table.',
     trending: true,
     usageCount: 127000,
     inputs: [
@@ -35,6 +31,68 @@ export const educationCalculators: CalculatorConfig[] = [
       const totalCredits = grades.reduce((s, [, c]) => s + c, 0);
       return { gpa: totalCredits > 0 ? totalPoints / totalCredits : 0, credits: totalCredits };
     },
+    intro:
+      'GPA (Grade Point Average) on the 4.0 scale is the standard way US colleges and most international grad schools compare academic performance. Each course\'s letter grade is converted to a number (A = 4.0, A- = 3.7, B+ = 3.3 …), multiplied by its credit hours, then summed and divided by total credits. This calculator does exactly that — enter each course\'s grade-point value and credit hours and it returns your semester or term GPA. For cumulative across multiple semesters, use the CGPA calculator instead.',
+    formula: 'GPA = Σ (grade × credits) ÷ Σ credits',
+    howItWorks:
+      'Convert each letter grade to its 4.0 equivalent (A = 4.0, A- = 3.7, B+ = 3.3, B = 3.0, B- = 2.7, C+ = 2.3, C = 2.0, …, F = 0.0). Multiply each by the course\'s credit hours, sum the products, and divide by total credits. A student taking three 3-credit courses with grades A (4.0), A- (3.7), and B+ (3.3) gets: ((4.0×3) + (3.7×3) + (3.3×3)) ÷ 9 = 33.0 ÷ 9 = 3.67 GPA. Higher-credit courses pull the average more — strategic course selection matters.',
+    ranges: {
+      title: 'Standard 4.0 GPA scale (US convention)',
+      rows: [
+        { label: 'A / A+', range: '4.0', note: '93–100% (most schools)' },
+        { label: 'A−', range: '3.7', note: '90–92%' },
+        { label: 'B+', range: '3.3', note: '87–89%' },
+        { label: 'B', range: '3.0', note: '83–86%' },
+        { label: 'B−', range: '2.7', note: '80–82%' },
+        { label: 'C+', range: '2.3', note: '77–79%' },
+        { label: 'C', range: '2.0', note: '73–76% (often the minimum to pass core courses)' },
+        { label: 'D', range: '1.0', note: '60–66%' },
+        { label: 'F', range: '0.0', note: 'Below 60%' },
+      ],
+    },
+    limitations: [
+      "This calculator uses the unweighted 4.0 scale — the most common at US colleges. High schools often use a weighted scale (5.0 for AP, 4.5 for honors) — use a weighted GPA calculator if you need that.",
+      'Indian universities typically use a 10-point CGPA scale, not 4.0. To convert: divide your CGPA by 10 and multiply by 4.0 — but each grad school applies its own conversion, so use the school\'s formula when applying.',
+      'Doesn\'t handle pass/fail courses, audited courses, or repeated courses (where the new grade replaces the old). Drop those from the calc and add them manually.',
+      'The 4.0 scale is conventional, not universal. Some schools use 4.3 (with A+ = 4.3), some use 4.33 (Quebec), some use 5.0 (high-school AP). Confirm your school\'s scale before extrapolating.',
+    ],
+    faqs: [
+      {
+        q: 'How is GPA calculated?',
+        a: 'GPA = Σ (grade × credits) ÷ Σ credits. Convert each course\'s letter grade to its 4.0 equivalent, weight by credit hours, sum, and divide by total credits taken. Higher-credit courses count more toward your overall GPA.',
+      },
+      {
+        q: 'What is a good GPA?',
+        a: '3.5+ is considered very good and qualifies for most honors programs and competitive grad-school admissions. 3.0–3.5 is solid; 2.5–3.0 is acceptable but limits some opportunities. Below 2.0 typically triggers academic probation.',
+      },
+      {
+        q: 'How do I convert percentage to GPA?',
+        a: 'Rough US conversion: 90–100% → 4.0, 80–89% → 3.0–3.7, 70–79% → 2.0–2.7, 60–69% → 1.0–1.7. For Indian percentage to 4.0 GPA, the most common formula is GPA = (% ÷ 25) but each grad school has its own — always use the destination school\'s conversion.',
+      },
+      {
+        q: "What's the difference between GPA and CGPA?",
+        a: 'GPA is for one term/semester. CGPA (Cumulative GPA) is the weighted average across all semesters you\'ve completed. Use this calculator for a single term; use the CGPA calculator to roll multiple semesters together.',
+      },
+      {
+        q: 'Do I include withdraw or pass/fail courses in GPA?',
+        a: 'No. Withdrawals (W) and audits don\'t count toward GPA at most schools. Pass/fail courses also don\'t affect GPA — only the credits count if you pass. Repeated courses usually have the higher grade replace the lower one in GPA but check your school\'s policy.',
+      },
+      {
+        q: 'How much does one bad grade hurt my GPA?',
+        a: 'Depends on your total credits. With 30 credits already at 3.5 GPA, a single B− (2.7) in a 3-credit course drops you to about 3.43 — barely visible. With only 9 prior credits, the same B− takes you to 3.30. Damage shrinks fast as cumulative credits grow.',
+      },
+    ],
+    seo: {
+      title: 'GPA Calculator: Semester GPA on 4.0 Scale',
+      description: 'Free GPA calculator on the 4.0 scale. Add courses with grades and credit hours, get your semester GPA — handles A, A-, B+, B and standard variations.',
+      applicationCategory: 'EducationalApplication',
+      sources: [
+        { label: 'AACRAO — grade conversion practices', url: 'https://www.aacrao.org/' },
+        { label: 'College Board — GPA explainer', url: 'https://blog.collegeboard.org/' },
+      ],
+    },
+    lastUpdated: '2026-04-26',
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
   },
   {
     slug: 'cgpa-calculator',

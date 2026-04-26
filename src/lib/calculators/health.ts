@@ -576,11 +576,7 @@ export const healthCalculators: CalculatorConfig[] = [
     name: 'Age Calculator',
     category: 'health',
     icon: 'Cake',
-    description: 'Calculate exact age in years, months, days.',
-    seo: {
-      title: 'Age Calculator: Exact Years, Months & Days',
-      description: 'Free age calculator. Get your exact age in years, total months, and total days from your date of birth — accurate down to the day.',
-    },
+    description: 'Calculate your exact age in years, total months, and total days from any date of birth — accurate down to the day.',
     trending: true,
     usageCount: 189000,
     inputs: [
@@ -601,5 +597,58 @@ export const healthCalculators: CalculatorConfig[] = [
       const years = days / 365.25;
       return { years: Math.floor(years), months: Math.floor(years * 12), days: Math.floor(days) };
     },
+    intro:
+      "An age calculator returns the exact time elapsed between a date of birth and today. Useful for legal documents (passport, school admission, pension), date math (\"how old will my grandchild be in 2040?\"), or just curiosity. This calculator handles leap years correctly using the 365.25-day average, so the result is accurate within a day. For age-on-a-specific-date (not today), subtract the years between today and that date from the result.",
+    formula: 'age (years) = days_elapsed ÷ 365.25 · age (months) = years × 12 · age (days) = days_elapsed',
+    howItWorks:
+      "The calculator subtracts the date of birth from today's date, gets the total milliseconds elapsed, and converts to days, months, and years. The 365.25-day year accounts for leap years — over a long span, the average year is 365.25 days (because three regular years and one leap year average to that). For someone born 15 June 1995, today (26 April 2026) the result is 30 years, 366 total months, 11,273 total days. The calculator returns floored integers; the actual fraction of the next year is always positive but rounded down.",
+    ranges: {
+      title: 'Age milestones in India (legal & social)',
+      rows: [
+        { label: '14', range: 'End of compulsory education (Article 21A)', note: 'Free education to 14' },
+        { label: '15', range: 'Minimum employment age', note: 'With restrictions; 18 for hazardous work' },
+        { label: '18', range: 'Voting age', note: 'Also marriage age for females; criminal majority' },
+        { label: '21', range: 'Marriage age (males)', note: 'Drinking age in most states' },
+        { label: '25', range: 'Eligible for Lok Sabha contest', note: 'Plus state assembly' },
+        { label: '30', range: 'Eligible for Rajya Sabha contest', note: 'Upper house of Parliament' },
+        { label: '60', range: 'Senior citizen status', note: 'Tax benefits, FD rate premium, fare concessions' },
+        { label: '80', range: 'Super senior citizen', note: 'Additional tax exemptions' },
+      ],
+    },
+    limitations: [
+      "Calculator uses today's system date. For age on a specific past or future date, you'd need to enter that as the reference (most age calculators don't expose this — use a date difference calculator instead).",
+      "Years are calculated using 365.25 days/year — accurate for most purposes but off by a day or two for very specific date arithmetic. For exact day-count, use the day-count output rather than computing from years.",
+      'For pets, plants, or non-human ages, this calculator works but the "age milestones" table is human-specific.',
+      "Doesn't handle the leap-day birthday edge case (29 February). Such people are typically considered to age on 28 Feb in non-leap years for legal purposes.",
+    ],
+    faqs: [
+      {
+        q: 'How is age calculated?',
+        a: 'Subtract the date of birth from the current date, get the elapsed days, divide by 365.25 to get years (the 0.25 averages in leap years). Most calculators floor the result — your "age" is the integer years completed.',
+      },
+      {
+        q: 'How old will I be on a specific future date?',
+        a: 'Subtract your birth date from the future date and divide by 365.25. This calculator uses today as the reference; for a specific date, mentally add the years between today and that date to your current age.',
+      },
+      {
+        q: 'How do I calculate age in days?',
+        a: 'Subtract the birth date from today and the result in days is your exact age in days. This is what the calculator outputs in its "Total Days" field. Useful for milestone tracking ("our baby turns 1,000 days old").',
+      },
+      {
+        q: 'Why are years sometimes 365 days and sometimes 366?',
+        a: 'A leap year (every 4 years, except century years not divisible by 400) has 366 days to keep the calendar aligned with Earth\'s orbit. Over the long term the average is 365.25 days — that\'s the number used in age calculations. Over short periods (1–4 years) you\'ll be off by a day or two if you use 365.',
+      },
+      {
+        q: 'Does the calculator work for people born before 1900?',
+        a: 'Yes, JavaScript Date handles dates back to 1 Jan 1970 natively, but slider inputs starting at 1900 cover anyone reasonably alive today. For historical figures or genealogy, the math is the same — pull years and divide.',
+      },
+    ],
+    seo: {
+      title: 'Age Calculator: Exact Years, Months & Days',
+      description: 'Free age calculator. Get your exact age in years, total months, and total days from your date of birth — accurate down to the day.',
+      applicationCategory: 'UtilitiesApplication',
+    },
+    lastUpdated: '2026-04-26',
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
   },
 ];
