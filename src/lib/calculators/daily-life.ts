@@ -7,6 +7,10 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     category: 'daily-life',
     icon: 'Fuel',
     description: 'Trip fuel cost from distance and MPG.',
+    seo: {
+      title: 'Fuel Cost Calculator: Trip Cost from MPG & Distance',
+      description: 'Free fuel cost calculator. Estimate the total fuel cost of any trip from distance, vehicle MPG (or km/L), and current fuel price.',
+    },
     trending: true,
     usageCount: 87000,
     inputs: [
@@ -31,6 +35,10 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     category: 'daily-life',
     icon: 'Clock',
     description: 'Estimate travel time from distance & speed.',
+    seo: {
+      title: 'Travel Time Calculator: Drive Time from Distance',
+      description: 'Free travel time calculator. Estimate trip duration in hours and minutes from any distance and average speed — useful for road trip planning.',
+    },
     usageCount: 54000,
     inputs: [
       { key: 'distance', label: 'Distance', type: 'slider', min: 1, max: 10000, step: 1, default: 500, suffix: 'km', color: 'primary' },
@@ -53,6 +61,10 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     category: 'daily-life',
     icon: 'Calendar',
     description: 'Days between two dates.',
+    seo: {
+      title: 'Date Difference Calculator: Days Between Two Dates',
+      description: 'Free date difference calculator. Get the exact number of days, weeks, and months between any two dates — handles leap years correctly.',
+    },
     usageCount: 73000,
     inputs: [
       { key: 'daysAgo1', label: 'Days Ago (Start)', type: 'slider', min: 0, max: 10000, step: 1, default: 365, suffix: 'days', color: 'primary' },
@@ -74,6 +86,10 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     category: 'daily-life',
     icon: 'Users',
     description: 'Split expenses fairly between people.',
+    seo: {
+      title: 'Bill Splitter: Fairly Split Group Expenses',
+      description: 'Free bill splitter. Divide a total bill by any number of people, with optional tip and tax — perfect for restaurants, trips, and shared expenses.',
+    },
     usageCount: 98000,
     inputs: [
       { key: 'total', label: 'Total Amount', type: 'slider', min: 1, max: 10000, step: 1, default: 250, prefix: '$', color: 'primary' },
@@ -97,6 +113,10 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     category: 'daily-life',
     icon: 'ChefHat',
     description: 'Convert cups, tablespoons, grams.',
+    seo: {
+      title: 'Cooking Conversion Calculator: Cups, Tbsp, Grams',
+      description: 'Free cooking measurement converter. Translate between cups, tablespoons, teaspoons, ounces, and grams — for recipes, baking, and meal prep.',
+    },
     usageCount: 45000,
     inputs: [
       { key: 'cups', label: 'Cups', type: 'slider', min: 0, max: 20, step: 0.25, default: 1, suffix: 'cups', color: 'primary' },
@@ -118,6 +138,10 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     category: 'daily-life',
     icon: 'Palette',
     description: 'Gallons of paint needed for a room.',
+    seo: {
+      title: 'Paint Calculator: Gallons of Paint for a Room',
+      description: 'Free paint calculator. Estimate gallons of paint required for a room from wall area, coats, and coverage rate. Includes prep allowance.',
+    },
     usageCount: 29000,
     inputs: [
       { key: 'length', label: 'Room Length', type: 'slider', min: 1, max: 50, step: 0.5, default: 5, suffix: 'm', color: 'primary' },
@@ -143,6 +167,10 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     category: 'daily-life',
     icon: 'Square',
     description: 'Flooring area and boxes needed.',
+    seo: {
+      title: 'Carpet & Tile Calculator: Boxes Needed for Flooring',
+      description: 'Free carpet and tile calculator. Get total flooring area in sq ft, sq m, and number of boxes required from room dimensions and box coverage.',
+    },
     usageCount: 18000,
     inputs: [
       { key: 'length', label: 'Room Length', type: 'slider', min: 0.1, max: 50, step: 0.1, default: 5, suffix: 'm', color: 'primary' },
@@ -166,6 +194,10 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     category: 'daily-life',
     icon: 'Hourglass',
     description: 'Time remaining until an event.',
+    seo: {
+      title: 'Countdown Calculator: Days, Hours, Minutes Until Event',
+      description: 'Free countdown calculator. Get the precise time remaining until any future date — days, hours, minutes, and seconds. Useful for events and deadlines.',
+    },
     usageCount: 33000,
     inputs: [
       { key: 'daysAway', label: 'Days Until Event', type: 'slider', min: 0, max: 3650, step: 1, default: 100, suffix: 'days', color: 'primary' },
@@ -186,6 +218,10 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     category: 'daily-life',
     icon: 'Gift',
     description: 'Budget and split gift costs.',
+    seo: {
+      title: 'Gift Calculator: Per-Person Gift Budget',
+      description: 'Free gift budget calculator. Set a total gift budget and split equally among recipients, with optional per-person variance — for office gifting and group buys.',
+    },
     usageCount: 12000,
     inputs: [
       { key: 'budget', label: 'Total Budget', type: 'slider', min: 10, max: 10000, step: 10, default: 500, prefix: '$', color: 'primary' },
@@ -202,6 +238,10 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     category: 'daily-life',
     icon: 'Coffee',
     description: 'Fast tip calculation for any bill.',
+    seo: {
+      title: 'Quick Tip Calculator: Tip & Total in Seconds',
+      description: 'Free quick tip calculator. Drop in a bill and tip percentage to get the tip amount and final total instantly — no extras, just the math.',
+    },
     usageCount: 142000,
     inputs: [
       { key: 'bill', label: 'Bill Amount', type: 'slider', min: 1, max: 1000, step: 0.5, default: 50, prefix: '$', color: 'primary' },

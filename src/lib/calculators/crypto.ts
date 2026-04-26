@@ -7,6 +7,10 @@ export const cryptoCalculators: CalculatorConfig[] = [
     category: 'crypto',
     icon: 'TrendingUp',
     description: 'Calculate profit/loss on crypto trades.',
+    seo: {
+      title: 'Crypto Profit Calculator: P&L on Any Coin Trade',
+      description: 'Free crypto profit/loss calculator. See gain or loss in dollars, percent return, and total invested for any buy/sell trade across BTC, ETH, or altcoins.',
+    },
     trending: true,
     usageCount: 128000,
     inputs: [
@@ -36,6 +40,10 @@ export const cryptoCalculators: CalculatorConfig[] = [
     category: 'crypto',
     icon: 'Cpu',
     description: 'Estimate Bitcoin mining profitability.',
+    seo: {
+      title: 'Bitcoin Mining Calculator: Profit, Power, ROI',
+      description: 'Free Bitcoin mining calculator. Estimate daily profit, power cost, and break-even from your hashrate, electricity rate, and current network difficulty.',
+    },
     usageCount: 42000,
     inputs: [
       { key: 'hashRate', label: 'Hash Rate', type: 'slider', min: 1, max: 500, step: 1, default: 100, suffix: 'TH/s', color: 'primary' },
@@ -65,6 +73,10 @@ export const cryptoCalculators: CalculatorConfig[] = [
     category: 'crypto',
     icon: 'Fuel',
     description: 'Calculate gas fees in USD.',
+    seo: {
+      title: 'Ethereum Gas Calculator: Gwei to USD Fee',
+      description: 'Free Ethereum gas fee calculator. Convert gas units × gwei × ETH price into USD cost for any transaction — useful before signing on-chain actions.',
+    },
     usageCount: 38000,
     inputs: [
       { key: 'gasPrice', label: 'Gas Price', type: 'slider', min: 1, max: 500, step: 1, default: 30, suffix: 'gwei', color: 'primary' },
@@ -86,6 +98,10 @@ export const cryptoCalculators: CalculatorConfig[] = [
     category: 'crypto',
     icon: 'Layers',
     description: 'Project staking rewards over time.',
+    seo: {
+      title: 'Staking Rewards Calculator: APY Projections',
+      description: 'Free crypto staking rewards calculator. Project rewards earned and final balance from any stake amount, APY, and lock-up period — ETH, SOL, ADA, etc.',
+    },
     trending: true,
     usageCount: 67000,
     inputs: [
@@ -108,6 +124,10 @@ export const cryptoCalculators: CalculatorConfig[] = [
     category: 'crypto',
     icon: 'BarChart',
     description: 'Dollar-cost averaging over time.',
+    seo: {
+      title: 'Crypto DCA Calculator: Dollar-Cost Average Returns',
+      description: 'Free crypto DCA calculator. Project the value of a recurring buy strategy across any horizon, contribution size, and assumed annual return rate.',
+    },
     usageCount: 31000,
     inputs: [
       { key: 'amount', label: 'Amount per Buy', type: 'slider', min: 10, max: 10000, step: 10, default: 100, prefix: '$', color: 'primary' },
@@ -133,6 +153,10 @@ export const cryptoCalculators: CalculatorConfig[] = [
     category: 'crypto',
     icon: 'TrendingDown',
     description: 'Calculate IL on LP positions.',
+    seo: {
+      title: 'Impermanent Loss Calculator: LP Position IL',
+      description: 'Free impermanent loss calculator for AMM liquidity providers. See your IL % for any token-pair price ratio change — Uniswap, Sushiswap, PancakeSwap.',
+    },
     usageCount: 24000,
     inputs: [
       { key: 'priceChangeA', label: 'Token A Change', type: 'slider', min: -90, max: 500, step: 1, default: 50, suffix: '%', color: 'primary' },
@@ -153,6 +177,10 @@ export const cryptoCalculators: CalculatorConfig[] = [
     category: 'crypto',
     icon: 'Receipt',
     description: 'Estimate capital gains tax on crypto.',
+    seo: {
+      title: 'Crypto Tax Calculator: Capital Gains on BTC, ETH',
+      description: 'Free crypto capital-gains tax calculator. Estimate your tax liability on crypto sales — short-term vs long-term, with India 30% flat rate option.',
+    },
     trending: true,
     usageCount: 58000,
     inputs: [
@@ -174,6 +202,10 @@ export const cryptoCalculators: CalculatorConfig[] = [
     category: 'crypto',
     icon: 'Image',
     description: 'Calculate NFT return on investment.',
+    seo: {
+      title: 'NFT ROI Calculator: Return After Fees & Royalties',
+      description: 'Free NFT ROI calculator. Net return after marketplace fees, creator royalties, and gas — tells you what you actually pocket from a flip.',
+    },
     usageCount: 19000,
     inputs: [
       { key: 'buyPrice', label: 'Purchase Price', type: 'slider', min: 0.001, max: 100, step: 0.001, default: 0.5, suffix: 'ETH', color: 'primary' },
@@ -200,6 +232,10 @@ export const cryptoCalculators: CalculatorConfig[] = [
     category: 'crypto',
     icon: 'Repeat',
     description: 'Convert crypto to USD.',
+    seo: {
+      title: 'Crypto to USD Converter: BTC, ETH & Altcoin Value',
+      description: 'Free crypto-to-USD converter. Convert any coin amount into USD at current price — fast lookup for portfolio valuation and on-the-fly checks.',
+    },
     usageCount: 89000,
     inputs: [
       { key: 'amount', label: 'Amount', type: 'slider', min: 0.0001, max: 1000, step: 0.01, default: 1, suffix: 'coin', color: 'primary' },
@@ -216,6 +252,10 @@ export const cryptoCalculators: CalculatorConfig[] = [
     category: 'crypto',
     icon: 'Briefcase',
     description: 'Track multi-coin portfolio value.',
+    seo: {
+      title: 'Crypto Portfolio Calculator: Total Value & Allocation',
+      description: 'Free crypto portfolio calculator. Track total USD value and percent allocation across multiple coins — set and adjust holdings on the fly.',
+    },
     usageCount: 33000,
     inputs: [
       { key: 'btcQty', label: 'BTC Holdings', type: 'slider', min: 0, max: 10, step: 0.001, default: 0.5, suffix: 'BTC', color: 'primary' },

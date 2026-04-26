@@ -7,6 +7,10 @@ export const engineeringCalculators: CalculatorConfig[] = [
     category: 'engineering',
     icon: 'Zap',
     description: 'V = IR, find voltage, current, or resistance.',
+    seo: {
+      title: 'Ohm\'s Law Calculator: V = I × R for Circuits',
+      description: 'Free Ohm\'s Law calculator. Solve V = I × R for voltage, current, or resistance — also returns power (P = VI). Useful for any DC circuit analysis.',
+    },
     usageCount: 52000,
     inputs: [
       { key: 'voltage', label: 'Voltage', type: 'slider', min: 0, max: 240, step: 0.1, default: 12, suffix: 'V', color: 'primary' },
@@ -28,6 +32,10 @@ export const engineeringCalculators: CalculatorConfig[] = [
     category: 'engineering',
     icon: 'GitBranch',
     description: 'Calculate output voltage for a divider.',
+    seo: {
+      title: 'Voltage Divider Calculator: Output Voltage Formula',
+      description: 'Free voltage divider calculator. Compute Vout from Vin, R1, R2 using Vout = Vin × R2 / (R1+R2). Useful for sensor circuits and reference rails.',
+    },
     usageCount: 28000,
     inputs: [
       { key: 'vin', label: 'Input Voltage', type: 'slider', min: 0, max: 50, step: 0.1, default: 12, suffix: 'V', color: 'primary' },
@@ -52,6 +60,10 @@ export const engineeringCalculators: CalculatorConfig[] = [
     category: 'engineering',
     icon: 'Plug',
     description: 'Calculate electrical power (P = VI).',
+    seo: {
+      title: 'Electrical Power Calculator: P = V × I in Watts',
+      description: 'Free electrical power calculator. Compute power in watts from voltage and current — supports DC and single-phase AC with power-factor adjustment.',
+    },
     usageCount: 34000,
     inputs: [
       { key: 'voltage', label: 'Voltage', type: 'slider', min: 0, max: 500, step: 1, default: 120, suffix: 'V', color: 'primary' },
@@ -73,6 +85,10 @@ export const engineeringCalculators: CalculatorConfig[] = [
     category: 'engineering',
     icon: 'RotateCw',
     description: 'Torque from force and lever arm.',
+    seo: {
+      title: 'Torque Calculator: τ = Force × Lever Arm',
+      description: 'Free torque calculator. Compute rotational torque from any applied force and lever-arm length — supports N·m and lb·ft units.',
+    },
     usageCount: 19000,
     inputs: [
       { key: 'force', label: 'Force', type: 'slider', min: 0, max: 10000, step: 1, default: 100, suffix: 'N', color: 'primary' },
@@ -92,6 +108,10 @@ export const engineeringCalculators: CalculatorConfig[] = [
     category: 'engineering',
     icon: 'Ruler',
     description: 'Convert between metric and imperial.',
+    seo: {
+      title: 'Unit Converter: Metric ↔ Imperial Conversions',
+      description: 'Free unit converter for length, weight, volume, area, and temperature. Convert between metric and imperial units instantly — accurate to 4 decimals.',
+    },
     trending: true,
     usageCount: 112000,
     inputs: [
@@ -119,6 +139,10 @@ export const engineeringCalculators: CalculatorConfig[] = [
     category: 'engineering',
     icon: 'Package',
     description: 'Calculate concrete volume for slabs.',
+    seo: {
+      title: 'Concrete Calculator: Slab Volume in m³ & Yards',
+      description: 'Free concrete volume calculator for slabs. Get cubic metres, cubic yards, and number of bags needed from length, width, and slab thickness.',
+    },
     usageCount: 37000,
     inputs: [
       { key: 'length', label: 'Length', type: 'slider', min: 0.1, max: 100, step: 0.1, default: 10, suffix: 'm', color: 'primary' },
@@ -140,6 +164,10 @@ export const engineeringCalculators: CalculatorConfig[] = [
     category: 'engineering',
     icon: 'Cylinder',
     description: 'Flow rate through circular pipe.',
+    seo: {
+      title: 'Pipe Flow Calculator: Volume Flow Rate in Pipes',
+      description: 'Free pipe flow rate calculator. Compute volume flow (Q = A × v) through a circular pipe from diameter and fluid velocity — m³/s and L/min.',
+    },
     usageCount: 14000,
     inputs: [
       { key: 'diameter', label: 'Pipe Diameter', type: 'slider', min: 1, max: 1000, step: 1, default: 100, suffix: 'mm', color: 'primary' },
@@ -162,6 +190,10 @@ export const engineeringCalculators: CalculatorConfig[] = [
     category: 'engineering',
     icon: 'Settings',
     description: 'Calculate gear ratios and output RPM.',
+    seo: {
+      title: 'Gear Ratio Calculator: Driven RPM & Mechanical Advantage',
+      description: 'Free gear ratio calculator. Compute the gear ratio, output RPM, and torque multiplication for any pair of driver/driven gears or sprockets.',
+    },
     usageCount: 16000,
     inputs: [
       { key: 'drivenTeeth', label: 'Driven Gear Teeth', type: 'slider', min: 5, max: 200, step: 1, default: 40, color: 'primary' },
@@ -183,6 +215,10 @@ export const engineeringCalculators: CalculatorConfig[] = [
     category: 'engineering',
     icon: 'RotateCw',
     description: 'Surface speed to RPM conversion.',
+    seo: {
+      title: 'RPM Calculator: Surface Speed ↔ Revolutions/Minute',
+      description: 'Free RPM calculator. Convert surface cutting speed to revolutions per minute for any tool or workpiece diameter — useful for lathe and mill setups.',
+    },
     usageCount: 11000,
     inputs: [
       { key: 'surfaceSpeed', label: 'Surface Speed', type: 'slider', min: 1, max: 1000, step: 1, default: 100, suffix: 'm/min', color: 'primary' },
@@ -201,6 +237,10 @@ export const engineeringCalculators: CalculatorConfig[] = [
     category: 'engineering',
     icon: 'Palette',
     description: 'Resistance from 4-band color code.',
+    seo: {
+      title: 'Resistor Color Code Calculator: 4-Band to Ohms',
+      description: 'Free 4-band resistor color code calculator. Decode any 4-band resistor into ohms with tolerance — pick the colors and read the value instantly.',
+    },
     usageCount: 23000,
     inputs: [
       { key: 'band1', label: 'Band 1 (0-9)', type: 'slider', min: 0, max: 9, step: 1, default: 2, color: 'primary' },

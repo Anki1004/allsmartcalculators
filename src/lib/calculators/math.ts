@@ -7,6 +7,10 @@ export const mathCalculators: CalculatorConfig[] = [
     category: 'math',
     icon: 'Percent',
     description: 'Calculate percentages, increases, and decreases.',
+    seo: {
+      title: 'Percentage Calculator: % of, Increase, Decrease',
+      description: 'Free percentage calculator. Find X% of a number, percent change between two values, and percentage increase or decrease — fast and accurate.',
+    },
     trending: true,
     usageCount: 245000,
     inputs: [
@@ -31,6 +35,10 @@ export const mathCalculators: CalculatorConfig[] = [
     category: 'math',
     icon: 'Divide',
     description: 'Add, subtract, multiply & divide fractions.',
+    seo: {
+      title: 'Fraction Calculator: Add, Subtract, Multiply, Divide',
+      description: 'Free fraction calculator. Add, subtract, multiply, or divide any two fractions and get the result in lowest terms with the decimal equivalent.',
+    },
     usageCount: 68000,
     inputs: [
       { key: 'num1', label: 'Numerator 1', type: 'slider', min: -100, max: 100, step: 1, default: 1, color: 'primary' },
@@ -55,6 +63,10 @@ export const mathCalculators: CalculatorConfig[] = [
     category: 'math',
     icon: 'FunctionSquare',
     description: 'Solve ax² + bx + c = 0.',
+    seo: {
+      title: 'Quadratic Equation Calculator: Solve ax² + bx + c = 0',
+      description: 'Free quadratic equation solver. Find both roots of any ax² + bx + c = 0 — handles real, repeated, and complex roots with full discriminant detail.',
+    },
     usageCount: 42000,
     inputs: [
       { key: 'a', label: 'Coefficient a', type: 'slider', min: -20, max: 20, step: 0.1, default: 1, color: 'primary' },
@@ -83,6 +95,10 @@ export const mathCalculators: CalculatorConfig[] = [
     category: 'math',
     icon: 'BarChart',
     description: 'Mean, median, mode, and std deviation.',
+    seo: {
+      title: 'Statistics Calculator: Mean, Median, Mode, Std Dev',
+      description: 'Free statistics calculator. Compute mean, median, mode, range, variance, and standard deviation for any list of numbers — paste data and go.',
+    },
     usageCount: 32000,
     inputs: [
       { key: 'n1', label: 'Value 1', type: 'slider', min: -100, max: 100, step: 1, default: 10, color: 'primary' },
@@ -117,6 +133,10 @@ export const mathCalculators: CalculatorConfig[] = [
     category: 'math',
     icon: 'Dices',
     description: 'Calculate event probability.',
+    seo: {
+      title: 'Probability Calculator: Event Likelihood Math',
+      description: 'Free probability calculator. Compute single-event and combined-event probability with intuitive favourable-over-total inputs and percent output.',
+    },
     usageCount: 24000,
     inputs: [
       { key: 'favorable', label: 'Favorable Outcomes', type: 'slider', min: 0, max: 1000, step: 1, default: 5, color: 'primary' },
@@ -140,6 +160,10 @@ export const mathCalculators: CalculatorConfig[] = [
     category: 'math',
     icon: 'GitMerge',
     description: 'Find LCM and GCD of two numbers.',
+    seo: {
+      title: 'LCM and GCD Calculator: Least Common Multiple & GCF',
+      description: 'Free LCM and GCD calculator. Find the least common multiple and greatest common divisor (HCF) of any two integers — works with large numbers.',
+    },
     usageCount: 28000,
     inputs: [
       { key: 'a', label: 'First Number', type: 'slider', min: 1, max: 1000, step: 1, default: 12, color: 'primary' },
@@ -163,6 +187,10 @@ export const mathCalculators: CalculatorConfig[] = [
     category: 'math',
     icon: 'FunctionSquare',
     description: 'Calculate log base any.',
+    seo: {
+      title: 'Logarithm Calculator: log, ln, log₂ — Any Base',
+      description: 'Free logarithm calculator. Compute log to any base — natural log (ln), log base 10, log base 2, or a custom base — for any positive number.',
+    },
     usageCount: 19000,
     inputs: [
       { key: 'value', label: 'Value', type: 'slider', min: 0.01, max: 10000, step: 0.01, default: 100, color: 'primary' },
@@ -185,6 +213,10 @@ export const mathCalculators: CalculatorConfig[] = [
     category: 'math',
     icon: 'Compass',
     description: 'sin, cos, tan for any angle.',
+    seo: {
+      title: 'Trigonometry Calculator: sin, cos, tan, csc, sec, cot',
+      description: 'Free trigonometry calculator. Compute sine, cosine, tangent and their reciprocals for any angle in degrees or radians — instant results.',
+    },
     usageCount: 35000,
     inputs: [
       { key: 'angle', label: 'Angle', type: 'slider', min: 0, max: 360, step: 0.5, default: 45, suffix: '°', color: 'primary' },
@@ -210,6 +242,10 @@ export const mathCalculators: CalculatorConfig[] = [
     category: 'math',
     icon: 'Binary',
     description: 'Convert between binary, decimal, hex.',
+    seo: {
+      title: 'Binary Converter: Binary ↔ Decimal ↔ Hex ↔ Octal',
+      description: 'Free binary, decimal, hex, and octal converter. Translate between number bases instantly — useful for programming, networking, and CS coursework.',
+    },
     usageCount: 31000,
     inputs: [
       { key: 'decimal', label: 'Decimal Value', type: 'slider', min: 0, max: 65535, step: 1, default: 255, color: 'primary' },
@@ -234,6 +270,10 @@ export const mathCalculators: CalculatorConfig[] = [
     category: 'math',
     icon: 'Ratio',
     description: 'Simplify and scale ratios.',
+    seo: {
+      title: 'Ratio Calculator: Simplify, Scale, Compare Ratios',
+      description: 'Free ratio calculator. Simplify a ratio to lowest terms, scale it up or down, and compare two ratios — useful for recipes, plans, and design.',
+    },
     usageCount: 26000,
     inputs: [
       { key: 'a', label: 'Part A', type: 'slider', min: 1, max: 1000, step: 1, default: 24, color: 'primary' },
@@ -257,6 +297,10 @@ export const mathCalculators: CalculatorConfig[] = [
     category: 'math',
     icon: 'Sigma',
     description: 'Mean of multiple numbers.',
+    seo: {
+      title: 'Average Calculator: Mean of a List of Numbers',
+      description: 'Free average (mean) calculator. Get the arithmetic mean, count, and sum of any list of numbers — supports decimals and negative values.',
+    },
     usageCount: 47000,
     inputs: [
       { key: 'a', label: 'Value 1', type: 'slider', min: 0, max: 1000, step: 1, default: 50, color: 'primary' },
@@ -281,6 +325,10 @@ export const mathCalculators: CalculatorConfig[] = [
     category: 'math',
     icon: 'Hash',
     description: 'Calculate n! for any number.',
+    seo: {
+      title: 'Factorial Calculator: Compute n! Up to Large Numbers',
+      description: 'Free factorial calculator. Compute n! for any non-negative integer — useful for combinatorics, permutations, and probability problems.',
+    },
     usageCount: 18000,
     inputs: [
       { key: 'n', label: 'Number (n)', type: 'slider', min: 0, max: 20, step: 1, default: 6, color: 'primary' },
@@ -301,6 +349,10 @@ export const mathCalculators: CalculatorConfig[] = [
     category: 'math',
     icon: 'Hash',
     description: 'Check if a number is prime.',
+    seo: {
+      title: 'Prime Number Checker: Is This Number Prime?',
+      description: 'Free prime number checker. Instantly verify whether any positive integer is prime, with the smallest divisor returned for composite numbers.',
+    },
     usageCount: 15000,
     inputs: [
       { key: 'n', label: 'Number', type: 'slider', min: 2, max: 10000, step: 1, default: 97, color: 'primary' },
@@ -323,6 +375,10 @@ export const mathCalculators: CalculatorConfig[] = [
     category: 'math',
     icon: 'Zap',
     description: 'Calculate base^exponent.',
+    seo: {
+      title: 'Power Calculator: Compute base^exponent',
+      description: 'Free exponent calculator. Compute base raised to any power — supports negative and fractional exponents, integer and decimal bases.',
+    },
     usageCount: 22000,
     inputs: [
       { key: 'base', label: 'Base', type: 'slider', min: -50, max: 50, step: 0.1, default: 2, color: 'primary' },
@@ -339,6 +395,10 @@ export const mathCalculators: CalculatorConfig[] = [
     category: 'math',
     icon: 'Calculator',
     description: 'Find square & cube roots.',
+    seo: {
+      title: 'Square Root Calculator: √, ³√, and nth Roots',
+      description: 'Free square and cube root calculator. Find √x and ³√x for any positive number — instant decimal results, useful for algebra and geometry.',
+    },
     usageCount: 29000,
     inputs: [
       { key: 'value', label: 'Value', type: 'slider', min: 0, max: 10000, step: 1, default: 144, color: 'primary' },

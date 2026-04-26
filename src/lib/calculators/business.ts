@@ -7,6 +7,10 @@ export const businessCalculators: CalculatorConfig[] = [
     category: 'business',
     icon: 'TrendingUp',
     description: 'Return on investment percentage.',
+    seo: {
+      title: 'ROI Calculator: Return on Investment Percentage',
+      description: 'Free ROI calculator. Compute return on investment as a percentage from initial cost and final value — works for marketing, real estate, or business projects.',
+    },
     trending: true,
     usageCount: 98000,
     inputs: [
@@ -28,6 +32,10 @@ export const businessCalculators: CalculatorConfig[] = [
     category: 'business',
     icon: 'Target',
     description: 'Units to sell to cover costs.',
+    seo: {
+      title: 'Break-Even Calculator: Units to Cover Fixed Costs',
+      description: 'Free break-even calculator. Find the number of units to sell to cover fixed costs from price, variable cost per unit, and total fixed expenses.',
+    },
     usageCount: 42000,
     inputs: [
       { key: 'fixedCosts', label: 'Fixed Costs', type: 'slider', min: 100, max: 1000000, step: 100, default: 50000, prefix: '$', color: 'primary' },
@@ -51,6 +59,10 @@ export const businessCalculators: CalculatorConfig[] = [
     category: 'business',
     icon: 'Percent',
     description: 'Gross and net profit margins.',
+    seo: {
+      title: 'Profit Margin Calculator: Gross & Net %',
+      description: 'Free profit margin calculator. Compute gross margin, net margin, and absolute profit from revenue, COGS, and operating expenses — for any business model.',
+    },
     trending: true,
     usageCount: 76000,
     inputs: [
@@ -80,6 +92,10 @@ export const businessCalculators: CalculatorConfig[] = [
     category: 'business',
     icon: 'TrendingUp',
     description: 'Selling price from cost and markup.',
+    seo: {
+      title: 'Markup Calculator: Selling Price from Cost & Markup %',
+      description: 'Free markup calculator. Compute the selling price required to hit a target markup percentage on any cost basis — and the resulting profit margin.',
+    },
     usageCount: 38000,
     inputs: [
       { key: 'cost', label: 'Cost', type: 'slider', min: 0.01, max: 10000, step: 0.01, default: 50, prefix: '$', color: 'primary' },
@@ -100,6 +116,10 @@ export const businessCalculators: CalculatorConfig[] = [
     category: 'business',
     icon: 'Tag',
     description: 'Final price after discount.',
+    seo: {
+      title: 'Discount Calculator: Final Price After % Off',
+      description: 'Free discount calculator. Get the final price and savings amount after any percentage discount — useful for shopping, sales, and pricing decisions.',
+    },
     trending: true,
     usageCount: 156000,
     inputs: [
@@ -121,6 +141,10 @@ export const businessCalculators: CalculatorConfig[] = [
     category: 'business',
     icon: 'LineChart',
     description: 'Compound annual growth rate.',
+    seo: {
+      title: 'CAGR Calculator: Compound Annual Growth Rate',
+      description: 'Free CAGR calculator. Compute the compound annual growth rate from beginning value, ending value, and number of years — the standard return metric for investments.',
+    },
     usageCount: 31000,
     inputs: [
       { key: 'initial', label: 'Initial Value', type: 'slider', min: 1, max: 10000000, step: 1, default: 10000, prefix: '$', color: 'primary' },
@@ -143,6 +167,10 @@ export const businessCalculators: CalculatorConfig[] = [
     category: 'business',
     icon: 'Users',
     description: 'Net pay after taxes & deductions.',
+    seo: {
+      title: 'Payroll Calculator: Net Pay After Tax & Deductions',
+      description: 'Free payroll calculator. Compute employee net pay from gross salary after federal/state tax, social-security, and pre-tax deduction estimates.',
+    },
     usageCount: 52000,
     inputs: [
       { key: 'gross', label: 'Gross Pay', type: 'slider', min: 500, max: 200000, step: 100, default: 5000, prefix: '$', color: 'primary' },
@@ -164,6 +192,10 @@ export const businessCalculators: CalculatorConfig[] = [
     category: 'business',
     icon: 'Package',
     description: 'Efficiency of inventory management.',
+    seo: {
+      title: 'Inventory Turnover Calculator: Times per Year',
+      description: 'Free inventory turnover ratio calculator. Compute how many times your inventory rotates annually — the core efficiency metric for retail and SaaS.',
+    },
     usageCount: 14000,
     inputs: [
       { key: 'cogs', label: 'Cost of Goods Sold', type: 'slider', min: 1000, max: 10000000, step: 1000, default: 500000, prefix: '$', color: 'primary' },
@@ -184,6 +216,10 @@ export const businessCalculators: CalculatorConfig[] = [
     category: 'business',
     icon: 'UserPlus',
     description: 'Lifetime value of a customer.',
+    seo: {
+      title: 'Customer LTV Calculator: Lifetime Value & Payback',
+      description: 'Free customer LTV calculator. Get the lifetime value of a customer from ARPU, gross margin, and churn rate — the core SaaS unit-economics metric.',
+    },
     trending: true,
     usageCount: 44000,
     inputs: [
@@ -206,6 +242,10 @@ export const businessCalculators: CalculatorConfig[] = [
     category: 'business',
     icon: 'Megaphone',
     description: 'Return on ad spend.',
+    seo: {
+      title: 'ROAS Calculator: Return on Ad Spend',
+      description: 'Free ROAS calculator. Compute return on ad spend — the standard efficiency metric for paid marketing on Google, Meta, and any digital ad platform.',
+    },
     usageCount: 37000,
     inputs: [
       { key: 'revenue', label: 'Revenue from Ads', type: 'slider', min: 0, max: 1000000, step: 100, default: 50000, prefix: '$', color: 'primary' },

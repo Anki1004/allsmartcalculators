@@ -7,6 +7,10 @@ export const educationCalculators: CalculatorConfig[] = [
     category: 'education',
     icon: 'GraduationCap',
     description: 'Calculate GPA on 4.0 scale.',
+    seo: {
+      title: 'GPA Calculator: Semester GPA on 4.0 Scale',
+      description: 'Free GPA calculator on the 4.0 scale. Add courses with grades and credit hours, get your semester GPA — handles A, A-, B+, B and standard variations.',
+    },
     trending: true,
     usageCount: 127000,
     inputs: [
@@ -38,6 +42,10 @@ export const educationCalculators: CalculatorConfig[] = [
     category: 'education',
     icon: 'Award',
     description: 'Calculate cumulative GPA across semesters.',
+    seo: {
+      title: 'CGPA Calculator: Cumulative GPA Across Semesters',
+      description: 'Free CGPA calculator. Combine multiple semester GPAs into your cumulative GPA, weighted by credits — supports 4.0, 10.0 (Indian), and percentage scales.',
+    },
     usageCount: 68000,
     inputs: [
       { key: 's1', label: 'Semester 1 GPA', type: 'slider', min: 0, max: 10, step: 0.01, default: 8.5, color: 'primary' },
@@ -61,6 +69,10 @@ export const educationCalculators: CalculatorConfig[] = [
     category: 'education',
     icon: 'Percent',
     description: 'Convert percentage to 4.0 GPA.',
+    seo: {
+      title: 'Percentage to GPA Converter: % to 4.0 Scale',
+      description: 'Free percentage-to-GPA converter. Translate any percentage score (or Indian 10-point CGPA) into the standard US 4.0 GPA scale — for grad-school apps.',
+    },
     usageCount: 42000,
     inputs: [
       { key: 'percentage', label: 'Percentage', type: 'slider', min: 0, max: 100, step: 0.1, default: 85, suffix: '%', color: 'primary' },
@@ -86,6 +98,10 @@ export const educationCalculators: CalculatorConfig[] = [
     category: 'education',
     icon: 'FileCheck',
     description: 'Weighted grade for assignments & exams.',
+    seo: {
+      title: 'Grade Calculator: Weighted Course Grade',
+      description: 'Free weighted grade calculator. Combine assignment, midterm, and final-exam grades with their respective weights to get your overall course grade.',
+    },
     trending: true,
     usageCount: 89000,
     inputs: [
@@ -122,6 +138,10 @@ export const educationCalculators: CalculatorConfig[] = [
     category: 'education',
     icon: 'Target',
     description: 'Score needed on final for target grade.',
+    seo: {
+      title: 'Final Exam Calculator: Score Needed for Target Grade',
+      description: 'Free final exam grade calculator. Find the exact score you need on your final to lock in any target overall grade — given your current grade and final weight.',
+    },
     usageCount: 57000,
     inputs: [
       { key: 'currentGrade', label: 'Current Grade', type: 'slider', min: 0, max: 100, step: 1, default: 78, suffix: '%', color: 'primary' },
@@ -149,6 +169,10 @@ export const educationCalculators: CalculatorConfig[] = [
     category: 'education',
     icon: 'BookOpen',
     description: 'Weekly study hours for your courses.',
+    seo: {
+      title: 'Study Hours Calculator: Weekly Hours per Course',
+      description: 'Free study hours calculator. Estimate weekly study time required across your course load using the standard 2–3 hours per credit-hour rule.',
+    },
     usageCount: 28000,
     inputs: [
       { key: 'credits', label: 'Credit Hours', type: 'slider', min: 1, max: 30, step: 1, default: 15, color: 'primary' },
@@ -169,6 +193,10 @@ export const educationCalculators: CalculatorConfig[] = [
     category: 'education',
     icon: 'Weight',
     description: 'Effect of assignment on final grade.',
+    seo: {
+      title: 'Assignment Weight Calculator: Effect on Final Grade',
+      description: 'Free assignment weight calculator. See how much a single assignment moves your overall course grade — useful for prioritising effort across the term.',
+    },
     usageCount: 21000,
     inputs: [
       { key: 'assignGrade', label: 'Assignment Grade', type: 'slider', min: 0, max: 100, step: 1, default: 85, suffix: '%', color: 'primary' },
@@ -187,6 +215,10 @@ export const educationCalculators: CalculatorConfig[] = [
     category: 'education',
     icon: 'Trophy',
     description: 'Your percentile in class.',
+    seo: {
+      title: 'Class Rank Calculator: Percentile in Your Cohort',
+      description: 'Free class rank percentile calculator. From your rank and class size, get your percentile — useful for college applications and merit scholarships.',
+    },
     usageCount: 19000,
     inputs: [
       { key: 'rank', label: 'Your Rank', type: 'slider', min: 1, max: 1000, step: 1, default: 15, color: 'primary' },
@@ -207,6 +239,10 @@ export const educationCalculators: CalculatorConfig[] = [
     category: 'education',
     icon: 'UserCheck',
     description: 'Classes you can skip safely.',
+    seo: {
+      title: 'Attendance Calculator: How Many Classes You Can Skip',
+      description: 'Free 75% attendance calculator. From total classes held and attended, see your current attendance and how many you can skip while staying above 75%.',
+    },
     trending: true,
     usageCount: 94000,
     inputs: [
@@ -234,6 +270,10 @@ export const educationCalculators: CalculatorConfig[] = [
     category: 'education',
     icon: 'Book',
     description: 'Words per minute reading speed.',
+    seo: {
+      title: 'Reading Speed Calculator: Words per Minute (WPM)',
+      description: 'Free reading speed (WPM) calculator. Time yourself reading a passage to find your words-per-minute rate and benchmark against typical adult readers.',
+    },
     usageCount: 16000,
     inputs: [
       { key: 'words', label: 'Words Read', type: 'slider', min: 10, max: 10000, step: 10, default: 1500, color: 'primary' },

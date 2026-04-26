@@ -97,7 +97,7 @@ export const healthCalculators: CalculatorConfig[] = [
     name: 'BMR Calculator',
     category: 'health',
     icon: 'Flame',
-    description: 'Basal Metabolic Rate — calories at rest.',
+    description: 'Calculate your Basal Metabolic Rate — the calories your body burns at complete rest.',
     usageCount: 87000,
     inputs: [
       { key: 'weight', label: 'Weight', type: 'slider', min: 30, max: 200, step: 0.5, default: 70, suffix: 'kg', color: 'primary' },
@@ -113,13 +113,68 @@ export const healthCalculators: CalculatorConfig[] = [
       const bmr = 10 * Number(i.weight) + 6.25 * Number(i.height) - 5 * Number(i.age) + 5;
       return { bmr, sedentary: bmr * 1.2, active: bmr * 1.55 };
     },
+    intro:
+      'BMR (Basal Metabolic Rate) is the number of calories your body burns at complete rest — to keep your heart beating, your lungs breathing, your brain firing, and your cells turning over. It accounts for roughly 60–75% of your daily calorie burn even if you do nothing. This calculator uses the Mifflin-St Jeor equation, the formula most clinicians and nutrition apps treat as the modern default for healthy adults. Layer activity on top to estimate your TDEE (total daily energy expenditure).',
+    formula: 'BMR (men) = 10 × kg + 6.25 × cm − 5 × age + 5 · BMR (women) = 10 × kg + 6.25 × cm − 5 × age − 161',
+    howItWorks:
+      'The Mifflin-St Jeor equation predicts BMR from weight, height, age, and sex. A 30-year-old man at 70 kg and 170 cm has a BMR of 1,649 cal/day; a woman of the same dimensions sits closer to 1,483 cal/day (the −166 offset between formulas reflects average body composition). Multiply BMR by an activity factor — 1.2 sedentary, 1.375 light, 1.55 moderate, 1.725 very active, 1.9 athlete — to get TDEE, the total calories you burn in a day.',
+    ranges: {
+      title: 'Activity multipliers (BMR × factor = TDEE)',
+      rows: [
+        { label: 'Sedentary', range: 'BMR × 1.2', note: 'Desk job, little or no exercise' },
+        { label: 'Lightly active', range: 'BMR × 1.375', note: '1–3 days a week of light exercise' },
+        { label: 'Moderately active', range: 'BMR × 1.55', note: '3–5 days a week of moderate exercise' },
+        { label: 'Very active', range: 'BMR × 1.725', note: '6–7 days a week of hard exercise' },
+        { label: 'Athlete / physical job', range: 'BMR × 1.9', note: 'Daily training plus active occupation' },
+      ],
+    },
+    limitations: [
+      'Mifflin-St Jeor predicts BMR within ±10% for most healthy adults. Outliers — very lean athletes, people with thyroid disorders, post-menopausal women on hormone therapy — can sit further off the predicted value.',
+      "It assumes a standard adult body composition. Two 70 kg people with very different muscle-to-fat ratios will have different real BMRs even though the formula returns the same number.",
+      "Activity multipliers are rough population averages. Real daily burn varies by NEAT (non-exercise activity thermogenesis) — fidgeting, posture, walking around — which is huge between individuals.",
+      "BMR drops about 1–2% per decade after age 20, mostly due to muscle loss. The age term in the formula approximates this; resistance training partially offsets it.",
+    ],
+    faqs: [
+      {
+        q: 'What is BMR vs TDEE?',
+        a: 'BMR is the calories you burn at total rest. TDEE (total daily energy expenditure) is BMR multiplied by an activity factor — it includes everything you do during the day. To lose weight, eat below TDEE; to gain, eat above it.',
+      },
+      {
+        q: 'Why does this calculator use Mifflin-St Jeor and not Harris-Benedict?',
+        a: 'Mifflin-St Jeor was published in 1990 and validated in 2005 against modern body-composition data; it predicts BMR more accurately than the older Harris-Benedict equation (1919) for today\'s population. Most clinical nutritionists default to it.',
+      },
+      {
+        q: 'Should I eat my BMR or my TDEE?',
+        a: 'Eat at least your BMR — going below it consistently slows your metabolism and is hard to sustain. Aim for TDEE for maintenance, TDEE − 300 to 500 cal for steady fat loss, TDEE + 200 to 500 for lean muscle gain.',
+      },
+      {
+        q: 'Does muscle increase BMR?',
+        a: 'Yes, but less dramatically than fitness magazines claim. Each kg of muscle burns about 13 calories per day at rest, vs. 4.5 for fat. The bigger benefit of muscle is metabolic — better insulin sensitivity and post-workout calorie burn.',
+      },
+      {
+        q: 'Why is my actual weight loss slower than calculated?',
+        a: 'Predicted TDEE has ±10% error, you may be tracking food intake low by 20–30% (very common), and your body adapts to a deficit by lowering NEAT. If progress stalls for 3+ weeks, recompute with current weight and tighten tracking before cutting calories further.',
+      },
+    ],
+    seo: {
+      title: 'BMR Calculator — Basal Metabolic Rate (Mifflin-St Jeor)',
+      description:
+        'Free BMR calculator using the Mifflin-St Jeor equation. See your basal metabolic rate, TDEE for 5 activity levels, and how many calories your body burns at rest.',
+      applicationCategory: 'HealthApplication',
+      sources: [
+        { label: 'Mifflin-St Jeor equation (1990 publication)', url: 'https://pubmed.ncbi.nlm.nih.gov/2305711/' },
+        { label: 'ADA review confirming Mifflin as modern default (2005)', url: 'https://pubmed.ncbi.nlm.nih.gov/15883556/' },
+      ],
+    },
+    lastUpdated: '2026-04-26',
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
   },
   {
     slug: 'calorie-calculator',
     name: 'Calorie Calculator',
     category: 'health',
     icon: 'Apple',
-    description: 'Daily calorie needs for your goals.',
+    description: 'Daily calorie needs to maintain, lose, or gain weight — based on your BMR and activity level.',
     trending: true,
     usageCount: 145000,
     inputs: [
@@ -139,6 +194,61 @@ export const healthCalculators: CalculatorConfig[] = [
       const maintain = bmr * multipliers[Number(i.activity) - 1];
       return { maintain, lose: maintain - 500, gain: maintain + 500 };
     },
+    intro:
+      'Daily calorie needs depend on four things: your basal metabolic rate (the calories you burn at rest), how active you are, and whether you want to maintain, lose, or gain weight. This calculator combines the Mifflin-St Jeor BMR formula with a standard activity multiplier and a 500 cal/day deficit or surplus to give the three target numbers most people care about. The 500 cal figure isn\'t arbitrary — a deficit of that size produces roughly 0.45 kg (1 lb) of fat loss per week.',
+    formula: 'TDEE = BMR × activity factor · loss target = TDEE − 500 · gain target = TDEE + 500',
+    howItWorks:
+      "First we compute BMR using the Mifflin-St Jeor equation. Then we multiply by an activity factor (1.2 sedentary up to 1.9 athlete) to get TDEE — your true daily burn. To lose ~0.5 kg/week, eat 500 cal below TDEE; to gain lean muscle slowly, eat 500 cal above. Faster rates work short-term but are harder to sustain and risk muscle loss (when cutting) or fat gain (when bulking).",
+    ranges: {
+      title: 'Calorie targets — what each level usually looks like',
+      rows: [
+        { label: 'Aggressive cut', range: 'TDEE − 750 to 1000', note: '~1 kg/week loss; only sustainable for short blocks' },
+        { label: 'Steady cut', range: 'TDEE − 500', note: '~0.5 kg/week loss; the standard recommendation' },
+        { label: 'Mild cut', range: 'TDEE − 250', note: '~0.25 kg/week; minimises muscle loss' },
+        { label: 'Maintenance', range: 'TDEE', note: 'Hold current weight; recompute monthly' },
+        { label: 'Lean bulk', range: 'TDEE + 250 to 500', note: '~0.25–0.5 kg/week gain; minimises fat gain' },
+      ],
+    },
+    limitations: [
+      "TDEE estimates are accurate to about ±10–15%. If you don't lose weight at your calculated 'lose' target after 2–3 weeks, your real TDEE is probably lower than predicted.",
+      'Most people under-report food intake by 20–30%. A "1,800 calorie diet" tracked casually is often actually 2,200+. Tighten tracking before cutting calories further.',
+      "Doesn't model the metabolic adaptation of long deficits. After 8–12 weeks of dieting, BMR drops 5–15% beyond what weight loss alone would predict — periodic diet breaks help.",
+      'For special populations — pregnancy, lactation, eating-disorder recovery, athletes in season — work with a dietitian rather than relying on a generic calculator.',
+    ],
+    faqs: [
+      {
+        q: 'How many calories should I eat to lose weight?',
+        a: 'A 500 cal/day deficit from your TDEE produces about 0.5 kg (1 lb) of fat loss per week, which is the rate most evidence-based guidelines recommend. Faster rates work but are harder to sustain and risk muscle loss.',
+      },
+      {
+        q: 'Why am I not losing weight at my calculated calorie target?',
+        a: 'Three usual reasons: (1) you\'re under-reporting food intake — very common, especially with restaurant meals and oils; (2) your TDEE is at the low end of the ±15% range; (3) you\'ve adapted to the deficit and need a 1–2 week diet break before resuming.',
+      },
+      {
+        q: 'Is 1,200 calories enough for women?',
+        a: '1,200 cal/day is the floor most professional bodies recommend for adult women — going below it is hard to sustain and risks micronutrient deficiencies. If your "lose weight" target is below 1,200, eat 1,200 and add steps instead of cutting further.',
+      },
+      {
+        q: 'Should I count calories every day forever?',
+        a: 'No. Use tracking to learn what your portions look like — most people only need to track for 4–8 weeks before they can eyeball it. Long-term, a weekly weigh-in and adjustments to portion size beats forever-tracking.',
+      },
+      {
+        q: 'How is this different from the BMR calculator?',
+        a: 'The BMR calculator returns just your basal metabolic rate — the calories you burn at rest. This calorie calculator multiplies BMR by your activity level (TDEE) and then offsets it by ±500 cal to give weight-loss and weight-gain targets directly.',
+      },
+    ],
+    seo: {
+      title: 'Calorie Calculator — Daily Calories to Lose, Gain or Maintain',
+      description:
+        'Free daily calorie calculator. See your TDEE, weight-loss target (TDEE − 500), and weight-gain target. Uses Mifflin-St Jeor BMR with 5 activity levels.',
+      applicationCategory: 'HealthApplication',
+      sources: [
+        { label: 'NIH — Body weight planner methodology', url: 'https://www.niddk.nih.gov/bwp' },
+        { label: 'Mifflin-St Jeor equation (BMR base)', url: 'https://pubmed.ncbi.nlm.nih.gov/2305711/' },
+      ],
+    },
+    lastUpdated: '2026-04-26',
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
   },
   {
     slug: 'macro-calculator',
@@ -146,6 +256,10 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'PieChart',
     description: 'Calculate protein, carbs, and fat ratios.',
+    seo: {
+      title: 'Macro Calculator: Protein, Carbs & Fat in Grams',
+      description: 'Free macro calculator. Convert your daily calorie target into grams of protein, carbs, and fat at any custom split. Donut chart of your macro mix.',
+    },
     usageCount: 54000,
     chartType: 'donut',
     inputs: [
@@ -173,6 +287,10 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Heart',
     description: 'Estimate body fat percentage.',
+    seo: {
+      title: 'Body Fat Calculator: U.S. Navy Method',
+      description: 'Free body fat percentage calculator using the U.S. Navy circumference method. Just waist, neck, and height — no calipers needed. Includes fitness band.',
+    },
     usageCount: 42000,
     inputs: [
       { key: 'waist', label: 'Waist', type: 'slider', min: 50, max: 200, step: 0.5, default: 85, suffix: 'cm', color: 'primary' },
@@ -202,6 +320,10 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Scale',
     description: 'Find your ideal weight based on height.',
+    seo: {
+      title: 'Ideal Weight Calculator: Devine, Robinson & Miller',
+      description: 'Free ideal-weight calculator. Compare three classical formulas (Devine, Robinson, Miller) for healthy adult weight given height — useful for fitness goals.',
+    },
     usageCount: 38000,
     inputs: [
       { key: 'height', label: 'Height', type: 'slider', min: 120, max: 220, step: 1, default: 170, suffix: 'cm', color: 'primary' },
@@ -227,6 +349,10 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Droplet',
     description: 'Daily water needs based on weight & activity.',
+    seo: {
+      title: 'Water Intake Calculator: Daily Hydration Goal',
+      description: 'Free water intake calculator. Get your daily hydration target in litres, glasses, and ounces — adjusted for body weight and exercise minutes.',
+    },
     trending: true,
     usageCount: 112000,
     inputs: [
@@ -249,6 +375,10 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Baby',
     description: 'Estimate your baby\'s due date.',
+    seo: {
+      title: 'Pregnancy Due Date Calculator: Weeks Remaining',
+      description: 'Free pregnancy due-date calculator. Estimate your baby\'s arrival date, weeks remaining, and current trimester from days since your last period.',
+    },
     usageCount: 76000,
     inputs: [
       { key: 'cycleDay', label: 'Days Since Last Period', type: 'slider', min: 0, max: 280, step: 1, default: 60, suffix: 'days', color: 'primary' },
@@ -275,6 +405,10 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Heart',
     description: 'Find your fertile window.',
+    seo: {
+      title: 'Ovulation Calculator: Fertile Window by Cycle',
+      description: 'Free ovulation calculator. Identify your ovulation day and fertile window for any cycle length. Useful for trying to conceive or natural family planning.',
+    },
     usageCount: 65000,
     inputs: [
       { key: 'cycleLength', label: 'Cycle Length', type: 'slider', min: 21, max: 45, step: 1, default: 28, suffix: 'days', color: 'primary' },
@@ -300,6 +434,10 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Heart',
     description: 'Training zones based on age.',
+    seo: {
+      title: 'Heart Rate Zone Calculator: Max HR, Fat-Burn, Cardio',
+      description: 'Free heart rate zone calculator. Get your max heart rate and the BPM ranges for fat-burn (60–70%) and cardio (70–85%) training zones — by age.',
+    },
     usageCount: 34000,
     inputs: [
       { key: 'age', label: 'Age', type: 'slider', min: 10, max: 100, step: 1, default: 30, suffix: 'yrs', color: 'primary' },
@@ -324,6 +462,10 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Zap',
     description: 'Estimate aerobic fitness capacity.',
+    seo: {
+      title: 'VO2 Max Calculator: Cooper 12-Minute Run Test',
+      description: 'Free VO2 max calculator using the Cooper 12-minute run test. Estimate your aerobic fitness capacity and see how it compares to your age band.',
+    },
     usageCount: 21000,
     inputs: [
       { key: 'distance', label: '12-Min Run Distance', type: 'slider', min: 500, max: 5000, step: 50, default: 2400, suffix: 'm', color: 'primary' },
@@ -348,6 +490,10 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Timer',
     description: 'Calculate running pace per km/mile.',
+    seo: {
+      title: 'Running Pace Calculator: min/km, min/mi & Speed',
+      description: 'Free running pace calculator. Convert any distance and time into pace per km, pace per mile, and average speed in km/h. Useful for race planning.',
+    },
     usageCount: 48000,
     inputs: [
       { key: 'distance', label: 'Distance', type: 'slider', min: 0.5, max: 100, step: 0.5, default: 10, suffix: 'km', color: 'primary' },
@@ -373,6 +519,10 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Dumbbell',
     description: 'Calculate your 1RM for any lift.',
+    seo: {
+      title: 'One-Rep Max Calculator: Estimate 1RM Safely',
+      description: 'Free one-rep max (1RM) calculator. Estimate your true 1RM from any sub-max set and get target weights for 5-rep (85%) and 10-rep (70%) training.',
+    },
     usageCount: 39000,
     inputs: [
       { key: 'weight', label: 'Weight Lifted', type: 'slider', min: 10, max: 500, step: 1, default: 80, suffix: 'kg', color: 'primary' },
@@ -394,6 +544,10 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Moon',
     description: 'Best bedtime based on wake time.',
+    seo: {
+      title: 'Sleep Cycle Calculator: Best Bedtime by Wake Time',
+      description: 'Free sleep cycle calculator. Get bedtime suggestions for 4, 5, and 6 sleep cycles so you wake at the end of a cycle, not in the middle.',
+    },
     usageCount: 58000,
     inputs: [
       { key: 'wakeHour', label: 'Wake Hour', type: 'slider', min: 0, max: 23, step: 1, default: 7, suffix: ':00', color: 'primary' },
@@ -423,6 +577,10 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Cake',
     description: 'Calculate exact age in years, months, days.',
+    seo: {
+      title: 'Age Calculator: Exact Years, Months & Days',
+      description: 'Free age calculator. Get your exact age in years, total months, and total days from your date of birth — accurate down to the day.',
+    },
     trending: true,
     usageCount: 189000,
     inputs: [
