@@ -18,25 +18,25 @@ export const metadata: Metadata = {
 
 export default function DisclaimerPage() {
   return (
-    <div className="pt-28 pb-20 px-5 md:px-8">
+    <div className="pt-24 sm:pt-28 pb-12 sm:pb-20 px-4 sm:px-5 md:px-8">
       <div className="max-w-3xl mx-auto">
 
         {/* Header */}
-        <div className="mb-10">
-          <p className="text-xs font-bold tracking-[0.18em] uppercase text-primary mb-3">Legal</p>
-          <h1 className="font-headline font-black text-4xl md:text-6xl tracking-tighter text-on-surface mb-4">
+        <div className="mb-8 sm:mb-10">
+          <p className="text-[10px] sm:text-xs font-bold tracking-[0.18em] uppercase text-primary mb-2 sm:mb-3">Legal</p>
+          <h1 className="font-headline font-black text-3xl sm:text-4xl md:text-6xl tracking-tighter text-on-surface mb-3 sm:mb-4">
             Disclaimer
           </h1>
-          <p className="text-lg text-on-surface-variant leading-relaxed max-w-2xl">
+          <p className="text-sm sm:text-base md:text-lg text-on-surface-variant leading-relaxed max-w-2xl">
             Calculators are powerful thinking tools. Here's what ours can — and can't — do for you.
           </p>
-          <p className="text-xs text-on-surface-variant/50 mt-4 font-mono">Last updated April 18, 2026</p>
+          <p className="text-[11px] sm:text-xs text-on-surface-variant/50 mt-3 sm:mt-4 font-mono">Last updated April 18, 2026</p>
         </div>
 
         <div className="flex flex-col gap-5">
 
           {/* Quick summary */}
-          <GlassCard className="p-6 md:p-8 border-l-2 border-primary/60">
+          <GlassCard className="p-5 sm:p-6 md:p-8 border-l-2 border-primary/60">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-3">The quick summary</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed mb-3">
               AllSmartCalculator results are mathematical estimates for informational use only. They are not financial, medical, legal, or professional advice of any kind. For decisions that genuinely matter — taking out a loan, managing a health condition, filing taxes — verify your numbers with a qualified professional who understands your full situation.
@@ -47,7 +47,7 @@ export default function DisclaimerPage() {
           </GlassCard>
 
           {/* Numbers are a starting point */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-4">Numbers are a starting point, not an endpoint</h2>
             <div className="flex flex-col gap-4">
               <div>
@@ -66,7 +66,7 @@ export default function DisclaimerPage() {
           </GlassCard>
 
           {/* Finance calculators */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-4">Financial calculators</h2>
             <div className="flex flex-col gap-4">
               <div>
@@ -97,7 +97,7 @@ export default function DisclaimerPage() {
           </GlassCard>
 
           {/* Health calculators */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-4">Health calculators</h2>
             <div className="flex flex-col gap-4">
               <div>
@@ -128,7 +128,7 @@ export default function DisclaimerPage() {
           </GlassCard>
 
           {/* Currency exchange rates */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-4">Currency exchange rates</h2>
             <div className="flex flex-col gap-4">
               <div>
@@ -159,7 +159,7 @@ export default function DisclaimerPage() {
           </GlassCard>
 
           {/* Crypto and investment */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-4">Crypto and investment calculators</h2>
             <div className="flex flex-col gap-4">
               <div>
@@ -178,7 +178,7 @@ export default function DisclaimerPage() {
           </GlassCard>
 
           {/* Engineering and scientific */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-4">Engineering and scientific calculators</h2>
             <div className="flex flex-col gap-4">
               <div>
@@ -197,7 +197,7 @@ export default function DisclaimerPage() {
           </GlassCard>
 
           {/* Formula accuracy */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-4">Formula accuracy and error reporting</h2>
             <div className="flex flex-col gap-4">
               <div>
@@ -216,7 +216,7 @@ export default function DisclaimerPage() {
           </GlassCard>
 
           {/* In short */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-3">The bottom line</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed mb-3">
               Use AllSmartCalculator to learn, explore, stress-test your assumptions, and get a feel for numbers. Use professionals when the stakes are real.

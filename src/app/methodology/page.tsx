@@ -81,47 +81,47 @@ const sources = [
 
 export default function MethodologyPage() {
   return (
-    <div className="pt-28 pb-20 px-5 md:px-8">
+    <div className="pt-24 sm:pt-28 pb-12 sm:pb-20 px-4 sm:px-5 md:px-8">
       <div className="max-w-4xl mx-auto">
         {/* Breadcrumb */}
         <nav
           aria-label="Breadcrumb"
-          className="flex items-center gap-2 text-xs font-semibold tracking-[0.15em] uppercase text-on-surface-variant/70 mb-4"
+          className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs font-semibold tracking-[0.15em] uppercase text-on-surface-variant/70 mb-4 flex-wrap"
         >
           <Link href="/" className="hover:text-primary transition-colors">Home</Link>
-          <ChevronRight className="w-3 h-3" />
+          <ChevronRight className="w-3 h-3 shrink-0" />
           <Link href="/about" className="hover:text-primary transition-colors">About</Link>
-          <ChevronRight className="w-3 h-3" />
+          <ChevronRight className="w-3 h-3 shrink-0" />
           <span className="text-primary">Methodology</span>
         </nav>
 
         {/* Header */}
-        <div className="mb-12">
-          <p className="text-xs font-bold tracking-[0.18em] uppercase text-primary mb-3">Methodology</p>
-          <h1 className="font-headline font-black text-4xl md:text-6xl tracking-tighter text-on-surface mb-4">
+        <div className="mb-8 sm:mb-12">
+          <p className="text-[10px] sm:text-xs font-bold tracking-[0.18em] uppercase text-primary mb-2 sm:mb-3">Methodology</p>
+          <h1 className="font-headline font-black text-3xl sm:text-4xl md:text-6xl tracking-tighter text-on-surface mb-3 sm:mb-4">
             How we build &amp; verify every calculator
           </h1>
-          <p className="text-base md:text-lg text-on-surface-variant leading-relaxed max-w-2xl">
+          <p className="text-sm sm:text-base md:text-lg text-on-surface-variant leading-relaxed max-w-2xl">
             AllSmartCalculator is a free public tool that touches money and health
             decisions — categories where being wrong has real consequences. This
             page is our public commitment to how we get it right, and how we
             tell you when we can&apos;t.
           </p>
-          <p className="text-xs text-on-surface-variant/50 mt-4 font-mono">
+          <p className="text-[11px] sm:text-xs text-on-surface-variant/50 mt-3 sm:mt-4 font-mono">
             Last updated April 26, 2026
           </p>
         </div>
 
         {/* Principles */}
-        <h2 className="font-headline font-black text-2xl md:text-3xl tracking-tighter mb-6">
+        <h2 className="font-headline font-black text-xl sm:text-2xl md:text-3xl tracking-tighter mb-5 sm:mb-6">
           Editorial principles
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 mb-10 sm:mb-12">
           {principles.map((p) => {
             const Icon = p.icon;
             return (
-              <GlassCard key={p.title} className="p-6">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-dim to-primary flex items-center justify-center shadow-glow-primary mb-4">
+              <GlassCard key={p.title} className="p-5 sm:p-6">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-primary-dim to-primary flex items-center justify-center shadow-glow-primary mb-3 sm:mb-4">
                   <Icon className="w-4 h-4 text-white" />
                 </div>
                 <h3 className="font-headline font-bold text-base text-on-surface mb-2">
@@ -134,10 +134,10 @@ export default function MethodologyPage() {
         </div>
 
         {/* Process */}
-        <h2 className="font-headline font-black text-2xl md:text-3xl tracking-tighter mb-6">
+        <h2 className="font-headline font-black text-xl sm:text-2xl md:text-3xl tracking-tighter mb-5 sm:mb-6">
           How a calculator gets built
         </h2>
-        <GlassCard className="p-6 md:p-8 mb-12">
+        <GlassCard className="p-5 sm:p-6 md:p-8 mb-10 sm:mb-12">
           <ol className="flex flex-col gap-5 text-sm md:text-base text-on-surface-variant leading-relaxed">
             <li>
               <p className="font-semibold text-on-surface mb-1">1. Pick the formula.</p>
@@ -191,26 +191,26 @@ export default function MethodologyPage() {
         </GlassCard>
 
         {/* Sources */}
-        <h2 className="font-headline font-black text-2xl md:text-3xl tracking-tighter mb-6">
+        <h2 className="font-headline font-black text-xl sm:text-2xl md:text-3xl tracking-tighter mb-5 sm:mb-6">
           Primary sources
         </h2>
-        <div className="flex flex-col gap-5 mb-12">
+        <div className="flex flex-col gap-4 sm:gap-5 mb-10 sm:mb-12">
           {sources.map((s) => (
-            <GlassCard key={s.domain} className="p-6 md:p-8">
-              <h3 className="font-headline font-bold text-lg text-on-surface mb-4">
+            <GlassCard key={s.domain} className="p-5 sm:p-6 md:p-8">
+              <h3 className="font-headline font-bold text-base sm:text-lg text-on-surface mb-3 sm:mb-4">
                 {s.domain}
               </h3>
-              <ul className="flex flex-col gap-2.5">
+              <ul className="flex flex-col gap-2 sm:gap-2.5">
                 {s.items.map((item) => (
                   <li key={item.url}>
                     <a
                       href={item.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
+                      className="inline-flex items-start gap-1.5 text-xs sm:text-sm text-primary hover:underline break-words"
                     >
-                      {item.label}
-                      <ExternalLink className="w-3 h-3" />
+                      <span>{item.label}</span>
+                      <ExternalLink className="w-3 h-3 shrink-0 mt-0.5" />
                     </a>
                   </li>
                 ))}
@@ -220,14 +220,14 @@ export default function MethodologyPage() {
         </div>
 
         {/* Corrections */}
-        <GlassCard className="p-6 md:p-8 border-l-2 border-primary/60">
-          <h2 className="font-headline font-bold text-lg md:text-xl text-on-surface mb-3">
+        <GlassCard className="p-5 sm:p-6 md:p-8 border-l-2 border-primary/60">
+          <h2 className="font-headline font-bold text-base sm:text-lg md:text-xl text-on-surface mb-3">
             Corrections policy
           </h2>
-          <p className="text-sm md:text-base text-on-surface-variant leading-relaxed mb-3">
+          <p className="text-sm md:text-base text-on-surface-variant leading-relaxed mb-3 break-words">
             If you spot a wrong number, a misapplied formula, or an outdated
             reference, we&apos;d much rather hear about it than not. Email{' '}
-            <span className="text-primary font-mono">hello@allsmartcalculator.tech</span>{' '}
+            <span className="text-primary font-mono break-all">hello@allsmartcalculator.tech</span>{' '}
             with the calculator URL, the inputs you used, and the expected result.
           </p>
           <p className="text-sm md:text-base text-on-surface-variant leading-relaxed">

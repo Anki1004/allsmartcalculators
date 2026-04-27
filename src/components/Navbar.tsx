@@ -4,12 +4,14 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Search, Menu, X, Sun, Moon } from 'lucide-react';
 import NavCurrencyPicker from './NavCurrencyPicker';
+import { useCurrency, SUPPORTED_CURRENCIES } from '@/lib/currency-context';
 import { useTheme } from '@/lib/theme-context';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { theme, toggle } = useTheme();
+  const { currency, setCurrency, flag } = useCurrency();
 
   useEffect(() => {
     const handle = () => setScrolled(window.scrollY > 20);
@@ -25,14 +27,14 @@ export default function Navbar() {
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-8 py-3 md:py-4 flex items-center justify-between gap-2">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-dim to-primary flex items-center justify-center shadow-glow-primary group-hover:scale-105 transition-transform">
+        <Link href="/" className="flex items-center gap-2 group min-w-0 shrink">
+          <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-gradient-to-br from-primary-dim to-primary flex items-center justify-center shadow-glow-primary group-hover:scale-105 transition-transform shrink-0">
             <svg
               viewBox="0 0 24 24"
               fill="none"
-              className="w-5 h-5 text-white"
+              className="w-4 h-4 md:w-5 md:h-5 text-white"
               stroke="currentColor"
               strokeWidth="2.5"
               strokeLinecap="round"
@@ -48,7 +50,7 @@ export default function Navbar() {
               <line x1="12" y1="18" x2="14" y2="18" />
             </svg>
           </div>
-          <span className="font-headline text-2xl font-black tracking-tighter text-gradient">
+          <span className="font-headline text-base sm:text-lg md:text-2xl font-black tracking-tighter text-gradient truncate">
             AllSmartCalculator
           </span>
         </Link>
@@ -83,13 +85,13 @@ export default function Navbar() {
         </nav>
 
         {/* Actions */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           <NavCurrencyPicker />
 
           <button
             aria-label="Toggle theme"
             onClick={toggle}
-            className="p-2.5 rounded-xl glass glass-border hover:bg-white/5 transition-colors press"
+            className="p-2 sm:p-2.5 rounded-xl glass glass-border hover:bg-white/5 transition-colors press"
           >
             {theme === 'dark'
               ? <Sun className="w-4 h-4 text-primary" />
@@ -100,14 +102,14 @@ export default function Navbar() {
           <button
             aria-label="Search"
             onClick={() => window.dispatchEvent(new CustomEvent('open-search'))}
-            className="p-2.5 rounded-xl glass glass-border hover:bg-white/5 transition-colors press"
+            className="p-2 sm:p-2.5 rounded-xl glass glass-border hover:bg-white/5 transition-colors press"
           >
             <Search className="w-4 h-4 text-primary" />
           </button>
           <button
             aria-label="Menu"
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2.5 rounded-xl glass glass-border hover:bg-white/5 transition-colors press"
+            className="md:hidden p-2 sm:p-2.5 rounded-xl glass glass-border hover:bg-white/5 transition-colors press"
           >
             {mobileOpen ? (
               <X className="w-4 h-4 text-primary" />
@@ -120,36 +122,63 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 glass border-t border-white/5">
-          <nav className="flex flex-col p-6 gap-4">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-surface/95 backdrop-blur-xl border-t border-white/5 shadow-ambient max-h-[calc(100dvh-4rem)] overflow-y-auto">
+          <nav className="flex flex-col p-5 gap-1">
             <Link
               href="/categories"
               onClick={() => setMobileOpen(false)}
-              className="text-base font-medium text-on-surface hover:text-primary transition-colors"
+              className="text-base font-medium text-on-surface hover:text-primary transition-colors py-3 border-b border-white/5"
             >
               Categories
             </Link>
             <Link
               href="/trending"
               onClick={() => setMobileOpen(false)}
-              className="text-base font-medium text-on-surface hover:text-primary transition-colors"
+              className="text-base font-medium text-on-surface hover:text-primary transition-colors py-3 border-b border-white/5 flex items-center gap-2"
             >
+              <span className="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse" />
               Trending
             </Link>
             <Link
               href="/about"
               onClick={() => setMobileOpen(false)}
-              className="text-base font-medium text-on-surface hover:text-primary transition-colors"
+              className="text-base font-medium text-on-surface hover:text-primary transition-colors py-3 border-b border-white/5"
             >
               About
             </Link>
             <Link
               href="/blog"
               onClick={() => setMobileOpen(false)}
-              className="text-base font-medium text-on-surface hover:text-primary transition-colors"
+              className="text-base font-medium text-on-surface hover:text-primary transition-colors py-3 border-b border-white/5"
             >
               Blog
             </Link>
+
+            {/* Currency picker on mobile */}
+            <div className="pt-4 mt-2">
+              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-on-surface-variant/60 mb-3">
+                Output currency
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {SUPPORTED_CURRENCIES.map((c) => {
+                  const active = currency === c.code;
+                  return (
+                    <button
+                      key={c.code}
+                      onClick={() => { setCurrency(c.code); }}
+                      className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-[11px] font-bold font-mono transition-all border ${
+                        active
+                          ? 'bg-primary/20 border-primary/50 text-primary'
+                          : 'border-white/10 bg-white/[0.03] text-on-surface-variant'
+                      }`}
+                    >
+                      <span className="text-sm leading-none">{c.flag}</span>
+                      <span>{c.code}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
           </nav>
         </div>
       )}

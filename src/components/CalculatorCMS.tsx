@@ -32,12 +32,12 @@ function SectionCard({
   children: React.ReactNode;
 }) {
   return (
-    <GlassCard className="p-6 md:p-8">
-      <div className="flex items-center gap-3 mb-5">
-        <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${color}`}>
+    <GlassCard className="p-5 sm:p-6 md:p-8">
+      <div className="flex items-center gap-3 mb-4 sm:mb-5">
+        <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center shrink-0 ${color}`}>
           <Icon className="w-4 h-4" />
         </div>
-        <h2 className="font-headline font-bold text-lg text-on-surface">{title}</h2>
+        <h2 className="font-headline font-bold text-base sm:text-lg text-on-surface">{title}</h2>
       </div>
       {children}
     </GlassCard>
@@ -67,7 +67,7 @@ export default async function CalculatorCMS({ slug }: { slug: string }) {
   if (!hasContent) return null;
 
   return (
-    <div className="mt-10 flex flex-col gap-5">
+    <div className="mt-8 sm:mt-10 flex flex-col gap-4 sm:gap-5">
       {/* Intro */}
       {content.intro && (
         <SectionCard icon={BookOpen} title="About this calculator" color="bg-primary/15 text-primary">

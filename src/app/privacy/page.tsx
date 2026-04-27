@@ -18,25 +18,25 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <div className="pt-28 pb-20 px-5 md:px-8">
+    <div className="pt-24 sm:pt-28 pb-12 sm:pb-20 px-4 sm:px-5 md:px-8">
       <div className="max-w-3xl mx-auto">
 
         {/* Header */}
-        <div className="mb-10">
-          <p className="text-xs font-bold tracking-[0.18em] uppercase text-primary mb-3">Legal</p>
-          <h1 className="font-headline font-black text-4xl md:text-6xl tracking-tighter text-on-surface mb-4">
+        <div className="mb-8 sm:mb-10">
+          <p className="text-[10px] sm:text-xs font-bold tracking-[0.18em] uppercase text-primary mb-2 sm:mb-3">Legal</p>
+          <h1 className="font-headline font-black text-3xl sm:text-4xl md:text-6xl tracking-tighter text-on-surface mb-3 sm:mb-4">
             Privacy Policy
           </h1>
-          <p className="text-lg text-on-surface-variant leading-relaxed max-w-2xl">
+          <p className="text-sm sm:text-base md:text-lg text-on-surface-variant leading-relaxed max-w-2xl">
             Here's exactly what we do (and don't do) with any information you might share with us. Written in plain language, because privacy policies shouldn't require a law degree to understand.
           </p>
-          <p className="text-xs text-on-surface-variant/50 mt-4 font-mono">Last updated April 18, 2026</p>
+          <p className="text-[11px] sm:text-xs text-on-surface-variant/50 mt-3 sm:mt-4 font-mono">Last updated April 18, 2026</p>
         </div>
 
         <div className="flex flex-col gap-5">
 
           {/* Short version */}
-          <GlassCard className="p-6 md:p-8 border-l-2 border-primary/60">
+          <GlassCard className="p-5 sm:p-6 md:p-8 border-l-2 border-primary/60">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-3">The short version</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed mb-3">
               All calculations on AllSmartCalculator happen directly in your browser. The numbers you enter — your salary, weight, loan amount, whatever — never leave your device. We don't store them, we don't see them, and we can't access them. That's not a marketing claim; it's how the site is technically built.
@@ -50,7 +50,7 @@ export default function PrivacyPage() {
           </GlassCard>
 
           {/* What we collect */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-4">What information we collect</h2>
             <div className="flex flex-col gap-4">
               <div>
@@ -73,7 +73,7 @@ export default function PrivacyPage() {
           </GlassCard>
 
           {/* Third-party services */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-2">Third-party services we use</h2>
             <p className="text-sm text-on-surface-variant mb-4 leading-relaxed">Being transparent about this matters. Here's who we work with and why.</p>
             <div className="flex flex-col gap-4">
@@ -97,7 +97,7 @@ export default function PrivacyPage() {
           </GlassCard>
 
           {/* How we use data */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-3">How we use your data</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed mb-4">Short list, because we don't do much with it:</p>
             <ul className="space-y-2 mb-4">
@@ -120,7 +120,7 @@ export default function PrivacyPage() {
           </GlassCard>
 
           {/* Advertising */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-3">Advertising and personalization</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed mb-3">
               If AllSmartCalculator runs ads, here's what you should know: ad networks like Google AdSense use cookies to serve ads based on your previous visits to our site and other websites. This is called "personalized advertising" and is standard across most of the web.
@@ -134,7 +134,7 @@ export default function PrivacyPage() {
           </GlassCard>
 
           {/* Your rights */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-3">Your rights (GDPR, CCPA, and others)</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed mb-4">Depending on where you live, you have legal rights over your data. Even though we collect very little, these still apply:</p>
             <ul className="space-y-3 mb-4">
@@ -157,7 +157,7 @@ export default function PrivacyPage() {
           </GlassCard>
 
           {/* Children */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-3">Children's privacy</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed">
               AllSmartCalculator is intended for general audiences and is not specifically directed at children under 13. We don't knowingly collect personal information from children under 13. If you're a parent and believe your child has provided us with personal information, contact us and we'll delete it promptly.
@@ -165,7 +165,7 @@ export default function PrivacyPage() {
           </GlassCard>
 
           {/* Security */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-3">Security</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed mb-3">
               We use standard security practices: HTTPS across the entire site, secure hosting, and minimal data collection — the best security is not having the data in the first place.
@@ -176,7 +176,7 @@ export default function PrivacyPage() {
           </GlassCard>
 
           {/* Changes */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-3">Changes to this policy</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed mb-3">
               If we update this privacy policy, we'll change the "last updated" date at the top of the page. For significant changes that affect how we handle your data, we'll do our best to notify users — most likely through a banner on the site.
@@ -187,7 +187,7 @@ export default function PrivacyPage() {
           </GlassCard>
 
           {/* Contact */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-3">Contacting us</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed">
               If you have any questions about this privacy policy, or about how we handle data, get in touch through our contact page. We read every message and respond within a few business days.

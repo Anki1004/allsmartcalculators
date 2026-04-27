@@ -88,13 +88,13 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-    <div className="pt-28 pb-20 px-5 md:px-8">
+    <div className="pt-24 sm:pt-28 pb-12 sm:pb-20 px-4 sm:px-5 md:px-8">
       <div className="max-w-3xl mx-auto">
 
         {/* Back */}
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-sm text-on-surface-variant hover:text-primary transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-xs sm:text-sm text-on-surface-variant hover:text-primary transition-colors mb-6 sm:mb-8"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Blog
@@ -102,7 +102,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
 
         {/* Cover image */}
         {imgUrl && (
-          <div className="relative w-full h-64 md:h-80 rounded-2xl overflow-hidden mb-8">
+          <div className="relative w-full h-44 sm:h-64 md:h-80 rounded-2xl overflow-hidden mb-6 sm:mb-8">
             <Image
               src={imgUrl}
               alt={post.coverImage?.alternativeText ?? post.title}
@@ -115,42 +115,42 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         )}
 
         {/* Header */}
-        <div className="mb-8">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-xs font-bold px-2 py-0.5 rounded-full text-primary bg-primary/10">
+        <div className="mb-6 sm:mb-8">
+          <div className="flex items-center gap-2 mb-3 sm:mb-4 flex-wrap">
+            <span className="text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full text-primary bg-primary/10">
               {post.category}
             </span>
             {post.showOnHome && (
-              <span className="text-xs font-bold px-2 py-0.5 rounded-full text-yellow-400 bg-yellow-400/10">
+              <span className="text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full text-yellow-400 bg-yellow-400/10">
                 Featured
               </span>
             )}
           </div>
-          <h1 className="font-headline font-black text-3xl md:text-5xl tracking-tighter text-on-surface mb-4 leading-tight">
+          <h1 className="font-headline font-black text-2xl sm:text-3xl md:text-5xl tracking-tighter text-on-surface mb-3 sm:mb-4 leading-tight break-words">
             {post.title}
           </h1>
-          <p className="text-lg text-on-surface-variant leading-relaxed mb-6">
+          <p className="text-sm sm:text-base md:text-lg text-on-surface-variant leading-relaxed mb-5 sm:mb-6">
             {post.excerpt}
           </p>
-          <div className="flex items-center gap-5 text-sm text-on-surface-variant/60 pb-6 border-b border-white/5">
+          <div className="flex items-center gap-3 sm:gap-5 text-xs sm:text-sm text-on-surface-variant/60 pb-5 sm:pb-6 border-b border-white/5 flex-wrap">
             <span className="flex items-center gap-1.5">
-              <User className="w-4 h-4" />
+              <User className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               {post.metaAuthor ?? 'AllSmartCalculator Team'}
             </span>
             <span className="flex items-center gap-1.5">
-              <Calendar className="w-4 h-4" />
+              <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               {date}
             </span>
             <span className="flex items-center gap-1.5">
-              <Clock className="w-4 h-4" />
+              <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               {post.readTime} min read
             </span>
           </div>
         </div>
 
         {/* Content */}
-        <GlassCard className="p-6 md:p-10">
-          <div className="prose prose-invert prose-sm md:prose-base max-w-none
+        <GlassCard className="p-5 sm:p-6 md:p-10">
+          <div className="prose prose-invert prose-sm md:prose-base max-w-none break-words
             prose-headings:font-headline prose-headings:font-bold prose-headings:text-on-surface
             prose-p:text-on-surface-variant prose-p:leading-relaxed
             prose-a:text-primary prose-a:no-underline hover:prose-a:underline
@@ -168,13 +168,13 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         </GlassCard>
 
         {/* Footer CTA */}
-        <div className="mt-10 text-center">
-          <p className="text-sm text-on-surface-variant mb-4">
+        <div className="mt-8 sm:mt-10 text-center">
+          <p className="text-xs sm:text-sm text-on-surface-variant mb-3 sm:mb-4">
             Try the calculators mentioned in this article
           </p>
           <Link
             href="/categories"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-primary-dim to-primary text-white font-semibold text-sm hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 rounded-xl bg-gradient-to-r from-primary-dim to-primary text-white font-semibold text-sm hover:opacity-90 transition-opacity"
           >
             Browse all calculators
           </Link>

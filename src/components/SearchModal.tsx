@@ -62,7 +62,7 @@ export default function SearchModal() {
 
   return (
     <div
-      className="fixed inset-0 z-[9999] flex items-start justify-center px-4 pt-[8vh]"
+      className="fixed inset-0 z-[9999] flex items-start justify-center px-3 sm:px-4 pt-[5vh] sm:pt-[8vh]"
       onClick={() => setOpen(false)}
     >
       {/* Backdrop */}
@@ -75,17 +75,17 @@ export default function SearchModal() {
         onKeyDown={handleKey}
       >
         {/* Input row */}
-        <div className="flex items-center gap-3 bg-surface-container-high border border-outline-variant/30 rounded-2xl px-5 py-4 shadow-ambient">
-          <Search className="w-5 h-5 text-primary shrink-0" />
+        <div className="flex items-center gap-2 sm:gap-3 bg-surface-container-high border border-outline-variant/30 rounded-2xl px-4 sm:px-5 py-3 sm:py-4 shadow-ambient">
+          <Search className="w-4 h-4 sm:w-5 sm:h-5 text-primary shrink-0" />
           <input
             ref={inputRef}
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search — try 'health', 'BMI', 'loan', 'crypto'…"
-            className="flex-1 bg-transparent outline-none text-base text-on-surface placeholder:text-on-surface-variant/40 font-body"
+            placeholder="Search calculators…"
+            className="flex-1 min-w-0 bg-transparent outline-none text-sm sm:text-base text-on-surface placeholder:text-on-surface-variant/40 font-body"
           />
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             <kbd className="hidden sm:block px-2 py-0.5 rounded-md bg-surface-container text-[10px] font-mono text-on-surface-variant border border-outline-variant/30">
               ESC
             </kbd>
@@ -97,20 +97,20 @@ export default function SearchModal() {
 
         {/* Results list */}
         {results.length > 0 && (
-          <div className="mt-2 bg-surface-container-high border border-outline-variant/30 rounded-2xl overflow-hidden shadow-ambient">
+          <div className="mt-2 bg-surface-container-high border border-outline-variant/30 rounded-2xl overflow-hidden shadow-ambient max-h-[70vh] overflow-y-auto">
             {results.map((calc, idx) => (
               <button
                 key={calc.slug}
                 onClick={() => go(calc)}
-                className={`w-full flex items-center gap-4 px-5 py-3.5 text-left border-b border-white/[0.04] last:border-0 transition-colors ${
+                className={`w-full flex items-center gap-3 sm:gap-4 px-4 sm:px-5 py-3 sm:py-3.5 text-left border-b border-white/[0.04] last:border-0 transition-colors ${
                   idx === active ? 'bg-primary/10' : 'hover:bg-white/[0.04]'
                 }`}
               >
-                <span className="text-xl w-7 shrink-0 leading-none">{getCategoryIcon(calc.category)}</span>
+                <span className="text-lg sm:text-xl w-6 sm:w-7 shrink-0 leading-none">{getCategoryIcon(calc.category)}</span>
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-0.5">
+                  <div className="flex items-center gap-2 mb-0.5 flex-wrap">
                     <span className="font-semibold text-sm text-on-surface">{calc.name}</span>
-                    <span className="text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
+                    <span className="text-[9px] font-bold uppercase tracking-widest px-1.5 sm:px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
                       {calc.category}
                     </span>
                   </div>

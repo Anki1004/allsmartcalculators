@@ -90,33 +90,33 @@ const sourceList = [
 
 export default function AboutPage() {
   return (
-    <div className="pt-28 pb-16 px-5 md:px-8">
+    <div className="pt-24 sm:pt-28 pb-12 sm:pb-16 px-4 sm:px-5 md:px-8">
       <div className="max-w-5xl mx-auto">
         {/* Breadcrumb */}
         <nav
           aria-label="Breadcrumb"
-          className="flex items-center gap-2 text-xs font-semibold tracking-[0.15em] uppercase text-on-surface-variant/70 mb-6"
+          className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs font-semibold tracking-[0.15em] uppercase text-on-surface-variant/70 mb-5 sm:mb-6 flex-wrap"
         >
           <Link href="/" className="hover:text-primary transition-colors">Home</Link>
-          <ChevronRight className="w-3 h-3" />
+          <ChevronRight className="w-3 h-3 shrink-0" />
           <span className="text-primary">About</span>
         </nav>
 
         {/* Hero */}
-        <h1 className="font-headline font-black text-4xl md:text-7xl tracking-tighter mb-6">
+        <h1 className="font-headline font-black text-3xl sm:text-4xl md:text-7xl tracking-tighter mb-4 sm:mb-6 leading-[1.05]">
           <span className="text-on-surface">I built</span>{' '}
           <span className="text-gradient">AllSmartCalculator</span>
           <br />
           <span className="text-on-surface">because math deserves better.</span>
         </h1>
-        <p className="text-base md:text-xl text-on-surface-variant max-w-3xl mb-6 leading-relaxed">
+        <p className="text-sm sm:text-base md:text-xl text-on-surface-variant max-w-3xl mb-5 sm:mb-6 leading-relaxed">
           Every calculator site on the internet looks like it was built in 2008 —
           cluttered, ugly, ad-ridden, and painful to use on a phone. AllSmartCalculator
           is the opposite: clean, fast, free, ad-free, and honest about its limits.
           {TOTAL_CALCULATORS}+ calculators across 8 categories, all built and
           reviewed by one person, in public.
         </p>
-        <p className="text-sm md:text-base text-on-surface-variant/80 max-w-3xl mb-12 leading-relaxed">
+        <p className="text-xs sm:text-sm md:text-base text-on-surface-variant/80 max-w-3xl mb-10 sm:mb-12 leading-relaxed">
           The site has a particular focus on India-specific finance tools —
           EMI, SIP, GST, HRA, income tax, PPF, NPS — where most existing
           options are bank aggregators with cluttered, ad-heavy interfaces.
@@ -126,18 +126,18 @@ export default function AboutPage() {
         </p>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-12 sm:mb-20">
           {[
             { v: `${TOTAL_CALCULATORS}+`, l: 'Calculators' },
             { v: '8', l: 'Categories' },
             { v: '$0', l: 'Cost to use' },
             { v: '0', l: 'Ads ever' },
           ].map((s) => (
-            <GlassCard key={s.l} className="p-6 text-center">
-              <p className="font-mono font-black text-3xl md:text-4xl text-gradient mb-1">
+            <GlassCard key={s.l} className="p-4 sm:p-6 text-center">
+              <p className="font-mono font-black text-2xl sm:text-3xl md:text-4xl text-gradient mb-1">
                 {s.v}
               </p>
-              <p className="text-xs uppercase tracking-[0.15em] text-on-surface-variant">
+              <p className="text-[10px] sm:text-xs uppercase tracking-[0.15em] text-on-surface-variant">
                 {s.l}
               </p>
             </GlassCard>
@@ -145,18 +145,18 @@ export default function AboutPage() {
         </div>
 
         {/* Principles */}
-        <h2 className="font-headline font-black text-3xl md:text-4xl tracking-tighter mb-8">
+        <h2 className="font-headline font-black text-2xl sm:text-3xl md:text-4xl tracking-tighter mb-6 sm:mb-8">
           The principles
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-12 sm:mb-20">
           {values.map((v) => {
             const Icon = v.icon;
             return (
-              <GlassCard key={v.title} className="p-8">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-dim to-primary flex items-center justify-center shadow-glow-primary mb-4">
-                  <Icon className="w-5 h-5 text-white" />
+              <GlassCard key={v.title} className="p-5 sm:p-8">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-primary-dim to-primary flex items-center justify-center shadow-glow-primary mb-3 sm:mb-4">
+                  <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                 </div>
-                <h3 className="font-headline font-bold text-xl text-on-surface mb-2">
+                <h3 className="font-headline font-bold text-lg sm:text-xl text-on-surface mb-2">
                   {v.title}
                 </h3>
                 <p className="text-sm text-on-surface-variant leading-relaxed">{v.text}</p>
@@ -166,14 +166,14 @@ export default function AboutPage() {
         </div>
 
         {/* Trust blocks (E-E-A-T) */}
-        <h2 className="font-headline font-black text-3xl md:text-4xl tracking-tighter mb-3">
+        <h2 className="font-headline font-black text-2xl sm:text-3xl md:text-4xl tracking-tighter mb-3">
           How we earn trust
         </h2>
-        <p className="text-sm md:text-base text-on-surface-variant mb-8 max-w-2xl">
+        <p className="text-sm md:text-base text-on-surface-variant mb-6 sm:mb-8 max-w-2xl">
           Calculators in finance, health, and tax can change real-world decisions.
           Three pages explain how we approach that responsibility.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 mb-12 sm:mb-20">
           {trustBlocks.map((t) => {
             const Icon = t.icon;
             return (
@@ -199,10 +199,10 @@ export default function AboutPage() {
         </div>
 
         {/* Data sources summary */}
-        <h2 className="font-headline font-black text-3xl md:text-4xl tracking-tighter mb-6">
+        <h2 className="font-headline font-black text-2xl sm:text-3xl md:text-4xl tracking-tighter mb-5 sm:mb-6">
           Data sources, in short
         </h2>
-        <GlassCard className="p-6 md:p-8 mb-20">
+        <GlassCard className="p-5 sm:p-6 md:p-8 mb-12 sm:mb-20">
           <p className="text-sm md:text-base text-on-surface-variant leading-relaxed mb-5">
             Every calculator names its sources on the page itself. At a sitewide
             level, the primary references are:
@@ -228,16 +228,16 @@ export default function AboutPage() {
         </GlassCard>
 
         {/* Built by */}
-        <h2 className="font-headline font-black text-3xl md:text-4xl tracking-tighter mb-8">
+        <h2 className="font-headline font-black text-2xl sm:text-3xl md:text-4xl tracking-tighter mb-6 sm:mb-8">
           Built by
         </h2>
-        <GlassCard className="p-8 md:p-10 mb-12">
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
-            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary-dim to-primary flex items-center justify-center shadow-glow-primary text-3xl font-headline font-black text-white shrink-0">
+        <GlassCard className="p-5 sm:p-8 md:p-10 mb-10 sm:mb-12">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-5 sm:gap-6">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-primary-dim to-primary flex items-center justify-center shadow-glow-primary text-2xl sm:text-3xl font-headline font-black text-white shrink-0">
               A
             </div>
-            <div className="flex-1">
-              <h3 className="font-headline font-bold text-2xl text-on-surface mb-1">
+            <div className="flex-1 min-w-0">
+              <h3 className="font-headline font-bold text-xl sm:text-2xl text-on-surface mb-1">
                 Ankit Gupta
               </h3>
               <p className="text-sm text-on-surface-variant leading-relaxed mb-4 max-w-xl">
@@ -245,7 +245,7 @@ export default function AboutPage() {
                 every calculator on AllSmartCalculator. Based in India; writing in
                 English for an India-first, globally relevant audience.
               </p>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 <Link
                   href="/author/ankit-gupta"
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-br from-primary-dim to-primary text-white font-semibold text-sm shadow-glow-primary press"
@@ -275,14 +275,14 @@ export default function AboutPage() {
         </GlassCard>
 
         {/* Contact */}
-        <GlassCard className="p-6 md:p-8 border-l-2 border-primary/60">
+        <GlassCard className="p-5 sm:p-6 md:p-8 border-l-2 border-primary/60">
           <h2 className="font-headline font-bold text-lg md:text-xl text-on-surface mb-3">
             How to reach us
           </h2>
-          <p className="text-sm md:text-base text-on-surface-variant leading-relaxed mb-2">
+          <p className="text-sm md:text-base text-on-surface-variant leading-relaxed mb-2 break-words">
             Calculator suggestion, bug report, formula correction, or general
             feedback —{' '}
-            <span className="text-primary font-mono">hello@allsmartcalculator.tech</span>{' '}
+            <span className="text-primary font-mono break-all">hello@allsmartcalculator.tech</span>{' '}
             or use the{' '}
             <Link href="/contact" className="text-primary hover:underline font-semibold">
               contact form

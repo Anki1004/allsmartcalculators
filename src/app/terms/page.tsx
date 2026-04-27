@@ -18,25 +18,25 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <div className="pt-28 pb-20 px-5 md:px-8">
+    <div className="pt-24 sm:pt-28 pb-12 sm:pb-20 px-4 sm:px-5 md:px-8">
       <div className="max-w-3xl mx-auto">
 
         {/* Header */}
-        <div className="mb-10">
-          <p className="text-xs font-bold tracking-[0.18em] uppercase text-primary mb-3">Legal</p>
-          <h1 className="font-headline font-black text-4xl md:text-6xl tracking-tighter text-on-surface mb-4">
+        <div className="mb-8 sm:mb-10">
+          <p className="text-[10px] sm:text-xs font-bold tracking-[0.18em] uppercase text-primary mb-2 sm:mb-3">Legal</p>
+          <h1 className="font-headline font-black text-3xl sm:text-4xl md:text-6xl tracking-tighter text-on-surface mb-3 sm:mb-4">
             Terms of Service
           </h1>
-          <p className="text-lg text-on-surface-variant leading-relaxed max-w-2xl">
+          <p className="text-sm sm:text-base md:text-lg text-on-surface-variant leading-relaxed max-w-2xl">
             These aren't written to protect us from you. They're written to be honest about what AllSmartCalculator is — and what it isn't. Plain language, no gotchas.
           </p>
-          <p className="text-xs text-on-surface-variant/50 mt-4 font-mono">Last updated April 18, 2026</p>
+          <p className="text-[11px] sm:text-xs text-on-surface-variant/50 mt-3 sm:mt-4 font-mono">Last updated April 18, 2026</p>
         </div>
 
         <div className="flex flex-col gap-5">
 
           {/* Short version */}
-          <GlassCard className="p-6 md:p-8 border-l-2 border-primary/60">
+          <GlassCard className="p-5 sm:p-6 md:p-8 border-l-2 border-primary/60">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-3">The short version</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed mb-3">
               AllSmartCalculator is a free collection of browser-based calculators. You can use them for personal, educational, or professional purposes. The results are mathematical estimates — not financial, medical, or legal advice. Don't copy our product wholesale and call it your own, don't scrape the site aggressively, and don't use it for anything illegal. That's really it.
@@ -47,7 +47,7 @@ export default function TermsPage() {
           </GlassCard>
 
           {/* What AllSmartCalculator is */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-4">What AllSmartCalculator is</h2>
             <div className="flex flex-col gap-4">
               <div>
@@ -66,7 +66,7 @@ export default function TermsPage() {
           </GlassCard>
 
           {/* Using the site */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-4">Using the site</h2>
             <div className="flex flex-col gap-4">
               <div>
@@ -98,7 +98,7 @@ export default function TermsPage() {
           </GlassCard>
 
           {/* Calculator results */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-4">Calculator results and accuracy</h2>
             <div className="flex flex-col gap-4">
               <div>
@@ -117,7 +117,7 @@ export default function TermsPage() {
           </GlassCard>
 
           {/* Not professional advice */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-3">Not professional advice</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed mb-4">
               AllSmartCalculator does not provide financial, medical, legal, tax, or any other kind of professional advice. This point matters enough that it gets its own section.
@@ -141,7 +141,7 @@ export default function TermsPage() {
           </GlassCard>
 
           {/* Intellectual property */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-4">Intellectual property</h2>
             <div className="flex flex-col gap-4">
               <div>
@@ -160,7 +160,7 @@ export default function TermsPage() {
           </GlassCard>
 
           {/* Availability */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-3">Availability and uptime</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed mb-3">
               We try to keep AllSmartCalculator running reliably. But servers go down, bugs happen, and sometimes we need to take things offline to ship improvements. We don't guarantee uptime and we're not liable for losses that result from the site being unavailable.
@@ -171,7 +171,7 @@ export default function TermsPage() {
           </GlassCard>
 
           {/* Limitation of liability */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-3">Limitation of liability</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed mb-3">
               To the extent permitted by applicable law, AllSmartCalculator and its operators are not liable for any damages arising from your use of — or inability to use — this site. That includes direct, indirect, incidental, or consequential damages.
@@ -185,7 +185,7 @@ export default function TermsPage() {
           </GlassCard>
 
           {/* Third-party links */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-3">Third-party links and services</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed mb-3">
               AllSmartCalculator may contain links to external websites or reference external services (like exchange rate providers, regulatory bodies, or financial tools). We link to these because they're useful, not because we endorse everything they do.
@@ -196,7 +196,7 @@ export default function TermsPage() {
           </GlassCard>
 
           {/* Changes to terms */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-3">Changes to these terms</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed mb-3">
               We might update these terms as the product evolves. When we do, we'll update the "last updated" date at the top of this page. If something significant changes — something that materially affects your rights or how we operate — we'll try to communicate it more directly, likely through a banner on the site.
@@ -207,7 +207,7 @@ export default function TermsPage() {
           </GlassCard>
 
           {/* Governing law */}
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-3">Governing law and disputes</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed mb-3">
               These terms are governed by applicable law in the jurisdiction where AllSmartCalculator operates. If there's ever a dispute, we genuinely prefer to resolve it by talking first — most things can be sorted out without escalation.

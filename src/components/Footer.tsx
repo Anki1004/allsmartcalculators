@@ -1,34 +1,22 @@
 import Link from 'next/link';
-import { Twitter, Github, Linkedin, Instagram } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="relative z-10 mt-32 border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-5 md:px-8 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+    <footer className="relative z-10 mt-12 sm:mt-16 md:mt-20 border-t border-white/5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-8 py-8 sm:py-10 md:py-12">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8 mb-8 sm:mb-10">
           {/* Brand */}
-          <div className="col-span-2">
+          <div className="col-span-2 sm:col-span-3 md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-dim to-primary" />
               <span className="font-headline text-xl font-black tracking-tighter text-gradient">
                 AllSmartCalculator
               </span>
             </div>
-            <p className="text-sm text-on-surface-variant max-w-xs mb-6">
+            <p className="text-sm text-on-surface-variant max-w-xs">
               100+ beautifully crafted calculators for every life decision.
               Calculate anything. Beautifully.
             </p>
-            <div className="flex gap-3">
-              {[Twitter, Github, Linkedin, Instagram].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="w-9 h-9 rounded-lg glass glass-border flex items-center justify-center hover:bg-white/5 transition-colors press"
-                >
-                  <Icon className="w-4 h-4 text-primary" />
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Links */}
@@ -84,11 +72,11 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-on-surface-variant/60">
+        <div className="pt-6 sm:pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 text-center md:text-left">
+          <p className="text-[11px] sm:text-xs text-on-surface-variant/60">
             © {new Date().getFullYear()} AllSmartCalculator. All calculations made with care.
           </p>
-          <p className="text-xs text-on-surface-variant/60">
+          <p className="text-[11px] sm:text-xs text-on-surface-variant/60">
             Built by{' '}
             <a
               href="https://www.linkedin.com/in/ankit-gupta-data-analyst"

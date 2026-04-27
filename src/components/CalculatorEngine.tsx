@@ -154,22 +154,22 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
       : [];
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 md:gap-8">
+    <div className="grid grid-cols-1 lg:grid-cols-5 gap-5 md:gap-8">
       {/* INPUT PANEL */}
-      <GlassCard className="lg:col-span-3 p-6 md:p-8">
+      <GlassCard className="lg:col-span-3 p-4 sm:p-6 md:p-8">
         {/* Icon header */}
-        <div className="flex items-center gap-4 mb-8 pb-6 border-b border-white/[0.06]">
+        <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8 pb-5 sm:pb-6 border-b border-white/[0.06]">
           <CalculatorIcon icon={config.icon} category={config.category} size="lg" idle />
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-on-surface-variant/60 mb-0.5">
+          <div className="min-w-0">
+            <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-on-surface-variant/60 mb-0.5 truncate">
               {config.category}
             </p>
-            <p className="text-sm font-semibold text-on-surface-variant">
+            <p className="text-xs sm:text-sm font-semibold text-on-surface-variant">
               Adjust the inputs below
             </p>
           </div>
         </div>
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-6 sm:gap-8">
           {config.inputs.map((input) => {
             if (input.type === 'select') {
               return (
@@ -206,14 +206,14 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
       </GlassCard>
 
       {/* RESULTS PANEL */}
-      <div className="lg:col-span-2 flex flex-col gap-6">
+      <div className="lg:col-span-2 flex flex-col gap-5 sm:gap-6">
         {/* Primary result hero */}
-        <GlassCard className="p-6 md:p-8 relative overflow-hidden">
+        <GlassCard className="p-5 sm:p-6 md:p-8 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
           <div className="relative">
             {hasInteracted ? (
               <>
-                <div className="text-center py-4">
+                <div className="text-center py-2 sm:py-4 overflow-hidden">
                   <ResultDisplay
                     label={primaryOutput.label}
                     value={cvtVal(primaryOutput.prefix, results[primaryOutput.key] ?? 0)}
@@ -227,7 +227,7 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
 
                 {/* Secondary results */}
                 {secondaryOutputs.length > 0 && (
-                  <div className="grid grid-cols-2 gap-4 mt-6 pt-6 border-t border-white/5">
+                  <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-5 sm:mt-6 pt-5 sm:pt-6 border-t border-white/5">
                     {secondaryOutputs.slice(0, 4).map((out) => (
                       <ResultDisplay
                         key={out.key}
@@ -244,15 +244,15 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
                 )}
               </>
             ) : (
-              <div className="text-center py-12 md:py-16 flex flex-col items-center gap-4">
-                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
-                  <Sparkles className="w-6 h-6 text-primary" />
+              <div className="text-center py-10 sm:py-12 md:py-16 flex flex-col items-center gap-3 sm:gap-4">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
+                  <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                 </div>
                 <div>
-                  <p className="font-headline font-bold text-lg text-on-surface mb-1">
+                  <p className="font-headline font-bold text-base sm:text-lg text-on-surface mb-1">
                     Ready when you are
                   </p>
-                  <p className="text-sm text-on-surface-variant max-w-xs mx-auto leading-relaxed">
+                  <p className="text-xs sm:text-sm text-on-surface-variant max-w-xs mx-auto leading-relaxed px-2">
                     Adjust the {config.inputs.length === 1 ? 'input' : 'inputs'} on the left to see your {primaryOutput.label.toLowerCase()}.
                   </p>
                 </div>
@@ -263,7 +263,7 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
 
         {/* Chart */}
         {hasInteracted && config.chartType === 'donut' && donutData.length > 0 && (
-          <GlassCard className="p-6 aspect-square max-h-[280px]">
+          <GlassCard className="p-4 sm:p-6 aspect-square max-h-[260px] sm:max-h-[280px]">
             <DonutChart data={donutData} />
           </GlassCard>
         )}
@@ -276,29 +276,29 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
               {toast}
             </div>
           )}
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-3 gap-2 sm:gap-3">
             <button
               onClick={handleSave}
               disabled={!hasInteracted}
-              className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-br from-primary-dim to-primary text-white font-semibold text-sm shadow-glow-primary press hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none"
+              className="flex items-center justify-center gap-1.5 sm:gap-2 px-2 sm:px-4 py-3 rounded-xl bg-gradient-to-br from-primary-dim to-primary text-white font-semibold text-xs sm:text-sm shadow-glow-primary press hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none"
             >
-              <Save className="w-4 h-4" />
-              <span className="hidden sm:inline">Save</span>
+              <Save className="w-4 h-4 shrink-0" />
+              <span>Save</span>
             </button>
             <button
               onClick={handleShare}
-              className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl glass glass-border text-on-surface font-semibold text-sm hover:bg-white/5 transition-colors press"
+              className="flex items-center justify-center gap-1.5 sm:gap-2 px-2 sm:px-4 py-3 rounded-xl glass glass-border text-on-surface font-semibold text-xs sm:text-sm hover:bg-white/5 transition-colors press"
             >
-              <Share2 className="w-4 h-4" />
-              <span className="hidden sm:inline">Share</span>
+              <Share2 className="w-4 h-4 shrink-0" />
+              <span>Share</span>
             </button>
             <button
               onClick={handleExport}
               disabled={!hasInteracted}
-              className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl glass glass-border text-on-surface font-semibold text-sm hover:bg-white/5 transition-colors press disabled:opacity-40 disabled:cursor-not-allowed"
+              className="flex items-center justify-center gap-1.5 sm:gap-2 px-2 sm:px-4 py-3 rounded-xl glass glass-border text-on-surface font-semibold text-xs sm:text-sm hover:bg-white/5 transition-colors press disabled:opacity-40 disabled:cursor-not-allowed"
             >
-              <FileDown className="w-4 h-4" />
-              <span className="hidden sm:inline">Export</span>
+              <FileDown className="w-4 h-4 shrink-0" />
+              <span>Export</span>
             </button>
           </div>
         </div>

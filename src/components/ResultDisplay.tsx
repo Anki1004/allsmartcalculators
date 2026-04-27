@@ -50,10 +50,10 @@ export default function ResultDisplay({
   }, [value, animate]);
 
   const sizes = {
-    sm: 'text-xl md:text-2xl',
-    md: 'text-3xl md:text-4xl',
-    lg: 'text-4xl md:text-5xl',
-    xl: 'text-5xl md:text-7xl',
+    sm: 'text-lg sm:text-xl md:text-2xl break-words',
+    md: 'text-2xl sm:text-3xl md:text-4xl break-words',
+    lg: 'text-3xl sm:text-4xl md:text-5xl break-words',
+    xl: 'text-4xl sm:text-5xl md:text-7xl break-words',
   };
 
   const colors = {

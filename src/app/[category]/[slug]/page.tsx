@@ -182,33 +182,33 @@ export default async function CalculatorPage({
         />
       )}
 
-      <div className="pt-28 pb-16 px-5 md:px-8">
+      <div className="pt-24 sm:pt-28 pb-12 sm:pb-16 px-4 sm:px-5 md:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Breadcrumb */}
           <nav
             aria-label="Breadcrumb"
-            className="flex items-center gap-2 text-xs font-semibold tracking-[0.15em] uppercase text-on-surface-variant/70 mb-4"
+            className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs font-semibold tracking-[0.15em] uppercase text-on-surface-variant/70 mb-4 flex-wrap"
           >
             <Link href="/" className="hover:text-primary transition-colors">
               Home
             </Link>
-            <ChevronRight className="w-3 h-3" />
+            <ChevronRight className="w-3 h-3 shrink-0" />
             <Link
               href={`/${calc.category}`}
               className="hover:text-primary transition-colors"
             >
               {categoryInfo?.name ?? calc.category}
             </Link>
-            <ChevronRight className="w-3 h-3" />
-            <span className="text-primary">{calc.shortName ?? calc.name}</span>
+            <ChevronRight className="w-3 h-3 shrink-0" />
+            <span className="text-primary truncate max-w-[60vw]">{calc.shortName ?? calc.name}</span>
           </nav>
 
           {/* Title */}
-          <div className="mb-6">
-            <h1 className="font-headline font-black text-3xl md:text-5xl tracking-tighter text-on-surface mb-2">
+          <div className="mb-5 sm:mb-6">
+            <h1 className="font-headline font-black text-2xl sm:text-3xl md:text-5xl tracking-tighter text-on-surface mb-2 break-words">
               {calc.name}
             </h1>
-            <p className="text-base md:text-lg text-on-surface-variant max-w-2xl">
+            <p className="text-sm sm:text-base md:text-lg text-on-surface-variant max-w-2xl">
               {calc.description}
             </p>
           </div>
@@ -266,18 +266,18 @@ export default async function CalculatorPage({
 
           {/* How it works + Formula */}
           {(calc.howItWorks || calc.formula) && (
-            <section className="mt-12">
-              <GlassCard className="p-6 md:p-8">
-                <h2 className="font-headline font-bold text-xl md:text-2xl text-on-surface mb-4">
+            <section className="mt-10 sm:mt-12">
+              <GlassCard className="p-5 sm:p-6 md:p-8">
+                <h2 className="font-headline font-bold text-lg sm:text-xl md:text-2xl text-on-surface mb-3 sm:mb-4">
                   How {calc.shortName ?? calc.name} is calculated
                 </h2>
                 {calc.howItWorks && (
-                  <p className="text-sm md:text-base text-on-surface-variant leading-relaxed mb-4">
+                  <p className="text-sm md:text-base text-on-surface-variant leading-relaxed mb-3 sm:mb-4">
                     {calc.howItWorks}
                   </p>
                 )}
                 {calc.formula && (
-                  <code className="font-mono text-sm md:text-base text-on-surface block bg-surface-container-lowest p-4 rounded-xl">
+                  <code className="font-mono text-xs sm:text-sm md:text-base text-on-surface block bg-surface-container-lowest p-3 sm:p-4 rounded-xl overflow-x-auto whitespace-pre">
                     {calc.formula}
                   </code>
                 )}
@@ -287,22 +287,22 @@ export default async function CalculatorPage({
 
           {/* Categories / Ranges reference table */}
           {calc.ranges && calc.ranges.rows.length > 0 && (
-            <section className="mt-8">
-              <GlassCard className="p-6 md:p-8">
-                <h2 className="font-headline font-bold text-xl md:text-2xl text-on-surface mb-5">
+            <section className="mt-6 sm:mt-8">
+              <GlassCard className="p-5 sm:p-6 md:p-8">
+                <h2 className="font-headline font-bold text-lg sm:text-xl md:text-2xl text-on-surface mb-4 sm:mb-5">
                   {calc.ranges.title}
                 </h2>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm">
+                <div className="overflow-x-auto -mx-5 sm:mx-0 px-5 sm:px-0">
+                  <table className="w-full text-xs sm:text-sm min-w-[480px]">
                     <thead>
                       <tr className="border-b border-white/10 text-left">
-                        <th className="py-3 pr-6 text-xs font-bold tracking-[0.12em] uppercase text-primary">
+                        <th className="py-3 pr-4 sm:pr-6 text-[10px] sm:text-xs font-bold tracking-[0.12em] uppercase text-primary">
                           Category
                         </th>
-                        <th className="py-3 pr-6 text-xs font-bold tracking-[0.12em] uppercase text-primary">
+                        <th className="py-3 pr-4 sm:pr-6 text-[10px] sm:text-xs font-bold tracking-[0.12em] uppercase text-primary">
                           Range
                         </th>
-                        <th className="py-3 text-xs font-bold tracking-[0.12em] uppercase text-primary">
+                        <th className="py-3 text-[10px] sm:text-xs font-bold tracking-[0.12em] uppercase text-primary">
                           Notes
                         </th>
                       </tr>
@@ -310,10 +310,10 @@ export default async function CalculatorPage({
                     <tbody>
                       {calc.ranges.rows.map((row) => (
                         <tr key={row.label} className="border-b border-white/5 last:border-0">
-                          <td className="py-3 pr-6 font-semibold text-on-surface">
+                          <td className="py-3 pr-4 sm:pr-6 font-semibold text-on-surface">
                             {row.label}
                           </td>
-                          <td className="py-3 pr-6 font-mono text-on-surface-variant">
+                          <td className="py-3 pr-4 sm:pr-6 font-mono text-on-surface-variant">
                             {row.range}
                           </td>
                           <td className="py-3 text-on-surface-variant/80">
@@ -330,9 +330,9 @@ export default async function CalculatorPage({
 
           {/* Limitations (E-E-A-T honesty signal) */}
           {calc.limitations && calc.limitations.length > 0 && (
-            <section className="mt-8">
-              <GlassCard className="p-6 md:p-8">
-                <h2 className="font-headline font-bold text-xl md:text-2xl text-on-surface mb-4">
+            <section className="mt-6 sm:mt-8">
+              <GlassCard className="p-5 sm:p-6 md:p-8">
+                <h2 className="font-headline font-bold text-lg sm:text-xl md:text-2xl text-on-surface mb-3 sm:mb-4">
                   Limitations &amp; what this calculator can&apos;t tell you
                 </h2>
                 <ul className="flex flex-col gap-3">
@@ -352,19 +352,19 @@ export default async function CalculatorPage({
 
           {/* FAQs (in-page; the JSON-LD FAQPage block above mirrors this) */}
           {calc.faqs && calc.faqs.length > 0 && (
-            <section className="mt-8">
-              <GlassCard className="p-6 md:p-8">
-                <h2 className="font-headline font-bold text-xl md:text-2xl text-on-surface mb-5">
+            <section className="mt-6 sm:mt-8">
+              <GlassCard className="p-5 sm:p-6 md:p-8">
+                <h2 className="font-headline font-bold text-lg sm:text-xl md:text-2xl text-on-surface mb-4 sm:mb-5">
                   Frequently asked questions
                 </h2>
                 <div className="divide-y divide-white/5">
                   {calc.faqs.map((faq, idx) => (
                     <details
                       key={idx}
-                      className="group py-4 first:pt-0 last:pb-0"
+                      className="group py-3 sm:py-4 first:pt-0 last:pb-0"
                     >
                       <summary className="flex items-center justify-between gap-3 cursor-pointer list-none text-sm md:text-base font-semibold text-on-surface hover:text-primary transition-colors">
-                        {faq.q}
+                        <span className="flex-1">{faq.q}</span>
                         <ChevronRight className="w-4 h-4 shrink-0 text-on-surface-variant group-open:rotate-90 transition-transform" />
                       </summary>
                       <p className="mt-3 text-sm md:text-base text-on-surface-variant leading-relaxed">
@@ -379,8 +379,8 @@ export default async function CalculatorPage({
 
           {/* Sources / outbound authority links (E-E-A-T) */}
           {calc.seo?.sources && calc.seo.sources.length > 0 && (
-            <section className="mt-8">
-              <GlassCard className="p-6 md:p-8">
+            <section className="mt-6 sm:mt-8">
+              <GlassCard className="p-5 sm:p-6 md:p-8">
                 <h2 className="font-headline font-bold text-base md:text-lg text-on-surface mb-3">
                   Sources &amp; references
                 </h2>
@@ -391,10 +391,10 @@ export default async function CalculatorPage({
                         href={src.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
+                        className="inline-flex items-center gap-1.5 text-xs sm:text-sm text-primary hover:underline break-words"
                       >
                         {src.label}
-                        <ExternalLink className="w-3 h-3" />
+                        <ExternalLink className="w-3 h-3 shrink-0" />
                       </a>
                     </li>
                   ))}
@@ -405,11 +405,11 @@ export default async function CalculatorPage({
 
           {/* Related calculators */}
           {related.length > 0 && (
-            <section className="mt-16">
-              <h2 className="font-headline font-black text-2xl md:text-3xl tracking-tighter mb-6">
+            <section className="mt-12 sm:mt-16">
+              <h2 className="font-headline font-black text-xl sm:text-2xl md:text-3xl tracking-tighter mb-5 sm:mb-6">
                 Related calculators
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                 {related.map((c) => (
                   <CalculatorCard key={c.slug} calculator={c} />
                 ))}
@@ -421,7 +421,7 @@ export default async function CalculatorPage({
           {(calc.category === 'finance' ||
             calc.category === 'health' ||
             calc.category === 'crypto') && (
-            <p className="mt-12 text-xs text-on-surface-variant/60 max-w-3xl">
+            <p className="mt-10 sm:mt-12 text-[11px] sm:text-xs text-on-surface-variant/60 max-w-3xl leading-relaxed">
               Results from this calculator are estimates for informational use only —
               not financial, medical, or professional advice. Read our{' '}
               <Link

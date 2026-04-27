@@ -112,12 +112,34 @@ export interface StrapiHomepage extends SeoFields {
   heroDescription: string | null;
   ctaHeadline: string | null;
   ctaDescription: string | null;
+  bottomContent: string | null;
 }
 
 export async function getHomepage(): Promise<StrapiHomepage | null> {
   try {
     const data = await strapiGet<{ data: StrapiHomepage }>('/homepage');
     return data.data ?? null;
+  } catch {
+    return null;
+  }
+}
+
+export interface StrapiCategoryContent extends SeoFields {
+  id: number;
+  categorySlug: string;
+  categoryName: string;
+  topContent: string | null;
+  bottomContent: string | null;
+}
+
+export async function getCategoryContent(
+  categorySlug: string,
+): Promise<StrapiCategoryContent | null> {
+  try {
+    const data = await strapiGet<StrapiResponse<StrapiCategoryContent[]>>(
+      `/category-contents?filters[categorySlug][$eq]=${categorySlug}`,
+    );
+    return data.data?.[0] ?? null;
   } catch {
     return null;
   }
