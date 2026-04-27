@@ -22,7 +22,7 @@ export async function generateMetadata({
   if (!cat) return { title: 'Not Found' };
   const calcs = getCalculatorsByCategory(cat.id as CalculatorCategory);
   const cms = await getCategoryContent(cat.id);
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
   const url = `${siteUrl}/${cat.id}`;
   const title = cms?.pageTitle ?? `${cat.name} Calculators — AllSmartCalculator`;
   const description =

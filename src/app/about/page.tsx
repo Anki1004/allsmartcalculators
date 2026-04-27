@@ -15,7 +15,7 @@ import {
   RefreshCcw,
 } from 'lucide-react';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
 
 export const metadata: Metadata = {
   title: 'About — AllSmartCalculator',
@@ -282,7 +282,7 @@ export default function AboutPage() {
           <p className="text-sm md:text-base text-on-surface-variant leading-relaxed mb-2 break-words">
             Calculator suggestion, bug report, formula correction, or general
             feedback —{' '}
-            <span className="text-primary font-mono break-all">hello@allsmartcalculator.tech</span>{' '}
+            <span className="text-primary font-mono break-all">hello@allsmartcalculator.com</span>{' '}
             or use the{' '}
             <Link href="/contact" className="text-primary hover:underline font-semibold">
               contact form

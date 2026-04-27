@@ -5,7 +5,7 @@ import { searchCalculators } from '@/lib/calculator-registry';
 import CalculatorCard from '@/components/CalculatorCard';
 import GlassCard from '@/components/GlassCard';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
 
 interface SearchPageProps {
   searchParams: { q?: string };

@@ -126,20 +126,31 @@ export async function getHomepage(): Promise<StrapiHomepage | null> {
 
 export interface StrapiCategoryContent extends SeoFields {
   id: number;
-  categorySlug: string;
-  categoryName: string;
   topContent: string | null;
   bottomContent: string | null;
 }
 
+// Each category has its own Strapi single type for direct sidebar access.
+// Map the URL slug to its corresponding single-type endpoint.
+const CATEGORY_ENDPOINT: Record<string, string> = {
+  finance: '/finance-page',
+  health: '/health-page',
+  math: '/math-page',
+  crypto: '/crypto-page',
+  engineering: '/engineering-page',
+  'daily-life': '/daily-life-page',
+  education: '/education-page',
+  business: '/business-page',
+};
+
 export async function getCategoryContent(
   categorySlug: string,
 ): Promise<StrapiCategoryContent | null> {
+  const endpoint = CATEGORY_ENDPOINT[categorySlug];
+  if (!endpoint) return null;
   try {
-    const data = await strapiGet<StrapiResponse<StrapiCategoryContent[]>>(
-      `/category-contents?filters[categorySlug][$eq]=${categorySlug}`,
-    );
-    return data.data?.[0] ?? null;
+    const data = await strapiGet<{ data: StrapiCategoryContent }>(endpoint);
+    return data.data ?? null;
   } catch {
     return null;
   }

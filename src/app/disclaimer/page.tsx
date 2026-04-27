@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import GlassCard from '@/components/GlassCard';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
 
 export const metadata: Metadata = {
   title: 'Disclaimer — AllSmartCalculator',
@@ -210,7 +210,7 @@ export default function DisclaimerPage() {
               </div>
               <div>
                 <p className="text-sm font-semibold text-on-surface mb-1">How to report an issue.</p>
-                <p className="text-sm text-on-surface-variant leading-relaxed">If you find a result that looks incorrect or a formula that seems to be misapplied, please contact us at <span className="text-primary font-mono">hello@allsmartcalculator.tech</span>. We take these reports seriously and would much rather fix a mistake than leave it quietly in place.</p>
+                <p className="text-sm text-on-surface-variant leading-relaxed">If you find a result that looks incorrect or a formula that seems to be misapplied, please contact us at <span className="text-primary font-mono">hello@allsmartcalculator.com</span>. We take these reports seriously and would much rather fix a mistake than leave it quietly in place.</p>
               </div>
             </div>
           </GlassCard>

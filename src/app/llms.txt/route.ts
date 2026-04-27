@@ -1,6 +1,6 @@
 import { allCalculators } from '@/lib/calculator-registry';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
 
 export const dynamic = 'force-static';
 

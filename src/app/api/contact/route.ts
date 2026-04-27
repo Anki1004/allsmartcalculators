@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
 
     const categoryLabel = CATEGORY_LABELS[category] ?? 'General';
     const from = process.env.RESEND_FROM ?? 'AllSmartCalculator <onboarding@resend.dev>';
-    const to = process.env.CONTACT_TO_EMAIL ?? 'hello@allsmartcalculator.tech';
+    const to = process.env.CONTACT_TO_EMAIL ?? 'hello@allsmartcalculator.com';
 
     await resend.emails.send({
       from,

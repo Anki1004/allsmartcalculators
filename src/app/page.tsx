@@ -14,7 +14,7 @@ import CmsRichText from '@/components/CmsRichText';
 import { ArrowRight, Flame, TrendingUp } from 'lucide-react';
 import { getHomepage } from '@/lib/strapi';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
 
 export async function generateMetadata(): Promise<Metadata> {
   const hp = await getHomepage();

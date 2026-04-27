@@ -14,7 +14,7 @@ import CalculatorCard from '@/components/CalculatorCard';
 import GlassCard from '@/components/GlassCard';
 import CalculatorCMS from '@/components/CalculatorCMS';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
 
 const APPLICATION_CATEGORY_BY_CATEGORY: Record<string, string> = {
   finance: 'FinanceApplication',

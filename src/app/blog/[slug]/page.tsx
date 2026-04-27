@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     const post = await getPostBySlug(params.slug);
     if (!post) return {};
 
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
     const canonicalUrl = post.linkCanonical ?? `${siteUrl}/blog/${post.slug}`;
     const title = post.pageTitle ?? post.title;
     const description = post.metaDescription ?? post.excerpt;

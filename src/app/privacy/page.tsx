@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import GlassCard from '@/components/GlassCard';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy — AllSmartCalculator',

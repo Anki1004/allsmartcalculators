@@ -3,7 +3,7 @@ import Link from 'next/link';
 import GlassCard from '@/components/GlassCard';
 import { Linkedin, Mail, Calculator, Code2, BarChart3, ChevronRight } from 'lucide-react';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
 const AUTHOR_URL = `${SITE_URL}/author/ankit-gupta`;
 const LINKEDIN_URL = 'https://www.linkedin.com/in/ankit-gupta-data-analyst';
 

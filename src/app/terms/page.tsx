@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import GlassCard from '@/components/GlassCard';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
 
 export const metadata: Metadata = {
   title: 'Terms of Service — AllSmartCalculator',
@@ -213,7 +213,7 @@ export default function TermsPage() {
               These terms are governed by applicable law in the jurisdiction where AllSmartCalculator operates. If there's ever a dispute, we genuinely prefer to resolve it by talking first — most things can be sorted out without escalation.
             </p>
             <p className="text-sm text-on-surface-variant leading-relaxed">
-              Reach us at <span className="text-primary font-mono">hello@allsmartcalculator.tech</span>. We read every message and take them seriously.
+              Reach us at <span className="text-primary font-mono">hello@allsmartcalculator.com</span>. We read every message and take them seriously.
             </p>
           </GlassCard>
 

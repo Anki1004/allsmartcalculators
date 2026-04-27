@@ -5,7 +5,7 @@ import { getAllPosts, getStrapiImageUrl, StrapiPost } from '@/lib/strapi';
 import GlassCard from '@/components/GlassCard';
 import { Clock, User, ArrowRight, BookOpen } from 'lucide-react';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
 
 export const metadata: Metadata = {
   title: 'Blog — AllSmartCalculator',

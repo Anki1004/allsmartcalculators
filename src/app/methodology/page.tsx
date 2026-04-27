@@ -10,7 +10,7 @@ import {
   ExternalLink,
 } from 'lucide-react';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
 const PAGE_URL = `${SITE_URL}/methodology`;
 
 export const metadata: Metadata = {
@@ -227,7 +227,7 @@ export default function MethodologyPage() {
           <p className="text-sm md:text-base text-on-surface-variant leading-relaxed mb-3 break-words">
             If you spot a wrong number, a misapplied formula, or an outdated
             reference, we&apos;d much rather hear about it than not. Email{' '}
-            <span className="text-primary font-mono break-all">hello@allsmartcalculator.tech</span>{' '}
+            <span className="text-primary font-mono break-all">hello@allsmartcalculator.com</span>{' '}
             with the calculator URL, the inputs you used, and the expected result.
           </p>
           <p className="text-sm md:text-base text-on-surface-variant leading-relaxed">

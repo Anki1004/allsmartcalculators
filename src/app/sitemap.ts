@@ -3,7 +3,7 @@ import { allCalculators } from '@/lib/calculator-registry';
 import { CATEGORIES } from '@/lib/calculator-types';
 import { getAllPosts } from '@/lib/strapi';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.tech';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
