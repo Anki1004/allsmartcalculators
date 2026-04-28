@@ -251,15 +251,19 @@ export default async function CalculatorPage({
             </span>
           </div>
 
-          {/* Indexable intro (above-the-fold so the page has content even if JS-heavy) */}
-          {calc.intro && (
-            <p className="text-sm md:text-base text-on-surface-variant leading-relaxed max-w-3xl mb-8 border-l-2 border-primary/40 pl-4">
-              {calc.intro}
-            </p>
-          )}
-
-          {/* CALCULATOR */}
+          {/* CALCULATOR — first thing the user sees so they can act immediately */}
           <CalculatorEngine slug={calc.slug} />
+
+          {/* Intro / "About this calculator" — moved below the tool so the
+             calculator is above-the-fold; the H1, description, and reviewed-by
+             block above keep the page indexable for crawlers. */}
+          {calc.intro && (
+            <section className="mt-8 sm:mt-10">
+              <p className="text-sm md:text-base text-on-surface-variant leading-relaxed max-w-3xl border-l-2 border-primary/40 pl-4">
+                {calc.intro}
+              </p>
+            </section>
+          )}
 
           {/* CMS content from Strapi (intro, tips, formula, FAQs) */}
           <CalculatorCMS slug={calc.slug} />
