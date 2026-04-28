@@ -175,8 +175,28 @@ async function getStaticPage(endpoint: string): Promise<StrapiStaticPage | null>
 }
 
 export const getAboutPage = () => getStaticPage('/about-page');
-export const getAuthorPage = () => getStaticPage('/author-page');
 export const getMethodologyPage = () => getStaticPage('/methodology-page');
 export const getPrivacyPage = () => getStaticPage('/privacy-page');
 export const getTermsPage = () => getStaticPage('/terms-page');
 export const getDisclaimerPage = () => getStaticPage('/disclaimer-page');
+
+export interface StrapiAuthorPage extends StrapiStaticPage {
+  profileImage: {
+    url: string;
+    alternativeText: string | null;
+    width: number;
+    height: number;
+  } | null;
+  linkedinUrl: string | null;
+}
+
+export async function getAuthorPage(): Promise<StrapiAuthorPage | null> {
+  try {
+    const data = await strapiGet<{ data: StrapiAuthorPage }>(
+      '/author-page?populate=profileImage',
+    );
+    return data.data ?? null;
+  } catch {
+    return null;
+  }
+}

@@ -2,12 +2,12 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import GlassCard from '@/components/GlassCard';
 import CmsRichText from '@/components/CmsRichText';
-import { getAuthorPage } from '@/lib/strapi';
+import { getAuthorPage, getStrapiImageUrl } from '@/lib/strapi';
 import { Linkedin, Mail, Calculator, Code2, BarChart3, ChevronRight } from 'lucide-react';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
 const AUTHOR_URL = `${SITE_URL}/author/ankit-gupta`;
-const LINKEDIN_URL = 'https://www.linkedin.com/in/ankit-gupta-data-analyst';
+const LINKEDIN_FALLBACK = 'https://www.linkedin.com/in/ankit-gupta-data-analyst';
 
 export async function generateMetadata(): Promise<Metadata> {
   const cms = await getAuthorPage();
@@ -63,6 +63,9 @@ const expertise = [
 
 export default async function AuthorPage() {
   const cms = await getAuthorPage();
+  const linkedinUrl = cms?.linkedinUrl?.trim() || LINKEDIN_FALLBACK;
+  const profileImageUrl = cms?.profileImage ? getStrapiImageUrl(cms.profileImage.url) : null;
+  const profileImageAlt = cms?.profileImage?.alternativeText ?? 'Ankit Gupta';
 
   const personSchema = {
     '@context': 'https://schema.org',
@@ -71,7 +74,8 @@ export default async function AuthorPage() {
     url: AUTHOR_URL,
     jobTitle: 'Founder & Builder',
     worksFor: { '@type': 'Organization', name: 'AllSmartCalculator', url: SITE_URL },
-    sameAs: [LINKEDIN_URL],
+    sameAs: [linkedinUrl],
+    ...(profileImageUrl && { image: profileImageUrl }),
     knowsAbout: [
       'Personal finance calculators',
       'EMI and amortization',
@@ -111,9 +115,20 @@ export default async function AuthorPage() {
 
           {/* Hero */}
           <div className="flex flex-col md:flex-row items-start gap-5 sm:gap-8 mb-8 sm:mb-12">
-            <div className="w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-3xl bg-gradient-to-br from-primary-dim to-primary flex items-center justify-center shadow-glow-primary text-3xl sm:text-5xl font-headline font-black text-white shrink-0">
-              A
-            </div>
+            {profileImageUrl ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={profileImageUrl}
+                alt={profileImageAlt}
+                width={cms?.profileImage?.width ?? 128}
+                height={cms?.profileImage?.height ?? 128}
+                className="w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-3xl object-cover shadow-glow-primary shrink-0"
+              />
+            ) : (
+              <div className="w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-3xl bg-gradient-to-br from-primary-dim to-primary flex items-center justify-center shadow-glow-primary text-3xl sm:text-5xl font-headline font-black text-white shrink-0">
+                A
+              </div>
+            )}
             <div className="min-w-0">
               <p className="text-[10px] sm:text-xs font-bold tracking-[0.18em] uppercase text-primary mb-2">
                 Author
@@ -128,7 +143,7 @@ export default async function AuthorPage() {
               </p>
               <div className="flex flex-wrap gap-2 sm:gap-3">
                 <a
-                  href={LINKEDIN_URL}
+                  href={linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-lg glass glass-border hover:bg-white/5 transition-colors press text-sm font-semibold text-on-surface"
