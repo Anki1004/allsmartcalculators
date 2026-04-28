@@ -10,46 +10,119 @@ const CATEGORY_LABELS: Record<string, string> = {
   legal: 'Legal / Privacy',
 };
 
+const MAX_LENGTHS = {
+  name: 80,
+  email: 254,
+  subject: 140,
+  message: 4000,
+};
+
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
+const RATE_LIMIT_MAX_REQUESTS = 5;
+const rateLimitBuckets = new Map<string, { count: number; resetAt: number }>();
+
+function normalizeField(value: unknown): string {
+  return typeof value === 'string' ? value.trim() : '';
+}
+
+function escapeHtml(value: string): string {
+  return value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+}
+
+function isRateLimited(req: NextRequest): boolean {
+  const forwardedFor = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim();
+  const ip = forwardedFor || req.headers.get('x-real-ip') || 'unknown';
+  const now = Date.now();
+  const bucket = rateLimitBuckets.get(ip);
+
+  if (!bucket || bucket.resetAt <= now) {
+    rateLimitBuckets.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return false;
+  }
+
+  if (bucket.count >= RATE_LIMIT_MAX_REQUESTS) {
+    return true;
+  }
+
+  bucket.count += 1;
+  return false;
+}
+
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, subject, message, category } = await req.json();
+    if (isRateLimited(req)) {
+      return NextResponse.json(
+        { error: 'Too many messages. Please try again later.' },
+        { status: 429 }
+      );
+    }
+
+    const body = await req.json();
+    const name = normalizeField(body.name);
+    const email = normalizeField(body.email).toLowerCase();
+    const subject = normalizeField(body.subject);
+    const message = normalizeField(body.message);
+    const category = normalizeField(body.category);
 
     if (!name || !email || !subject || !message) {
       return NextResponse.json({ error: 'All fields are required.' }, { status: 400 });
     }
 
+    if (!EMAIL_PATTERN.test(email)) {
+      return NextResponse.json({ error: 'Please enter a valid email address.' }, { status: 400 });
+    }
+
+    if (
+      name.length > MAX_LENGTHS.name ||
+      email.length > MAX_LENGTHS.email ||
+      subject.length > MAX_LENGTHS.subject ||
+      message.length > MAX_LENGTHS.message
+    ) {
+      return NextResponse.json({ error: 'One or more fields are too long.' }, { status: 400 });
+    }
+
     const categoryLabel = CATEGORY_LABELS[category] ?? 'General';
     const from = process.env.RESEND_FROM ?? 'AllSmartCalculator <onboarding@resend.dev>';
     const to = process.env.CONTACT_TO_EMAIL ?? 'hello@allsmartcalculator.com';
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safeSubject = escapeHtml(subject);
+    const safeMessage = escapeHtml(message);
 
     await resend.emails.send({
       from,
       to,
       replyTo: email,
-      subject: `[AllSmartCalculator · ${categoryLabel}] ${subject}`,
+      subject: `[AllSmartCalculator - ${categoryLabel}] ${subject}`,
       html: `
         <div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#1a1a2e">
           <div style="background:#080c25;padding:24px 32px;border-radius:12px 12px 0 0">
-            <h1 style="color:#bd9dff;margin:0;font-size:20px">AllSmartCalculator — New Message</h1>
+            <h1 style="color:#bd9dff;margin:0;font-size:20px">AllSmartCalculator - New Message</h1>
             <p style="color:#a6a9c9;margin:4px 0 0;font-size:13px">${categoryLabel}</p>
           </div>
           <div style="background:#0c112d;padding:32px;border-radius:0 0 12px 12px">
             <table style="width:100%;border-collapse:collapse;margin-bottom:24px">
               <tr>
                 <td style="padding:8px 0;color:#a6a9c9;font-size:13px;width:100px">From</td>
-                <td style="padding:8px 0;color:#e2e3ff;font-size:13px">${name} &lt;${email}&gt;</td>
+                <td style="padding:8px 0;color:#e2e3ff;font-size:13px">${safeName} &lt;${safeEmail}&gt;</td>
               </tr>
               <tr>
                 <td style="padding:8px 0;color:#a6a9c9;font-size:13px">Subject</td>
-                <td style="padding:8px 0;color:#e2e3ff;font-size:13px">${subject}</td>
+                <td style="padding:8px 0;color:#e2e3ff;font-size:13px">${safeSubject}</td>
               </tr>
             </table>
             <div style="background:#121735;border-radius:8px;padding:20px">
               <p style="color:#a6a9c9;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;margin:0 0 12px">Message</p>
-              <p style="color:#e2e3ff;font-size:14px;line-height:1.7;margin:0;white-space:pre-wrap">${message}</p>
+              <p style="color:#e2e3ff;font-size:14px;line-height:1.7;margin:0;white-space:pre-wrap">${safeMessage}</p>
             </div>
             <p style="color:#424662;font-size:11px;margin:24px 0 0">
-              Reply directly to this email to respond to ${name}.
+              Reply directly to this email to respond to ${safeName}.
             </p>
           </div>
         </div>

@@ -1,4 +1,5 @@
-const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL ?? 'http://localhost:1337';
+const STRAPI_URL =
+  process.env.STRAPI_URL ?? process.env.NEXT_PUBLIC_STRAPI_URL ?? 'http://localhost:1337';
 
 interface SeoFields {
   pageTitle: string | null;
@@ -65,7 +66,7 @@ export async function getAllPosts(): Promise<StrapiPost[]> {
 
 export async function getPostBySlug(slug: string): Promise<StrapiPost | null> {
   const data = await strapiGet<StrapiResponse<StrapiPost[]>>(
-    `/posts?filters[slug][$eq]=${slug}&populate=coverImage`
+    `/posts?filters[slug][$eq]=${encodeURIComponent(slug)}&populate=coverImage`
   );
   return data.data?.[0] ?? null;
 }
@@ -96,7 +97,7 @@ export interface StrapiCalcContent extends SeoFields {
 export async function getCalcContent(slug: string): Promise<StrapiCalcContent | null> {
   try {
     const data = await strapiGet<StrapiResponse<StrapiCalcContent[]>>(
-      `/calculator-contents?filters[slug][$eq]=${slug}&populate=faqs`
+      `/calculator-contents?filters[slug][$eq]=${encodeURIComponent(slug)}&populate=faqs`
     );
     return data.data?.[0] ?? null;
   } catch {

@@ -10,6 +10,8 @@ const SUPPORTED = [
 ];
 
 // Fallback rates (USD base) used if the external API is down
+const FALLBACK_UPDATED_AT = '2025-04-01T00:00:00.000Z';
+
 const FALLBACK: Record<string, number> = {
   USD: 1, EUR: 0.921, GBP: 0.780, JPY: 153.8, INR: 84.47, CAD: 1.383,
   AUD: 1.582, CHF: 0.888, CNY: 7.291, SGD: 1.330, AED: 3.672, SAR: 3.751,
@@ -43,7 +45,7 @@ export async function GET() {
     console.warn('[rates] falling back to hardcoded rates:', err);
     return NextResponse.json({
       rates: FALLBACK,
-      updatedAt: null,
+      updatedAt: FALLBACK_UPDATED_AT,
       source: 'fallback',
     });
   }
