@@ -159,7 +159,7 @@ export default async function HomePage() {
             {CATEGORIES.map((cat) => (
               <Link
                 key={cat.id}
-                href={`/categories#${cat.id}`}
+                href={`/${cat.id}`}
                 className="group flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full glass glass-border hover:bg-white/5 transition-all press"
               >
                 <span className="text-sm sm:text-base">{cat.icon}</span>

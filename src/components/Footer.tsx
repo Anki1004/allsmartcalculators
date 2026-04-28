@@ -24,11 +24,11 @@ export default function Footer() {
             {
               title: 'Categories',
               links: [
-                { label: 'Finance',     href: '/categories#finance' },
-                { label: 'Health',      href: '/categories#health' },
-                { label: 'Math',        href: '/categories#math' },
-                { label: 'Crypto',      href: '/categories#crypto' },
-                { label: 'Engineering', href: '/categories#engineering' },
+                { label: 'Finance',     href: '/finance' },
+                { label: 'Health',      href: '/health' },
+                { label: 'Math',        href: '/math' },
+                { label: 'Crypto',      href: '/crypto' },
+                { label: 'Engineering', href: '/engineering' },
               ],
             },
             {

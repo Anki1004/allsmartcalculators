@@ -39,14 +39,14 @@ export default function CategoriesPage() {
         <div className="mb-10 sm:mb-12 sticky top-16 sm:top-20 z-30 -mx-4 sm:-mx-5 md:-mx-8 px-4 sm:px-5 md:px-8 py-3 bg-surface/80 backdrop-blur-xl border-y border-white/5">
           <div className="flex sm:flex-wrap gap-2 overflow-x-auto sm:overflow-visible -mx-4 sm:mx-0 px-4 sm:px-0 pb-1 sm:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             {CATEGORIES.map((cat) => (
-              <a
+              <Link
                 key={cat.id}
-                href={`#${cat.id}`}
+                href={`/${cat.id}`}
                 className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full glass glass-border hover:bg-white/5 transition-colors text-xs sm:text-sm font-semibold whitespace-nowrap shrink-0"
               >
                 <span>{cat.icon}</span>
                 <span>{cat.name}</span>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
