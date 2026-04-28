@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import GlassCard from '@/components/GlassCard';
+import CmsRichText from '@/components/CmsRichText';
+import { getAboutPage } from '@/lib/strapi';
 import { TOTAL_CALCULATORS } from '@/lib/calculator-registry';
 import {
   Sparkles,
@@ -17,20 +19,39 @@ import {
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
 
-export const metadata: Metadata = {
-  title: 'About — AllSmartCalculator',
-  description:
-    'How AllSmartCalculator is built, who builds it, and the methodology, sources, and review process behind every calculator on the site.',
-  alternates: { canonical: `${SITE_URL}/about` },
-  openGraph: {
-    title: 'About AllSmartCalculator',
-    description:
-      'How AllSmartCalculator is built, who builds it, and the methodology behind every calculator.',
-    url: `${SITE_URL}/about`,
-    type: 'website',
-    siteName: 'AllSmartCalculator',
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const cms = await getAboutPage();
+  const title = cms?.pageTitle ?? 'About — AllSmartCalculator';
+  const description =
+    cms?.metaDescription ??
+    'How AllSmartCalculator is built, who builds it, and the methodology, sources, and review process behind every calculator on the site.';
+  const canonical = cms?.linkCanonical ?? `${SITE_URL}/about`;
+  return {
+    title,
+    description,
+    keywords: cms?.metaKeywords ?? undefined,
+    authors: [{ name: cms?.metaAuthor ?? 'AllSmartCalculator Team' }],
+    robots: cms?.metaRobots ?? 'index, follow',
+    alternates: { canonical },
+    openGraph: {
+      title: cms?.metaOgTitle ?? 'About AllSmartCalculator',
+      description:
+        cms?.metaOgDescription ??
+        'How AllSmartCalculator is built, who builds it, and the methodology behind every calculator.',
+      url: cms?.metaOgUrl ?? canonical,
+      type: (cms?.metaOgType as 'website') ?? 'website',
+      siteName: cms?.metaOgSiteName ?? 'AllSmartCalculator',
+      ...(cms?.metaOgImage && { images: [{ url: cms.metaOgImage }] }),
+    },
+    twitter: {
+      card: (cms?.metaTwitterCard as 'summary_large_image') ?? 'summary_large_image',
+      title: cms?.metaTwitterTitle ?? title,
+      description: cms?.metaTwitterDescription ?? description,
+      site: cms?.metaTwitterSite ?? '@AllSmartCalculator',
+      ...(cms?.metaTwitterImage && { images: [cms.metaTwitterImage] }),
+    },
+  };
+}
 
 const values = [
   {
@@ -88,7 +109,9 @@ const sourceList = [
   'NIST and Wolfram MathWorld for scientific units and formula references',
 ];
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const cms = await getAboutPage();
+
   return (
     <div className="pt-24 sm:pt-28 pb-12 sm:pb-16 px-4 sm:px-5 md:px-8">
       <div className="max-w-5xl mx-auto">
@@ -125,6 +148,12 @@ export default function AboutPage() {
           honest limitations section, and zero friction.
         </p>
 
+        {cms?.body ? (
+          <GlassCard className="p-5 sm:p-6 md:p-8">
+            <CmsRichText content={cms.body} />
+          </GlassCard>
+        ) : (
+          <>
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-12 sm:mb-20">
           {[
@@ -290,6 +319,8 @@ export default function AboutPage() {
             . We read every message.
           </p>
         </GlassCard>
+          </>
+        )}
       </div>
     </div>
   );

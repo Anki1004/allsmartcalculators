@@ -1,22 +1,47 @@
 import { Metadata } from 'next';
 import GlassCard from '@/components/GlassCard';
+import CmsRichText from '@/components/CmsRichText';
+import { getDisclaimerPage } from '@/lib/strapi';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
 
-export const metadata: Metadata = {
-  title: 'Disclaimer — AllSmartCalculator',
-  description: "Important context about AllSmartCalculator calculator results — what they mean, what they don't, and when to go beyond them.",
-  alternates: { canonical: `${SITE_URL}/disclaimer` },
-  openGraph: {
-    title: 'Disclaimer — AllSmartCalculator',
-    description: 'Calculator results are estimates, not financial, medical, legal, or professional advice.',
-    url: `${SITE_URL}/disclaimer`,
-    type: 'website',
-    siteName: 'AllSmartCalculator',
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const cms = await getDisclaimerPage();
+  const title = cms?.pageTitle ?? 'Disclaimer — AllSmartCalculator';
+  const description =
+    cms?.metaDescription ??
+    "Important context about AllSmartCalculator calculator results — what they mean, what they don't, and when to go beyond them.";
+  const canonical = cms?.linkCanonical ?? `${SITE_URL}/disclaimer`;
+  return {
+    title,
+    description,
+    keywords: cms?.metaKeywords ?? undefined,
+    authors: [{ name: cms?.metaAuthor ?? 'AllSmartCalculator Team' }],
+    robots: cms?.metaRobots ?? 'index, follow',
+    alternates: { canonical },
+    openGraph: {
+      title: cms?.metaOgTitle ?? title,
+      description:
+        cms?.metaOgDescription ??
+        'Calculator results are estimates, not financial, medical, legal, or professional advice.',
+      url: cms?.metaOgUrl ?? canonical,
+      type: (cms?.metaOgType as 'website') ?? 'website',
+      siteName: cms?.metaOgSiteName ?? 'AllSmartCalculator',
+      ...(cms?.metaOgImage && { images: [{ url: cms.metaOgImage }] }),
+    },
+    twitter: {
+      card: (cms?.metaTwitterCard as 'summary_large_image') ?? 'summary_large_image',
+      title: cms?.metaTwitterTitle ?? title,
+      description: cms?.metaTwitterDescription ?? description,
+      site: cms?.metaTwitterSite ?? '@AllSmartCalculator',
+      ...(cms?.metaTwitterImage && { images: [cms.metaTwitterImage] }),
+    },
+  };
+}
 
-export default function DisclaimerPage() {
+export default async function DisclaimerPage() {
+  const cms = await getDisclaimerPage();
+
   return (
     <div className="pt-24 sm:pt-28 pb-12 sm:pb-20 px-4 sm:px-5 md:px-8">
       <div className="max-w-3xl mx-auto">
@@ -33,7 +58,12 @@ export default function DisclaimerPage() {
           <p className="text-[11px] sm:text-xs text-on-surface-variant/50 mt-3 sm:mt-4 font-mono">Last updated April 18, 2026</p>
         </div>
 
-        <div className="flex flex-col gap-5">
+        {cms?.body ? (
+          <GlassCard className="p-5 sm:p-6 md:p-8">
+            <CmsRichText content={cms.body} />
+          </GlassCard>
+        ) : (
+          <div className="flex flex-col gap-5">
 
           {/* Quick summary */}
           <GlassCard className="p-5 sm:p-6 md:p-8 border-l-2 border-primary/60">
@@ -229,7 +259,8 @@ export default function DisclaimerPage() {
             </p>
           </GlassCard>
 
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );

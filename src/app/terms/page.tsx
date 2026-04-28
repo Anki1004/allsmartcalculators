@@ -1,22 +1,45 @@
 import { Metadata } from 'next';
 import GlassCard from '@/components/GlassCard';
+import CmsRichText from '@/components/CmsRichText';
+import { getTermsPage } from '@/lib/strapi';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
 
-export const metadata: Metadata = {
-  title: 'Terms of Service — AllSmartCalculator',
-  description: 'The rules of using AllSmartCalculator. Straightforward, fair, and written like a normal human wrote them.',
-  alternates: { canonical: `${SITE_URL}/terms` },
-  openGraph: {
-    title: 'Terms of Service — AllSmartCalculator',
-    description: 'Straightforward, fair terms of use.',
-    url: `${SITE_URL}/terms`,
-    type: 'website',
-    siteName: 'AllSmartCalculator',
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const cms = await getTermsPage();
+  const title = cms?.pageTitle ?? 'Terms of Service — AllSmartCalculator';
+  const description =
+    cms?.metaDescription ??
+    'The rules of using AllSmartCalculator. Straightforward, fair, and written like a normal human wrote them.';
+  const canonical = cms?.linkCanonical ?? `${SITE_URL}/terms`;
+  return {
+    title,
+    description,
+    keywords: cms?.metaKeywords ?? undefined,
+    authors: [{ name: cms?.metaAuthor ?? 'AllSmartCalculator Team' }],
+    robots: cms?.metaRobots ?? 'index, follow',
+    alternates: { canonical },
+    openGraph: {
+      title: cms?.metaOgTitle ?? title,
+      description: cms?.metaOgDescription ?? 'Straightforward, fair terms of use.',
+      url: cms?.metaOgUrl ?? canonical,
+      type: (cms?.metaOgType as 'website') ?? 'website',
+      siteName: cms?.metaOgSiteName ?? 'AllSmartCalculator',
+      ...(cms?.metaOgImage && { images: [{ url: cms.metaOgImage }] }),
+    },
+    twitter: {
+      card: (cms?.metaTwitterCard as 'summary_large_image') ?? 'summary_large_image',
+      title: cms?.metaTwitterTitle ?? title,
+      description: cms?.metaTwitterDescription ?? description,
+      site: cms?.metaTwitterSite ?? '@AllSmartCalculator',
+      ...(cms?.metaTwitterImage && { images: [cms.metaTwitterImage] }),
+    },
+  };
+}
 
-export default function TermsPage() {
+export default async function TermsPage() {
+  const cms = await getTermsPage();
+
   return (
     <div className="pt-24 sm:pt-28 pb-12 sm:pb-20 px-4 sm:px-5 md:px-8">
       <div className="max-w-3xl mx-auto">
@@ -33,7 +56,12 @@ export default function TermsPage() {
           <p className="text-[11px] sm:text-xs text-on-surface-variant/50 mt-3 sm:mt-4 font-mono">Last updated April 18, 2026</p>
         </div>
 
-        <div className="flex flex-col gap-5">
+        {cms?.body ? (
+          <GlassCard className="p-5 sm:p-6 md:p-8">
+            <CmsRichText content={cms.body} />
+          </GlassCard>
+        ) : (
+          <div className="flex flex-col gap-5">
 
           {/* Short version */}
           <GlassCard className="p-5 sm:p-6 md:p-8 border-l-2 border-primary/60">
@@ -217,7 +245,8 @@ export default function TermsPage() {
             </p>
           </GlassCard>
 
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );

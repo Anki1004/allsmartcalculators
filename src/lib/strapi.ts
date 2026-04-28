@@ -156,3 +156,23 @@ export async function getCategoryContent(
     return null;
   }
 }
+
+export interface StrapiStaticPage extends SeoFields {
+  id: number;
+  body: string | null;
+}
+
+async function getStaticPage(endpoint: string): Promise<StrapiStaticPage | null> {
+  try {
+    const data = await strapiGet<{ data: StrapiStaticPage }>(endpoint);
+    return data.data ?? null;
+  } catch {
+    return null;
+  }
+}
+
+export const getAboutPage = () => getStaticPage('/about-page');
+export const getMethodologyPage = () => getStaticPage('/methodology-page');
+export const getPrivacyPage = () => getStaticPage('/privacy-page');
+export const getTermsPage = () => getStaticPage('/terms-page');
+export const getDisclaimerPage = () => getStaticPage('/disclaimer-page');

@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import GlassCard from '@/components/GlassCard';
+import CmsRichText from '@/components/CmsRichText';
+import { getMethodologyPage } from '@/lib/strapi';
 import {
   ChevronRight,
   BookCheck,
@@ -13,20 +15,40 @@ import {
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
 const PAGE_URL = `${SITE_URL}/methodology`;
 
-export const metadata: Metadata = {
-  title: 'Methodology — How AllSmartCalculator Builds Its Calculators',
-  description:
-    'How every calculator on AllSmartCalculator is built, sourced, verified, and updated — including data sources, formula references, and our review process.',
-  alternates: { canonical: PAGE_URL },
-  openGraph: {
-    title: 'How AllSmartCalculator Builds Its Calculators',
-    description:
-      'Sources, formulas, verification process, and update cadence behind every calculator.',
-    url: PAGE_URL,
-    type: 'website',
-    siteName: 'AllSmartCalculator',
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const cms = await getMethodologyPage();
+  const title =
+    cms?.pageTitle ?? 'Methodology — How AllSmartCalculator Builds Its Calculators';
+  const description =
+    cms?.metaDescription ??
+    'How every calculator on AllSmartCalculator is built, sourced, verified, and updated — including data sources, formula references, and our review process.';
+  const canonical = cms?.linkCanonical ?? PAGE_URL;
+  return {
+    title,
+    description,
+    keywords: cms?.metaKeywords ?? undefined,
+    authors: [{ name: cms?.metaAuthor ?? 'AllSmartCalculator Team' }],
+    robots: cms?.metaRobots ?? 'index, follow',
+    alternates: { canonical },
+    openGraph: {
+      title: cms?.metaOgTitle ?? 'How AllSmartCalculator Builds Its Calculators',
+      description:
+        cms?.metaOgDescription ??
+        'Sources, formulas, verification process, and update cadence behind every calculator.',
+      url: cms?.metaOgUrl ?? canonical,
+      type: (cms?.metaOgType as 'website') ?? 'website',
+      siteName: cms?.metaOgSiteName ?? 'AllSmartCalculator',
+      ...(cms?.metaOgImage && { images: [{ url: cms.metaOgImage }] }),
+    },
+    twitter: {
+      card: (cms?.metaTwitterCard as 'summary_large_image') ?? 'summary_large_image',
+      title: cms?.metaTwitterTitle ?? title,
+      description: cms?.metaTwitterDescription ?? description,
+      site: cms?.metaTwitterSite ?? '@AllSmartCalculator',
+      ...(cms?.metaTwitterImage && { images: [cms.metaTwitterImage] }),
+    },
+  };
+}
 
 const principles = [
   {
@@ -79,7 +101,9 @@ const sources = [
   },
 ];
 
-export default function MethodologyPage() {
+export default async function MethodologyPage() {
+  const cms = await getMethodologyPage();
+
   return (
     <div className="pt-24 sm:pt-28 pb-12 sm:pb-20 px-4 sm:px-5 md:px-8">
       <div className="max-w-4xl mx-auto">
@@ -112,6 +136,12 @@ export default function MethodologyPage() {
           </p>
         </div>
 
+        {cms?.body ? (
+          <GlassCard className="p-5 sm:p-6 md:p-8">
+            <CmsRichText content={cms.body} />
+          </GlassCard>
+        ) : (
+          <>
         {/* Principles */}
         <h2 className="font-headline font-black text-xl sm:text-2xl md:text-3xl tracking-tighter mb-5 sm:mb-6">
           Editorial principles
@@ -252,6 +282,8 @@ export default function MethodologyPage() {
             Read the disclaimer
           </Link>
         </div>
+          </>
+        )}
       </div>
     </div>
   );
