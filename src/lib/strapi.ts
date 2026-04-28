@@ -172,6 +172,7 @@ async function getStaticPage(endpoint: string): Promise<StrapiStaticPage | null>
 }
 
 export const getAboutPage = () => getStaticPage('/about-page');
+export const getAuthorPage = () => getStaticPage('/author-page');
 export const getMethodologyPage = () => getStaticPage('/methodology-page');
 export const getPrivacyPage = () => getStaticPage('/privacy-page');
 export const getTermsPage = () => getStaticPage('/terms-page');

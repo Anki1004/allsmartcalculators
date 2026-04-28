@@ -1,26 +1,47 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import GlassCard from '@/components/GlassCard';
+import CmsRichText from '@/components/CmsRichText';
+import { getAuthorPage } from '@/lib/strapi';
 import { Linkedin, Mail, Calculator, Code2, BarChart3, ChevronRight } from 'lucide-react';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
 const AUTHOR_URL = `${SITE_URL}/author/ankit-gupta`;
 const LINKEDIN_URL = 'https://www.linkedin.com/in/ankit-gupta-data-analyst';
 
-export const metadata: Metadata = {
-  title: 'Ankit Gupta — Builder of AllSmartCalculator',
-  description:
-    'Ankit Gupta is a solo developer and data analyst who builds, maintains, and reviews every calculator on AllSmartCalculator. Background, focus areas, and how to reach him.',
-  alternates: { canonical: AUTHOR_URL },
-  openGraph: {
-    title: 'Ankit Gupta — Builder of AllSmartCalculator',
-    description:
-      'Solo developer and data analyst behind every calculator on AllSmartCalculator.',
-    url: AUTHOR_URL,
-    type: 'profile',
-    siteName: 'AllSmartCalculator',
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const cms = await getAuthorPage();
+  const title = cms?.pageTitle ?? 'Ankit Gupta — Builder of AllSmartCalculator';
+  const description =
+    cms?.metaDescription ??
+    'Ankit Gupta is a solo developer and data analyst who builds, maintains, and reviews every calculator on AllSmartCalculator. Background, focus areas, and how to reach him.';
+  const canonical = cms?.linkCanonical ?? AUTHOR_URL;
+  return {
+    title,
+    description,
+    keywords: cms?.metaKeywords ?? undefined,
+    authors: [{ name: cms?.metaAuthor ?? 'Ankit Gupta' }],
+    robots: cms?.metaRobots ?? 'index, follow',
+    alternates: { canonical },
+    openGraph: {
+      title: cms?.metaOgTitle ?? 'Ankit Gupta — Builder of AllSmartCalculator',
+      description:
+        cms?.metaOgDescription ??
+        'Solo developer and data analyst behind every calculator on AllSmartCalculator.',
+      url: cms?.metaOgUrl ?? canonical,
+      type: (cms?.metaOgType as 'profile') ?? 'profile',
+      siteName: cms?.metaOgSiteName ?? 'AllSmartCalculator',
+      ...(cms?.metaOgImage && { images: [{ url: cms.metaOgImage }] }),
+    },
+    twitter: {
+      card: (cms?.metaTwitterCard as 'summary_large_image') ?? 'summary_large_image',
+      title: cms?.metaTwitterTitle ?? title,
+      description: cms?.metaTwitterDescription ?? description,
+      site: cms?.metaTwitterSite ?? '@AllSmartCalculator',
+      ...(cms?.metaTwitterImage && { images: [cms.metaTwitterImage] }),
+    },
+  };
+}
 
 const expertise = [
   {
@@ -40,7 +61,9 @@ const expertise = [
   },
 ];
 
-export default function AuthorPage() {
+export default async function AuthorPage() {
+  const cms = await getAuthorPage();
+
   const personSchema = {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -124,6 +147,12 @@ export default function AuthorPage() {
             </div>
           </div>
 
+          {cms?.body ? (
+            <GlassCard className="p-5 sm:p-6 md:p-8">
+              <CmsRichText content={cms.body} />
+            </GlassCard>
+          ) : (
+            <>
           {/* Bio */}
           <GlassCard className="p-5 sm:p-6 md:p-8 mb-6 sm:mb-8">
             <h2 className="font-headline font-bold text-lg sm:text-xl md:text-2xl text-on-surface mb-3 sm:mb-4">
@@ -240,6 +269,8 @@ export default function AuthorPage() {
               Browse all calculators
             </Link>
           </div>
+            </>
+          )}
         </div>
       </div>
     </>
