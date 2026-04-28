@@ -83,6 +83,8 @@ export function getStrapiImageUrl(url: string): string {
   return `${STRAPI_URL}${url}`;
 }
 
+import type { BlocksContent } from '@strapi/blocks-react-renderer';
+
 export interface StrapiCalcContent extends SeoFields {
   id: number;
   slug: string;
@@ -90,6 +92,7 @@ export interface StrapiCalcContent extends SeoFields {
   intro: string | null;
   tips: string | null;
   formulaExplanation: string | null;
+  bodyContent: BlocksContent | null;
   faqs: { id: number; question: string; answer: string }[];
   relatedCalculators: string[] | null;
 }

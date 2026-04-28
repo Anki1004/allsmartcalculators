@@ -1,21 +1,43 @@
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { getCalcContent, StrapiCalcContent } from '@/lib/strapi';
 import GlassCard from './GlassCard';
-import { Lightbulb, BookOpen, HelpCircle, ChevronDown } from 'lucide-react';
+import { Lightbulb, BookOpen, HelpCircle, ChevronDown, FileText } from 'lucide-react';
+
+const PROSE_CLASSES = `prose prose-invert prose-sm max-w-none
+  prose-p:text-on-surface-variant prose-p:leading-relaxed
+  prose-headings:text-on-surface prose-headings:font-headline prose-headings:font-bold
+  prose-a:text-primary prose-a:no-underline hover:prose-a:underline
+  prose-strong:text-on-surface
+  prose-li:text-on-surface-variant
+  prose-code:text-secondary prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
+  prose-blockquote:border-l-primary prose-blockquote:text-on-surface-variant`;
 
 function MarkdownBody({ content }: { content: string }) {
   return (
-    <div className="prose prose-invert prose-sm max-w-none
-      prose-p:text-on-surface-variant prose-p:leading-relaxed
-      prose-headings:text-on-surface prose-headings:font-headline prose-headings:font-bold
-      prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-      prose-strong:text-on-surface
-      prose-li:text-on-surface-variant
-      prose-code:text-secondary prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
-      prose-blockquote:border-l-primary prose-blockquote:text-on-surface-variant
-    ">
+    <div className={PROSE_CLASSES}>
       <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+    </div>
+  );
+}
+
+// Block renderer: H1 from CMS becomes H2 (page already has an H1).
+// H4-H6 collapse to H3 — the editor was instructed to use H2/H3 only,
+// so anything deeper is treated as a same-level subhead.
+function BlocksBody({ content }: { content: NonNullable<StrapiCalcContent['bodyContent']> }) {
+  return (
+    <div className={PROSE_CLASSES}>
+      <BlocksRenderer
+        content={content}
+        blocks={{
+          heading: ({ children, level }) => {
+            const safeLevel = level === 1 ? 2 : level >= 4 ? 3 : level;
+            const Tag = `h${safeLevel}` as 'h2' | 'h3';
+            return <Tag>{children}</Tag>;
+          },
+        }}
+      />
     </div>
   );
 }
@@ -63,7 +85,12 @@ export default async function CalculatorCMS({ slug }: { slug: string }) {
 
   if (!content) return null;
 
-  const hasContent = content.intro || content.tips || content.formulaExplanation || content.faqs?.length;
+  const hasContent =
+    content.intro ||
+    content.tips ||
+    content.formulaExplanation ||
+    content.bodyContent?.length ||
+    content.faqs?.length;
   if (!hasContent) return null;
 
   return (
@@ -86,6 +113,13 @@ export default async function CalculatorCMS({ slug }: { slug: string }) {
       {content.formulaExplanation && (
         <SectionCard icon={BookOpen} title="How the formula works" color="bg-secondary/15 text-secondary">
           <MarkdownBody content={content.formulaExplanation} />
+        </SectionCard>
+      )}
+
+      {/* Long-form body (Strapi blocks editor — H2/H3 from dropdown) */}
+      {content.bodyContent && content.bodyContent.length > 0 && (
+        <SectionCard icon={FileText} title="In-depth guide" color="bg-primary/15 text-primary">
+          <BlocksBody content={content.bodyContent} />
         </SectionCard>
       )}
 
