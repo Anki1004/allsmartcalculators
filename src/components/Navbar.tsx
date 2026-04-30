@@ -53,14 +53,23 @@ export default function Navbar() {
             priority
             className="hidden dark:sm:block h-10 md:h-12 lg:h-14 w-auto group-hover:scale-[1.03] transition-transform"
           />
-          {/* Compact mark on mobile (works on both themes) */}
+          {/* Compact mark — light theme */}
           <Image
             src="/icon-mark.png"
             alt="AllSmartCalculators"
             width={313}
             height={305}
             priority
-            className="sm:hidden h-10 w-10 group-hover:scale-105 transition-transform"
+            className="sm:hidden dark:hidden h-10 w-10 group-hover:scale-105 transition-transform"
+          />
+          {/* Compact mark — dark theme */}
+          <Image
+            src="/icon-mark-dark.png"
+            alt="AllSmartCalculators"
+            width={313}
+            height={305}
+            priority
+            className="hidden dark:block dark:sm:hidden h-10 w-10 group-hover:scale-105 transition-transform"
           />
         </Link>
 
