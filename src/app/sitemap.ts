@@ -5,6 +5,10 @@ import { getAllPosts } from '@/lib/strapi';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
 
+// Match /llms.txt: revalidate every 60s so Strapi blog posts surface
+// without a redeploy. /api/revalidate also force-purges this on publish.
+export const revalidate = 60;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
 
