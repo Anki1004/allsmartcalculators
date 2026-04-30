@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -7,12 +8,15 @@ export default function Footer() {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8 mb-8 sm:mb-10">
           {/* Brand */}
           <div className="col-span-2 sm:col-span-3 md:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-dim to-primary" />
-              <span className="font-headline text-xl font-black tracking-tighter text-gradient">
-                AllSmartCalculator
-              </span>
-            </div>
+            <Link href="/" aria-label="AllSmartCalculators home" className="inline-block mb-4">
+              <Image
+                src="/logo-full.png"
+                alt="AllSmartCalculators.com"
+                width={500}
+                height={500}
+                className="h-12 w-auto"
+              />
+            </Link>
             <p className="text-sm text-on-surface-variant max-w-xs">
               100+ beautifully crafted calculators for every life decision.
               Calculate anything. Beautifully.

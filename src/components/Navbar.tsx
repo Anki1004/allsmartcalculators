@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { Search, Menu, X, Sun, Moon } from 'lucide-react';
 import NavCurrencyPicker from './NavCurrencyPicker';
@@ -29,30 +30,29 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-8 py-3 md:py-4 flex items-center justify-between gap-2">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group min-w-0 shrink">
-          <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-gradient-to-br from-primary-dim to-primary flex items-center justify-center shadow-glow-primary group-hover:scale-105 transition-transform shrink-0">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              className="w-4 h-4 md:w-5 md:h-5 text-white"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <rect x="4" y="2" width="16" height="20" rx="2" />
-              <line x1="8" y1="6" x2="16" y2="6" />
-              <line x1="8" y1="10" x2="10" y2="10" />
-              <line x1="12" y1="10" x2="14" y2="10" />
-              <line x1="8" y1="14" x2="10" y2="14" />
-              <line x1="12" y1="14" x2="14" y2="14" />
-              <line x1="8" y1="18" x2="10" y2="18" />
-              <line x1="12" y1="18" x2="14" y2="18" />
-            </svg>
-          </div>
-          <span className="font-headline text-base sm:text-lg md:text-2xl font-black tracking-tighter text-gradient truncate">
-            AllSmartCalculator
-          </span>
+        <Link
+          href="/"
+          aria-label="AllSmartCalculators home"
+          className="flex items-center gap-2 group min-w-0 shrink"
+        >
+          {/* Full wordmark on tablet+ */}
+          <Image
+            src="/logo-full.png"
+            alt="AllSmartCalculators.com"
+            width={500}
+            height={500}
+            priority
+            className="hidden sm:block h-9 md:h-11 w-auto group-hover:scale-[1.03] transition-transform"
+          />
+          {/* Compact mark on mobile */}
+          <Image
+            src="/icon-mark.png"
+            alt="AllSmartCalculators"
+            width={500}
+            height={500}
+            priority
+            className="sm:hidden h-9 w-9 group-hover:scale-105 transition-transform"
+          />
         </Link>
 
         {/* Desktop nav */}
