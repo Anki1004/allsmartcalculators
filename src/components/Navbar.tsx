@@ -35,23 +35,32 @@ export default function Navbar() {
           aria-label="AllSmartCalculators home"
           className="flex items-center gap-2 group min-w-0 shrink"
         >
-          {/* Full wordmark on tablet+ */}
+          {/* Full wordmark — light theme */}
           <Image
             src="/logo-full.png"
             alt="AllSmartCalculators.com"
-            width={500}
-            height={500}
+            width={376}
+            height={141}
             priority
-            className="hidden sm:block h-9 md:h-11 w-auto group-hover:scale-[1.03] transition-transform"
+            className="hidden sm:block dark:hidden h-10 md:h-12 lg:h-14 w-auto group-hover:scale-[1.03] transition-transform"
           />
-          {/* Compact mark on mobile */}
+          {/* Full wordmark — dark theme (white text variant) */}
+          <Image
+            src="/logo-full-dark.png"
+            alt="AllSmartCalculators.com"
+            width={376}
+            height={141}
+            priority
+            className="hidden dark:sm:block h-10 md:h-12 lg:h-14 w-auto group-hover:scale-[1.03] transition-transform"
+          />
+          {/* Compact mark on mobile (works on both themes) */}
           <Image
             src="/icon-mark.png"
             alt="AllSmartCalculators"
-            width={500}
-            height={500}
+            width={313}
+            height={305}
             priority
-            className="sm:hidden h-9 w-9 group-hover:scale-105 transition-transform"
+            className="sm:hidden h-10 w-10 group-hover:scale-105 transition-transform"
           />
         </Link>
 

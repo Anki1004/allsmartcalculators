@@ -9,12 +9,21 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 sm:col-span-3 md:col-span-2">
             <Link href="/" aria-label="AllSmartCalculators home" className="inline-block mb-4">
+              {/* Light theme */}
               <Image
                 src="/logo-full.png"
                 alt="AllSmartCalculators.com"
-                width={500}
-                height={500}
-                className="h-12 w-auto"
+                width={376}
+                height={141}
+                className="block dark:hidden h-14 sm:h-16 w-auto"
+              />
+              {/* Dark theme (white text variant) */}
+              <Image
+                src="/logo-full-dark.png"
+                alt="AllSmartCalculators.com"
+                width={376}
+                height={141}
+                className="hidden dark:block h-14 sm:h-16 w-auto"
               />
             </Link>
             <p className="text-sm text-on-surface-variant max-w-xs">
