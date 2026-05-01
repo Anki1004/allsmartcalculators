@@ -1,19 +1,19 @@
 import type { Metadata } from 'next';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 
 export const metadata: Metadata = {
-  title: 'Contact — AllSmartCalculator',
+  title: 'Contact — AllSmartCalculators',
   description:
-    'Report a bug, suggest a calculator, or get in touch with AllSmartCalculator. We read every message.',
+    'Report a bug, suggest a calculator, or get in touch with AllSmartCalculators. We read every message.',
   alternates: { canonical: `${SITE_URL}/contact` },
   openGraph: {
-    title: 'Contact AllSmartCalculator',
+    title: 'Contact AllSmartCalculators',
     description:
-      'Report a bug, suggest a calculator, or get in touch with AllSmartCalculator.',
+      'Report a bug, suggest a calculator, or get in touch with AllSmartCalculators.',
     url: `${SITE_URL}/contact`,
     type: 'website',
-    siteName: 'AllSmartCalculator',
+    siteName: 'AllSmartCalculators',
   },
 };
 

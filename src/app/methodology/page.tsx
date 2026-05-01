@@ -12,39 +12,39 @@ import {
   ExternalLink,
 } from 'lucide-react';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 const PAGE_URL = `${SITE_URL}/methodology`;
 
 export async function generateMetadata(): Promise<Metadata> {
   const cms = await getMethodologyPage();
   const title =
-    cms?.pageTitle ?? 'Methodology — How AllSmartCalculator Builds Its Calculators';
+    cms?.pageTitle ?? 'Methodology — How AllSmartCalculators Builds Its Calculators';
   const description =
     cms?.metaDescription ??
-    'How every calculator on AllSmartCalculator is built, sourced, verified, and updated — including data sources, formula references, and our review process.';
+    'How every calculator on AllSmartCalculators is built, sourced, verified, and updated — including data sources, formula references, and our review process.';
   const canonical = cms?.linkCanonical ?? PAGE_URL;
   return {
     title,
     description,
     keywords: cms?.metaKeywords ?? undefined,
-    authors: [{ name: cms?.metaAuthor ?? 'AllSmartCalculator Team' }],
+    authors: [{ name: cms?.metaAuthor ?? 'AllSmartCalculators Team' }],
     robots: cms?.metaRobots ?? 'index, follow',
     alternates: { canonical },
     openGraph: {
-      title: cms?.metaOgTitle ?? 'How AllSmartCalculator Builds Its Calculators',
+      title: cms?.metaOgTitle ?? 'How AllSmartCalculators Builds Its Calculators',
       description:
         cms?.metaOgDescription ??
         'Sources, formulas, verification process, and update cadence behind every calculator.',
       url: cms?.metaOgUrl ?? canonical,
       type: (cms?.metaOgType as 'website') ?? 'website',
-      siteName: cms?.metaOgSiteName ?? 'AllSmartCalculator',
+      siteName: cms?.metaOgSiteName ?? 'AllSmartCalculators',
       ...(cms?.metaOgImage && { images: [{ url: cms.metaOgImage }] }),
     },
     twitter: {
       card: (cms?.metaTwitterCard as 'summary_large_image') ?? 'summary_large_image',
       title: cms?.metaTwitterTitle ?? title,
       description: cms?.metaTwitterDescription ?? description,
-      site: cms?.metaTwitterSite ?? '@AllSmartCalculator',
+      site: cms?.metaTwitterSite ?? '@AllSmartCalculators',
       ...(cms?.metaTwitterImage && { images: [cms.metaTwitterImage] }),
     },
   };
@@ -126,7 +126,7 @@ export default async function MethodologyPage() {
             How we build &amp; verify every calculator
           </h1>
           <p className="text-sm sm:text-base md:text-lg text-on-surface-variant leading-relaxed max-w-2xl">
-            AllSmartCalculator is a free public tool that touches money and health
+            AllSmartCalculators is a free public tool that touches money and health
             decisions — categories where being wrong has real consequences. This
             page is our public commitment to how we get it right, and how we
             tell you when we can&apos;t.
@@ -257,7 +257,7 @@ export default async function MethodologyPage() {
           <p className="text-sm md:text-base text-on-surface-variant leading-relaxed mb-3 break-words">
             If you spot a wrong number, a misapplied formula, or an outdated
             reference, we&apos;d much rather hear about it than not. Email{' '}
-            <span className="text-primary font-mono break-all">hello@allsmartcalculator.com</span>{' '}
+            <span className="text-primary font-mono break-all">hello@allsmartcalculators.com</span>{' '}
             with the calculator URL, the inputs you used, and the expected result.
           </p>
           <p className="text-sm md:text-base text-on-surface-variant leading-relaxed">
@@ -273,7 +273,7 @@ export default async function MethodologyPage() {
             href="/about"
             className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-br from-primary-dim to-primary text-white font-semibold text-sm shadow-glow-primary press"
           >
-            About AllSmartCalculator
+            About AllSmartCalculators
           </Link>
           <Link
             href="/disclaimer"

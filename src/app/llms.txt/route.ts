@@ -2,16 +2,16 @@ import { allCalculators } from '@/lib/calculator-registry';
 import { CATEGORIES } from '@/lib/calculator-types';
 import { getAllPosts } from '@/lib/strapi';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 
 // Revalidate every 60s so new Strapi blog posts surface in /llms.txt without a rebuild.
 export const revalidate = 60;
 
 export async function GET() {
   const lines: string[] = [
-    `# AllSmartCalculator — Free Online Calculators`,
+    `# AllSmartCalculators — Free Online Calculators`,
     ``,
-    `> AllSmartCalculator is a free collection of ${allCalculators.length}+ interactive calculators covering finance, health, math, crypto, engineering, education, business, and everyday life. All calculators are instant, mobile-friendly, ad-free, and require no signup.`,
+    `> AllSmartCalculators is a free collection of ${allCalculators.length}+ interactive calculators covering finance, health, math, crypto, engineering, education, business, and everyday life. All calculators are instant, mobile-friendly, and require no signup.`,
     ``,
     `## URL`,
     ``,
@@ -19,7 +19,7 @@ export async function GET() {
     ``,
     `## About`,
     ``,
-    `AllSmartCalculator helps users make better decisions with fast, accurate calculators. Every formula is reviewed by Ankit Gupta and sourced from authoritative references (RBI, WHO, IT Department, SEBI). No ads, no signup, no tracking — just clean tools that respect the reader.`,
+    `AllSmartCalculators helps users make better decisions with fast, accurate calculators. Every formula is reviewed by Ankit Gupta and sourced from authoritative references (RBI, WHO, IT Department, SEBI). No signup required — just clean tools that respect the reader.`,
     ``,
     `## Key Pages`,
     ``,
@@ -27,7 +27,7 @@ export async function GET() {
     `- [Categories](${BASE_URL}/categories): All 8 calculator categories`,
     `- [Trending](${BASE_URL}/trending): Most-used calculators`,
     `- [Blog](${BASE_URL}/blog): Calculator guides and long-form explainers`,
-    `- [About](${BASE_URL}/about): About AllSmartCalculator`,
+    `- [About](${BASE_URL}/about): About AllSmartCalculators`,
     `- [Methodology](${BASE_URL}/methodology): How calculators are built and verified`,
     `- [Author: Ankit Gupta](${BASE_URL}/author/ankit-gupta): Builder and reviewer`,
     `- [Contact](${BASE_URL}/contact): Reach out`,

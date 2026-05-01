@@ -164,7 +164,7 @@ export const financeCalculators: CalculatorConfig[] = [
       ],
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'emi-calculator',
@@ -252,7 +252,7 @@ export const financeCalculators: CalculatorConfig[] = [
       ],
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'sip-calculator',
@@ -339,7 +339,7 @@ export const financeCalculators: CalculatorConfig[] = [
       ],
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'compound-interest-calculator',
@@ -422,7 +422,7 @@ export const financeCalculators: CalculatorConfig[] = [
       ],
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'mortgage-calculator',
@@ -510,7 +510,7 @@ export const financeCalculators: CalculatorConfig[] = [
       ],
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'loan-eligibility-calculator',
@@ -700,7 +700,7 @@ export const financeCalculators: CalculatorConfig[] = [
       ],
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'rd-calculator',
@@ -1003,7 +1003,7 @@ export const financeCalculators: CalculatorConfig[] = [
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'gst-calculator',
@@ -1082,7 +1082,7 @@ export const financeCalculators: CalculatorConfig[] = [
       ],
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'ppf-calculator',
@@ -1163,7 +1163,7 @@ export const financeCalculators: CalculatorConfig[] = [
       ],
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'nps-calculator',
@@ -1243,7 +1243,7 @@ export const financeCalculators: CalculatorConfig[] = [
       ],
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'lumpsum-calculator',
@@ -1324,7 +1324,7 @@ export const financeCalculators: CalculatorConfig[] = [
       ],
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'hra-calculator',
@@ -1415,7 +1415,7 @@ export const financeCalculators: CalculatorConfig[] = [
       ],
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'cibil-calculator',
@@ -1530,6 +1530,6 @@ export const financeCalculators: CalculatorConfig[] = [
       ],
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
 ];

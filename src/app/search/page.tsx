@@ -5,7 +5,7 @@ import { searchCalculators } from '@/lib/calculator-registry';
 import CalculatorCard from '@/components/CalculatorCard';
 import GlassCard from '@/components/GlassCard';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 
 interface SearchPageProps {
   searchParams: { q?: string };
@@ -14,10 +14,10 @@ interface SearchPageProps {
 export function generateMetadata({ searchParams }: SearchPageProps): Metadata {
   const q = (searchParams.q ?? '').trim();
   const title = q
-    ? `"${q}" — Search Results | AllSmartCalculator`
-    : 'Search Calculators | AllSmartCalculator';
+    ? `"${q}" — Search Results | AllSmartCalculators`
+    : 'Search Calculators | AllSmartCalculators';
   const description = q
-    ? `Search results for "${q}" across 100+ free calculators on AllSmartCalculator.`
+    ? `Search results for "${q}" across 100+ free calculators on AllSmartCalculators.`
     : 'Search 100+ free calculators across finance, health, math, crypto, engineering, daily life, education, and business.';
 
   return {
@@ -31,7 +31,7 @@ export function generateMetadata({ searchParams }: SearchPageProps): Metadata {
       description,
       url: `${SITE_URL}/search${q ? `?q=${encodeURIComponent(q)}` : ''}`,
       type: 'website',
-      siteName: 'AllSmartCalculator',
+      siteName: 'AllSmartCalculators',
     },
   };
 }

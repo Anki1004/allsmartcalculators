@@ -3,7 +3,7 @@ import { allCalculators } from '@/lib/calculator-registry';
 import { CATEGORIES } from '@/lib/calculator-types';
 import { getAllPosts } from '@/lib/strapi';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 
 // Match /llms.txt: revalidate every 60s so Strapi blog posts surface
 // without a redeploy. /api/revalidate also force-purges this on publish.

@@ -5,16 +5,16 @@ import CmsRichText from '@/components/CmsRichText';
 import { getAuthorPage, getStrapiImageUrl } from '@/lib/strapi';
 import { Linkedin, Mail, Calculator, Code2, BarChart3, ChevronRight } from 'lucide-react';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 const AUTHOR_URL = `${SITE_URL}/author/ankit-gupta`;
 const LINKEDIN_FALLBACK = 'https://www.linkedin.com/in/ankit-gupta-data-analyst';
 
 export async function generateMetadata(): Promise<Metadata> {
   const cms = await getAuthorPage();
-  const title = cms?.pageTitle ?? 'Ankit Gupta — Builder of AllSmartCalculator';
+  const title = cms?.pageTitle ?? 'Ankit Gupta — Builder of AllSmartCalculators';
   const description =
     cms?.metaDescription ??
-    'Ankit Gupta is a solo developer and data analyst who builds, maintains, and reviews every calculator on AllSmartCalculator. Background, focus areas, and how to reach him.';
+    'Ankit Gupta is a solo developer and data analyst who builds, maintains, and reviews every calculator on AllSmartCalculators. Background, focus areas, and how to reach him.';
   const canonical = cms?.linkCanonical ?? AUTHOR_URL;
   return {
     title,
@@ -24,20 +24,20 @@ export async function generateMetadata(): Promise<Metadata> {
     robots: cms?.metaRobots ?? 'index, follow',
     alternates: { canonical },
     openGraph: {
-      title: cms?.metaOgTitle ?? 'Ankit Gupta — Builder of AllSmartCalculator',
+      title: cms?.metaOgTitle ?? 'Ankit Gupta — Builder of AllSmartCalculators',
       description:
         cms?.metaOgDescription ??
-        'Solo developer and data analyst behind every calculator on AllSmartCalculator.',
+        'Solo developer and data analyst behind every calculator on AllSmartCalculators.',
       url: cms?.metaOgUrl ?? canonical,
       type: (cms?.metaOgType as 'profile') ?? 'profile',
-      siteName: cms?.metaOgSiteName ?? 'AllSmartCalculator',
+      siteName: cms?.metaOgSiteName ?? 'AllSmartCalculators',
       ...(cms?.metaOgImage && { images: [{ url: cms.metaOgImage }] }),
     },
     twitter: {
       card: (cms?.metaTwitterCard as 'summary_large_image') ?? 'summary_large_image',
       title: cms?.metaTwitterTitle ?? title,
       description: cms?.metaTwitterDescription ?? description,
-      site: cms?.metaTwitterSite ?? '@AllSmartCalculator',
+      site: cms?.metaTwitterSite ?? '@AllSmartCalculators',
       ...(cms?.metaTwitterImage && { images: [cms.metaTwitterImage] }),
     },
   };
@@ -47,7 +47,7 @@ const expertise = [
   {
     icon: Calculator,
     title: 'Calculator design & verification',
-    text: 'Implements every formula on AllSmartCalculator, cross-checks results against textbook references and industry tools, and writes the explanatory content that goes with each calculator.',
+    text: 'Implements every formula on AllSmartCalculators, cross-checks results against textbook references and industry tools, and writes the explanatory content that goes with each calculator.',
   },
   {
     icon: Code2,
@@ -73,7 +73,7 @@ export default async function AuthorPage() {
     name: 'Ankit Gupta',
     url: AUTHOR_URL,
     jobTitle: 'Founder & Builder',
-    worksFor: { '@type': 'Organization', name: 'AllSmartCalculator', url: SITE_URL },
+    worksFor: { '@type': 'Organization', name: 'AllSmartCalculators', url: SITE_URL },
     sameAs: [linkedinUrl],
     ...(profileImageUrl && { image: profileImageUrl }),
     knowsAbout: [
@@ -85,7 +85,7 @@ export default async function AuthorPage() {
       'Web performance and SEO',
     ],
     description:
-      'Solo developer and data analyst who builds, maintains, and reviews every calculator on AllSmartCalculator.',
+      'Solo developer and data analyst who builds, maintains, and reviews every calculator on AllSmartCalculators.',
   };
 
   return (
@@ -138,7 +138,7 @@ export default async function AuthorPage() {
               </h1>
               <p className="text-sm sm:text-base md:text-lg text-on-surface-variant leading-relaxed mb-4 sm:mb-5 max-w-2xl">
                 Solo developer and data analyst. Builds, maintains, and reviews every
-                calculator on AllSmartCalculator. Based in India; writing in English
+                calculator on AllSmartCalculators. Based in India; writing in English
                 for an India-first, globally relevant audience.
               </p>
               <div className="flex flex-wrap gap-2 sm:gap-3">
@@ -175,9 +175,9 @@ export default async function AuthorPage() {
             </h2>
             <div className="flex flex-col gap-3 sm:gap-4 text-sm md:text-base text-on-surface-variant leading-relaxed">
               <p>
-                I started AllSmartCalculator because the existing calculator hubs
+                I started AllSmartCalculators because the existing calculator hubs
                 online — even the most popular ones — feel like they were built in
-                2008: cluttered, ad-ridden, and painful to use on a phone. I wanted
+                2008: cluttered, hostile UX, and painful to use on a phone. I wanted
                 a calculator site that respected the reader: clean design, fast
                 response, no dark patterns, no email walls.
               </p>

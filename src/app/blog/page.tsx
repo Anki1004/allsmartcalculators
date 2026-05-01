@@ -5,20 +5,20 @@ import { getAllPosts, getStrapiImageUrl, StrapiPost } from '@/lib/strapi';
 import GlassCard from '@/components/GlassCard';
 import { Clock, User, ArrowRight, BookOpen } from 'lucide-react';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 
 export const metadata: Metadata = {
-  title: 'Blog — AllSmartCalculator',
+  title: 'Blog — AllSmartCalculators',
   description:
     'Practical guides on finance, health, math, and crypto — written to help you get more out of every calculation.',
   alternates: { canonical: `${SITE_URL}/blog` },
   openGraph: {
-    title: 'Blog — AllSmartCalculator',
+    title: 'Blog — AllSmartCalculators',
     description:
       'Practical guides on finance, health, math, and crypto.',
     url: `${SITE_URL}/blog`,
     type: 'website',
-    siteName: 'AllSmartCalculator',
+    siteName: 'AllSmartCalculators',
   },
 };
 
@@ -76,7 +76,7 @@ function PostCard({ post }: { post: StrapiPost }) {
             <div className="flex items-center gap-2 sm:gap-3 min-w-0">
               <span className="flex items-center gap-1 truncate">
                 <User className="w-3 h-3 shrink-0" />
-                <span className="truncate">{post.metaAuthor ?? 'AllSmartCalculator Team'}</span>
+                <span className="truncate">{post.metaAuthor ?? 'AllSmartCalculators Team'}</span>
               </span>
               <span className="flex items-center gap-1 shrink-0">
                 <Clock className="w-3 h-3" />

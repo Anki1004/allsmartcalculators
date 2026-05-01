@@ -79,7 +79,7 @@ export const mathCalculators: CalculatorConfig[] = [
       ],
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculator', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'fraction-calculator',

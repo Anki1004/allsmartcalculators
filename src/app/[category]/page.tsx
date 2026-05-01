@@ -22,9 +22,9 @@ export async function generateMetadata({
   if (!cat) return { title: 'Not Found' };
   const calcs = getCalculatorsByCategory(cat.id as CalculatorCategory);
   const cms = await getCategoryContent(cat.id);
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
   const url = `${siteUrl}/${cat.id}`;
-  const title = cms?.pageTitle ?? `${cat.name} Calculators — AllSmartCalculator`;
+  const title = cms?.pageTitle ?? `${cat.name} Calculators — AllSmartCalculators`;
   const description =
     cms?.metaDescription ??
     `${calcs.length} free ${cat.name.toLowerCase()} calculators. ${cat.description}.`;
@@ -33,7 +33,7 @@ export async function generateMetadata({
     title,
     description,
     keywords: cms?.metaKeywords ?? undefined,
-    authors: [{ name: cms?.metaAuthor ?? 'AllSmartCalculator Team' }],
+    authors: [{ name: cms?.metaAuthor ?? 'AllSmartCalculators Team' }],
     robots: cms?.metaRobots ?? 'index, follow',
     alternates: { canonical },
     openGraph: {
@@ -41,14 +41,14 @@ export async function generateMetadata({
       description: cms?.metaOgDescription ?? description,
       url: cms?.metaOgUrl ?? canonical,
       type: (cms?.metaOgType as 'website') ?? 'website',
-      siteName: cms?.metaOgSiteName ?? 'AllSmartCalculator',
+      siteName: cms?.metaOgSiteName ?? 'AllSmartCalculators',
       ...(cms?.metaOgImage && { images: [{ url: cms.metaOgImage }] }),
     },
     twitter: {
       card: (cms?.metaTwitterCard as 'summary_large_image') ?? 'summary_large_image',
       title: cms?.metaTwitterTitle ?? title,
       description: cms?.metaTwitterDescription ?? description,
-      site: cms?.metaTwitterSite ?? '@AllSmartCalculator',
+      site: cms?.metaTwitterSite ?? '@AllSmartCalculators',
       ...(cms?.metaTwitterImage && { images: [cms.metaTwitterImage] }),
     },
   };

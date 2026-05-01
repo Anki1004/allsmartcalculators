@@ -6,18 +6,18 @@ import GlassCard from '@/components/GlassCard';
 
 import type { Metadata } from 'next';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 
 export const metadata: Metadata = {
-  title: 'All Categories — AllSmartCalculator',
+  title: 'All Categories — AllSmartCalculators',
   description: 'Browse 100+ free calculators across 8 categories — Finance, Health, Math, Crypto, Engineering, Daily Life, Education, and Business.',
   alternates: { canonical: `${SITE_URL}/categories` },
   openGraph: {
-    title: 'All Categories — AllSmartCalculator',
+    title: 'All Categories — AllSmartCalculators',
     description: 'Browse 100+ free calculators across 8 categories.',
     url: `${SITE_URL}/categories`,
     type: 'website',
-    siteName: 'AllSmartCalculator',
+    siteName: 'AllSmartCalculators',
   },
 };
 

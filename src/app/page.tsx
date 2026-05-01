@@ -14,16 +14,16 @@ import CmsRichText from '@/components/CmsRichText';
 import { ArrowRight, Flame, TrendingUp } from 'lucide-react';
 import { getHomepage } from '@/lib/strapi';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 
 export async function generateMetadata(): Promise<Metadata> {
   const hp = await getHomepage();
 
   const title =
-    hp?.pageTitle ?? 'Free Online Calculators — 101+ Tools (EMI, BMI, GPA & More) | AllSmartCalculator';
+    hp?.pageTitle ?? 'Free Online Calculators — 101+ Tools (EMI, BMI, GPA & More) | AllSmartCalculators';
   const description =
     hp?.metaDescription ??
-    '101+ free online calculators for finance, health, math, crypto, engineering, education and business. EMI, SIP, BMI, GST, GPA, percentage — fast, ad-free, no signup.';
+    '101+ free online calculators for finance, health, math, crypto, engineering, education and business. EMI, SIP, BMI, GST, GPA, percentage — fast, accurate, no signup required.';
   const keywords = hp?.metaKeywords
     ? hp.metaKeywords.split(',').map((k) => k.trim())
     : [
@@ -45,7 +45,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title,
     description,
     keywords,
-    authors: hp?.metaAuthor ? [{ name: hp.metaAuthor }] : [{ name: 'AllSmartCalculator Team' }],
+    authors: hp?.metaAuthor ? [{ name: hp.metaAuthor }] : [{ name: 'AllSmartCalculators Team' }],
     robots,
     alternates: { canonical },
     openGraph: {
@@ -53,14 +53,14 @@ export async function generateMetadata(): Promise<Metadata> {
       description: hp?.metaOgDescription ?? description,
       type: (hp?.metaOgType as 'website') ?? 'website',
       url: hp?.linkCanonical ?? SITE_URL,
-      siteName: hp?.metaOgSiteName ?? 'AllSmartCalculator',
+      siteName: hp?.metaOgSiteName ?? 'AllSmartCalculators',
       ...(hp?.metaOgImage ? { images: [{ url: hp.metaOgImage }] } : {}),
     },
     twitter: {
       card: (hp?.metaTwitterCard as 'summary_large_image') ?? 'summary_large_image',
       title: hp?.metaTwitterTitle ?? title,
       description: hp?.metaTwitterDescription ?? description,
-      site: hp?.metaTwitterSite ?? '@AllSmartCalculator',
+      site: hp?.metaTwitterSite ?? '@AllSmartCalculators',
       ...(hp?.metaTwitterImage ? { images: [hp.metaTwitterImage] } : {}),
     },
   };
@@ -82,14 +82,14 @@ export default async function HomePage() {
     'Premium financial, health, crypto, and scientific calculators crafted with obsessive attention to detail. Calculate anything, beautifully.';
   const ctaHeadline = hp?.ctaHeadline ?? 'Calculate Anything.';
   const ctaDescription =
-    hp?.ctaDescription ?? 'Free forever. No signups. No ads. Just beautiful calculators that work.';
+    hp?.ctaDescription ?? 'Free forever. No signups. Just beautiful calculators that work.';
   const bottomContent = hp?.bottomContent ?? null;
 
   // ── Site-wide JSON-LD: Organization + WebSite (with SearchAction) ──
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'AllSmartCalculator',
+    name: 'AllSmartCalculators',
     url: SITE_URL,
     description:
       '101+ free online calculators for finance, health, math, crypto, engineering, education and business.',
@@ -104,10 +104,10 @@ export default async function HomePage() {
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'AllSmartCalculator',
+    name: 'AllSmartCalculators',
     url: SITE_URL,
     inLanguage: 'en',
-    publisher: { '@type': 'Organization', name: 'AllSmartCalculator', url: SITE_URL },
+    publisher: { '@type': 'Organization', name: 'AllSmartCalculators', url: SITE_URL },
     potentialAction: {
       '@type': 'SearchAction',
       target: {

@@ -91,7 +91,7 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
 
   const handleShare = useCallback(async () => {
     const url = window.location.href;
-    const title = `${config.name} — AllSmartCalculator`;
+    const title = `${config.name} — AllSmartCalculators`;
     try {
       if (navigator.share) {
         await navigator.share({ title, url });
@@ -106,7 +106,7 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
 
   const handleExport = useCallback(() => {
     const lines: string[] = [
-      `AllSmartCalculator — ${config.name}`,
+      `AllSmartCalculators — ${config.name}`,
       `Exported: ${new Date().toLocaleString()}`,
       '',
       '── INPUTS ──',
@@ -126,7 +126,7 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
         return `${out.label}: ${prefix}${typeof val === 'number' ? val.toLocaleString() : val}${suffix}`;
       }),
       '',
-      'allsmartcalculator.com',
+      'allsmartcalculators.com',
     ];
     const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
     const a = document.createElement('a');

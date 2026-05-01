@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
-import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -8,6 +7,9 @@ import { CurrencyProvider } from '@/lib/currency-context';
 import { ThemeProvider } from '@/lib/theme-context';
 import SearchModal from '@/components/SearchModal';
 import CookieConsent from '@/components/CookieConsent';
+import ConsentGatedAnalytics from '@/components/ConsentGatedAnalytics';
+
+const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
 
 const inter = Inter({
   subsets: ['latin'],
@@ -27,17 +29,17 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  applicationName: 'AllSmartCalculator',
+  applicationName: 'AllSmartCalculators',
   manifest: '/manifest.webmanifest',
   robots: {
     index: true,
     follow: true,
   },
-  title: 'AllSmartCalculator — 100+ Calculators. One Beautiful Place.',
+  title: 'AllSmartCalculators — 100+ Calculators. One Beautiful Place.',
   description:
     'Premium calculator hub with 100+ trending calculators for Finance, Health, Math, Crypto, Engineering, Education and more. Beautiful, fast, and free.',
   keywords: [
@@ -54,17 +56,17 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: SITE_URL },
   openGraph: {
-    title: 'AllSmartCalculator — 100+ Calculators',
+    title: 'AllSmartCalculators — 100+ Calculators',
     description: 'Calculate anything. Beautifully.',
     type: 'website',
     url: SITE_URL,
-    siteName: 'AllSmartCalculator',
+    siteName: 'AllSmartCalculators',
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@AllSmartCalculator',
-    title: 'AllSmartCalculator — 100+ Calculators',
+    site: '@AllSmartCalculators',
+    title: 'AllSmartCalculators — 100+ Calculators',
     description: 'Calculate anything. Beautifully.',
   },
 };
@@ -83,8 +85,25 @@ export default function RootLayout({
   return (
     <html lang="en" className={`dark ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
       <head>
+        {/* Google Consent Mode v2 — defaults MUST run before any Google scripts.
+            Restores prior choice from localStorage so returning users don't see a denied flash. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});try{var c=localStorage.getItem('cv-cookie-consent');if(c==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});}}catch(e){}})();`,
+          }}
+        />
         {/* Prevent flash of wrong theme */}
         <script dangerouslySetInnerHTML={{ __html: `(function(){var t=localStorage.getItem('cv-theme');document.documentElement.classList.remove('dark','light');document.documentElement.classList.add(t||'dark');})()` }} />
+        {ADSENSE_CLIENT && (
+          <>
+            <meta name="google-adsense-account" content={ADSENSE_CLIENT} />
+            <script
+              async
+              src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
+              crossOrigin="anonymous"
+            />
+          </>
+        )}
       </head>
       <body className="bg-surface text-on-surface font-body antialiased min-h-screen overflow-x-hidden">
         <div className="aurora-bg" />
@@ -100,7 +119,7 @@ export default function RootLayout({
             </div>
           </CurrencyProvider>
         </ThemeProvider>
-        <Analytics />
+        <ConsentGatedAnalytics />
       </body>
     </html>
   );

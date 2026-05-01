@@ -87,7 +87,7 @@ export default function Footer() {
 
         <div className="pt-6 sm:pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 text-center md:text-left">
           <p className="text-[11px] sm:text-xs text-on-surface-variant/60">
-            © {new Date().getFullYear()} AllSmartCalculator. All calculations made with care.
+            © {new Date().getFullYear()} AllSmartCalculators. All calculations made with care.
           </p>
           <p className="text-[11px] sm:text-xs text-on-surface-variant/60">
             Built by{' '}

@@ -1,4 +1,4 @@
-# AllSmartCalculator
+# AllSmartCalculators
 
 > 100+ premium calculators in a cosmic glassmorphism design. Built with Next.js 14, TypeScript, and Tailwind CSS.
 

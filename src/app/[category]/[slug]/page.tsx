@@ -14,7 +14,7 @@ import CalculatorCard from '@/components/CalculatorCard';
 import GlassCard from '@/components/GlassCard';
 import CalculatorCMS from '@/components/CalculatorCMS';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 
 const APPLICATION_CATEGORY_BY_CATEGORY: Record<string, string> = {
   finance: 'FinanceApplication',
@@ -45,11 +45,11 @@ export async function generateMetadata({
   const cms = await getCalcContent(params.slug);
   const pageUrl = `${SITE_URL}/${params.category}/${params.slug}`;
 
-  // Title precedence: CMS > seo override > sensible default ("X Calculator | AllSmartCalculator")
+  // Title precedence: CMS > seo override > sensible default ("X Calculator | AllSmartCalculators")
   const baseTitle = cms?.pageTitle ?? calc.seo?.title ?? `${calc.name} — Free Online Tool`;
-  const title = baseTitle.includes('AllSmartCalculator')
+  const title = baseTitle.includes('AllSmartCalculators')
     ? baseTitle
-    : `${baseTitle} | AllSmartCalculator`;
+    : `${baseTitle} | AllSmartCalculators`;
   const description = cms?.metaDescription ?? calc.seo?.description ?? calc.description;
   const canonicalUrl = cms?.linkCanonical ?? pageUrl;
 
@@ -57,7 +57,7 @@ export async function generateMetadata({
     title,
     description,
     keywords: cms?.metaKeywords ?? undefined,
-    authors: [{ name: cms?.metaAuthor ?? calc.reviewedBy?.name ?? 'AllSmartCalculator Team' }],
+    authors: [{ name: cms?.metaAuthor ?? calc.reviewedBy?.name ?? 'AllSmartCalculators Team' }],
     robots: cms?.metaRobots ?? 'index, follow',
     alternates: { canonical: canonicalUrl },
     openGraph: {
@@ -65,14 +65,14 @@ export async function generateMetadata({
       description: cms?.metaOgDescription ?? description,
       type: (cms?.metaOgType as 'website') ?? 'website',
       url: cms?.metaOgUrl ?? canonicalUrl,
-      siteName: cms?.metaOgSiteName ?? 'AllSmartCalculator',
+      siteName: cms?.metaOgSiteName ?? 'AllSmartCalculators',
       ...(cms?.metaOgImage && { images: [{ url: cms.metaOgImage, width: 1200, height: 630, alt: title }] }),
     },
     twitter: {
       card: (cms?.metaTwitterCard as 'summary_large_image') ?? 'summary_large_image',
       title: cms?.metaTwitterTitle ?? title,
       description: cms?.metaTwitterDescription ?? description,
-      site: cms?.metaTwitterSite ?? '@AllSmartCalculator',
+      site: cms?.metaTwitterSite ?? '@AllSmartCalculators',
       ...(cms?.metaTwitterImage && { images: [cms.metaTwitterImage] }),
     },
   };
@@ -121,7 +121,7 @@ export default async function CalculatorPage({
     dateModified: lastUpdated,
     publisher: {
       '@type': 'Organization',
-      name: 'AllSmartCalculator',
+      name: 'AllSmartCalculators',
       url: SITE_URL,
     },
     ...(calc.seo?.rating && {

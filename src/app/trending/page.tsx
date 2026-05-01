@@ -5,18 +5,18 @@ import { Flame, TrendingUp } from 'lucide-react';
 
 import type { Metadata } from 'next';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 
 export const metadata: Metadata = {
-  title: 'Trending Calculators — AllSmartCalculator',
+  title: 'Trending Calculators — AllSmartCalculators',
   description: 'The most-used calculators right now — EMI, SIP, BMI, mortgage, compound interest, and more. Updated continuously.',
   alternates: { canonical: `${SITE_URL}/trending` },
   openGraph: {
-    title: 'Trending Calculators — AllSmartCalculator',
+    title: 'Trending Calculators — AllSmartCalculators',
     description: 'The most-used calculators right now.',
     url: `${SITE_URL}/trending`,
     type: 'website',
-    siteName: 'AllSmartCalculator',
+    siteName: 'AllSmartCalculators',
   },
 };
 

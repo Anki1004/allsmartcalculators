@@ -17,37 +17,37 @@ import {
   RefreshCcw,
 } from 'lucide-react';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 
 export async function generateMetadata(): Promise<Metadata> {
   const cms = await getAboutPage();
-  const title = cms?.pageTitle ?? 'About — AllSmartCalculator';
+  const title = cms?.pageTitle ?? 'About — AllSmartCalculators';
   const description =
     cms?.metaDescription ??
-    'How AllSmartCalculator is built, who builds it, and the methodology, sources, and review process behind every calculator on the site.';
+    'How AllSmartCalculators is built, who builds it, and the methodology, sources, and review process behind every calculator on the site.';
   const canonical = cms?.linkCanonical ?? `${SITE_URL}/about`;
   return {
     title,
     description,
     keywords: cms?.metaKeywords ?? undefined,
-    authors: [{ name: cms?.metaAuthor ?? 'AllSmartCalculator Team' }],
+    authors: [{ name: cms?.metaAuthor ?? 'AllSmartCalculators Team' }],
     robots: cms?.metaRobots ?? 'index, follow',
     alternates: { canonical },
     openGraph: {
-      title: cms?.metaOgTitle ?? 'About AllSmartCalculator',
+      title: cms?.metaOgTitle ?? 'About AllSmartCalculators',
       description:
         cms?.metaOgDescription ??
-        'How AllSmartCalculator is built, who builds it, and the methodology behind every calculator.',
+        'How AllSmartCalculators is built, who builds it, and the methodology behind every calculator.',
       url: cms?.metaOgUrl ?? canonical,
       type: (cms?.metaOgType as 'website') ?? 'website',
-      siteName: cms?.metaOgSiteName ?? 'AllSmartCalculator',
+      siteName: cms?.metaOgSiteName ?? 'AllSmartCalculators',
       ...(cms?.metaOgImage && { images: [{ url: cms.metaOgImage }] }),
     },
     twitter: {
       card: (cms?.metaTwitterCard as 'summary_large_image') ?? 'summary_large_image',
       title: cms?.metaTwitterTitle ?? title,
       description: cms?.metaTwitterDescription ?? description,
-      site: cms?.metaTwitterSite ?? '@AllSmartCalculator',
+      site: cms?.metaTwitterSite ?? '@AllSmartCalculators',
       ...(cms?.metaTwitterImage && { images: [cms.metaTwitterImage] }),
     },
   };
@@ -67,7 +67,7 @@ const values = [
   {
     icon: Shield,
     title: 'Always free',
-    text: 'No paywalls, no ads, no email capture. Just great tools, available to everyone.',
+    text: 'No paywalls, no email capture, no signup walls. Just great tools, available to everyone.',
   },
   {
     icon: Heart,
@@ -128,21 +128,21 @@ export default async function AboutPage() {
         {/* Hero */}
         <h1 className="font-headline font-black text-3xl sm:text-4xl md:text-7xl tracking-tighter mb-4 sm:mb-6 leading-[1.05]">
           <span className="text-on-surface">I built</span>{' '}
-          <span className="text-gradient">AllSmartCalculator</span>
+          <span className="text-gradient">AllSmartCalculators</span>
           <br />
           <span className="text-on-surface">because math deserves better.</span>
         </h1>
         <p className="text-sm sm:text-base md:text-xl text-on-surface-variant max-w-3xl mb-5 sm:mb-6 leading-relaxed">
           Every calculator site on the internet looks like it was built in 2008 —
-          cluttered, ugly, ad-ridden, and painful to use on a phone. AllSmartCalculator
-          is the opposite: clean, fast, free, ad-free, and honest about its limits.
+          cluttered, ugly, and painful to use on a phone. AllSmartCalculators
+          is the opposite: clean, fast, free, and honest about its limits.
           {TOTAL_CALCULATORS}+ calculators across 8 categories, all built and
           reviewed by one person, in public.
         </p>
         <p className="text-xs sm:text-sm md:text-base text-on-surface-variant/80 max-w-3xl mb-10 sm:mb-12 leading-relaxed">
           The site has a particular focus on India-specific finance tools —
           EMI, SIP, GST, HRA, income tax, PPF, NPS — where most existing
-          options are bank aggregators with cluttered, ad-heavy interfaces.
+          options are bank aggregators with cluttered interfaces and pop-up clutter.
           For everything else (health, math, crypto, engineering, daily life),
           the bar is the same: the right formula, a clear explanation, an
           honest limitations section, and zero friction.
@@ -160,7 +160,7 @@ export default async function AboutPage() {
             { v: `${TOTAL_CALCULATORS}+`, l: 'Calculators' },
             { v: '8', l: 'Categories' },
             { v: '$0', l: 'Cost to use' },
-            { v: '0', l: 'Ads ever' },
+            { v: '1', l: 'Author behind every page' },
           ].map((s) => (
             <GlassCard key={s.l} className="p-4 sm:p-6 text-center">
               <p className="font-mono font-black text-2xl sm:text-3xl md:text-4xl text-gradient mb-1">
@@ -271,7 +271,7 @@ export default async function AboutPage() {
               </h3>
               <p className="text-sm text-on-surface-variant leading-relaxed mb-4 max-w-xl">
                 Solo developer and data analyst. Builds, maintains, and reviews
-                every calculator on AllSmartCalculator. Based in India; writing in
+                every calculator on AllSmartCalculators. Based in India; writing in
                 English for an India-first, globally relevant audience.
               </p>
               <div className="flex flex-wrap gap-2 sm:gap-3">
@@ -311,7 +311,7 @@ export default async function AboutPage() {
           <p className="text-sm md:text-base text-on-surface-variant leading-relaxed mb-2 break-words">
             Calculator suggestion, bug report, formula correction, or general
             feedback —{' '}
-            <span className="text-primary font-mono break-all">hello@allsmartcalculator.com</span>{' '}
+            <span className="text-primary font-mono break-all">hello@allsmartcalculators.com</span>{' '}
             or use the{' '}
             <Link href="/contact" className="text-primary hover:underline font-semibold">
               contact form

@@ -3,11 +3,11 @@ import GlassCard from '@/components/GlassCard';
 import CmsRichText from '@/components/CmsRichText';
 import { getPrivacyPage } from '@/lib/strapi';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 
 export async function generateMetadata(): Promise<Metadata> {
   const cms = await getPrivacyPage();
-  const title = cms?.pageTitle ?? 'Privacy Policy — AllSmartCalculator';
+  const title = cms?.pageTitle ?? 'Privacy Policy — AllSmartCalculators';
   const description =
     cms?.metaDescription ??
     "Here's exactly what we do (and don't do) with any information you might share with us.";
@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title,
     description,
     keywords: cms?.metaKeywords ?? undefined,
-    authors: [{ name: cms?.metaAuthor ?? 'AllSmartCalculator Team' }],
+    authors: [{ name: cms?.metaAuthor ?? 'AllSmartCalculators Team' }],
     robots: cms?.metaRobots ?? 'index, follow',
     alternates: { canonical },
     openGraph: {
@@ -25,14 +25,14 @@ export async function generateMetadata(): Promise<Metadata> {
         cms?.metaOgDescription ?? "What we do (and don't do) with your information.",
       url: cms?.metaOgUrl ?? canonical,
       type: (cms?.metaOgType as 'website') ?? 'website',
-      siteName: cms?.metaOgSiteName ?? 'AllSmartCalculator',
+      siteName: cms?.metaOgSiteName ?? 'AllSmartCalculators',
       ...(cms?.metaOgImage && { images: [{ url: cms.metaOgImage }] }),
     },
     twitter: {
       card: (cms?.metaTwitterCard as 'summary_large_image') ?? 'summary_large_image',
       title: cms?.metaTwitterTitle ?? title,
       description: cms?.metaTwitterDescription ?? description,
-      site: cms?.metaTwitterSite ?? '@AllSmartCalculator',
+      site: cms?.metaTwitterSite ?? '@AllSmartCalculators',
       ...(cms?.metaTwitterImage && { images: [cms.metaTwitterImage] }),
     },
   };
@@ -68,10 +68,10 @@ export default async function PrivacyPage() {
           <GlassCard className="p-5 sm:p-6 md:p-8 border-l-2 border-primary/60">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-3">The short version</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed mb-3">
-              All calculations on AllSmartCalculator happen directly in your browser. The numbers you enter — your salary, weight, loan amount, whatever — never leave your device. We don't store them, we don't see them, and we can't access them. That's not a marketing claim; it's how the site is technically built.
+              All calculations on AllSmartCalculators happen directly in your browser. The numbers you enter — your salary, weight, loan amount, whatever — never leave your device. We don't store them, we don't see them, and we can't access them. That's not a marketing claim; it's how the site is technically built.
             </p>
             <p className="text-sm text-on-surface-variant leading-relaxed mb-3">
-              What we do collect is basic analytics (pages visited, device type, country) so we know which calculators people find useful and where to improve. If we ever run ads on the site, those ad networks collect their own data under their own policies. We don't sell your data, we don't email you unless you ask us to, and we don't use dark patterns to trick you into anything.
+              What we do collect is basic analytics (pages visited, device type, country) so we know which calculators people find useful and where to improve. We also display ads through Google AdSense; ad networks collect their own data under their own policies, and we honor your cookie-consent choice before any of those scripts load. We don't sell your data, we don't email you unless you ask us to, and we don't use dark patterns to trick you into anything.
             </p>
             <p className="text-sm text-on-surface-variant leading-relaxed">
               If you want the detailed version, keep reading. If you just wanted to know we aren't creepy, that was it.
@@ -84,7 +84,7 @@ export default async function PrivacyPage() {
             <div className="flex flex-col gap-4">
               <div>
                 <p className="text-sm font-semibold text-on-surface mb-1">Calculator inputs: Nothing.</p>
-                <p className="text-sm text-on-surface-variant leading-relaxed">Every calculator on AllSmartCalculator runs entirely in your browser using JavaScript. When you move a slider or type a number, only your device sees it. The numbers never get sent to our servers because our servers don't need them.</p>
+                <p className="text-sm text-on-surface-variant leading-relaxed">Every calculator on AllSmartCalculators runs entirely in your browser using JavaScript. When you move a slider or type a number, only your device sees it. The numbers never get sent to our servers because our servers don't need them.</p>
               </div>
               <div>
                 <p className="text-sm font-semibold text-on-surface mb-1">Analytics data.</p>
@@ -116,7 +116,7 @@ export default async function PrivacyPage() {
               </div>
               <div>
                 <p className="text-sm font-semibold text-on-surface mb-1">Advertising.</p>
-                <p className="text-sm text-on-surface-variant leading-relaxed">We may use Google AdSense to display ads on AllSmartCalculator. Google AdSense uses cookies to show relevant ads based on your visits to this and other websites. These networks use cookies to show relevant ads and measure performance. You can control personalized advertising through your browser settings or by visiting <a href="https://adssettings.google.com" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Google Ads Settings</a> or YourAdChoices.com.</p>
+                <p className="text-sm text-on-surface-variant leading-relaxed">We may use Google AdSense to display ads on AllSmartCalculators. Google AdSense uses cookies to show relevant ads based on your visits to this and other websites. These networks use cookies to show relevant ads and measure performance. You can control personalized advertising through your browser settings or by visiting <a href="https://adssettings.google.com" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Google Ads Settings</a> or YourAdChoices.com.</p>
               </div>
               <div>
                 <p className="text-sm font-semibold text-on-surface mb-1">Fonts and icons.</p>
@@ -134,7 +134,7 @@ export default async function PrivacyPage() {
                 'Improve the site based on what calculators people actually use',
                 'Fix bugs and performance issues when we see them in analytics',
                 'Respond to emails and support requests',
-                'Show ads (if we have them) and measure whether they work',
+                'Show ads through Google AdSense (if you have consented) and measure whether they work',
                 "Comply with legal obligations if we're ever legally required to",
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm text-on-surface-variant">
@@ -152,7 +152,7 @@ export default async function PrivacyPage() {
           <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-3">Advertising and personalization</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed mb-3">
-              If AllSmartCalculator runs ads, here's what you should know: ad networks like Google AdSense use cookies to serve ads based on your previous visits to our site and other websites. This is called "personalized advertising" and is standard across most of the web.
+              AllSmartCalculators runs ads through Google AdSense. Ad networks like Google AdSense use cookies to serve ads based on your previous visits to our site and other websites. This is called "personalized advertising" and is standard across most of the web. We use Google Consent Mode v2, so until you accept the cookie banner, AdSense and analytics receive a "denied" signal and do not drop personalized-advertising cookies.
             </p>
             <p className="text-sm text-on-surface-variant leading-relaxed mb-3">
               You can opt out of personalized advertising from Google by visiting Google Ads Settings. For opt-outs from other networks, visit aboutads.info/choices (US) or youronlinechoices.com (EU).
@@ -189,7 +189,7 @@ export default async function PrivacyPage() {
           <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-3">Children's privacy</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed">
-              AllSmartCalculator is intended for general audiences and is not specifically directed at children under 13. We don't knowingly collect personal information from children under 13. If you're a parent and believe your child has provided us with personal information, contact us and we'll delete it promptly.
+              AllSmartCalculators is intended for general audiences and is not specifically directed at children under 13. We don't knowingly collect personal information from children under 13. If you're a parent and believe your child has provided us with personal information, contact us and we'll delete it promptly.
             </p>
           </GlassCard>
 

@@ -3,20 +3,20 @@ import GlassCard from '@/components/GlassCard';
 import CmsRichText from '@/components/CmsRichText';
 import { getDisclaimerPage } from '@/lib/strapi';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 
 export async function generateMetadata(): Promise<Metadata> {
   const cms = await getDisclaimerPage();
-  const title = cms?.pageTitle ?? 'Disclaimer — AllSmartCalculator';
+  const title = cms?.pageTitle ?? 'Disclaimer — AllSmartCalculators';
   const description =
     cms?.metaDescription ??
-    "Important context about AllSmartCalculator calculator results — what they mean, what they don't, and when to go beyond them.";
+    "Important context about AllSmartCalculators calculator results — what they mean, what they don't, and when to go beyond them.";
   const canonical = cms?.linkCanonical ?? `${SITE_URL}/disclaimer`;
   return {
     title,
     description,
     keywords: cms?.metaKeywords ?? undefined,
-    authors: [{ name: cms?.metaAuthor ?? 'AllSmartCalculator Team' }],
+    authors: [{ name: cms?.metaAuthor ?? 'AllSmartCalculators Team' }],
     robots: cms?.metaRobots ?? 'index, follow',
     alternates: { canonical },
     openGraph: {
@@ -26,14 +26,14 @@ export async function generateMetadata(): Promise<Metadata> {
         'Calculator results are estimates, not financial, medical, legal, or professional advice.',
       url: cms?.metaOgUrl ?? canonical,
       type: (cms?.metaOgType as 'website') ?? 'website',
-      siteName: cms?.metaOgSiteName ?? 'AllSmartCalculator',
+      siteName: cms?.metaOgSiteName ?? 'AllSmartCalculators',
       ...(cms?.metaOgImage && { images: [{ url: cms.metaOgImage }] }),
     },
     twitter: {
       card: (cms?.metaTwitterCard as 'summary_large_image') ?? 'summary_large_image',
       title: cms?.metaTwitterTitle ?? title,
       description: cms?.metaTwitterDescription ?? description,
-      site: cms?.metaTwitterSite ?? '@AllSmartCalculator',
+      site: cms?.metaTwitterSite ?? '@AllSmartCalculators',
       ...(cms?.metaTwitterImage && { images: [cms.metaTwitterImage] }),
     },
   };
@@ -69,7 +69,7 @@ export default async function DisclaimerPage() {
           <GlassCard className="p-5 sm:p-6 md:p-8 border-l-2 border-primary/60">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-3">The quick summary</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed mb-3">
-              AllSmartCalculator results are mathematical estimates for informational use only. They are not financial, medical, legal, or professional advice of any kind. For decisions that genuinely matter — taking out a loan, managing a health condition, filing taxes — verify your numbers with a qualified professional who understands your full situation.
+              AllSmartCalculators results are mathematical estimates for informational use only. They are not financial, medical, legal, or professional advice of any kind. For decisions that genuinely matter — taking out a loan, managing a health condition, filing taxes — verify your numbers with a qualified professional who understands your full situation.
             </p>
             <p className="text-sm text-on-surface-variant leading-relaxed">
               We've built these calculators carefully and we believe they're useful. But useful and sufficient aren't the same thing. This page explains exactly where the line is.
@@ -82,7 +82,7 @@ export default async function DisclaimerPage() {
             <div className="flex flex-col gap-4">
               <div>
                 <p className="text-sm font-semibold text-on-surface mb-1">How our calculators work.</p>
-                <p className="text-sm text-on-surface-variant leading-relaxed">Every calculator on AllSmartCalculator takes inputs you provide and runs them through a formula. The output is a mathematical result — not a prediction, not a promise, and not personalised advice. Change the inputs and you'll change the answer. That's how math works.</p>
+                <p className="text-sm text-on-surface-variant leading-relaxed">Every calculator on AllSmartCalculators takes inputs you provide and runs them through a formula. The output is a mathematical result — not a prediction, not a promise, and not personalised advice. Change the inputs and you'll change the answer. That's how math works.</p>
               </div>
               <div>
                 <p className="text-sm font-semibold text-on-surface mb-1">What affects real-world outcomes.</p>
@@ -90,7 +90,7 @@ export default async function DisclaimerPage() {
               </div>
               <div>
                 <p className="text-sm font-semibold text-on-surface mb-1">How to use results well.</p>
-                <p className="text-sm text-on-surface-variant leading-relaxed">Use our numbers to build intuition, compare scenarios, and prepare for conversations with professionals — not to make final decisions on your own. An AllSmartCalculator result that makes you ask better questions has done its job.</p>
+                <p className="text-sm text-on-surface-variant leading-relaxed">Use our numbers to build intuition, compare scenarios, and prepare for conversations with professionals — not to make final decisions on your own. An AllSmartCalculators result that makes you ask better questions has done its job.</p>
               </div>
             </div>
           </GlassCard>
@@ -152,7 +152,7 @@ export default async function DisclaimerPage() {
               </div>
               <div>
                 <p className="text-sm font-semibold text-on-surface mb-1">Not a medical assessment.</p>
-                <p className="text-sm text-on-surface-variant leading-relaxed">Nothing on AllSmartCalculator replaces a conversation with a doctor, dietitian, or other qualified health professional — especially if you're managing a health condition, pregnant, or making a decision with real health consequences.</p>
+                <p className="text-sm text-on-surface-variant leading-relaxed">Nothing on AllSmartCalculators replaces a conversation with a doctor, dietitian, or other qualified health professional — especially if you're managing a health condition, pregnant, or making a decision with real health consequences.</p>
               </div>
             </div>
           </GlassCard>
@@ -240,7 +240,7 @@ export default async function DisclaimerPage() {
               </div>
               <div>
                 <p className="text-sm font-semibold text-on-surface mb-1">How to report an issue.</p>
-                <p className="text-sm text-on-surface-variant leading-relaxed">If you find a result that looks incorrect or a formula that seems to be misapplied, please contact us at <span className="text-primary font-mono">hello@allsmartcalculator.com</span>. We take these reports seriously and would much rather fix a mistake than leave it quietly in place.</p>
+                <p className="text-sm text-on-surface-variant leading-relaxed">If you find a result that looks incorrect or a formula that seems to be misapplied, please contact us at <span className="text-primary font-mono">hello@allsmartcalculators.com</span>. We take these reports seriously and would much rather fix a mistake than leave it quietly in place.</p>
               </div>
             </div>
           </GlassCard>
@@ -249,7 +249,7 @@ export default async function DisclaimerPage() {
           <GlassCard className="p-5 sm:p-6 md:p-8">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-3">The bottom line</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed mb-3">
-              Use AllSmartCalculator to learn, explore, stress-test your assumptions, and get a feel for numbers. Use professionals when the stakes are real.
+              Use AllSmartCalculators to learn, explore, stress-test your assumptions, and get a feel for numbers. Use professionals when the stakes are real.
             </p>
             <p className="text-sm text-on-surface-variant leading-relaxed mb-3">
               We genuinely believe the calculators here are useful — that's why we built them, and why we keep improving them. But there's a meaningful difference between a tool that helps you think and a service that tells you what to do. We're the former. Please treat us that way.

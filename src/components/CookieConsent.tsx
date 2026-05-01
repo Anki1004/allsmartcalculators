@@ -2,37 +2,44 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { readConsent, writeConsent } from '@/lib/consent';
 
 export default function CookieConsent() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem('cv-cookie-consent');
-    if (!consent) setVisible(true);
+    if (readConsent() === null) setVisible(true);
   }, []);
 
   const accept = () => {
-    localStorage.setItem('cv-cookie-consent', 'accepted');
+    writeConsent('accepted');
     setVisible(false);
   };
 
   const decline = () => {
-    localStorage.setItem('cv-cookie-consent', 'declined');
+    writeConsent('declined');
     setVisible(false);
   };
 
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 p-3 sm:p-4 md:p-6">
+    <div
+      role="dialog"
+      aria-live="polite"
+      aria-label="Cookie consent"
+      className="fixed bottom-0 left-0 right-0 z-50 p-3 sm:p-4 md:p-6"
+    >
       <div className="max-w-4xl mx-auto bg-surface-container border border-white/10 rounded-2xl p-4 md:p-5 flex flex-col md:flex-row items-start md:items-center gap-3 sm:gap-4 shadow-2xl backdrop-blur-xl">
         <div className="flex-1 min-w-0">
           <p className="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
-            We use cookies for analytics and to show relevant ads via Google AdSense. See our{' '}
+            We use cookies for analytics and to show ads through Google AdSense.
+            Until you choose, ads and analytics run in a privacy-preserving (cookieless)
+            mode under Google Consent Mode v2. See our{' '}
             <Link href="/privacy" className="text-primary hover:underline">
               Privacy Policy
-            </Link>{' '}
-            for details.
+            </Link>
+            .
           </p>
         </div>
         <div className="flex items-center gap-2 shrink-0 self-end md:self-auto">
