@@ -10,6 +10,7 @@ import CookieConsent from '@/components/CookieConsent';
 import ConsentGatedAnalytics from '@/components/ConsentGatedAnalytics';
 
 const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 const inter = Inter({
   subsets: ['latin'],
@@ -101,6 +102,21 @@ export default function RootLayout({
               async
               src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
               crossOrigin="anonymous"
+            />
+          </>
+        )}
+        {/* Google Analytics 4 — fires under Consent Mode v2 (modeled pings when denied,
+            full tracking once user accepts cookies). gtag defaults are set above. */}
+        {GA_MEASUREMENT_ID && (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `gtag('js', new Date());gtag('config', '${GA_MEASUREMENT_ID}');`,
+              }}
             />
           </>
         )}
