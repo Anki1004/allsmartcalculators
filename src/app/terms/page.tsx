@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 import GlassCard from '@/components/GlassCard';
 import CmsRichText from '@/components/CmsRichText';
 import { getTermsPage } from '@/lib/strapi';
@@ -241,7 +242,7 @@ export default async function TermsPage() {
               These terms are governed by applicable law in the jurisdiction where AllSmartCalculators operates. If there's ever a dispute, we genuinely prefer to resolve it by talking first — most things can be sorted out without escalation.
             </p>
             <p className="text-sm text-on-surface-variant leading-relaxed">
-              Reach us at <span className="text-primary font-mono">hello@allsmartcalculators.com</span>. We read every message and take them seriously.
+              Reach us through the <Link href="/contact" className="text-primary hover:underline font-semibold">contact form</Link>. We read every message and take them seriously.
             </p>
           </GlassCard>
 

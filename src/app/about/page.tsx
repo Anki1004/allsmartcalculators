@@ -310,9 +310,7 @@ export default async function AboutPage() {
           </h2>
           <p className="text-sm md:text-base text-on-surface-variant leading-relaxed mb-2 break-words">
             Calculator suggestion, bug report, formula correction, or general
-            feedback —{' '}
-            <span className="text-primary font-mono break-all">hello@allsmartcalculators.com</span>{' '}
-            or use the{' '}
+            feedback — use the{' '}
             <Link href="/contact" className="text-primary hover:underline font-semibold">
               contact form
             </Link>

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 import GlassCard from '@/components/GlassCard';
 import CmsRichText from '@/components/CmsRichText';
 import { getDisclaimerPage } from '@/lib/strapi';
@@ -240,7 +241,7 @@ export default async function DisclaimerPage() {
               </div>
               <div>
                 <p className="text-sm font-semibold text-on-surface mb-1">How to report an issue.</p>
-                <p className="text-sm text-on-surface-variant leading-relaxed">If you find a result that looks incorrect or a formula that seems to be misapplied, please contact us at <span className="text-primary font-mono">hello@allsmartcalculators.com</span>. We take these reports seriously and would much rather fix a mistake than leave it quietly in place.</p>
+                <p className="text-sm text-on-surface-variant leading-relaxed">If you find a result that looks incorrect or a formula that seems to be misapplied, please reach us through the <Link href="/contact" className="text-primary hover:underline font-semibold">contact form</Link>. We take these reports seriously and would much rather fix a mistake than leave it quietly in place.</p>
               </div>
             </div>
           </GlassCard>

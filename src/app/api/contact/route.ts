@@ -89,7 +89,7 @@ export async function POST(req: NextRequest) {
 
     const categoryLabel = CATEGORY_LABELS[category] ?? 'General';
     const from = process.env.RESEND_FROM ?? 'AllSmartCalculators <onboarding@resend.dev>';
-    const to = process.env.CONTACT_TO_EMAIL ?? 'hello@allsmartcalculators.com';
+    const to = process.env.CONTACT_TO_EMAIL ?? 'allsmartcalculators@gmail.com';
     const safeName = escapeHtml(name);
     const safeEmail = escapeHtml(email);
     const safeSubject = escapeHtml(subject);

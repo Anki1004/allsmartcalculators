@@ -256,8 +256,10 @@ export default async function MethodologyPage() {
           </h2>
           <p className="text-sm md:text-base text-on-surface-variant leading-relaxed mb-3 break-words">
             If you spot a wrong number, a misapplied formula, or an outdated
-            reference, we&apos;d much rather hear about it than not. Email{' '}
-            <span className="text-primary font-mono break-all">hello@allsmartcalculators.com</span>{' '}
+            reference, we&apos;d much rather hear about it than not. Send us a note via the{' '}
+            <Link href="/contact" className="text-primary hover:underline font-semibold">
+              contact form
+            </Link>{' '}
             with the calculator URL, the inputs you used, and the expected result.
           </p>
           <p className="text-sm md:text-base text-on-surface-variant leading-relaxed">
