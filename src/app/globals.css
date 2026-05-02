@@ -317,6 +317,20 @@ body {
 
 .icon-idle { animation: icon-idle-glow 2.5s ease-in-out infinite; }
 
+/* ----- Mobile + reduced-motion perf: disable always-running infinite
+   animations on small screens and for users who prefer reduced motion.
+   The aurora float + text-gradient shift run forever and are the largest
+   contributor to TBT on low-end mobile devices. ----- */
+@media (max-width: 768px), (prefers-reduced-motion: reduce) {
+  .aurora-bg::before,
+  .aurora-bg::after,
+  .text-gradient,
+  .icon-idle {
+    animation: none;
+  }
+  .cosmic-grain { display: none; }
+}
+
 /* ----- Gradient border ----- */
 .gradient-border {
   position: relative;
