@@ -23,11 +23,12 @@ interface CalculatorEngineProps {
 
 export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
   const config = getCalculatorBySlug(slug);
-  const { rate, symbol } = useCurrency();
+  const { symbol } = useCurrency();
 
-  // Convert USD output value to selected currency
-  const cvtVal = (prefix: string | undefined, val: number | string) =>
-    prefix === '$' && typeof val === 'number' ? val * rate : val;
+  // Calculator math is currency-agnostic — switching currency only swaps the
+  // symbol on inputs/outputs. Whatever number the user enters is treated as
+  // their selected currency. (Currency Converter has its own internal rates.)
+  const cvtVal = (_prefix: string | undefined, val: number | string) => val;
   const cvtPfx = (prefix: string | undefined) =>
     prefix === '$' ? symbol : prefix;
 
@@ -195,7 +196,7 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
                 min={input.min ?? 0}
                 max={input.max ?? 100}
                 step={input.step ?? 1}
-                prefix={input.prefix}
+                prefix={cvtPfx(input.prefix)}
                 suffix={input.suffix}
                 color={input.color ?? 'primary'}
                 formatValue={input.formatValue}
