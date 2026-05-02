@@ -17,6 +17,11 @@
   --color-surface-container-highest: #1d2347;
   --color-surface-variant: #1d2347;
   --color-surface-tint: #bd9dff;
+  /* RGB triples for Tailwind opacity utilities (bg-surface/80 etc).
+     Keep in sync with hex values above. */
+  --color-surface-rgb: 8 12 37;
+  --color-surface-container-low-rgb: 12 17 45;
+  --color-surface-container-high-rgb: 24 29 62;
   --color-on-surface: #e2e3ff;
   --color-on-surface-variant: #a6a9c9;
   --color-on-background: #e2e3ff;
@@ -51,6 +56,10 @@
   --color-surface-container-highest: #d4ccff;
   --color-surface-variant: #e4dfff;
   --color-surface-tint: #6b2fd4;
+  /* RGB triples — keep in sync with hex above. */
+  --color-surface-rgb: 245 243 255;
+  --color-surface-container-low-rgb: 238 234 255;
+  --color-surface-container-high-rgb: 221 215 255;
   --color-on-surface: #1a1040;
   --color-on-surface-variant: #48436a;
   --color-on-background: #1a1040;

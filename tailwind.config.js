@@ -9,13 +9,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        surface: 'var(--color-surface)',
+        // surface, surface-container-low, surface-container-high use RGB triple
+        // CSS vars so Tailwind's /XX opacity modifier works (bg-surface/80 etc).
+        // Other entries stay as plain var() since we don't use opacity on them.
+        surface: 'rgb(var(--color-surface-rgb) / <alpha-value>)',
         'surface-dim': 'var(--color-surface-dim)',
         'surface-bright': 'var(--color-surface-bright)',
         'surface-container-lowest': 'var(--color-surface-container-lowest)',
-        'surface-container-low': 'var(--color-surface-container-low)',
+        'surface-container-low': 'rgb(var(--color-surface-container-low-rgb) / <alpha-value>)',
         'surface-container': 'var(--color-surface-container)',
-        'surface-container-high': 'var(--color-surface-container-high)',
+        'surface-container-high': 'rgb(var(--color-surface-container-high-rgb) / <alpha-value>)',
         'surface-container-highest': 'var(--color-surface-container-highest)',
         'surface-variant': 'var(--color-surface-variant)',
         'surface-tint': 'var(--color-surface-tint)',
