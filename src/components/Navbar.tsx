@@ -20,6 +20,16 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handle);
   }, []);
 
+  // Lock body scroll while the mobile menu is open so page content can't
+  // bleed through the panel when the user tries to scroll.
+  useEffect(() => {
+    if (mobileOpen) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => { document.body.style.overflow = prev; };
+    }
+  }, [mobileOpen]);
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -140,7 +150,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-surface/95 backdrop-blur-xl border-t border-white/5 shadow-ambient max-h-[calc(100dvh-4rem)] overflow-y-auto">
+        <div className="md:hidden absolute top-full left-0 right-0 z-50 bg-surface border-t border-white/5 shadow-ambient max-h-[calc(100dvh-4rem)] overflow-y-auto">
           <nav className="flex flex-col p-5 gap-1">
             <Link
               href="/categories"
