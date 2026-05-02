@@ -263,7 +263,7 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
 
         {/* Chart */}
         {hasInteracted && config.chartType === 'donut' && donutData.length > 0 && (
-          <GlassCard className="p-4 sm:p-6 aspect-square max-h-[260px] sm:max-h-[280px]">
+          <GlassCard className="p-4 sm:p-6 min-h-[320px]">
             <DonutChart data={donutData} />
           </GlassCard>
         )}
