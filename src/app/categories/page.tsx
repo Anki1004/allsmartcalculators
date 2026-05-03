@@ -10,11 +10,13 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator
 
 export const metadata: Metadata = {
   title: 'All Categories — AllSmartCalculators',
-  description: 'Browse 100+ free calculators across 8 categories — Finance, Health, Math, Crypto, Engineering, Daily Life, Education, and Business.',
+  description:
+    'Browse 100+ free calculators across 8 categories — Finance, Health, Math, Crypto, Engineering, Daily Life, Education & Business. Pick any. Always free.',
   alternates: { canonical: `${SITE_URL}/categories` },
   openGraph: {
     title: 'All Categories — AllSmartCalculators',
-    description: 'Browse 100+ free calculators across 8 categories.',
+    description:
+      '100+ free calculators across Finance, Health, Math, Crypto, Engineering, Daily Life, Education & Business.',
     url: `${SITE_URL}/categories`,
     type: 'website',
     siteName: 'AllSmartCalculators',

@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const title = cms?.pageTitle ?? 'Ankit Gupta — Builder of AllSmartCalculators';
   const description =
     cms?.metaDescription ??
-    'Ankit Gupta is a solo developer and data analyst who builds, maintains, and reviews every calculator on AllSmartCalculators. Background, focus areas, and how to reach him.';
+    'Ankit Gupta — solo developer & data analyst behind every calculator on AllSmartCalculators. Background, India-finance focus areas & contact links.';
   const canonical = cms?.linkCanonical ?? AUTHOR_URL;
   return {
     title,

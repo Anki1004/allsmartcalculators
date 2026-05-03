@@ -5,12 +5,12 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator
 export const metadata: Metadata = {
   title: 'Contact — AllSmartCalculators',
   description:
-    'Report a bug, suggest a calculator, or get in touch with AllSmartCalculators. We read every message.',
+    'Contact AllSmartCalculators — report a bug, suggest a new calculator, share feedback, or partner with us. We read every message and reply fast.',
   alternates: { canonical: `${SITE_URL}/contact` },
   openGraph: {
     title: 'Contact AllSmartCalculators',
     description:
-      'Report a bug, suggest a calculator, or get in touch with AllSmartCalculators.',
+      'Report a bug, suggest a new calculator, or share feedback — we read every message.',
     url: `${SITE_URL}/contact`,
     type: 'website',
     siteName: 'AllSmartCalculators',

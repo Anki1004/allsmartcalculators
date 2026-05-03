@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const title = cms?.pageTitle ?? 'Disclaimer — AllSmartCalculators';
   const description =
     cms?.metaDescription ??
-    "Important context about AllSmartCalculators calculator results — what they mean, what they don't, and when to go beyond them.";
+    'AllSmartCalculators disclaimer — calculator results are estimates only, not financial, medical, tax or legal advice. Read before acting on any number.';
   const canonical = cms?.linkCanonical ?? `${SITE_URL}/disclaimer`;
   return {
     title,

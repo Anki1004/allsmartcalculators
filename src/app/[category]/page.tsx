@@ -13,6 +13,28 @@ export function generateStaticParams() {
   return CATEGORIES.map((cat) => ({ category: cat.id }));
 }
 
+// Per-category meta descriptions — front-loads the category keyword, names the
+// flagship calculators users actually search for, ends with a CTA. Kept ~145 chars
+// so Google won't truncate them on mobile.
+const CATEGORY_META_DESCRIPTION: Record<string, string> = {
+  finance:
+    'Free finance calculators online — EMI, SIP, mortgage, GST, HRA, income tax, FD, PPF & more. Plan loans, investments & taxes instantly. No signup.',
+  health:
+    'Free health calculators — BMI, BMR, calorie, body fat, ideal weight, pregnancy due-date, ovulation & sleep. WHO & Asian standards. Use free.',
+  math:
+    'Free math calculators — percentage, fractions, quadratic, statistics, trigonometry, LCM/GCD, logarithm, ratios & factorial. Solve any problem free.',
+  crypto:
+    'Free crypto calculators — Bitcoin profit, Ethereum gas, staking rewards, DCA, NFT ROI, mining & tax. Track DeFi & trading gains in seconds.',
+  engineering:
+    "Free engineering calculators — Ohm's law, voltage divider, torque, gear ratio, RPM, pipe flow, concrete & 4-band resistor color code. Use free.",
+  'daily-life':
+    'Free daily-life calculators — fuel cost, travel time, date difference, bill split, paint, tile, tip, cooking & countdown tools. Everyday math free.',
+  education:
+    'Free education calculators — GPA, CGPA, percentage-to-GPA, grade, 75% attendance, study hours, class rank & reading speed. Free for students.',
+  business:
+    'Free business calculators — ROI, ROAS, break-even, profit margin, markup, CAGR, payroll, customer LTV, inventory turnover & discount. Free.',
+};
+
 export async function generateMetadata({
   params,
 }: {
@@ -27,6 +49,7 @@ export async function generateMetadata({
   const title = cms?.pageTitle ?? `${cat.name} Calculators — AllSmartCalculators`;
   const description =
     cms?.metaDescription ??
+    CATEGORY_META_DESCRIPTION[cat.id] ??
     `${calcs.length} free ${cat.name.toLowerCase()} calculators. ${cat.description}.`;
   const canonical = cms?.linkCanonical ?? url;
   return {

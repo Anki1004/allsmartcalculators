@@ -9,11 +9,13 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator
 
 export const metadata: Metadata = {
   title: 'Trending Calculators — AllSmartCalculators',
-  description: 'The most-used calculators right now — EMI, SIP, BMI, mortgage, compound interest, and more. Updated continuously.',
+  description:
+    'Top trending calculators on AllSmartCalculators — EMI, SIP, BMI, GST, mortgage, currency converter & compound interest. The tools used most right now.',
   alternates: { canonical: `${SITE_URL}/trending` },
   openGraph: {
     title: 'Trending Calculators — AllSmartCalculators',
-    description: 'The most-used calculators right now.',
+    description:
+      'EMI, SIP, BMI, GST, mortgage & compound interest — the tools people use most right now.',
     url: `${SITE_URL}/trending`,
     type: 'website',
     siteName: 'AllSmartCalculators',

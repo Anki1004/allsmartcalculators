@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const title = cms?.pageTitle ?? 'Privacy Policy — AllSmartCalculators';
   const description =
     cms?.metaDescription ??
-    "Here's exactly what we do (and don't do) with any information you might share with us.";
+    'AllSmartCalculators privacy policy — what data we collect, how Google AdSense, Analytics & Consent Mode v2 work, your GDPR rights & cookie controls.';
   const canonical = cms?.linkCanonical ?? `${SITE_URL}/privacy`;
   return {
     title,
@@ -22,7 +22,8 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: cms?.metaOgTitle ?? title,
       description:
-        cms?.metaOgDescription ?? "What we do (and don't do) with your information.",
+        cms?.metaOgDescription ??
+        'What data AllSmartCalculators collects, how AdSense & Analytics work, and your GDPR/cookie rights.',
       url: cms?.metaOgUrl ?? canonical,
       type: (cms?.metaOgType as 'website') ?? 'website',
       siteName: cms?.metaOgSiteName ?? 'AllSmartCalculators',

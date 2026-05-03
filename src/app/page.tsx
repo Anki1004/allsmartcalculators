@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
     hp?.pageTitle ?? 'Free Online Calculators — 101+ Tools (EMI, BMI, GPA & More) | AllSmartCalculators';
   const description =
     hp?.metaDescription ??
-    '101+ free online calculators for finance, health, math, crypto, engineering, education and business. EMI, SIP, BMI, GST, GPA, percentage — fast, accurate, no signup required.';
+    '101+ free online calculators — EMI, SIP, BMI, GST, GPA, mortgage, percentage, crypto & more. Finance, health, math & business. Fast, accurate, no signup.';
   const keywords = hp?.metaKeywords
     ? hp.metaKeywords.split(',').map((k) => k.trim())
     : [

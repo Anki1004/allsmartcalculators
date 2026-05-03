@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const title = cms?.pageTitle ?? 'Terms of Service — AllSmartCalculators';
   const description =
     cms?.metaDescription ??
-    'The rules of using AllSmartCalculators. Straightforward, fair, and written like a normal human wrote them.';
+    'AllSmartCalculators terms of service — usage rules, intellectual property, calculator-result limitations & liability. In plain English, no legalese.';
   const canonical = cms?.linkCanonical ?? `${SITE_URL}/terms`;
   return {
     title,
@@ -22,7 +22,9 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: { canonical },
     openGraph: {
       title: cms?.metaOgTitle ?? title,
-      description: cms?.metaOgDescription ?? 'Straightforward, fair terms of use.',
+      description:
+        cms?.metaOgDescription ??
+        'Usage rules, intellectual property & liability for AllSmartCalculators — in plain English.',
       url: cms?.metaOgUrl ?? canonical,
       type: (cms?.metaOgType as 'website') ?? 'website',
       siteName: cms?.metaOgSiteName ?? 'AllSmartCalculators',
