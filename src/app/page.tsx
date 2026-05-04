@@ -66,12 +66,14 @@ export default async function HomePage() {
   const popular = getPopularCalculators(4);
   const hp = await getHomepage();
 
-  // Keyword-led H1 (default). CMS can still override via heroHeadline if you want
-  // to keep the brand-led version on a campaign.
+  // Keyword-led H1 (default). Front-loads the count and names the high-volume
+  // calculators users actually search for; "Free Online Calculators" alone is
+  // a Calculator.net head term we can't crack for years. CMS can still override
+  // via heroHeadline / heroSubheadline for a campaign-led brand version.
   const heroHeadline =
-    hp?.heroHeadline ?? `Free Online Calculators — ${TOTAL_CALCULATORS} Tools`;
+    hp?.heroHeadline ?? `${TOTAL_CALCULATORS} Free Online Calculators —`;
   const heroSubheadline =
-    hp?.heroSubheadline ?? 'for Finance, Health, Math & More.';
+    hp?.heroSubheadline ?? 'EMI, BMI, Mortgage, GPA & More.';
   const heroDescription =
     hp?.heroDescription ??
     'Premium financial, health, crypto, and scientific calculators crafted with obsessive attention to detail. Calculate anything, beautifully.';
