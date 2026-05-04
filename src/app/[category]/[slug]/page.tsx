@@ -57,7 +57,11 @@ export async function generateMetadata({
     title,
     description,
     keywords: cms?.metaKeywords ?? undefined,
-    authors: [{ name: cms?.metaAuthor ?? calc.reviewedBy?.name ?? 'AllSmartCalculators Team' }],
+    authors: cms?.metaAuthor
+      ? [{ name: cms.metaAuthor }]
+      : calc.reviewedBy?.name
+        ? [{ name: calc.reviewedBy.name }]
+        : [{ name: 'Ankit Gupta', url: 'https://www.linkedin.com/in/ankit-gupta-data-analyst' }],
     robots: cms?.metaRobots ?? 'index, follow',
     alternates: { canonical: canonicalUrl },
     openGraph: {

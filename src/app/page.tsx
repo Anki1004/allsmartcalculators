@@ -20,32 +20,27 @@ export async function generateMetadata(): Promise<Metadata> {
   const hp = await getHomepage();
 
   const title =
-    hp?.pageTitle ?? 'Free Online Calculators — 101+ Tools (EMI, BMI, GPA & More) | AllSmartCalculators';
+    hp?.pageTitle ??
+    `Free Online Calculators — ${TOTAL_CALCULATORS} Tools (EMI, BMI, GPA & More) | AllSmartCalculators`;
   const description =
     hp?.metaDescription ??
-    '101+ free online calculators — EMI, SIP, BMI, GST, GPA, mortgage, percentage, crypto & more. Finance, health, math & business. Fast, accurate, no signup.';
+    `${TOTAL_CALCULATORS} free online calculators — EMI, SIP, BMI, GST, GPA, mortgage, percentage, crypto & more. Finance, health, math & business. No signup.`;
+  // Meta keywords have been ignored by Google since 2009 — only honour an
+  // explicit Strapi override if someone really wants to set them, otherwise
+  // omit the tag entirely.
   const keywords = hp?.metaKeywords
     ? hp.metaKeywords.split(',').map((k) => k.trim())
-    : [
-        'free online calculators',
-        'online calculator',
-        'EMI calculator',
-        'SIP calculator',
-        'BMI calculator',
-        'GST calculator',
-        'mortgage calculator',
-        'GPA calculator',
-        'percentage calculator',
-        'crypto calculator',
-      ];
+    : undefined;
   const robots = hp?.metaRobots ?? 'index, follow';
   const canonical = hp?.linkCanonical ?? SITE_URL;
 
   return {
     title,
     description,
-    keywords,
-    authors: hp?.metaAuthor ? [{ name: hp.metaAuthor }] : [{ name: 'AllSmartCalculators Team' }],
+    ...(keywords && { keywords }),
+    authors: hp?.metaAuthor
+      ? [{ name: hp.metaAuthor }]
+      : [{ name: 'Ankit Gupta', url: 'https://www.linkedin.com/in/ankit-gupta-data-analyst' }],
     robots,
     alternates: { canonical },
     openGraph: {
@@ -91,8 +86,7 @@ export default async function HomePage() {
     '@type': 'Organization',
     name: 'AllSmartCalculators',
     url: SITE_URL,
-    description:
-      '101+ free online calculators for finance, health, math, crypto, engineering, education and business.',
+    description: `${TOTAL_CALCULATORS}+ free online calculators for finance, health, math, crypto, engineering, education and business.`,
     founder: {
       '@type': 'Person',
       name: 'Ankit Gupta',
@@ -118,6 +112,47 @@ export default async function HomePage() {
     },
   };
 
+  // ── Homepage ItemList: top 10 "Hot" calculators so Google understands the
+  // site's primary entities. Order is editorial (highest-intent first), not
+  // usage-derived, to keep SERP enhancements predictable.
+  const TOP_CALCULATORS: Array<{ name: string; path: string }> = [
+    { name: 'BMI Calculator', path: '/health/bmi-calculator' },
+    { name: 'EMI Calculator', path: '/finance/emi-calculator' },
+    { name: 'Percentage Calculator', path: '/math/percentage-calculator' },
+    { name: 'Mortgage Calculator', path: '/finance/mortgage-calculator' },
+    { name: 'Currency Converter', path: '/finance/currency-converter' },
+    { name: 'GPA Calculator', path: '/education/gpa-calculator' },
+    { name: 'Calorie Calculator', path: '/health/calorie-calculator' },
+    { name: 'Age Calculator', path: '/health/age-calculator' },
+    { name: 'Tip Calculator', path: '/finance/tip-calculator' },
+    { name: 'Discount Calculator', path: '/business/discount-calculator' },
+  ];
+
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Top Free Online Calculators',
+    url: SITE_URL,
+    numberOfItems: TOP_CALCULATORS.length,
+    itemListElement: TOP_CALCULATORS.map((c, idx) => ({
+      '@type': 'ListItem',
+      position: idx + 1,
+      name: c.name,
+      url: `${SITE_URL}${c.path}`,
+    })),
+  };
+
+  // BreadcrumbList — single-item Home crumb so Google can attach the breadcrumb
+  // SERP enhancement to the root URL too (category and calculator pages render
+  // their own multi-level breadcrumbs).
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+    ],
+  };
+
   return (
     <div className="relative">
       <script
@@ -127,6 +162,14 @@ export default async function HomePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       {/* HERO */}

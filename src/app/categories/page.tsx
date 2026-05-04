@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { allCalculators } from '@/lib/calculator-registry';
+import { allCalculators, TOTAL_CALCULATORS } from '@/lib/calculator-registry';
 import { CATEGORIES } from '@/lib/calculator-types';
 import CalculatorCard from '@/components/CalculatorCard';
 import GlassCard from '@/components/GlassCard';
@@ -10,13 +10,11 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator
 
 export const metadata: Metadata = {
   title: 'All Categories — AllSmartCalculators',
-  description:
-    'Browse 100+ free calculators across 8 categories — Finance, Health, Math, Crypto, Engineering, Daily Life, Education & Business. Pick any. Always free.',
+  description: `Browse ${TOTAL_CALCULATORS} free calculators across ${CATEGORIES.length} categories — Finance, Health, Math, Crypto, Engineering, Daily Life, Education & Business. Always free.`,
   alternates: { canonical: `${SITE_URL}/categories` },
   openGraph: {
     title: 'All Categories — AllSmartCalculators',
-    description:
-      '100+ free calculators across Finance, Health, Math, Crypto, Engineering, Daily Life, Education & Business.',
+    description: `${TOTAL_CALCULATORS} free calculators across Finance, Health, Math, Crypto, Engineering, Daily Life, Education & Business.`,
     url: `${SITE_URL}/categories`,
     type: 'website',
     siteName: 'AllSmartCalculators',

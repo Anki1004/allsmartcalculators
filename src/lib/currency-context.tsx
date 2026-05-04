@@ -62,17 +62,22 @@ interface CurrencyContextType {
   ratesReady: boolean;
 }
 
+// India-first audience: ₹ amounts, RBI/CIBIL references in calculator copy.
+// Default to INR when the user has no stored preference; localStorage hydration
+// below still wins for returning visitors.
+const DEFAULT_CURRENCY = 'INR';
+
 const CurrencyContext = createContext<CurrencyContextType>({
-  currency: 'USD',
+  currency: DEFAULT_CURRENCY,
   setCurrency: () => {},
   rate: 1,
-  symbol: '$',
-  flag: '🇺🇸',
+  symbol: '₹',
+  flag: '🇮🇳',
   ratesReady: false,
 });
 
 export function CurrencyProvider({ children }: { children: ReactNode }) {
-  const [currency, setCurrencyState] = useState('USD');
+  const [currency, setCurrencyState] = useState(DEFAULT_CURRENCY);
   const [rates, setRates] = useState<Record<string, number>>(FALLBACK_RATES);
   const [ratesReady, setRatesReady] = useState(false);
 

@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { CurrencyProvider } from '@/lib/currency-context';
 import { ThemeProvider } from '@/lib/theme-context';
+import { TOTAL_CALCULATORS } from '@/lib/calculator-registry';
 
 // Lazy-load components that are interactive but not part of the critical
 // above-the-fold render path. Saves ~15-20% off the main bundle on mobile,
@@ -37,6 +38,10 @@ const jetbrainsMono = JetBrains_Mono({
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 
+// TODO: Replace src/app/opengraph-image.png with a 1200x630 version for proper
+// Twitter `summary_large_image` and LinkedIn previews. Current asset is 500x500
+// — Next.js auto-detects dimensions from the file, so swapping the PNG fixes
+// the og:image:width / og:image:height tags automatically (no code change).
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   applicationName: 'AllSmartCalculators',
@@ -45,24 +50,17 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  title: 'AllSmartCalculators — 100+ Calculators. One Beautiful Place.',
-  description:
-    'Premium calculator hub with 100+ trending calculators for Finance, Health, Math, Crypto, Engineering, Education and more. Beautiful, fast, and free.',
-  keywords: [
-    'calculator',
-    'EMI calculator',
-    'SIP calculator',
-    'BMI calculator',
-    'GST calculator',
-    'HRA calculator',
-    'income tax calculator india',
-    'crypto calculator',
-    'financial calculator',
-    'math calculator',
+  title: `AllSmartCalculators — ${TOTAL_CALCULATORS} Calculators. One Beautiful Place.`,
+  description: `Premium calculator hub with ${TOTAL_CALCULATORS} trending calculators for Finance, Health, Math, Crypto, Engineering, Education and more. Beautiful, fast, and free.`,
+  authors: [
+    {
+      name: 'Ankit Gupta',
+      url: 'https://www.linkedin.com/in/ankit-gupta-data-analyst',
+    },
   ],
   alternates: { canonical: SITE_URL },
   openGraph: {
-    title: 'AllSmartCalculators — 100+ Calculators',
+    title: `AllSmartCalculators — ${TOTAL_CALCULATORS} Calculators`,
     description: 'Calculate anything. Beautifully.',
     type: 'website',
     url: SITE_URL,
@@ -72,7 +70,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@AllSmartCalculators',
-    title: 'AllSmartCalculators — 100+ Calculators',
+    title: `AllSmartCalculators — ${TOTAL_CALCULATORS} Calculators`,
     description: 'Calculate anything. Beautifully.',
   },
 };

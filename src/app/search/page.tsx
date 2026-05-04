@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ChevronRight, Search as SearchIcon } from 'lucide-react';
-import { searchCalculators } from '@/lib/calculator-registry';
+import { searchCalculators, TOTAL_CALCULATORS } from '@/lib/calculator-registry';
 import CalculatorCard from '@/components/CalculatorCard';
 import GlassCard from '@/components/GlassCard';
 
@@ -17,8 +17,8 @@ export function generateMetadata({ searchParams }: SearchPageProps): Metadata {
     ? `"${q}" — Search Results | AllSmartCalculators`
     : 'Search Calculators | AllSmartCalculators';
   const description = q
-    ? `Search results for "${q}" across 100+ free calculators on AllSmartCalculators.`
-    : 'Search 100+ free calculators across finance, health, math, crypto, engineering, daily life, education, and business.';
+    ? `Search results for "${q}" across ${TOTAL_CALCULATORS} free calculators on AllSmartCalculators.`
+    : `Search ${TOTAL_CALCULATORS} free calculators across finance, health, math, crypto, engineering, daily life, education, and business.`;
 
   return {
     title,
@@ -62,7 +62,7 @@ export default function SearchPage({ searchParams }: SearchPageProps) {
           <p className="text-sm sm:text-base md:text-lg text-on-surface-variant max-w-2xl">
             {q
               ? `${results.length} ${results.length === 1 ? 'calculator matches' : 'calculators match'} your query.`
-              : 'Use the search bar (Ctrl/⌘ + K) to find any of our 100+ calculators by name, category, or keyword.'}
+              : `Use the search bar (Ctrl/⌘ + K) to find any of our ${TOTAL_CALCULATORS} calculators by name, category, or keyword.`}
           </p>
         </div>
 

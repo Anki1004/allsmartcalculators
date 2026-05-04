@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { TOTAL_CALCULATORS } from '@/lib/calculator-registry';
 
 export default function Footer() {
   return (
@@ -27,7 +28,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-sm text-on-surface-variant max-w-xs">
-              100+ beautifully crafted calculators for every life decision.
+              {TOTAL_CALCULATORS} beautifully crafted calculators for every life decision.
               Calculate anything. Beautifully.
             </p>
           </div>

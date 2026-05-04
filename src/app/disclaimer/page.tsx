@@ -17,7 +17,9 @@ export async function generateMetadata(): Promise<Metadata> {
     title,
     description,
     keywords: cms?.metaKeywords ?? undefined,
-    authors: [{ name: cms?.metaAuthor ?? 'AllSmartCalculators Team' }],
+    authors: cms?.metaAuthor
+      ? [{ name: cms.metaAuthor }]
+      : [{ name: 'Ankit Gupta', url: 'https://www.linkedin.com/in/ankit-gupta-data-analyst' }],
     robots: cms?.metaRobots ?? 'index, follow',
     alternates: { canonical },
     openGraph: {

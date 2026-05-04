@@ -56,7 +56,9 @@ export async function generateMetadata({
     title,
     description,
     keywords: cms?.metaKeywords ?? undefined,
-    authors: [{ name: cms?.metaAuthor ?? 'AllSmartCalculators Team' }],
+    authors: cms?.metaAuthor
+      ? [{ name: cms.metaAuthor }]
+      : [{ name: 'Ankit Gupta', url: 'https://www.linkedin.com/in/ankit-gupta-data-analyst' }],
     robots: cms?.metaRobots ?? 'index, follow',
     alternates: { canonical },
     openGraph: {
@@ -86,8 +88,22 @@ export default async function CategoryPage({ params }: { params: { category: str
   const rest = calcs.filter((c) => !c.trending);
   const cms = await getCategoryContent(cat.id);
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+      { '@type': 'ListItem', position: 2, name: `${cat.name} Calculators`, item: `${siteUrl}/${cat.id}` },
+    ],
+  };
+
   return (
     <div className="pt-24 sm:pt-28 pb-12 sm:pb-16 px-4 sm:px-5 md:px-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="max-w-7xl mx-auto">
 
         {/* Breadcrumb */}

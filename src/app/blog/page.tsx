@@ -76,7 +76,7 @@ function PostCard({ post }: { post: StrapiPost }) {
             <div className="flex items-center gap-2 sm:gap-3 min-w-0">
               <span className="flex items-center gap-1 truncate">
                 <User className="w-3 h-3 shrink-0" />
-                <span className="truncate">{post.metaAuthor ?? 'AllSmartCalculators Team'}</span>
+                <span className="truncate">{post.metaAuthor ?? 'Ankit Gupta'}</span>
               </span>
               <span className="flex items-center gap-1 shrink-0">
                 <Clock className="w-3 h-3" />
