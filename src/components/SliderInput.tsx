@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useId } from 'react';
 import { cn, formatNumber } from '@/lib/utils';
 
 interface SliderInputProps {
@@ -30,6 +30,9 @@ export default function SliderInput({
 }: SliderInputProps) {
   const [raw, setRaw] = useState('');
   const fromSlider = useRef(false);
+  const inputId = useId();
+  const sliderId = useId();
+  const ariaText = `${label}${suffix ? ` in ${suffix}` : ''}`;
 
   // Only sync raw when slider moves, not on initial mount
   useEffect(() => {
@@ -75,7 +78,10 @@ export default function SliderInput({
   return (
     <div className="flex flex-col gap-3">
       <div className="flex items-center justify-between">
-        <label className="text-xs font-semibold tracking-[0.15em] uppercase text-on-surface-variant">
+        <label
+          htmlFor={inputId}
+          className="text-xs font-semibold tracking-[0.15em] uppercase text-on-surface-variant"
+        >
           {label}
         </label>
         <span className={cn('font-mono text-lg font-bold', colorMap[color].text)}>
@@ -86,12 +92,14 @@ export default function SliderInput({
       {/* Number input */}
       <div className="relative">
         <input
+          id={inputId}
           type="text"
           inputMode="decimal"
           value={raw}
           onChange={handleInputChange}
           onBlur={handleBlur}
           placeholder="—"
+          aria-label={ariaText}
           className="w-full bg-surface-container-lowest border border-outline-variant/20 rounded-xl px-4 py-3 pr-12 font-mono text-base font-semibold text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none focus:border-primary/40 focus:shadow-[0_0_0_3px_rgba(189,157,255,0.15)] transition-all"
         />
         {suffix && (
@@ -104,12 +112,17 @@ export default function SliderInput({
       {/* Slider */}
       <div className="relative">
         <input
+          id={sliderId}
           type="range"
           value={value}
           onChange={(e) => { fromSlider.current = true; onChange(Number(e.target.value)); }}
           min={min}
           max={max}
           step={step}
+          aria-label={`${ariaText} (slider)`}
+          aria-valuemin={min}
+          aria-valuemax={max}
+          aria-valuenow={value}
           className="cosmic-slider w-full"
           style={{
             background: `linear-gradient(to right, ${colorMap[color].start}, ${colorMap[color].end} ${percentage}%, #1d2347 ${percentage}%)`,

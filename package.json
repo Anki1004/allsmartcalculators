@@ -8,6 +8,17 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "browserslist": [
+    ">0.5%",
+    "last 2 versions",
+    "not dead",
+    "not op_mini all",
+    "not IE 11",
+    "Chrome >= 87",
+    "Firefox >= 78",
+    "Safari >= 14",
+    "Edge >= 87"
+  ],
   "dependencies": {
     "@strapi/blocks-react-renderer": "^1.0.2",
     "@vercel/analytics": "^2.0.1",

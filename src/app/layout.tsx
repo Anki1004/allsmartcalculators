@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
 import dynamic from 'next/dynamic';
+import Script from 'next/script';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -108,21 +109,6 @@ export default function RootLayout({
             />
           </>
         )}
-        {/* Google Analytics 4 — fires under Consent Mode v2 (modeled pings when denied,
-            full tracking once user accepts cookies). gtag defaults are set above. */}
-        {GA_MEASUREMENT_ID && (
-          <>
-            <script
-              async
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-            />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `gtag('js', new Date());gtag('config', '${GA_MEASUREMENT_ID}');`,
-              }}
-            />
-          </>
-        )}
       </head>
       <body className="bg-surface text-on-surface font-body antialiased min-h-screen overflow-x-hidden">
         <div className="aurora-bg" />
@@ -139,6 +125,25 @@ export default function RootLayout({
           </CurrencyProvider>
         </ThemeProvider>
         <ConsentGatedAnalytics />
+        {/* Google Analytics 4 — loaded after window-load to keep it off the
+            critical path. Consent Mode v2 defaults already ran in <head>
+            (modeled pings when denied, full tracking on accept). */}
+        {GA_MEASUREMENT_ID && (
+          <>
+            <Script
+              id="ga4-loader"
+              strategy="lazyOnload"
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+            />
+            <Script
+              id="ga4-init"
+              strategy="lazyOnload"
+              dangerouslySetInnerHTML={{
+                __html: `gtag('js', new Date());gtag('config', '${GA_MEASUREMENT_ID}');`,
+              }}
+            />
+          </>
+        )}
       </body>
     </html>
   );
