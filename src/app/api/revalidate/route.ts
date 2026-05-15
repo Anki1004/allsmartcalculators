@@ -1,5 +1,6 @@
 import { revalidatePath } from 'next/cache';
 import { NextRequest, NextResponse } from 'next/server';
+import { getCalculatorBySlug } from '@/lib/calculator-registry';
 
 // On-demand cache purge endpoint. Strapi calls this on every content
 // create/update/delete via a global lifecycle hook in strapi/src/index.ts.
@@ -60,11 +61,17 @@ export async function POST(req: NextRequest) {
     revalidatePath(path);
     purged.push(path);
   } else if (model === 'calculator-content' && slug) {
-    // Slug alone doesn't tell us the category — refresh the whole category
-    // shell on next visit by purging the layout. Per-page revalidate window
-    // (60s) handles the rest.
-    revalidatePath(`/`, 'layout');
-    purged.push('/ (layout)');
+    const calc = getCalculatorBySlug(slug);
+    if (calc) {
+      const calcPath = `/${calc.category}/${slug}`;
+      const catPath = `/${calc.category}`;
+      revalidatePath(calcPath);
+      revalidatePath(catPath);
+      purged.push(calcPath, catPath);
+    } else {
+      revalidatePath(`/`, 'layout');
+      purged.push('/ (layout)');
+    }
   }
 
   return NextResponse.json({

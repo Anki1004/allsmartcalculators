@@ -52,30 +52,48 @@ async function strapiGet<T>(path: string): Promise<T> {
   const res = await fetch(`${STRAPI_URL}/api${path}`, {
     next: { revalidate: 60 },
     headers: { 'Content-Type': 'application/json' },
+    signal: AbortSignal.timeout(8000),
   });
   if (!res.ok) throw new Error(`Strapi fetch failed: ${res.status}`);
   return res.json();
 }
 
+function logStrapiError(path: string, err: unknown) {
+  const msg = err instanceof Error ? err.message : String(err);
+  console.warn(`[strapi] ${path} → ${msg}`);
+}
+
 export async function getAllPosts(): Promise<StrapiPost[]> {
-  const data = await strapiGet<StrapiResponse<StrapiPost[]>>(
-    '/posts?populate=coverImage&sort=publishedAt:desc'
-  );
-  return data.data ?? [];
+  const path = '/posts?populate=coverImage&sort=publishedAt:desc';
+  try {
+    const data = await strapiGet<StrapiResponse<StrapiPost[]>>(path);
+    return data.data ?? [];
+  } catch (err) {
+    logStrapiError(path, err);
+    return [];
+  }
 }
 
 export async function getPostBySlug(slug: string): Promise<StrapiPost | null> {
-  const data = await strapiGet<StrapiResponse<StrapiPost[]>>(
-    `/posts?filters[slug][$eq]=${encodeURIComponent(slug)}&populate=coverImage`
-  );
-  return data.data?.[0] ?? null;
+  const path = `/posts?filters[slug][$eq]=${encodeURIComponent(slug)}&populate=coverImage`;
+  try {
+    const data = await strapiGet<StrapiResponse<StrapiPost[]>>(path);
+    return data.data?.[0] ?? null;
+  } catch (err) {
+    logStrapiError(path, err);
+    return null;
+  }
 }
 
 export async function getFeaturedPosts(): Promise<StrapiPost[]> {
-  const data = await strapiGet<StrapiResponse<StrapiPost[]>>(
-    '/posts?filters[showOnHome][$eq]=true&populate=coverImage&sort=publishedAt:desc'
-  );
-  return data.data ?? [];
+  const path = '/posts?filters[showOnHome][$eq]=true&populate=coverImage&sort=publishedAt:desc';
+  try {
+    const data = await strapiGet<StrapiResponse<StrapiPost[]>>(path);
+    return data.data ?? [];
+  } catch (err) {
+    logStrapiError(path, err);
+    return [];
+  }
 }
 
 export function getStrapiImageUrl(url: string): string {
@@ -98,12 +116,12 @@ export interface StrapiCalcContent extends SeoFields {
 }
 
 export async function getCalcContent(slug: string): Promise<StrapiCalcContent | null> {
+  const path = `/calculator-contents?filters[slug][$eq]=${encodeURIComponent(slug)}&populate=faqs`;
   try {
-    const data = await strapiGet<StrapiResponse<StrapiCalcContent[]>>(
-      `/calculator-contents?filters[slug][$eq]=${encodeURIComponent(slug)}&populate=faqs`
-    );
+    const data = await strapiGet<StrapiResponse<StrapiCalcContent[]>>(path);
     return data.data?.[0] ?? null;
-  } catch {
+  } catch (err) {
+    logStrapiError(path, err);
     return null;
   }
 }
@@ -120,10 +138,12 @@ export interface StrapiHomepage extends SeoFields {
 }
 
 export async function getHomepage(): Promise<StrapiHomepage | null> {
+  const path = '/homepage';
   try {
-    const data = await strapiGet<{ data: StrapiHomepage }>('/homepage');
+    const data = await strapiGet<{ data: StrapiHomepage }>(path);
     return data.data ?? null;
-  } catch {
+  } catch (err) {
+    logStrapiError(path, err);
     return null;
   }
 }
@@ -155,7 +175,8 @@ export async function getCategoryContent(
   try {
     const data = await strapiGet<{ data: StrapiCategoryContent }>(endpoint);
     return data.data ?? null;
-  } catch {
+  } catch (err) {
+    logStrapiError(endpoint, err);
     return null;
   }
 }
@@ -169,7 +190,8 @@ async function getStaticPage(endpoint: string): Promise<StrapiStaticPage | null>
   try {
     const data = await strapiGet<{ data: StrapiStaticPage }>(endpoint);
     return data.data ?? null;
-  } catch {
+  } catch (err) {
+    logStrapiError(endpoint, err);
     return null;
   }
 }
@@ -191,12 +213,12 @@ export interface StrapiAuthorPage extends StrapiStaticPage {
 }
 
 export async function getAuthorPage(): Promise<StrapiAuthorPage | null> {
+  const path = '/author-page?populate=profileImage';
   try {
-    const data = await strapiGet<{ data: StrapiAuthorPage }>(
-      '/author-page?populate=profileImage',
-    );
+    const data = await strapiGet<{ data: StrapiAuthorPage }>(path);
     return data.data ?? null;
-  } catch {
+  } catch (err) {
+    logStrapiError(path, err);
     return null;
   }
 }

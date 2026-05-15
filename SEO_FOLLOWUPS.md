@@ -143,7 +143,7 @@ Suggested order (by audit priority + est. search volume):
 
 ---
 
-## 🌐 To do — outside the repo (you, not Claude)
+## 🌐 To do — outside the repo (manual)
 
 These items the audits call for that cannot be done by code alone.
 

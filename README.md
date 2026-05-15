@@ -217,4 +217,4 @@ MIT — do whatever you want with it.
 
 ---
 
-**Design System**: Cosmic Glass · **Built by**: You. **Built on**: The Stitch design by Google + Claude.
+**Design System**: Cosmic Glass · **Built by**: Ankit Gupta.

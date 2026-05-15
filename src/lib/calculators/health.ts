@@ -256,10 +256,6 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'PieChart',
     description: 'Calculate protein, carbs, and fat ratios.',
-    seo: {
-      title: 'Macro Calculator: Protein, Carbs & Fat in Grams',
-      description: 'Free macro calculator. Convert your daily calorie target into grams of protein, carbs, and fat at any custom split. Donut chart of your macro mix.',
-    },
     usageCount: 54000,
     chartType: 'donut',
     inputs: [
@@ -280,6 +276,60 @@ export const healthCalculators: CalculatorConfig[] = [
       const fat = (cal * (Math.max(0, fatPct) / 100)) / 9;
       return { protein, carbs, fat };
     },
+    intro:
+      "Once you know your daily calorie target, the next question is how to split it between protein, carbs, and fat. This calculator converts your calorie goal into grams of each macro at whatever split you pick. A 2,200-calorie diet at 30/40/30 split gives you 165g protein, 220g carbs, 73g fat. For typical Indian diets that lean carb-heavy (rice, roti, potatoes), most fitness coaches push the protein ratio up to 30–35% — a 70kg adult should target 100–140g protein daily, which is hard with vegetarian eating without consciously adding paneer, dal, soya, or whey.",
+    formula: 'Protein g = (cal × P%) ÷ 4 · Carbs g = (cal × C%) ÷ 4 · Fat g = (cal × F%) ÷ 9',
+    howItWorks:
+      "Each macro has a fixed calorie density — protein and carbs are 4 calories per gram, fat is 9. The calculator splits your total calories by the percentage you set, then divides by the density to get grams. 2,200 calories at 30% protein = 660 calories from protein = 660 ÷ 4 = 165g. The remaining 70% is split: 40% carbs (880 cal = 220g) and 30% fat (660 cal = 73g). Protein and carbs ratios are your levers; fat fills the rest. For ₹100/day Indian protein math: 4 eggs (24g) + 50g paneer (10g) + 1 cup dal (15g) + 100g chicken (30g) gets you to ~80g — still need a whey scoop or extra eggs for 130g+.",
+    ranges: {
+      title: 'Common macro splits and what they suit',
+      rows: [
+        { label: 'Balanced (general health)', range: '20P / 50C / 30F', note: 'Default if you have no specific goal' },
+        { label: 'High protein (fat loss + muscle)', range: '35P / 35C / 30F', note: 'Standard cutting split — gym-goers' },
+        { label: 'Lean bulk (muscle gain)', range: '25P / 55C / 20F', note: 'Carbs fuel training volume' },
+        { label: 'Low-carb / keto', range: '20P / 10C / 70F', note: 'Tight discipline needed; not for everyone' },
+        { label: 'Endurance athlete', range: '15P / 60C / 25F', note: 'Marathon, cycling training blocks' },
+      ],
+    },
+    limitations: [
+      "Macro percentages don't tell you food quality — 200g carbs from oats and basmati rice is very different from the same grams from sugar and maida. Aim for whole, minimally processed sources first.",
+      "Doesn't model fibre, micronutrients, or hydration. Hitting macros while ignoring vegetables and water can still produce poor health outcomes — macros are one input, not the whole picture.",
+      'Calorie densities of 4/4/9 are approximate. Alcohol is 7 cal/g and isn\'t in the formula at all — heavy drinkers underestimate intake.',
+      'Indian vegetarian diets struggle to hit 30%+ protein without intentional addition of dal, paneer, eggs (if ovo-veg), soya, or whey supplementation.',
+    ],
+    faqs: [
+      {
+        q: 'How much protein do I need per day?',
+        a: 'For general health: 0.8g per kg body weight. For active adults: 1.2–1.6g per kg. For strength training: 1.6–2.2g per kg. A 70kg gym-goer needs ~120–150g daily — significantly more than most Indian diets deliver by default.',
+      },
+      {
+        q: 'Is keto better than balanced macros?',
+        a: 'For most people, no. Keto works for some weight loss in the short term because the high fat suppresses appetite and removes carbs (often the easiest over-eaten category). But it\'s hard to sustain, restricts whole-food carbs like fruits and legumes, and offers no advantage over a calorie-controlled balanced diet for long-term health.',
+      },
+      {
+        q: 'What\'s the easiest way to hit 150g protein on a veg diet?',
+        a: '1 scoop whey (25g) + 4 eggs (24g) + 200g paneer (40g) + 1 cup dal (15g) + 100g tofu (15g) + 100g sprouts (15g) + 30g almonds (6g) ≈ 140g. Strict vegan needs more soya/legume volume or pea-protein powder.',
+      },
+      {
+        q: 'Why is fat 9 calories per gram but protein and carbs only 4?',
+        a: 'Fat molecules pack more energy per unit mass due to their chemistry — long carbon-hydrogen chains. That\'s why fat is the most calorie-dense macro and also why adding "just a little" olive oil or ghee can push your day\'s calories up faster than you expect.',
+      },
+      {
+        q: 'Should the macro split change as I age?',
+        a: 'Protein needs go UP after 50 — older adults lose muscle faster and need 1.2–1.5g per kg to slow sarcopenia. Carb tolerance drops slightly with age (insulin sensitivity declines), so many people over 50 do well shifting 10% from carbs to protein.',
+      },
+    ],
+    seo: {
+      title: 'Macro Calculator: Protein, Carbs & Fat in Grams',
+      description: 'Free macro calculator. Convert your daily calorie target into grams of protein, carbs, and fat at any custom split. Donut chart of your macro mix.',
+      applicationCategory: 'HealthApplication',
+      sources: [
+        { label: 'WHO — protein and amino acid requirements', url: 'https://www.who.int/' },
+        { label: 'ICMR — Nutrient Requirements for Indians (RDA)', url: 'https://www.icmr.gov.in/' },
+      ],
+    },
+    lastUpdated: '2026-05-15',
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'body-fat-calculator',
@@ -287,10 +337,6 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Heart',
     description: 'Estimate body fat percentage.',
-    seo: {
-      title: 'Body Fat Calculator: U.S. Navy Method',
-      description: 'Free body fat percentage calculator using the U.S. Navy circumference method. Just waist, neck, and height — no calipers needed. Includes fitness band.',
-    },
     usageCount: 42000,
     inputs: [
       { key: 'waist', label: 'Waist', type: 'slider', min: 50, max: 200, step: 0.5, default: 85, suffix: 'cm', color: 'primary' },
@@ -313,6 +359,61 @@ export const healthCalculators: CalculatorConfig[] = [
       else category = 'Above Average';
       return { bodyFat: Math.max(0, bodyFat), category };
     },
+    intro:
+      "Body fat percentage tells you something BMI can't — how much of your weight is actually fat versus muscle, bone, and water. A 75kg gym-goer with 12% body fat and a 75kg sedentary office worker with 28% body fat look completely different in the mirror and have very different health risks. This calculator uses the US Navy circumference method (waist, neck, height) — no calipers, no DEXA scan, just a measuring tape. Indian men should aim for 12–20%, women 20–28%. Move the sliders to see how a 3cm waist reduction translates — usually 2–3 percentage points drop in body fat.",
+    formula: '%BF = 495 ÷ (1.0324 − 0.19077 × log₁₀(waist − neck) + 0.15456 × log₁₀(height)) − 450',
+    howItWorks:
+      "The US Navy formula uses three circumference measurements to estimate body fat density via the Hodgdon-Beckett equation. Measure waist at navel (relaxed, not sucked in), neck just below larynx, height standing barefoot — all in cm. 85cm waist, 38cm neck, 175cm height: %BF = 495 ÷ (1.0324 − 0.19077 × log(47) + 0.15456 × log(175)) − 450 ≈ 22%. The waist measurement dominates — a 5cm waist reduction typically drops body fat by ~3 percentage points without any change in weight. That's because waist circumference is the strongest visible proxy for visceral (belly) fat.",
+    ranges: {
+      title: 'Body fat ranges by category (adults; Indian context)',
+      rows: [
+        { label: 'Essential fat (men / women)', range: '2–5% / 10–13%', note: 'Below this is dangerous for organ function' },
+        { label: 'Athletes (men / women)', range: '6–13% / 14–20%', note: 'Visible abs, defined musculature' },
+        { label: 'Fitness (men / women)', range: '14–17% / 21–24%', note: 'Lean, visible muscle tone' },
+        { label: 'Average (men / women)', range: '18–24% / 25–31%', note: 'General population' },
+        { label: 'Obese (men / women)', range: '25%+ / 32%+', note: 'Higher cardiovascular risk' },
+        { label: 'Asian Indian thresholds', range: '−2% from above', note: 'Higher visceral fat at same %BF — be stricter' },
+      ],
+    },
+    limitations: [
+      'The Navy formula is an estimate — accuracy is ±3–4% versus DEXA gold standard. For precise tracking, use the same method consistently rather than comparing across methods.',
+      "Doesn't distinguish subcutaneous from visceral fat. Two people can have the same body fat % with very different metabolic risk — the dangerous fat is the visceral kind around organs.",
+      'Measurement consistency matters. 1cm error on waist = ~1% body fat error. Measure at the same spot, same time of day (morning is best, before food and water).',
+      'Asian Indians carry more visceral fat at the same body fat % than Caucasians. The Indian health guidelines are stricter — aim 2–3% lower than the general thresholds.',
+    ],
+    faqs: [
+      {
+        q: 'What is a healthy body fat percentage?',
+        a: 'For Indian men: 12–18% is fit, 18–24% is average, above 24% is high risk. For Indian women: 18–24% is fit, 25–31% is average, above 31% is high risk. Athletes are typically much lower but extreme leanness has its own health costs — especially for women.',
+      },
+      {
+        q: 'Is body fat % more accurate than BMI?',
+        a: 'Yes for individuals — BMI misclassifies muscular people as overweight and skinny-fat people as healthy. Body fat % tells you composition. The downside: BMI takes 5 seconds with just height/weight; body fat needs careful measurement or expensive scans to be accurate.',
+      },
+      {
+        q: 'How accurate is the US Navy formula?',
+        a: '±3–4% compared to DEXA (the gold standard). Better than smart scales (often ±5–10% wrong) and similar to skinfold calipers when used by an experienced trainer. The formula loses accuracy at the extremes (very lean or very obese).',
+      },
+      {
+        q: 'Why do Indian guidelines use lower body fat thresholds?',
+        a: 'Asian Indians genetically carry more visceral fat (around organs) per kilogram of body fat. The same 22% body fat causes higher diabetes and heart-disease risk in an Indian male than in a European one. The Indian Heart Association recommends men stay under 22% and women under 30%.',
+      },
+      {
+        q: 'How fast can I reduce body fat?',
+        a: 'Safe and sustainable is 0.5–1% per month — roughly 0.5kg of fat loss per week for a 70kg adult. Faster than that and you start losing muscle along with fat. A 5% body fat reduction (e.g. 25% → 20%) realistically takes 5–10 months.',
+      },
+    ],
+    seo: {
+      title: 'Body Fat Calculator: U.S. Navy Method',
+      description: 'Free body fat percentage calculator using the U.S. Navy circumference method. Just waist, neck, and height — no calipers needed. Includes fitness band.',
+      applicationCategory: 'HealthApplication',
+      sources: [
+        { label: 'WHO — Asian population BMI cutoffs', url: 'https://www.who.int/' },
+        { label: 'US Navy — body composition assessment', url: 'https://www.navy.mil/' },
+      ],
+    },
+    lastUpdated: '2026-05-15',
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'ideal-weight-calculator',
@@ -320,10 +421,6 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Scale',
     description: 'Find your ideal weight based on height.',
-    seo: {
-      title: 'Ideal Weight Calculator: Devine, Robinson & Miller',
-      description: 'Free ideal-weight calculator. Compare three classical formulas (Devine, Robinson, Miller) for healthy adult weight given height — useful for fitness goals.',
-    },
     usageCount: 38000,
     inputs: [
       { key: 'height', label: 'Height', type: 'slider', min: 120, max: 220, step: 1, default: 170, suffix: 'cm', color: 'primary' },
@@ -342,6 +439,62 @@ export const healthCalculators: CalculatorConfig[] = [
         miller: 56.2 + 1.41 * over5ft,
       };
     },
+    intro:
+      "Three classical formulas estimate ideal body weight from height alone: Devine (used most widely in clinical drug dosing), Robinson (slightly lower), and Miller (highest). For 170cm height, the three give 65.7kg / 64.6kg / 71.1kg respectively — a 6kg spread that tells you ideal weight isn't a single number, it's a range. These formulas were developed for North American populations in the 1960s–80s and tend to overstate ideal weight for slimmer Asian Indian frames. Use them as a ballpark — actual healthy weight depends on body composition, frame size, and ethnicity-adjusted BMI rather than height alone.",
+    formula: 'Devine: 50 + 2.3 × (height in inches − 60) · Robinson: 52 + 1.9 × · Miller: 56.2 + 1.41 ×',
+    howItWorks:
+      "All three formulas start with a base weight at 5 feet (60 inches) and add a per-inch increment for every inch above that. Devine — the most clinically used — assumes 50kg at 5ft and adds 2.3kg per inch. For a 170cm (66.9 in) person: 50 + 2.3 × 6.9 = 65.9kg. Robinson is slightly leaner (1.9 kg/in), Miller is fuller (1.41 kg/in but higher 56.2 base). The original formulas were built for men; the female adjustment subtracts 4.5kg from Devine (45.5 + 2.3 × inches above 5ft). The calculator returns the male version — adjust accordingly.",
+    ranges: {
+      title: 'Indicative healthy weight ranges by height (Indian BMI 18.5–22.9)',
+      rows: [
+        { label: '150 cm (4\'11")', range: '42 – 51 kg', note: 'Asian healthy BMI: 18.5–22.9' },
+        { label: '160 cm (5\'3")', range: '47 – 58 kg', note: '' },
+        { label: '165 cm (5\'5")', range: '50 – 62 kg', note: '' },
+        { label: '170 cm (5\'7")', range: '53 – 66 kg', note: 'Devine returns ~66kg — top of healthy range' },
+        { label: '175 cm (5\'9")', range: '56 – 70 kg', note: '' },
+        { label: '180 cm (5\'11")', range: '60 – 74 kg', note: '' },
+        { label: '185 cm (6\'1")', range: '63 – 78 kg', note: '' },
+      ],
+    },
+    limitations: [
+      "These formulas don't account for body composition. A bodybuilder at 175cm weighing 85kg has nothing wrong with him; an office worker at 175cm and 65kg with 30% body fat is unhealthier by any real metric.",
+      "Built for North American populations in the 1960s–80s. For Indian frames (typically narrower bone structure), the formulas overestimate — aim 3–5kg below the Devine number.",
+      "Doesn't distinguish men from women in the output (this calculator returns the male formula). Subtract roughly 4.5kg for a female-adjusted Devine estimate.",
+      'WHO Asian BMI thresholds (18.5–22.9 healthy, 23–24.9 overweight) are stricter than the US range — use those for a more reliable target than these classical formulas.',
+    ],
+    faqs: [
+      {
+        q: 'Which formula should I trust?',
+        a: 'Devine is the most widely used in medicine (drug dosing, ICU protocols). For body-shape goals, BMI with Asian-adjusted thresholds (18.5–22.9 healthy) is more reliable than any of these. The ideal weight is a range, not a single number.',
+      },
+      {
+        q: 'Are these formulas accurate for Indian builds?',
+        a: 'They tend to overestimate. Indian frames are typically narrower; aim 3–5kg below the Devine result. WHO-recommended Asian BMI (18.5–22.9) gives 53–66kg for a 170cm adult, which matches Indian medical practice better than these decades-old North American formulas.',
+      },
+      {
+        q: 'Why are there three different formulas?',
+        a: 'Each was developed for slightly different clinical purposes and populations. Devine (1974) for drug dosing, Robinson (1983) revised it slightly, Miller (1983) was built for a different research cohort. The differences (5–6kg at the same height) show how much subjectivity there is in defining "ideal."',
+      },
+      {
+        q: 'Is BMI better than ideal weight formulas?',
+        a: 'For most people, yes — BMI gives a range (a 170cm adult is healthy anywhere between 53–66kg) which is more honest than a single ideal number. Body fat percentage is better still, but requires more measurement effort.',
+      },
+      {
+        q: 'How much should I weigh as a woman?',
+        a: 'For women: subtract roughly 4.5kg from Devine. A 165cm woman would have Devine ~58kg minus 4.5 = 53.5kg as a clinical estimate. WHO Asian BMI is friendlier: 50–62kg is the healthy range for that height.',
+      },
+    ],
+    seo: {
+      title: 'Ideal Weight Calculator: Devine, Robinson & Miller',
+      description: 'Free ideal-weight calculator. Compare three classical formulas (Devine, Robinson, Miller) for healthy adult weight given height — useful for fitness goals.',
+      applicationCategory: 'HealthApplication',
+      sources: [
+        { label: 'WHO — Asian BMI classification', url: 'https://www.who.int/' },
+        { label: 'ICMR — Indian nutrition guidelines', url: 'https://www.icmr.gov.in/' },
+      ],
+    },
+    lastUpdated: '2026-05-15',
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'water-intake-calculator',
@@ -349,10 +502,6 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Droplet',
     description: 'Daily water needs based on weight & activity.',
-    seo: {
-      title: 'Water Intake Calculator: Daily Hydration Goal',
-      description: 'Free water intake calculator. Get your daily hydration target in litres, glasses, and ounces — adjusted for body weight and exercise minutes.',
-    },
     trending: true,
     usageCount: 112000,
     inputs: [
@@ -368,6 +517,62 @@ export const healthCalculators: CalculatorConfig[] = [
       const liters = Number(i.weight) * 0.033 + (Number(i.activity) / 30) * 0.35;
       return { liters, glasses: (liters * 1000) / 250, oz: liters * 33.814 };
     },
+    intro:
+      "Daily water needs scale with body weight and how much you sweat — not with the famous \"8 glasses a day\" rule, which has no scientific basis. This calculator uses the medical standard of about 33ml per kg of body weight, plus 350ml for every 30 minutes of exercise. A 70kg adult doing 30 minutes of yoga needs roughly 2.7L; the same person running for an hour in Delhi summer needs 3.7L+. In hot Indian summers (40°C+), add another 500–800ml to your target. Coffee, tea, and dilute drinks count toward your total — water doesn't have to come purely from a bottle.",
+    formula: 'Daily water (L) = weight (kg) × 0.033 + (exercise minutes ÷ 30) × 0.35',
+    howItWorks:
+      "Base hydration is roughly 33ml per kg of body weight. For 70kg: 70 × 0.033 = 2.31L. Add 350ml for every 30 minutes of moderate-to-intense exercise — that compensates for the sweat losses. 30 minutes of gym work adds 0.35L; 60 minutes of running adds 0.7L. Total for a 70kg gym-goer doing 30 minutes = 2.66L ≈ 11 glasses of 250ml. In Indian summer (35°C+), insensible water loss through skin and breath rises significantly — add 500ml. Indicators that you're underhydrated: dark yellow urine, headache, fatigue, and constipation.",
+    ranges: {
+      title: 'Daily water need by weight + activity (adjust +500ml for hot weather)',
+      rows: [
+        { label: '50 kg · sedentary', range: '1.7 L (7 glasses)', note: 'Minimum baseline' },
+        { label: '70 kg · sedentary', range: '2.3 L (9 glasses)', note: '' },
+        { label: '70 kg · 30 min exercise', range: '2.7 L (11 glasses)', note: '' },
+        { label: '70 kg · 60 min exercise', range: '3.0 L (12 glasses)', note: '' },
+        { label: '90 kg · 60 min exercise', range: '3.7 L (15 glasses)', note: 'Add 500ml for 40°C+ days' },
+        { label: 'Pregnancy / breastfeeding', range: '+300–500 ml', note: 'Above baseline' },
+        { label: 'Indian summer (40°C+)', range: '+500–800 ml', note: 'Replace via plain water + ORS for heavy sweaters' },
+      ],
+    },
+    limitations: [
+      'The 33ml/kg formula is a general guideline — actual needs vary with humidity, fever, illness, alcohol intake, and individual kidney function.',
+      'Doesn\'t account for sodium loss in sweat. Heavy sweaters in heat (loose-fitting summer sports, manual labour) need electrolyte replacement (ORS, salted lemon water), not just plain water — drinking only water can lead to hyponatremia.',
+      "Doesn't model fluid from food. About 20–30% of daily hydration comes from food — fruits like watermelon, cucumber, and tomato are 90%+ water. Cut roughly 0.5L if you eat a fruit-and-vegetable-rich diet.',",
+      "Older adults and people with kidney/heart conditions need to be careful with high water intake — over-hydration is a real risk for them. Always check with a doctor if you have these conditions.",
+    ],
+    faqs: [
+      {
+        q: 'Is the 8-glasses-a-day rule correct?',
+        a: 'No — the "8x8" rule (eight 8-ounce glasses, or ~1.9L) has no proper scientific basis. It probably came from a 1945 nutrition board recommendation that included water from food. Use weight-based targets instead — 33ml per kg is a defensible medical estimate.',
+      },
+      {
+        q: 'Does coffee and tea count?',
+        a: 'Yes. The diuretic effect of caffeine in normal coffee/tea quantities is much smaller than the water content. 2–3 cups of coffee a day contribute net-positive to hydration. Only high-caffeine doses (5+ strong coffees) tip into mild diuretic territory.',
+      },
+      {
+        q: 'How much extra water in Indian summer?',
+        a: 'Add 500–800ml on 35°C+ days, more if you sweat heavily or work outdoors. For very hot days (40°C+) or strenuous outdoor activity, replace electrolytes too — ORS, salted lemon water (nimbu paani with namak), or coconut water, not just plain water.',
+      },
+      {
+        q: 'How do I know if I\'m drinking enough?',
+        a: 'Urine colour is the most reliable cue — light pale yellow is well-hydrated, dark amber is dehydrated. Other signs of underhydration: thirst (already mild dehydration), headache, fatigue, dry mouth. You shouldn\'t need to urinate every 30 minutes; that\'s overhydration.',
+      },
+      {
+        q: 'Can I drink too much water?',
+        a: 'Yes — hyponatremia (low blood sodium) happens when you drink huge volumes of plain water without electrolyte replacement, especially during long endurance events. Symptoms: nausea, confusion, seizures. Rare for normal people; common enough at ultramarathons that race medical teams screen for it.',
+      },
+    ],
+    seo: {
+      title: 'Water Intake Calculator: Daily Hydration Goal',
+      description: 'Free water intake calculator. Get your daily hydration target in litres, glasses, and ounces — adjusted for body weight and exercise minutes.',
+      applicationCategory: 'HealthApplication',
+      sources: [
+        { label: 'WHO — drinking-water quality and intake', url: 'https://www.who.int/' },
+        { label: 'NIH — daily water intake recommendations', url: 'https://www.nih.gov/' },
+      ],
+    },
+    lastUpdated: '2026-05-15',
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'pregnancy-due-date',
@@ -375,10 +580,6 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Baby',
     description: 'Estimate your baby\'s due date.',
-    seo: {
-      title: 'Pregnancy Due Date Calculator: Weeks Remaining',
-      description: 'Free pregnancy due-date calculator. Estimate your baby\'s arrival date, weeks remaining, and current trimester from days since your last period.',
-    },
     usageCount: 76000,
     inputs: [
       { key: 'cycleDay', label: 'Days Since Last Period', type: 'slider', min: 0, max: 280, step: 1, default: 60, suffix: 'days', color: 'primary' },
@@ -398,6 +599,61 @@ export const healthCalculators: CalculatorConfig[] = [
       else if (currentWeek > 27) trimester = 'Third';
       return { weeksRemaining, trimester, daysRemaining };
     },
+    intro:
+      "A full-term pregnancy lasts about 280 days from the first day of your last menstrual period (LMP) — that's Naegele's rule, the standard used by obstetricians worldwide. This calculator uses days-since-LMP to estimate weeks remaining, current trimester, and days to go. If your last period started 60 days ago, you're about 8.5 weeks in, in your first trimester, with ~31 weeks (220 days) to go. The first trimester ends at week 13, second at week 27, third runs to delivery around week 40. Use this as a quick reference — your gynaecologist's ultrasound dating is more accurate, especially if your cycle isn't a textbook 28 days.",
+    formula: 'Days remaining = 280 − days since LMP · Week of pregnancy = days since LMP ÷ 7',
+    howItWorks:
+      "Naegele's rule: due date = LMP date + 280 days (or LMP + 9 months + 7 days). The calculator counts forward from your LMP day. 60 days since LMP means you're at 60 ÷ 7 = 8.57 weeks pregnant. Weeks remaining = (280 − 60) ÷ 7 = 31.4 weeks. The trimester divisions are: 1st (weeks 0–13), 2nd (weeks 14–27), 3rd (weeks 28–40+). Pregnancy is medically counted from LMP (about 2 weeks before actual conception), so a \"4-week pregnancy\" is really a 2-week embryo. Most ultrasounds in the first trimester give a CRL (crown-rump length) measurement to confirm or adjust this LMP-based estimate.",
+    ranges: {
+      title: 'Pregnancy milestones by week',
+      rows: [
+        { label: 'Weeks 1–13 (1st trimester)', range: 'Embryo to early fetus', note: 'Major organ development; nausea peaks ~weeks 6–10' },
+        { label: 'Weeks 14–27 (2nd trimester)', range: 'Fetal growth, movement', note: 'Anomaly scan around week 20' },
+        { label: 'Weeks 28–40 (3rd trimester)', range: 'Lung maturation, weight gain', note: 'Glucose tolerance test around week 24–28' },
+        { label: 'Week 37–42 (term)', range: 'Full-term delivery', note: '~90% of babies arrive in this window' },
+        { label: 'Before 37 (preterm)', range: '~12% of Indian deliveries', note: 'NICU support may be needed' },
+        { label: 'After 42 (postterm)', range: '<5% — induction usually planned', note: 'Placenta function declines past 42 weeks' },
+      ],
+    },
+    limitations: [
+      'Assumes a textbook 28-day cycle with ovulation at day 14. If your cycles are 30+ or 25 days, the due date shifts by 2–4 days. Ultrasound dating in the first trimester is more reliable.',
+      "Doesn't account for known conception date (IVF, ovulation tracking) — for those, count 266 days from conception, not 280 from LMP.",
+      "Doesn't predict labour onset — only 5% of babies arrive on the exact due date. ±2 weeks around 40 is normal.",
+      'Not medical advice. All pregnancy care should be guided by your obstetrician — this calculator is for planning and quick reference only.',
+    ],
+    faqs: [
+      {
+        q: 'Is the due date accurate?',
+        a: 'Only ~5% of babies are born on the exact due date. About 80% are born within 2 weeks of it. The due date is a midpoint of a 4-week delivery window, not a deadline.',
+      },
+      {
+        q: 'Why is pregnancy counted from LMP, not conception?',
+        a: 'Because most women remember their last period date but not their exact ovulation/conception date. Counting from LMP gives a consistent baseline. The actual embryo is roughly 2 weeks younger than the "pregnancy weeks" number.',
+      },
+      {
+        q: 'When should I see a doctor for the first time?',
+        a: 'As soon as you confirm pregnancy with a home test — ideally between weeks 5–8. The first ultrasound (typically week 7–9) confirms the heartbeat, viable pregnancy, and dating. In India, the first booking visit also screens for blood group, anaemia, thyroid, and diabetes.',
+      },
+      {
+        q: 'What if my cycle isn\'t 28 days?',
+        a: 'The 280-day formula assumes a 28-day cycle. If yours is regularly 32 days, add ~4 days to the due date estimate (ovulation likely happened later than day 14). For irregular cycles, ultrasound dating in the first trimester is the gold standard.',
+      },
+      {
+        q: 'What\'s the difference between gestational and fetal age?',
+        a: 'Gestational age is counted from LMP — what your doctor and most pregnancy apps use ("you\'re 12 weeks pregnant"). Fetal age is counted from conception, about 2 weeks less. So at 12 weeks gestational, the embryo is roughly 10 weeks old developmentally.',
+      },
+    ],
+    seo: {
+      title: 'Pregnancy Due Date Calculator: Weeks Remaining',
+      description: 'Free pregnancy due-date calculator. Estimate your baby\'s arrival date, weeks remaining, and current trimester from days since your last period.',
+      applicationCategory: 'HealthApplication',
+      sources: [
+        { label: 'WHO — antenatal care recommendations', url: 'https://www.who.int/' },
+        { label: 'NHM India — maternal health programmes', url: 'https://nhm.gov.in/' },
+      ],
+    },
+    lastUpdated: '2026-05-15',
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'ovulation-calculator',
@@ -405,10 +661,6 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Heart',
     description: 'Find your fertile window.',
-    seo: {
-      title: 'Ovulation Calculator: Fertile Window by Cycle',
-      description: 'Free ovulation calculator. Identify your ovulation day and fertile window for any cycle length. Useful for trying to conceive or natural family planning.',
-    },
     usageCount: 65000,
     inputs: [
       { key: 'cycleLength', label: 'Cycle Length', type: 'slider', min: 21, max: 45, step: 1, default: 28, suffix: 'days', color: 'primary' },
@@ -427,6 +679,61 @@ export const healthCalculators: CalculatorConfig[] = [
         fertileEnd: ovulationDay + 1,
       };
     },
+    intro:
+      "Ovulation typically happens 14 days before the next period starts — not 14 days after the last one. This calculator uses that fact (the luteal-phase rule) to find your most fertile days from your cycle length. For a 28-day cycle, ovulation falls on day 14, with a 6-day fertile window from day 9 to day 15. For a 32-day cycle, ovulation shifts to day 18, fertile window day 13–19. Sperm survive up to 5 days inside the female reproductive tract, so the 5 days before and the day of ovulation are when conception is most likely. Useful for couples trying to conceive — less reliable as contraception.",
+    formula: 'Ovulation day = cycle length − 14 · Fertile window = ovulation day − 5 to ovulation day + 1',
+    howItWorks:
+      "The luteal phase (from ovulation to next period) is fairly constant at ~14 days for most women. The follicular phase (from period to ovulation) is what varies between cycles. So ovulation day = cycle length − 14. For a 28-day cycle: 28 − 14 = day 14 ovulation. Fertile window covers the 5 days before (sperm can live that long) plus the day itself — for a 28-day cycle, days 9 through 15. For a 35-day cycle: ovulation = day 21, fertile days = day 16 through 22. The egg itself only survives 12–24 hours after ovulation, so the window is really driven by how long sperm can wait.",
+    ranges: {
+      title: 'Fertile window by cycle length',
+      rows: [
+        { label: '21-day cycle', range: 'Ovulation day 7 · Fertile day 2–8', note: 'Short cycle — fertile window starts during period' },
+        { label: '24-day cycle', range: 'Ovulation day 10 · Fertile day 5–11', note: '' },
+        { label: '28-day cycle (textbook)', range: 'Ovulation day 14 · Fertile day 9–15', note: 'Standard reference' },
+        { label: '30-day cycle', range: 'Ovulation day 16 · Fertile day 11–17', note: '' },
+        { label: '32-day cycle', range: 'Ovulation day 18 · Fertile day 13–19', note: '' },
+        { label: '35-day cycle', range: 'Ovulation day 21 · Fertile day 16–22', note: 'Long cycle — common in PCOS' },
+      ],
+    },
+    limitations: [
+      "Assumes a regular cycle. PCOS, thyroid issues, breastfeeding, stress, or weight changes can shift or eliminate ovulation for cycles at a time — this calculator can't predict those.",
+      "The 14-day luteal phase rule is an average. Individual luteal phases vary from 11–16 days; only basal body temperature charting or progesterone tests reveal yours.",
+      'Not reliable as contraception. Even with perfect tracking, the calendar method has a ~25% failure rate over a year. For contraception use barrier methods, IUDs, or hormonal options.',
+      "Doesn't account for ovulation-suppressing factors — hormonal birth control, perimenopause, postpartum recovery, eating disorders, or extreme athletic training.",
+    ],
+    faqs: [
+      {
+        q: 'How accurate is this calculator?',
+        a: 'For women with regular 26–32 day cycles, it predicts ovulation within ±2 days about 70% of the time. For irregular cycles, accuracy drops sharply. For precise tracking, combine with basal body temperature (BBT) charts, ovulation predictor kits (LH urine strips), or cervical mucus observation.',
+      },
+      {
+        q: 'What\'s the best day to try if we want a baby?',
+        a: 'Day 2 of the fertile window (ovulation day minus 3) is statistically the highest-conception day, though any day in the window works. Aim for intercourse every 1–2 days throughout the fertile week rather than timing one shot perfectly.',
+      },
+      {
+        q: 'Can I get pregnant on day 5 of my cycle?',
+        a: 'Possible but rare. For 21-day cyclers, day 5 might overlap with the fertile window (which starts as early as day 2). For longer cycles, day 5 is almost never fertile. Cycle length is the key variable.',
+      },
+      {
+        q: 'Is the fertile window the same as the ovulation day?',
+        a: 'No — fertile window is wider. The egg only survives 12–24 hours after release, but sperm can survive 3–5 days inside you. So sex up to 5 days before ovulation can still result in conception. The whole 6-day window is fertile, with the day before ovulation being the peak.',
+      },
+      {
+        q: 'Why is my cycle different every month?',
+        a: 'Stress, illness, travel, weight changes, breastfeeding, thyroid issues, and PCOS can all shift ovulation. A 3–5 day variance month-to-month is normal. Wider variance (10+ days) is worth discussing with a gynaecologist.',
+      },
+    ],
+    seo: {
+      title: 'Ovulation Calculator: Fertile Window by Cycle',
+      description: 'Free ovulation calculator. Identify your ovulation day and fertile window for any cycle length. Useful for trying to conceive or natural family planning.',
+      applicationCategory: 'HealthApplication',
+      sources: [
+        { label: 'WHO — reproductive health information', url: 'https://www.who.int/' },
+        { label: 'ACOG — clinical guidance on fertility tracking', url: 'https://www.acog.org/' },
+      ],
+    },
+    lastUpdated: '2026-05-15',
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'heart-rate-zone',
@@ -434,10 +741,6 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Heart',
     description: 'Training zones based on age.',
-    seo: {
-      title: 'Heart Rate Zone Calculator: Max HR, Fat-Burn, Cardio',
-      description: 'Free heart rate zone calculator. Get your max heart rate and the BPM ranges for fat-burn (60–70%) and cardio (70–85%) training zones — by age.',
-    },
     usageCount: 34000,
     inputs: [
       { key: 'age', label: 'Age', type: 'slider', min: 10, max: 100, step: 1, default: 30, suffix: 'yrs', color: 'primary' },
@@ -455,6 +758,61 @@ export const healthCalculators: CalculatorConfig[] = [
         cardio: `${Math.round(max * 0.7)} - ${Math.round(max * 0.85)} bpm`,
       };
     },
+    intro:
+      "Training in the right heart rate zone makes the difference between a workout that builds endurance, one that burns fat, and one that pushes anaerobic limits. This calculator uses the classic 220-minus-age formula to estimate your maximum heart rate, then derives the two training zones runners and gym-goers care about most. A 30-year-old has a max HR of 190 bpm — fat-burn zone (60–70%) is 114–133 bpm, cardio zone (70–85%) is 133–162 bpm. Use a chest strap monitor or a fitness watch on a tight wrist for accurate live readings during exercise.",
+    formula: 'Max HR ≈ 220 − age · Fat-burn = 60–70% of Max HR · Cardio = 70–85% of Max HR',
+    howItWorks:
+      "The 220-minus-age rule estimates the highest heart rate your body can sustain at maximum exertion. For a 30-year-old: 220 − 30 = 190 bpm. The two training zones are derived as percentages: fat-burn (60–70% of max) keeps you in the aerobic, fat-oxidising zone — for a 30-year-old that's 114–133 bpm, the pace where you can hold a conversation. Cardio zone (70–85% = 133–162 bpm) is your moderate-to-hard effort — talking in short phrases only. Above 85% is anaerobic — sprint efforts and HIIT intervals. The formula has known limits (see below), so use it as a starting estimate, then refine with a real field test once you've trained for a few months.",
+    ranges: {
+      title: 'Heart-rate zones for common ages (220-age method)',
+      rows: [
+        { label: 'Age 20 (max 200)', range: 'Fat-burn 120–140 · Cardio 140–170', note: '' },
+        { label: 'Age 30 (max 190)', range: 'Fat-burn 114–133 · Cardio 133–162', note: '' },
+        { label: 'Age 40 (max 180)', range: 'Fat-burn 108–126 · Cardio 126–153', note: '' },
+        { label: 'Age 50 (max 170)', range: 'Fat-burn 102–119 · Cardio 119–145', note: '' },
+        { label: 'Age 60 (max 160)', range: 'Fat-burn 96–112 · Cardio 112–136', note: '' },
+        { label: 'Age 70 (max 150)', range: 'Fat-burn 90–105 · Cardio 105–128', note: '' },
+      ],
+    },
+    limitations: [
+      'The 220-age formula has a standard error of ±10–12 bpm — about 10–15% of people will have a max HR meaningfully different from the formula. For a true value, do a supervised graded exercise test or use the Tanaka formula (208 − 0.7 × age) which is slightly more accurate for over-40s.',
+      'Heart rate at any given pace depends on hydration, sleep, caffeine, stress, temperature, and altitude. Don\'t panic if your HR is 10 bpm higher than usual on a hot day or after a bad night.',
+      'For people on beta-blockers or with chronic atrial fibrillation, heart rate is not a reliable training intensity guide — use perceived exertion (1–10 scale) instead.',
+      "Doesn't replace medical advice for cardiovascular conditions. If you have heart disease, hypertension, or are over 50 starting exercise, get cleared by a doctor before training in the higher zones.",
+    ],
+    faqs: [
+      {
+        q: 'Is 220-age accurate?',
+        a: 'It\'s a population average with ±10–12 bpm individual variation. About 60% of adults are within 5 bpm of the formula; the rest are over or under by more. The Tanaka formula (208 − 0.7 × age) is slightly better for over-40s but still an estimate.',
+      },
+      {
+        q: 'What\'s the difference between fat-burn and cardio zones?',
+        a: 'Fat-burn (60–70% of max HR) is low intensity where your body uses a higher percentage of fat for fuel — good for long, steady cardio. Cardio zone (70–85%) burns more total calories per minute (including more carbs) and improves aerobic fitness faster. For weight loss, total calorie burn matters more than the percentage from fat — so cardio zone usually wins.',
+      },
+      {
+        q: 'How do I measure my heart rate during exercise?',
+        a: 'Chest strap monitors (Polar H10, Wahoo) are most accurate. Wrist-based watches (Apple Watch, Garmin) work well at lower intensities but undercount during HIIT or sprint efforts. Manual pulse check (carotid or wrist, 15 seconds × 4) is OK at rest but unreliable during exercise.',
+      },
+      {
+        q: 'Should I always train in a specific zone?',
+        a: 'No — varied training is better. The "80/20 rule" used by elite endurance athletes recommends 80% of weekly training time in zone 2 (fat-burn) and 20% in zone 4–5 (above cardio). Most beginners and amateurs do the opposite — too much medium-hard work, not enough easy work.',
+      },
+      {
+        q: 'Is a high resting heart rate bad?',
+        a: 'Resting HR over 100 (tachycardia) needs medical attention. Healthy adult resting HR is 60–80 bpm; fit endurance athletes are often 40–60. A 5–10 bpm rise from your usual resting HR for several days running often signals overtraining, infection, or stress.',
+      },
+    ],
+    seo: {
+      title: 'Heart Rate Zone Calculator: Max HR, Fat-Burn, Cardio',
+      description: 'Free heart rate zone calculator. Get your max heart rate and the BPM ranges for fat-burn (60–70%) and cardio (70–85%) training zones — by age.',
+      applicationCategory: 'HealthApplication',
+      sources: [
+        { label: 'American Heart Association — target HR zones', url: 'https://www.heart.org/' },
+        { label: 'WHO — physical activity guidelines', url: 'https://www.who.int/' },
+      ],
+    },
+    lastUpdated: '2026-05-15',
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'vo2-max-calculator',
@@ -462,10 +820,6 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Zap',
     description: 'Estimate aerobic fitness capacity.',
-    seo: {
-      title: 'VO2 Max Calculator: Cooper 12-Minute Run Test',
-      description: 'Free VO2 max calculator using the Cooper 12-minute run test. Estimate your aerobic fitness capacity and see how it compares to your age band.',
-    },
     usageCount: 21000,
     inputs: [
       { key: 'distance', label: '12-Min Run Distance', type: 'slider', min: 500, max: 5000, step: 50, default: 2400, suffix: 'm', color: 'primary' },
@@ -483,6 +837,61 @@ export const healthCalculators: CalculatorConfig[] = [
       else if (vo2 < 35) fitness = 'Below Average';
       return { vo2: Math.max(0, vo2), fitness };
     },
+    intro:
+      "VO2 max is the maximum volume of oxygen your body can use per minute, normalised by body weight (ml/kg/min) — the single best predictor of cardiovascular fitness and longevity. Lab measurement requires a mask and treadmill; this calculator uses the Cooper 12-minute run test as a field-friendly proxy. Run as far as you can in 12 minutes on a flat track, plug in the distance. A 2,400m run estimates a VO2 max of 42 ml/kg/min — solid for an average 30-year-old. Elite runners hit 70+. Anything above 45 puts you in the top 25% of adults for aerobic fitness.",
+    formula: 'VO2 max ≈ (distance in metres − 504.9) ÷ 44.73',
+    howItWorks:
+      "The Cooper test was developed in 1968 by Dr. Kenneth Cooper for the US Air Force. The formula is a regression fit derived from his data: the further you run in 12 minutes, the higher your VO2 max. 2,400m = (2400 − 504.9) ÷ 44.73 ≈ 42 ml/kg/min. 3,000m run = (3000 − 504.9) ÷ 44.73 ≈ 56 — competitive amateur. 1,500m = (1500 − 504.9) ÷ 44.73 ≈ 22 — below average. Run on a flat, hard surface (athletics track ideal) at maximum sustainable effort. Pacing matters: most people go out too fast and walk the last 3 minutes — that hurts your score more than a steady effort would.",
+    ranges: {
+      title: 'VO2 max ranges by age and sex (ml/kg/min)',
+      rows: [
+        { label: 'Men 20–29', range: '< 32 poor · 38–47 avg · 52+ excellent', note: '' },
+        { label: 'Men 30–39', range: '< 31 poor · 36–44 avg · 49+ excellent', note: '' },
+        { label: 'Men 40–49', range: '< 28 poor · 34–41 avg · 46+ excellent', note: '' },
+        { label: 'Women 20–29', range: '< 27 poor · 33–41 avg · 45+ excellent', note: '' },
+        { label: 'Women 30–39', range: '< 25 poor · 31–38 avg · 42+ excellent', note: '' },
+        { label: 'Women 40–49', range: '< 24 poor · 28–35 avg · 39+ excellent', note: '' },
+        { label: 'Elite endurance athletes', range: '70–90 ml/kg/min', note: 'Tour de France cyclists, Olympic 10k runners' },
+      ],
+    },
+    limitations: [
+      'The Cooper test is an estimate — accuracy is ±10% versus lab measurement. Pacing skill, motivation, weather, and recent training all affect the result.',
+      'Not safe for unconditioned beginners. The test requires running at near-max effort for 12 minutes. Get medical clearance if you have heart disease, hypertension, or are over 40 starting structured exercise.',
+      "Doesn't account for environmental factors. Heat, altitude (above 1,500m), and humidity all reduce running performance — and therefore the Cooper estimate.",
+      'Walk-run pacing reduces accuracy. The formula assumes steady running, not interval walking. If you can\'t run the full 12 minutes, use a different fitness test (e.g. 1-mile walk test).',
+    ],
+    faqs: [
+      {
+        q: 'What is a good VO2 max for my age?',
+        a: 'For 30-year-old men, anything above 44 is good, above 49 excellent. For 30-year-old women, above 38 is good, above 42 excellent. After 40, both ranges drop by 3–5 ml/kg/min per decade unless you train.',
+      },
+      {
+        q: 'Why does VO2 max matter beyond athletic performance?',
+        a: 'It\'s one of the strongest predictors of all-cause mortality — better than cholesterol, blood pressure, or BMI in long-term cohort studies. Increasing VO2 max from "low" to "below average" reduces death risk more than quitting smoking.',
+      },
+      {
+        q: 'How fast can I improve my VO2 max?',
+        a: 'Sedentary beginners can see 15–20% improvement in 8–12 weeks of consistent training. Trained athletes plateau around 3–5% gains per year. The fastest way to improve is high-intensity interval training (HIIT) 2× per week plus 2–3 easy zone-2 runs.',
+      },
+      {
+        q: 'Is the treadmill test the same as the running test?',
+        a: 'Close but not identical. Treadmill tests usually give 5–10% higher results than the field running test because of pacing assistance and the lack of wind/road variations. Use the same protocol consistently when tracking changes.',
+      },
+      {
+        q: 'Can I do this test in Indian summer?',
+        a: 'Best done early morning (6–7am) when temperature is below 28°C and humidity moderate. Hot, humid conditions (35°C+, 70%+ humidity) can drop your 12-minute distance by 200–400m versus cool weather — that\'s 4–9 ml/kg/min lower VO2 max estimate, not reflecting real fitness change.',
+      },
+    ],
+    seo: {
+      title: 'VO2 Max Calculator: Cooper 12-Minute Run Test',
+      description: 'Free VO2 max calculator using the Cooper 12-minute run test. Estimate your aerobic fitness capacity and see how it compares to your age band.',
+      applicationCategory: 'HealthApplication',
+      sources: [
+        { label: 'American College of Sports Medicine — guidelines', url: 'https://www.acsm.org/' },
+      ],
+    },
+    lastUpdated: '2026-05-15',
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'pace-calculator',
@@ -490,10 +899,6 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Timer',
     description: 'Calculate running pace per km/mile.',
-    seo: {
-      title: 'Running Pace Calculator: min/km, min/mi & Speed',
-      description: 'Free running pace calculator. Convert any distance and time into pace per km, pace per mile, and average speed in km/h. Useful for race planning.',
-    },
     usageCount: 48000,
     inputs: [
       { key: 'distance', label: 'Distance', type: 'slider', min: 0.5, max: 100, step: 0.5, default: 10, suffix: 'km', color: 'primary' },
@@ -512,6 +917,61 @@ export const healthCalculators: CalculatorConfig[] = [
         milePace: pace * 1.60934,
       };
     },
+    intro:
+      "Running pace is just time divided by distance — but most runners think in min/km, not km/h. This calculator gives you all three: pace per km, pace per mile, and average speed. A 10km in 50 minutes is 5:00 min/km, 12 km/h, or 8:03 min/mile. Indian recreational runners typically pace marathons at 6:30–7:30 min/km. Sub-elite half-marathon runners are around 4:30–5:00. Use it to plan splits before a race (\"if I want a 1:50 half-marathon, I need 5:13 min/km\") or to convert a Strava run into the metric your training programme uses.",
+    formula: 'Pace = time ÷ distance · Speed = 60 ÷ pace (in min/km) · Mile pace = km pace × 1.60934',
+    howItWorks:
+      "Pace per km = total minutes ÷ total km. 50 min ÷ 10 km = 5.00 min/km. Speed in km/h = 60 ÷ pace = 60 ÷ 5 = 12 km/h. Pace per mile = pace per km × 1.60934 (one mile = 1.60934 km) = 5 × 1.60934 = 8.05 min/mi ≈ 8:03 min/mi. Quick mental shortcut: pace per km in seconds × 1.6 ≈ pace per mile in seconds. The calculator handles the decimal-to-minutes-seconds conversion silently — 5.50 min/km is 5 minutes 30 seconds, not 5 minutes 50 seconds.",
+    ranges: {
+      title: 'Recreational and competitive paces (min/km)',
+      rows: [
+        { label: 'Beginner / walking jog', range: '8:00 – 10:00 min/km', note: '6–8 km/h' },
+        { label: 'Casual recreational runner', range: '6:00 – 8:00 min/km', note: '7.5–10 km/h' },
+        { label: 'Trained amateur', range: '4:30 – 6:00 min/km', note: '10–13 km/h' },
+        { label: 'Sub-elite (India top-tier)', range: '3:30 – 4:30 min/km', note: '13–17 km/h' },
+        { label: 'Elite marathon (world class)', range: '2:55 – 3:15 min/km', note: '~20 km/h for 42 km' },
+        { label: 'Sub-3-hour marathon target', range: '4:15 min/km steady', note: '~14 km/h average' },
+        { label: 'Sub-2-hour half-marathon target', range: '5:40 min/km steady', note: '~10.6 km/h average' },
+      ],
+    },
+    limitations: [
+      "Doesn't model elevation. A flat 5:00 pace becomes a 6:30+ effort on a 5% hill, but you may run it in the same total time. Pace alone is a poor effort indicator on hilly terrain.",
+      "Doesn't model heat or humidity. Indian summers (35°C+, 70%+ humidity) can slow you by 30–60 seconds per km even at the same heart rate effort.",
+      'Average pace hides positive/negative splits. Running the first half too fast and crashing in the second half can produce the same average as a steady run but feels (and races) very differently.',
+      "Doesn't help with track interval training paces — those need lap time × 4 or interval-specific tools.",
+    ],
+    faqs: [
+      {
+        q: 'What pace should a beginner aim for?',
+        a: 'Don\'t obsess about pace early. Use the talk test — if you can speak in full sentences, you\'re in the right zone (typically 7:30–9:00 min/km for new runners). Build the habit first; pace improves naturally over 3–6 months.',
+      },
+      {
+        q: 'How do I convert min/km to mph or km/h?',
+        a: 'Speed in km/h = 60 ÷ pace in min/km. 5:00 min/km = 60 ÷ 5 = 12 km/h. For mph: km/h × 0.621 = 7.46 mph. Or just use the calculator — it shows all three.',
+      },
+      {
+        q: 'What\'s a good 10K time?',
+        a: 'Indian recreational benchmarks: under 60 min is good, under 50 is solid, under 45 is competitive amateur, under 40 is sub-elite. Top-tier Indian runners do sub-32-minute 10Ks.',
+      },
+      {
+        q: 'Why is my GPS pace different from my watch pace?',
+        a: 'GPS measurements jitter — different watches and phones interpret position fixes differently. Variation of ±5 seconds per km between devices is normal. For consistent measurement, use the same device and a known distance (like an athletics track) to calibrate.',
+      },
+      {
+        q: 'How fast can I improve my pace?',
+        a: 'In the first year of consistent training (3–4 runs/week), most runners shave 30–60 seconds per km off their easy pace. Year 2–3 brings 15–30s improvements. After 5 years, gains are 5–15s per year and harder to come by.',
+      },
+    ],
+    seo: {
+      title: 'Running Pace Calculator: min/km, min/mi & Speed',
+      description: 'Free running pace calculator. Convert any distance and time into pace per km, pace per mile, and average speed in km/h. Useful for race planning.',
+      applicationCategory: 'HealthApplication',
+      sources: [
+        { label: 'World Athletics — running data and standards', url: 'https://worldathletics.org/' },
+      ],
+    },
+    lastUpdated: '2026-05-15',
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'one-rep-max',
@@ -519,10 +979,6 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Dumbbell',
     description: 'Calculate your 1RM for any lift.',
-    seo: {
-      title: 'One-Rep Max Calculator: Estimate 1RM Safely',
-      description: 'Free one-rep max (1RM) calculator. Estimate your true 1RM from any sub-max set and get target weights for 5-rep (85%) and 10-rep (70%) training.',
-    },
     usageCount: 39000,
     inputs: [
       { key: 'weight', label: 'Weight Lifted', type: 'slider', min: 10, max: 500, step: 1, default: 80, suffix: 'kg', color: 'primary' },
@@ -537,6 +993,59 @@ export const healthCalculators: CalculatorConfig[] = [
       const oneRm = Number(i.weight) * (1 + Number(i.reps) / 30);
       return { oneRm, fivePct: oneRm * 0.85, tenPct: oneRm * 0.7 };
     },
+    intro:
+      "Your one-rep max (1RM) is the heaviest weight you can lift for a single perfect rep — the gold-standard strength metric for any compound lift (squat, deadlift, bench, overhead press). Actually testing your 1RM is risky for solo lifters and intermediate trainees, so coaches use the Epley formula: do a moderate set to near-failure, plug in the weight and reps, and the calculator estimates your 1RM. If you bench-pressed 80kg for 8 reps to near-failure, your estimated 1RM is about 101kg. Use the 85% and 70% derived weights to plan your 5-rep working sets (86kg) and 10-rep hypertrophy sets (71kg).",
+    formula: '1RM = weight × (1 + reps ÷ 30) (Epley formula)',
+    howItWorks:
+      "The Epley formula assumes a roughly linear relationship between sub-maximal weights and max effort. Lift 80kg × 8 reps to near-failure: 1RM = 80 × (1 + 8 ÷ 30) = 80 × 1.267 = 101.3kg. From there, 85% (a standard 5-rep working weight) = 86kg, 70% (a 10-rep hypertrophy set) = 71kg. The formula is most accurate in the 3–10 rep range. Below 3 reps the estimate undersells your 1RM; above 10 reps the estimate gets unreliable because cardio-respiratory limits start dominating before muscular failure. Sets must be true \"reps in reserve = 0–1\" for the formula to mean anything.",
+    ranges: {
+      title: 'Strength benchmarks for natural lifters by experience (bodyweight × multiplier)',
+      rows: [
+        { label: 'Beginner (< 1 year)', range: 'Squat 1.0× · Bench 0.75× · Deadlift 1.25× BW', note: '~80kg adult: 80/60/100' },
+        { label: 'Novice (1–2 years)', range: 'Squat 1.5× · Bench 1.0× · Deadlift 1.75× BW', note: '120/80/140' },
+        { label: 'Intermediate (3–5 years)', range: 'Squat 2.0× · Bench 1.5× · Deadlift 2.25× BW', note: '160/120/180' },
+        { label: 'Advanced (5+ years natural)', range: 'Squat 2.5× · Bench 1.75× · Deadlift 2.75× BW', note: '200/140/220' },
+        { label: 'Elite competitive', range: 'Squat 3.0×+ · Bench 2.0×+ · Deadlift 3.0×+ BW', note: 'Powerlifting meet level' },
+      ],
+    },
+    limitations: [
+      "Most accurate in the 3–10 rep range. Sets of 15+ reps don't reliably predict 1RM because muscular endurance differs from strength.",
+      "Assumes the rep set was taken to near-failure (RIR 0–1). If you stopped with 3+ reps in the tank, the 1RM estimate is meaningfully underestimated.",
+      "Doesn't account for lift type — Epley works well for compound barbell lifts, less well for isolation exercises like biceps curls (form fails faster than muscle).",
+      'Form must be consistent. Cheat reps, partial reps, or breaking technique on the last reps inflate the input number and the 1RM estimate beyond what you can actually lift cleanly.',
+    ],
+    faqs: [
+      {
+        q: 'Why estimate 1RM instead of testing it?',
+        a: 'Testing actual 1RM requires a spotter, full warm-up, and good recovery — and risks injury, especially solo. Sub-max estimation gives 90% of the information for 10% of the risk. Most strength programmes prescribe percentages of estimated 1RM precisely because actual testing is too costly to do often.',
+      },
+      {
+        q: 'How accurate is the Epley formula?',
+        a: 'Within ±5% for sets in the 3–10 rep range done to true near-failure. Beyond 10 reps, accuracy drops to ±10–15%. For programming, that\'s good enough — actually being 5% off on your working weight rarely changes the training stimulus meaningfully.',
+      },
+      {
+        q: 'What\'s a good bench press for my weight?',
+        a: 'For natural lifters at 80kg bodyweight: 60kg = beginner, 80kg = novice, 120kg = intermediate, 140kg = advanced. Genetics matters — leverage favours short-armed lifters. Don\'t compare across body proportions.',
+      },
+      {
+        q: 'How often should I test 1RM?',
+        a: 'Most programmes either test true 1RM at the end of a competition prep block (once every 3–6 months) or never test directly and only use estimated 1RM from rep sets. Either is fine. Frequent 1RM testing accumulates fatigue and injury risk.',
+      },
+      {
+        q: 'What percentage should I work at for muscle growth vs strength?',
+        a: 'Strength gains favour 80–95% of 1RM (1–5 rep range). Hypertrophy (muscle size) favours 65–80% (8–15 rep range). Strength endurance is below 65% with 15+ reps. Most well-rounded programmes mix all three across the week.',
+      },
+    ],
+    seo: {
+      title: 'One-Rep Max Calculator: Estimate 1RM Safely',
+      description: 'Free one-rep max (1RM) calculator. Estimate your true 1RM from any sub-max set and get target weights for 5-rep (85%) and 10-rep (70%) training.',
+      applicationCategory: 'HealthApplication',
+      sources: [
+        { label: 'NSCA — strength training research and standards', url: 'https://www.nsca.com/' },
+      ],
+    },
+    lastUpdated: '2026-05-15',
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'sleep-cycle-calculator',
@@ -544,10 +1053,6 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Moon',
     description: 'Best bedtime based on wake time.',
-    seo: {
-      title: 'Sleep Cycle Calculator: Best Bedtime by Wake Time',
-      description: 'Free sleep cycle calculator. Get bedtime suggestions for 4, 5, and 6 sleep cycles so you wake at the end of a cycle, not in the middle.',
-    },
     usageCount: 58000,
     inputs: [
       { key: 'wakeHour', label: 'Wake Hour', type: 'slider', min: 0, max: 23, step: 1, default: 7, suffix: ':00', color: 'primary' },
@@ -570,6 +1075,61 @@ export const healthCalculators: CalculatorConfig[] = [
       };
       return { bedtime6: fmt(6), bedtime5: fmt(5), bedtime4: fmt(4) };
     },
+    intro:
+      "Sleep happens in roughly 90-minute cycles — light, deep, REM. Waking at the end of a cycle leaves you refreshed; waking mid-cycle (especially during deep sleep) leaves you groggy for hours. This calculator works backwards from your desired wake time, factoring in the average 15 minutes it takes to fall asleep, and suggests bedtimes that complete 4, 5, or 6 full cycles. For a 7am wake: 6 cycles = 9 hours total = bed by 9:45pm. 5 cycles = 7.5 hours = bed by 11:15pm (most adults\' sweet spot). 4 cycles = 6 hours = bed by 12:45am (survival mode, not recommended regularly).",
+    formula: 'Bedtime = wake time − (cycles × 90 min) − (minutes to fall asleep)',
+    howItWorks:
+      "Each sleep cycle averages 90 minutes — early-night cycles are deep-sleep heavy, late-morning cycles are REM-heavy. The calculator counts backwards from your wake hour. For a 7:00am wake with 15 min to fall asleep: 5 cycles = 5 × 90 = 450 minutes = 7.5 hours of actual sleep. Bedtime = 7:00am − 7.5h − 15min = 11:15pm. 6 cycles needs you in bed by 9:45pm; 4 cycles works to 12:45am. The 90-minute number is an average — individual cycle length varies 80–110 minutes, so this is a guideline not a science.",
+    ranges: {
+      title: 'Sleep duration by age (National Sleep Foundation)',
+      rows: [
+        { label: 'Newborn (0–3 months)', range: '14–17 hours', note: 'Distributed across day' },
+        { label: 'Toddler (1–2 years)', range: '11–14 hours', note: 'Including naps' },
+        { label: 'School age (6–13 years)', range: '9–11 hours', note: 'Crucial for growth' },
+        { label: 'Teen (14–17 years)', range: '8–10 hours', note: 'Often skipped, hurts academic performance' },
+        { label: 'Adult (18–64 years)', range: '7–9 hours', note: '5 sleep cycles = 7.5 hours is the sweet spot' },
+        { label: 'Older adult (65+)', range: '7–8 hours', note: 'Often broken into earlier sleep + nap' },
+      ],
+    },
+    limitations: [
+      'The 90-minute cycle is an average. Individual cycles range 80–110 minutes; only sleep-lab tracking shows your true cycle length.',
+      'Sleep architecture changes through the night. Early cycles have more deep sleep, later cycles have more REM. Sleep length matters more than cycle alignment for most people.',
+      "Doesn't model sleep latency variability — if you take 45 minutes to fall asleep some nights, the bedtime suggestion is too late. Adjust for your actual average.",
+      'Stress, caffeine, alcohol, screen time, and irregular schedules all disrupt cycles. Hitting the right bedtime doesn\'t guarantee quality sleep.',
+    ],
+    faqs: [
+      {
+        q: 'Is 5 hours of sleep enough?',
+        a: 'For most adults, no. Sleeping under 6 hours regularly is associated with weight gain, weaker immunity, mood issues, and ~13% higher mortality risk over time. Short-term (1–3 days) you can function on 5 hours; chronic deprivation accumulates a "sleep debt" that affects performance and health.',
+      },
+      {
+        q: 'Is 6 hours of sleep okay?',
+        a: 'For a small minority (true "short sleepers," about 1% of population with a specific gene variant), yes. For everyone else, 7–9 hours is the optimum. If you regularly feel fine on 6, you\'re likely accumulating a debt you don\'t notice. Try 7.5 hours for two weeks — most people report feeling clearly better.',
+      },
+      {
+        q: 'What\'s the best time to go to bed?',
+        a: 'Whatever lets you sleep 7.5–9 hours and wake at a consistent time. For a 7am wake, that\'s 10:00–11:30pm. Consistency matters more than the exact time — varying bedtime by more than 1 hour disrupts circadian rhythm even if total sleep is the same.',
+      },
+      {
+        q: 'Can I catch up on sleep over the weekend?',
+        a: 'Partially. One night of 9-hour catch-up recovers some lost performance but doesn\'t fully reverse a week of 6-hour nights. Sleep debt accumulates faster than it dissipates. The realistic recovery target is back to baseline 7.5–8 hours, not 10–12 hour binges.',
+      },
+      {
+        q: 'Why do I wake up tired even after 8 hours?',
+        a: 'Common causes: waking mid-cycle (alarm fired during deep sleep), poor sleep quality (alcohol, late caffeine, blue light), undiagnosed sleep apnea, or low iron/B12. If consistent quality sleep doesn\'t fix it, see a doctor — chronic fatigue can have medical roots.',
+      },
+    ],
+    seo: {
+      title: 'Sleep Cycle Calculator: Best Bedtime by Wake Time',
+      description: 'Free sleep cycle calculator. Get bedtime suggestions for 4, 5, and 6 sleep cycles so you wake at the end of a cycle, not in the middle.',
+      applicationCategory: 'HealthApplication',
+      sources: [
+        { label: 'National Sleep Foundation — sleep duration guidelines', url: 'https://www.thensf.org/' },
+        { label: 'CDC — sleep and chronic disease', url: 'https://www.cdc.gov/' },
+      ],
+    },
+    lastUpdated: '2026-05-15',
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'age-calculator',

@@ -2,6 +2,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { getCalcContent, StrapiCalcContent } from '@/lib/strapi';
+import type { CalculatorConfig } from '@/lib/calculator-types';
 import GlassCard from './GlassCard';
 import { Lightbulb, BookOpen, HelpCircle, ChevronDown, FileText } from 'lucide-react';
 
@@ -22,9 +23,6 @@ function MarkdownBody({ content }: { content: string }) {
   );
 }
 
-// Block renderer: H1 from CMS becomes H2 (page already has an H1).
-// H4-H6 collapse to H3 — the editor was instructed to use H2/H3 only,
-// so anything deeper is treated as a same-level subhead.
 function BlocksBody({ content }: { content: NonNullable<StrapiCalcContent['bodyContent']> }) {
   return (
     <div className={PROSE_CLASSES}>
@@ -66,7 +64,7 @@ function SectionCard({
   );
 }
 
-function FaqItem({ question, answer }: { question: string; answer: string }) {
+function FaqItemMarkdown({ question, answer }: { question: string; answer: string }) {
   return (
     <details className="group border-b border-white/5 last:border-0">
       <summary className="flex items-center justify-between gap-3 py-4 cursor-pointer list-none text-sm font-semibold text-on-surface hover:text-primary transition-colors">
@@ -80,59 +78,105 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
   );
 }
 
-export default async function CalculatorCMS({ slug }: { slug: string }) {
-  const content: StrapiCalcContent | null = await getCalcContent(slug);
+function FaqItemPlain({ question, answer }: { question: string; answer: string }) {
+  return (
+    <details className="group border-b border-white/5 last:border-0">
+      <summary className="flex items-center justify-between gap-3 py-4 cursor-pointer list-none text-sm font-semibold text-on-surface hover:text-primary transition-colors">
+        {question}
+        <ChevronDown className="w-4 h-4 shrink-0 text-on-surface-variant group-open:rotate-180 transition-transform" />
+      </summary>
+      <p className="pb-4 text-sm md:text-base text-on-surface-variant leading-relaxed">
+        {answer}
+      </p>
+    </details>
+  );
+}
 
-  if (!content) return null;
+const hasText = (s?: string | null): s is string => !!s && s.trim().length > 0;
 
-  const hasContent =
-    content.intro ||
-    content.tips ||
-    content.formulaExplanation ||
-    content.bodyContent?.length ||
-    content.faqs?.length;
-  if (!hasContent) return null;
+export default async function CalculatorCMS({
+  slug,
+  calc,
+}: {
+  slug: string;
+  calc: CalculatorConfig;
+}) {
+  const cms: StrapiCalcContent | null = await getCalcContent(slug);
+
+  // ── Section-level fallback ────────────────────────────────────────
+  const introText = hasText(cms?.intro) ? cms!.intro! : hasText(calc.intro) ? calc.intro! : null;
+  const tipsText = hasText(cms?.tips) ? cms!.tips! : null;
+  const formulaExplanationText = hasText(cms?.formulaExplanation)
+    ? cms!.formulaExplanation!
+    : hasText(calc.howItWorks)
+      ? calc.howItWorks!
+      : null;
+  const formulaCode = hasText(calc.formula) ? calc.formula! : null;
+  const bodyContent = cms?.bodyContent && cms.bodyContent.length > 0 ? cms.bodyContent : null;
+  const cmsFaqs = cms?.faqs ?? [];
+  const useCmsFaqs = cmsFaqs.length > 0;
+  const hardcodedFaqs = calc.faqs ?? [];
+
+  const hasAnything =
+    introText ||
+    tipsText ||
+    formulaExplanationText ||
+    formulaCode ||
+    bodyContent ||
+    useCmsFaqs ||
+    hardcodedFaqs.length > 0;
+
+  if (!hasAnything) return null;
 
   return (
     <div className="mt-8 sm:mt-10 flex flex-col gap-4 sm:gap-5">
-      {/* Intro */}
-      {content.intro && (
+      {introText && (
         <SectionCard icon={BookOpen} title="About this calculator" color="bg-primary/15 text-primary">
-          <MarkdownBody content={content.intro} />
+          <MarkdownBody content={introText} />
         </SectionCard>
       )}
 
-      {/* Tips */}
-      {content.tips && (
+      {tipsText && (
         <SectionCard icon={Lightbulb} title="Tips & how to use" color="bg-tertiary/15 text-tertiary">
-          <MarkdownBody content={content.tips} />
+          <MarkdownBody content={tipsText} />
         </SectionCard>
       )}
 
-      {/* Formula explanation */}
-      {content.formulaExplanation && (
-        <SectionCard icon={BookOpen} title="How the formula works" color="bg-secondary/15 text-secondary">
-          <MarkdownBody content={content.formulaExplanation} />
+      {(formulaExplanationText || formulaCode) && (
+        <SectionCard
+          icon={BookOpen}
+          title={`How ${calc.shortName ?? calc.name} is calculated`}
+          color="bg-secondary/15 text-secondary"
+        >
+          {formulaExplanationText && <MarkdownBody content={formulaExplanationText} />}
+          {formulaCode && (
+            <code className="font-mono text-xs sm:text-sm md:text-base text-on-surface block bg-surface-container-lowest p-3 sm:p-4 rounded-xl overflow-x-auto whitespace-pre mt-3 sm:mt-4">
+              {formulaCode}
+            </code>
+          )}
         </SectionCard>
       )}
 
-      {/* Long-form body (Strapi blocks editor — H2/H3 from dropdown) */}
-      {content.bodyContent && content.bodyContent.length > 0 && (
+      {bodyContent && (
         <SectionCard icon={FileText} title="In-depth guide" color="bg-primary/15 text-primary">
-          <BlocksBody content={content.bodyContent} />
+          <BlocksBody content={bodyContent} />
         </SectionCard>
       )}
 
-      {/* FAQs */}
-      {content.faqs?.length > 0 && (
+      {(useCmsFaqs || hardcodedFaqs.length > 0) && (
         <SectionCard icon={HelpCircle} title="Frequently asked questions" color="bg-white/10 text-on-surface-variant">
           <div className="divide-y divide-white/5">
-            {content.faqs.map((faq) => (
-              <FaqItem key={faq.id} question={faq.question} answer={faq.answer} />
-            ))}
+            {useCmsFaqs
+              ? cmsFaqs.map((faq) => (
+                  <FaqItemMarkdown key={faq.id} question={faq.question} answer={faq.answer} />
+                ))
+              : hardcodedFaqs.map((faq, idx) => (
+                  <FaqItemPlain key={idx} question={faq.q} answer={faq.a} />
+                ))}
           </div>
         </SectionCard>
       )}
     </div>
   );
 }
+

@@ -105,9 +105,12 @@ export default async function CalculatorPage({
   });
 
   // ── JSON-LD: WebApplication + BreadcrumbList + (FAQPage if FAQs exist) ──
-  const faqs = calc.faqs ?? [];
-  const cmsFaqs = (cms?.faqs ?? []).map((f) => ({ q: f.question, a: f.answer }));
-  const allFaqs = [...faqs, ...cmsFaqs];
+  // Mirror what users see: CMS FAQs win when present, else hardcoded.
+  const cmsFaqs = cms?.faqs ?? [];
+  const allFaqs =
+    cmsFaqs.length > 0
+      ? cmsFaqs.map((f) => ({ q: f.question, a: f.answer }))
+      : calc.faqs ?? [];
 
   const webAppSchema = cms?.customSchema ?? {
     '@context': 'https://schema.org',
@@ -258,40 +261,10 @@ export default async function CalculatorPage({
           {/* CALCULATOR — first thing the user sees so they can act immediately */}
           <CalculatorEngine slug={calc.slug} />
 
-          {/* Intro / "About this calculator" — moved below the tool so the
-             calculator is above-the-fold; the H1, description, and reviewed-by
-             block above keep the page indexable for crawlers. */}
-          {calc.intro && (
-            <section className="mt-8 sm:mt-10">
-              <p className="text-sm md:text-base text-on-surface-variant leading-relaxed max-w-3xl border-l-2 border-primary/40 pl-4">
-                {calc.intro}
-              </p>
-            </section>
-          )}
-
-          {/* CMS content from Strapi (intro, tips, formula, FAQs) */}
-          <CalculatorCMS slug={calc.slug} />
-
-          {/* How it works + Formula */}
-          {(calc.howItWorks || calc.formula) && (
-            <section className="mt-10 sm:mt-12">
-              <GlassCard className="p-5 sm:p-6 md:p-8">
-                <h2 className="font-headline font-bold text-lg sm:text-xl md:text-2xl text-on-surface mb-3 sm:mb-4">
-                  How {calc.shortName ?? calc.name} is calculated
-                </h2>
-                {calc.howItWorks && (
-                  <p className="text-sm md:text-base text-on-surface-variant leading-relaxed mb-3 sm:mb-4">
-                    {calc.howItWorks}
-                  </p>
-                )}
-                {calc.formula && (
-                  <code className="font-mono text-xs sm:text-sm md:text-base text-on-surface block bg-surface-container-lowest p-3 sm:p-4 rounded-xl overflow-x-auto whitespace-pre">
-                    {calc.formula}
-                  </code>
-                )}
-              </GlassCard>
-            </section>
-          )}
+          {/* All overlapping content (intro, tips, how-it-works+formula, body,
+             FAQs) lives inside CalculatorCMS — it decides per-section whether
+             to render the Strapi value or fall back to the hardcoded one. */}
+          <CalculatorCMS slug={calc.slug} calc={calc} />
 
           {/* Categories / Ranges reference table */}
           {calc.ranges && calc.ranges.rows.length > 0 && (
@@ -354,33 +327,6 @@ export default async function CalculatorPage({
                     </li>
                   ))}
                 </ul>
-              </GlassCard>
-            </section>
-          )}
-
-          {/* FAQs (in-page; the JSON-LD FAQPage block above mirrors this) */}
-          {calc.faqs && calc.faqs.length > 0 && (
-            <section className="mt-6 sm:mt-8">
-              <GlassCard className="p-5 sm:p-6 md:p-8">
-                <h2 className="font-headline font-bold text-lg sm:text-xl md:text-2xl text-on-surface mb-4 sm:mb-5">
-                  Frequently asked questions
-                </h2>
-                <div className="divide-y divide-white/5">
-                  {calc.faqs.map((faq, idx) => (
-                    <details
-                      key={idx}
-                      className="group py-3 sm:py-4 first:pt-0 last:pb-0"
-                    >
-                      <summary className="flex items-center justify-between gap-3 cursor-pointer list-none text-sm md:text-base font-semibold text-on-surface hover:text-primary transition-colors">
-                        <span className="flex-1">{faq.q}</span>
-                        <ChevronRight className="w-4 h-4 shrink-0 text-on-surface-variant group-open:rotate-90 transition-transform" />
-                      </summary>
-                      <p className="mt-3 text-sm md:text-base text-on-surface-variant leading-relaxed">
-                        {faq.a}
-                      </p>
-                    </details>
-                  ))}
-                </div>
               </GlassCard>
             </section>
           )}
