@@ -1,9 +1,9 @@
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { getCalcContent, StrapiCalcContent } from '@/lib/strapi';
 import type { CalculatorConfig } from '@/lib/calculator-types';
 import GlassCard from './GlassCard';
+import BlocksBody from './BlocksBody';
 import { Lightbulb, BookOpen, HelpCircle, ChevronDown, FileText } from 'lucide-react';
 
 const PROSE_CLASSES = `prose prose-invert prose-sm max-w-none
@@ -19,23 +19,6 @@ function MarkdownBody({ content }: { content: string }) {
   return (
     <div className={PROSE_CLASSES}>
       <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
-    </div>
-  );
-}
-
-function BlocksBody({ content }: { content: NonNullable<StrapiCalcContent['bodyContent']> }) {
-  return (
-    <div className={PROSE_CLASSES}>
-      <BlocksRenderer
-        content={content}
-        blocks={{
-          heading: ({ children, level }) => {
-            const safeLevel = level === 1 ? 2 : level >= 4 ? 3 : level;
-            const Tag = `h${safeLevel}` as 'h2' | 'h3';
-            return <Tag>{children}</Tag>;
-          },
-        }}
-      />
     </div>
   );
 }
@@ -159,7 +142,7 @@ export default async function CalculatorCMS({
 
       {bodyContent && (
         <SectionCard icon={FileText} title="In-depth guide" color="bg-primary/15 text-primary">
-          <BlocksBody content={bodyContent} />
+          <BlocksBody content={bodyContent} className={PROSE_CLASSES} />
         </SectionCard>
       )}
 
