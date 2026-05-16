@@ -49,7 +49,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: (cms?.metaTwitterCard as 'summary_large_image') ?? 'summary_large_image',
       title: cms?.metaTwitterTitle ?? title,
       description: cms?.metaTwitterDescription ?? description,
-      site: cms?.metaTwitterSite ?? '@AllSmartCalculators',
+      ...(cms?.metaTwitterSite && { site: cms.metaTwitterSite }),
       ...(cms?.metaTwitterImage && { images: [cms.metaTwitterImage] }),
     },
   };

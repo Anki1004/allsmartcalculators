@@ -55,7 +55,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: (hp?.metaTwitterCard as 'summary_large_image') ?? 'summary_large_image',
       title: hp?.metaTwitterTitle ?? title,
       description: hp?.metaTwitterDescription ?? description,
-      site: hp?.metaTwitterSite ?? '@AllSmartCalculators',
+      ...(hp?.metaTwitterSite && { site: hp.metaTwitterSite }),
       ...(hp?.metaTwitterImage ? { images: [hp.metaTwitterImage] } : {}),
     },
   };

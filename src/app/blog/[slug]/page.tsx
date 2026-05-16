@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         card: (post.metaTwitterCard as 'summary_large_image') ?? 'summary_large_image',
         title: post.metaTwitterTitle ?? title,
         description: post.metaTwitterDescription ?? description,
-        site: post.metaTwitterSite ?? '@AllSmartCalculators',
+        ...(post.metaTwitterSite && { site: post.metaTwitterSite }),
         ...(twitterImg && { images: [twitterImg] }),
       },
     };

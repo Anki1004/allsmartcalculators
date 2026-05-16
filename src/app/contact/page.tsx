@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Bug, Lightbulb, MessageSquare, Shield, Send, Clock } from 'lucide-react';
+import { Bug, Lightbulb, MessageSquare, Shield, Send, Clock, Mail } from 'lucide-react';
 import GlassCard from '@/components/GlassCard';
 
 const CATEGORIES = [
@@ -206,8 +206,26 @@ export default function ContactPage() {
           </GlassCard>
         )}
 
-        {/* Bottom info card */}
-        <div className="mt-5 sm:mt-6">
+        {/* Bottom info cards */}
+        <div className="mt-5 sm:mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+          <GlassCard className="p-4 sm:p-6 flex gap-3 sm:gap-4 items-start">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-primary-dim/30 to-primary/20 flex items-center justify-center shrink-0">
+              <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+            </div>
+            <div className="min-w-0">
+              <p className="text-sm font-semibold text-on-surface mb-1">Email us directly</p>
+              <p className="text-xs text-on-surface-variant leading-relaxed mb-1.5">
+                Prefer email over the form? Reach out at:
+              </p>
+              <a
+                href="mailto:allsmartcalculators@gmail.com"
+                className="text-xs sm:text-sm font-mono text-primary hover:underline break-all"
+              >
+                allsmartcalculators@gmail.com
+              </a>
+            </div>
+          </GlassCard>
+
           <GlassCard className="p-4 sm:p-6 flex gap-3 sm:gap-4 items-start">
             <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-secondary/30 to-secondary/20 flex items-center justify-center shrink-0">
               <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-secondary" />
