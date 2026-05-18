@@ -33,23 +33,15 @@ export interface CalculatorOutput {
   color?: 'primary' | 'secondary' | 'tertiary' | 'white';
 }
 
-export interface CalculatorRangeRow {
-  label: string;
-  range: string;
-  note?: string;
-}
-
 export interface CalculatorSeo {
-  /** 50–60 char title; keyword-front-loaded */
+  /** Page title fallback when Strapi pageTitle is empty. */
   title?: string;
-  /** 150–160 char meta description */
+  /** Meta description fallback when Strapi metaDescription is empty. */
   description?: string;
   /** WebApplication.applicationCategory — e.g. "FinanceApplication", "HealthApplication" */
   applicationCategory?: string;
   /** Aggregate rating exposed in JSON-LD */
   rating?: { value: number; count: number };
-  /** Source citations rendered as outbound links (e.g. WHO, RBI, IT department) */
-  sources?: { label: string; url: string }[];
 }
 
 export interface CalculatorConfig {
@@ -66,19 +58,10 @@ export interface CalculatorConfig {
   outputs: CalculatorOutput[];
   calculate: (inputs: Record<string, number | string>) => Record<string, number | string>;
   chartType?: 'donut' | 'bar' | 'line' | 'none';
-  formula?: string;
-  faqs?: { q: string; a: string }[];
 
-  // ── SEO / content layer ────────────────────────────────────────────
-  /** Indexable 80–120 word intro rendered above the calculator (for SEO + AI extraction). */
-  intro?: string;
-  /** "How [X] is calculated" prose; rendered alongside the formula. */
-  howItWorks?: string;
-  /** Reference table rows — categories, brackets, ranges, etc. */
-  ranges?: { title: string; rows: CalculatorRangeRow[] };
-  /** Honest caveats — builds E-E-A-T, especially for YMYL calcs. */
-  limitations?: string[];
-  /** Per-calc SEO overrides (title/description/JSON-LD). */
+  // Page content (intro, tips, how-it-works, formula, FAQs, ranges,
+  // limitations, sources) is authored in Strapi — see CalculatorCMS.
+  /** Per-calc SEO fallbacks for the <head> when Strapi values are empty. */
   seo?: CalculatorSeo;
   /** ISO date string ("2026-04-26"). Visible date + dateModified in schema. */
   lastUpdated?: string;

@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ChevronRight, ShieldCheck, CalendarDays, ExternalLink } from 'lucide-react';
+import { ChevronRight, ShieldCheck, CalendarDays } from 'lucide-react';
 import {
   allCalculators,
   getCalculatorBySlug,
@@ -11,7 +11,6 @@ import { CATEGORIES, CalculatorCategory } from '@/lib/calculator-types';
 import { getCalcContent } from '@/lib/strapi';
 import CalculatorEngine from '@/components/CalculatorEngine';
 import CalculatorCard from '@/components/CalculatorCard';
-import GlassCard from '@/components/GlassCard';
 import CalculatorCMS from '@/components/CalculatorCMS';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
@@ -105,12 +104,8 @@ export default async function CalculatorPage({
   });
 
   // ── JSON-LD: WebApplication + BreadcrumbList + (FAQPage if FAQs exist) ──
-  // Mirror what users see: CMS FAQs win when present, else hardcoded.
-  const cmsFaqs = cms?.faqs ?? [];
-  const allFaqs =
-    cmsFaqs.length > 0
-      ? cmsFaqs.map((f) => ({ q: f.question, a: f.answer }))
-      : calc.faqs ?? [];
+  // FAQs come from Strapi only.
+  const allFaqs = (cms?.faqs ?? []).map((f) => ({ q: f.question, a: f.answer }));
 
   const webAppSchema = cms?.customSchema ?? {
     '@context': 'https://schema.org',
@@ -261,101 +256,11 @@ export default async function CalculatorPage({
           {/* CALCULATOR — first thing the user sees so they can act immediately */}
           <CalculatorEngine slug={calc.slug} />
 
-          {/* All overlapping content (intro, tips, how-it-works+formula, body,
-             FAQs) lives inside CalculatorCMS — it decides per-section whether
-             to render the Strapi value or fall back to the hardcoded one. */}
+          {/* All page content (intro, tips, how-it-works + formula, in-depth
+             guide, FAQs, ranges tables, limitations, sources) is authored in
+             Strapi. CalculatorCMS renders only the sections the editor has
+             filled in. */}
           <CalculatorCMS slug={calc.slug} calc={calc} />
-
-          {/* Categories / Ranges reference table */}
-          {calc.ranges && calc.ranges.rows.length > 0 && (
-            <section className="mt-6 sm:mt-8">
-              <GlassCard className="p-5 sm:p-6 md:p-8">
-                <h2 className="font-headline font-bold text-lg sm:text-xl md:text-2xl text-on-surface mb-4 sm:mb-5">
-                  {calc.ranges.title}
-                </h2>
-                <div className="overflow-x-auto -mx-5 sm:mx-0 px-5 sm:px-0">
-                  <table className="w-full text-xs sm:text-sm min-w-[480px]">
-                    <thead>
-                      <tr className="border-b border-white/10 text-left">
-                        <th className="py-3 pr-4 sm:pr-6 text-[10px] sm:text-xs font-bold tracking-[0.12em] uppercase text-primary">
-                          Category
-                        </th>
-                        <th className="py-3 pr-4 sm:pr-6 text-[10px] sm:text-xs font-bold tracking-[0.12em] uppercase text-primary">
-                          Range
-                        </th>
-                        <th className="py-3 text-[10px] sm:text-xs font-bold tracking-[0.12em] uppercase text-primary">
-                          Notes
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {calc.ranges.rows.map((row) => (
-                        <tr key={row.label} className="border-b border-white/5 last:border-0">
-                          <td className="py-3 pr-4 sm:pr-6 font-semibold text-on-surface">
-                            {row.label}
-                          </td>
-                          <td className="py-3 pr-4 sm:pr-6 font-mono text-on-surface-variant">
-                            {row.range}
-                          </td>
-                          <td className="py-3 text-on-surface-variant/80">
-                            {row.note ?? '—'}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </GlassCard>
-            </section>
-          )}
-
-          {/* Limitations (E-E-A-T honesty signal) */}
-          {calc.limitations && calc.limitations.length > 0 && (
-            <section className="mt-6 sm:mt-8">
-              <GlassCard className="p-5 sm:p-6 md:p-8">
-                <h2 className="font-headline font-bold text-lg sm:text-xl md:text-2xl text-on-surface mb-3 sm:mb-4">
-                  Limitations &amp; what this calculator can&apos;t tell you
-                </h2>
-                <ul className="flex flex-col gap-3">
-                  {calc.limitations.map((item, idx) => (
-                    <li
-                      key={idx}
-                      className="flex items-start gap-2 text-sm md:text-base text-on-surface-variant leading-relaxed"
-                    >
-                      <span className="text-primary shrink-0 mt-0.5">→</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </GlassCard>
-            </section>
-          )}
-
-          {/* Sources / outbound authority links (E-E-A-T) */}
-          {calc.seo?.sources && calc.seo.sources.length > 0 && (
-            <section className="mt-6 sm:mt-8">
-              <GlassCard className="p-5 sm:p-6 md:p-8">
-                <h2 className="font-headline font-bold text-base md:text-lg text-on-surface mb-3">
-                  Sources &amp; references
-                </h2>
-                <ul className="flex flex-col gap-2">
-                  {calc.seo.sources.map((src) => (
-                    <li key={src.url}>
-                      <a
-                        href={src.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs sm:text-sm text-primary hover:underline break-words"
-                      >
-                        {src.label}
-                        <ExternalLink className="w-3 h-3 shrink-0" />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </GlassCard>
-            </section>
-          )}
 
           {/* Related calculators */}
           {related.length > 0 && (

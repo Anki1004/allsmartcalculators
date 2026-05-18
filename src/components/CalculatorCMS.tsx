@@ -50,7 +50,7 @@ function SectionCard({
   );
 }
 
-function FaqItemMarkdown({ question, answer }: { question: string; answer: string }) {
+function FaqItem({ question, answer }: { question: string; answer: string }) {
   return (
     <details className="group border-b border-white/5 last:border-0">
       <summary className="flex items-center justify-between gap-3 py-4 cursor-pointer list-none text-sm font-semibold text-on-surface hover:text-primary transition-colors">
@@ -60,20 +60,6 @@ function FaqItemMarkdown({ question, answer }: { question: string; answer: strin
       <div className="pb-4">
         <MarkdownBody content={answer} />
       </div>
-    </details>
-  );
-}
-
-function FaqItemPlain({ question, answer }: { question: string; answer: string }) {
-  return (
-    <details className="group border-b border-white/5 last:border-0">
-      <summary className="flex items-center justify-between gap-3 py-4 cursor-pointer list-none text-sm font-semibold text-on-surface hover:text-primary transition-colors">
-        {question}
-        <ChevronDown className="w-4 h-4 shrink-0 text-on-surface-variant group-open:rotate-180 transition-transform" />
-      </summary>
-      <p className="pb-4 text-sm md:text-base text-on-surface-variant leading-relaxed">
-        {answer}
-      </p>
     </details>
   );
 }
@@ -88,31 +74,17 @@ export default async function CalculatorCMS({
   calc: CalculatorConfig;
 }) {
   const cms: StrapiCalcContent | null = await getCalcContent(slug);
+  if (!cms) return null;
 
-  // ── Section-level fallback ────────────────────────────────────────
-  const introText = hasText(cms?.intro) ? cms!.intro! : hasText(calc.intro) ? calc.intro! : null;
-  const tipsText = hasText(cms?.tips) ? cms!.tips! : null;
-  const formulaExplanationText = hasText(cms?.formulaExplanation)
-    ? cms!.formulaExplanation!
-    : hasText(calc.howItWorks)
-      ? calc.howItWorks!
-      : null;
-  const formulaCode = hasText(calc.formula) ? calc.formula! : null;
-  const bodyContent = cms?.bodyContent && cms.bodyContent.length > 0 ? cms.bodyContent : null;
-  const cmsFaqs = cms?.faqs ?? [];
-  const useCmsFaqs = cmsFaqs.length > 0;
-  const hardcodedFaqs = calc.faqs ?? [];
+  const introText = hasText(cms.intro) ? cms.intro : null;
+  const tipsText = hasText(cms.tips) ? cms.tips : null;
+  const formulaExplanationText = hasText(cms.formulaExplanation) ? cms.formulaExplanation : null;
+  const bodyContent = cms.bodyContent && cms.bodyContent.length > 0 ? cms.bodyContent : null;
+  const faqs = cms.faqs ?? [];
 
-  const hasAnything =
-    introText ||
-    tipsText ||
-    formulaExplanationText ||
-    formulaCode ||
-    bodyContent ||
-    useCmsFaqs ||
-    hardcodedFaqs.length > 0;
-
-  if (!hasAnything) return null;
+  if (!introText && !tipsText && !formulaExplanationText && !bodyContent && faqs.length === 0) {
+    return null;
+  }
 
   return (
     <div className="mt-8 sm:mt-10 flex flex-col gap-4 sm:gap-5">
@@ -128,18 +100,13 @@ export default async function CalculatorCMS({
         </SectionCard>
       )}
 
-      {(formulaExplanationText || formulaCode) && (
+      {formulaExplanationText && (
         <SectionCard
           icon={BookOpen}
           title={`How ${calc.shortName ?? calc.name} is calculated`}
           color="bg-secondary/15 text-secondary"
         >
-          {formulaExplanationText && <MarkdownBody content={formulaExplanationText} />}
-          {formulaCode && (
-            <code className="font-mono text-xs sm:text-sm md:text-base text-on-surface block bg-surface-container-lowest p-3 sm:p-4 rounded-xl overflow-x-auto whitespace-pre mt-3 sm:mt-4">
-              {formulaCode}
-            </code>
-          )}
+          <MarkdownBody content={formulaExplanationText} />
         </SectionCard>
       )}
 
@@ -149,20 +116,15 @@ export default async function CalculatorCMS({
         </SectionCard>
       )}
 
-      {(useCmsFaqs || hardcodedFaqs.length > 0) && (
+      {faqs.length > 0 && (
         <SectionCard icon={HelpCircle} title="Frequently asked questions" color="bg-white/10 text-on-surface-variant">
           <div className="divide-y divide-white/5">
-            {useCmsFaqs
-              ? cmsFaqs.map((faq) => (
-                  <FaqItemMarkdown key={faq.id} question={faq.question} answer={faq.answer} />
-                ))
-              : hardcodedFaqs.map((faq, idx) => (
-                  <FaqItemPlain key={idx} question={faq.q} answer={faq.a} />
-                ))}
+            {faqs.map((faq) => (
+              <FaqItem key={faq.id} question={faq.question} answer={faq.answer} />
+            ))}
           </div>
         </SectionCard>
       )}
     </div>
   );
 }
-
