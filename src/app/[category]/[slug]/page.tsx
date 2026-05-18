@@ -256,11 +256,10 @@ export default async function CalculatorPage({
           {/* CALCULATOR — first thing the user sees so they can act immediately */}
           <CalculatorEngine slug={calc.slug} />
 
-          {/* All page content (intro, tips, how-it-works + formula, in-depth
-             guide, FAQs, ranges tables, limitations, sources) is authored in
-             Strapi. CalculatorCMS renders only the sections the editor has
-             filled in. */}
-          <CalculatorCMS slug={calc.slug} calc={calc} />
+          {/* All page content (long-form article + FAQ accordion) is authored
+             in Strapi as a single `content` markdown field. CalculatorCMS
+             renders nothing when the field is empty. */}
+          <CalculatorCMS slug={calc.slug} />
 
           {/* Related calculators */}
           {related.length > 0 && (

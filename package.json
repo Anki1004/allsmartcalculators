@@ -20,7 +20,6 @@
     "Edge >= 87"
   ],
   "dependencies": {
-    "@strapi/blocks-react-renderer": "^1.0.2",
     "@vercel/analytics": "^2.0.1",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.8",
