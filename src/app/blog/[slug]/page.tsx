@@ -166,6 +166,9 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             prose-blockquote:border-l-primary prose-blockquote:text-on-surface-variant
             prose-li:text-on-surface-variant
             prose-hr:border-white/10
+            prose-table:text-sm prose-table:my-4
+            prose-th:text-on-surface prose-th:font-semibold prose-th:border-white/10 prose-th:bg-white/[0.03]
+            prose-td:text-on-surface-variant prose-td:border-white/5
           ">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {post.content}

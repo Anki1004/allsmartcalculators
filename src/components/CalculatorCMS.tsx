@@ -13,7 +13,10 @@ const PROSE_CLASSES = `prose prose-invert prose-sm max-w-none
   prose-strong:text-on-surface
   prose-li:text-on-surface-variant
   prose-code:text-secondary prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
-  prose-blockquote:border-l-primary prose-blockquote:text-on-surface-variant`;
+  prose-blockquote:border-l-primary prose-blockquote:text-on-surface-variant
+  prose-table:text-sm prose-table:my-4
+  prose-th:text-on-surface prose-th:font-semibold prose-th:border-white/10 prose-th:bg-white/[0.03]
+  prose-td:text-on-surface-variant prose-td:border-white/5`;
 
 function MarkdownBody({ content }: { content: string }) {
   return (
