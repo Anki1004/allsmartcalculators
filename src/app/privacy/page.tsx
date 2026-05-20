@@ -57,7 +57,7 @@ export default async function PrivacyPage() {
           <p className="text-sm sm:text-base md:text-lg text-on-surface-variant leading-relaxed max-w-2xl">
             Here's exactly what we do (and don't do) with any information you might share with us. Written in plain language, because privacy policies shouldn't require a law degree to understand.
           </p>
-          <p className="text-[11px] sm:text-xs text-on-surface-variant/50 mt-3 sm:mt-4 font-mono">Last updated April 18, 2026</p>
+          <p className="text-[11px] sm:text-xs text-on-surface-variant/50 mt-3 sm:mt-4 font-mono">Last updated May 20, 2026</p>
         </div>
 
         {cms?.body ? (

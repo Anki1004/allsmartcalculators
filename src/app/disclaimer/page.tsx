@@ -58,7 +58,7 @@ export default async function DisclaimerPage() {
           <p className="text-sm sm:text-base md:text-lg text-on-surface-variant leading-relaxed max-w-2xl">
             Calculators are powerful thinking tools. Here's what ours can — and can't — do for you.
           </p>
-          <p className="text-[11px] sm:text-xs text-on-surface-variant/50 mt-3 sm:mt-4 font-mono">Last updated April 18, 2026</p>
+          <p className="text-[11px] sm:text-xs text-on-surface-variant/50 mt-3 sm:mt-4 font-mono">Last updated May 20, 2026</p>
         </div>
 
         {cms?.body ? (
