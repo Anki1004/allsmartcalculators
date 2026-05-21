@@ -22,11 +22,11 @@ export const engineeringCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Ohm\'s Law Calculator: V = I Ã— R for Circuits',
-      description: 'Free Ohm\'s Law calculator. Solve V = I Ã— R for voltage, current, or resistance â€” also returns power (P = VI). Useful for any DC circuit analysis.',
+      description: 'Free Ohm\'s Law calculator. Solve V = I Ã— R for voltage, current, or resistance — also returns power (P = VI). Useful for any DC circuit analysis.',
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'voltage-divider-calculator',
@@ -56,7 +56,7 @@ export const engineeringCalculators: CalculatorConfig[] = [
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'power-calculator-electrical',
@@ -79,11 +79,11 @@ export const engineeringCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Electrical Power Calculator: P = V Ã— I in Watts',
-      description: 'Free electrical power calculator. Compute power in watts from voltage and current â€” supports DC and single-phase AC with power-factor adjustment.',
+      description: 'Free electrical power calculator. Compute power in watts from voltage and current — supports DC and single-phase AC with power-factor adjustment.',
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'torque-calculator',
@@ -97,18 +97,18 @@ export const engineeringCalculators: CalculatorConfig[] = [
       { key: 'angle', label: 'Angle', type: 'slider', min: 0, max: 180, step: 1, default: 90, suffix: 'Â°', color: 'tertiary' },
     ],
     outputs: [
-      { key: 'torque', label: 'Torque', suffix: 'NÂ·m', decimals: 3, primary: true },
+      { key: 'torque', label: 'Torque', suffix: 'N·m', decimals: 3, primary: true },
     ],
     calculate: (i) => ({
       torque: Number(i.force) * Number(i.distance) * Math.sin((Number(i.angle) * Math.PI) / 180),
     }),
     seo: {
       title: 'Torque Calculator: Ï„ = Force Ã— Lever Arm',
-      description: 'Free torque calculator. Compute rotational torque from any applied force and lever-arm length â€” supports NÂ·m and lbÂ·ft units.',
+      description: 'Free torque calculator. Compute rotational torque from any applied force and lever-arm length — supports N·m and lb·ft units.',
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'unit-converter',
@@ -137,11 +137,11 @@ export const engineeringCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Unit Converter: Metric â†” Imperial Conversions',
-      description: 'Free unit converter for length, weight, volume, area, and temperature. Convert between metric and imperial units instantly â€” accurate to 4 decimals.',
+      description: 'Free unit converter for length, weight, volume, area, and temperature. Convert between metric and imperial units instantly — accurate to 4 decimals.',
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'concrete-calculator',
@@ -168,7 +168,7 @@ export const engineeringCalculators: CalculatorConfig[] = [
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'pipe-flow-calculator',
@@ -192,11 +192,11 @@ export const engineeringCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Pipe Flow Calculator: Volume Flow Rate in Pipes',
-      description: 'Free pipe flow rate calculator. Compute volume flow (Q = A Ã— v) through a circular pipe from diameter and fluid velocity â€” mÂ³/s and L/min.',
+      description: 'Free pipe flow rate calculator. Compute volume flow (Q = A Ã— v) through a circular pipe from diameter and fluid velocity — mÂ³/s and L/min.',
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'gear-ratio-calculator',
@@ -223,7 +223,7 @@ export const engineeringCalculators: CalculatorConfig[] = [
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'rpm-calculator',
@@ -243,11 +243,11 @@ export const engineeringCalculators: CalculatorConfig[] = [
     }),
     seo: {
       title: 'RPM Calculator: Surface Speed â†” Revolutions/Minute',
-      description: 'Free RPM calculator. Convert surface cutting speed to revolutions per minute for any tool or workpiece diameter â€” useful for lathe and mill setups.',
+      description: 'Free RPM calculator. Convert surface cutting speed to revolutions per minute for any tool or workpiece diameter — useful for lathe and mill setups.',
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'resistor-color-code',
@@ -269,10 +269,10 @@ export const engineeringCalculators: CalculatorConfig[] = [
     }),
     seo: {
       title: 'Resistor Color Code Calculator: 4-Band to Ohms',
-      description: 'Free 4-band resistor color code calculator. Decode any 4-band resistor into ohms with tolerance â€” pick the colors and read the value instantly.',
+      description: 'Free 4-band resistor color code calculator. Decode any 4-band resistor into ohms with tolerance — pick the colors and read the value instantly.',
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
 ];

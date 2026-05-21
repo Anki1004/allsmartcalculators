@@ -9,44 +9,44 @@ const EXCHANGE_RATES: Record<string, number> = {
 };
 
 const CURRENCY_SYMBOLS: Record<string, string> = {
-  USD: '$', EUR: 'â‚¬', GBP: 'Â£', JPY: 'Â¥', CAD: 'CA$', AUD: 'A$',
-  CHF: 'CHF', CNY: 'Â¥', INR: 'â‚¹', SGD: 'S$', HKD: 'HK$', NZD: 'NZ$',
+  USD: '$', EUR: '€', GBP: '£', JPY: '¥', CAD: 'CA$', AUD: 'A$',
+  CHF: 'CHF', CNY: '¥', INR: '₹', SGD: 'S$', HKD: 'HK$', NZD: 'NZ$',
   SEK: 'kr', NOK: 'kr', DKK: 'kr', MXN: '$', BRL: 'R$', ZAR: 'R',
-  AED: 'AED', SAR: 'SAR', KRW: 'â‚©', THB: 'à¸¿', MYR: 'RM', IDR: 'Rp',
-  PHP: 'â‚±', PKR: 'â‚¨', BDT: 'à§³', NGN: 'â‚¦', EGP: 'EÂ£', TRY: 'â‚º',
+  AED: 'AED', SAR: 'SAR', KRW: '₩', THB: '฿', MYR: 'RM', IDR: 'Rp',
+  PHP: '₱', PKR: '₨', BDT: '৳', NGN: '₦', EGP: 'E£', TRY: '₺',
 };
 
 const CURRENCY_OPTIONS = [
-  { label: 'USD â€” US Dollar', value: 'USD' },
-  { label: 'EUR â€” Euro', value: 'EUR' },
-  { label: 'GBP â€” British Pound', value: 'GBP' },
-  { label: 'JPY â€” Japanese Yen', value: 'JPY' },
-  { label: 'INR â€” Indian Rupee', value: 'INR' },
-  { label: 'CAD â€” Canadian Dollar', value: 'CAD' },
-  { label: 'AUD â€” Australian Dollar', value: 'AUD' },
-  { label: 'CHF â€” Swiss Franc', value: 'CHF' },
-  { label: 'CNY â€” Chinese Yuan', value: 'CNY' },
-  { label: 'SGD â€” Singapore Dollar', value: 'SGD' },
-  { label: 'HKD â€” Hong Kong Dollar', value: 'HKD' },
-  { label: 'NZD â€” New Zealand Dollar', value: 'NZD' },
-  { label: 'SEK â€” Swedish Krona', value: 'SEK' },
-  { label: 'NOK â€” Norwegian Krone', value: 'NOK' },
-  { label: 'DKK â€” Danish Krone', value: 'DKK' },
-  { label: 'MXN â€” Mexican Peso', value: 'MXN' },
-  { label: 'BRL â€” Brazilian Real', value: 'BRL' },
-  { label: 'ZAR â€” South African Rand', value: 'ZAR' },
-  { label: 'AED â€” UAE Dirham', value: 'AED' },
-  { label: 'SAR â€” Saudi Riyal', value: 'SAR' },
-  { label: 'KRW â€” South Korean Won', value: 'KRW' },
-  { label: 'THB â€” Thai Baht', value: 'THB' },
-  { label: 'MYR â€” Malaysian Ringgit', value: 'MYR' },
-  { label: 'IDR â€” Indonesian Rupiah', value: 'IDR' },
-  { label: 'PHP â€” Philippine Peso', value: 'PHP' },
-  { label: 'PKR â€” Pakistani Rupee', value: 'PKR' },
-  { label: 'BDT â€” Bangladeshi Taka', value: 'BDT' },
-  { label: 'NGN â€” Nigerian Naira', value: 'NGN' },
-  { label: 'EGP â€” Egyptian Pound', value: 'EGP' },
-  { label: 'TRY â€” Turkish Lira', value: 'TRY' },
+  { label: 'USD — US Dollar', value: 'USD' },
+  { label: 'EUR — Euro', value: 'EUR' },
+  { label: 'GBP — British Pound', value: 'GBP' },
+  { label: 'JPY — Japanese Yen', value: 'JPY' },
+  { label: 'INR — Indian Rupee', value: 'INR' },
+  { label: 'CAD — Canadian Dollar', value: 'CAD' },
+  { label: 'AUD — Australian Dollar', value: 'AUD' },
+  { label: 'CHF — Swiss Franc', value: 'CHF' },
+  { label: 'CNY — Chinese Yuan', value: 'CNY' },
+  { label: 'SGD — Singapore Dollar', value: 'SGD' },
+  { label: 'HKD — Hong Kong Dollar', value: 'HKD' },
+  { label: 'NZD — New Zealand Dollar', value: 'NZD' },
+  { label: 'SEK — Swedish Krona', value: 'SEK' },
+  { label: 'NOK — Norwegian Krone', value: 'NOK' },
+  { label: 'DKK — Danish Krone', value: 'DKK' },
+  { label: 'MXN — Mexican Peso', value: 'MXN' },
+  { label: 'BRL — Brazilian Real', value: 'BRL' },
+  { label: 'ZAR — South African Rand', value: 'ZAR' },
+  { label: 'AED — UAE Dirham', value: 'AED' },
+  { label: 'SAR — Saudi Riyal', value: 'SAR' },
+  { label: 'KRW — South Korean Won', value: 'KRW' },
+  { label: 'THB — Thai Baht', value: 'THB' },
+  { label: 'MYR — Malaysian Ringgit', value: 'MYR' },
+  { label: 'IDR — Indonesian Rupiah', value: 'IDR' },
+  { label: 'PHP — Philippine Peso', value: 'PHP' },
+  { label: 'PKR — Pakistani Rupee', value: 'PKR' },
+  { label: 'BDT — Bangladeshi Taka', value: 'BDT' },
+  { label: 'NGN — Nigerian Naira', value: 'NGN' },
+  { label: 'EGP — Egyptian Pound', value: 'EGP' },
+  { label: 'TRY — Turkish Lira', value: 'TRY' },
 ];
 
 export const financeCalculators: CalculatorConfig[] = [
@@ -56,7 +56,7 @@ export const financeCalculators: CalculatorConfig[] = [
     shortName: 'Currency',
     category: 'finance',
     icon: 'ArrowLeftRight',
-    description: 'Convert between 30 major world currencies instantly with reference rates â€” see the converted amount, exchange rate, and inverse rate.',
+    description: 'Convert between 30 major world currencies instantly with reference rates — see the converted amount, exchange rate, and inverse rate.',
     trending: true,
     inputs: [
       {
@@ -115,14 +115,14 @@ export const financeCalculators: CalculatorConfig[] = [
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'emi-calculator',
     name: 'EMI Calculator',
     category: 'finance',
     icon: 'Landmark',
-    description: 'Calculate Equated Monthly Instalments for home, personal, car, and education loans â€” with interest split and total payable.',
+    description: 'Calculate Equated Monthly Instalments for home, personal, car, and education loans — with interest split and total payable.',
     trending: true,
     chartType: 'donut',
     inputs: [
@@ -144,20 +144,20 @@ export const financeCalculators: CalculatorConfig[] = [
       return { emi, totalInterest: totalPayment - p, totalPayment };
     },
     seo: {
-      title: 'EMI Calculator â€” Home, Personal, Car & Education Loan EMIs',
+      title: 'EMI Calculator — Home, Personal, Car & Education Loan EMIs',
       description:
         'Free EMI calculator for home, personal, car, and education loans. See your monthly EMI, total interest, and full payment split with the standard reducing-balance formula.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'sip-calculator',
     name: 'SIP Calculator',
     category: 'finance',
     icon: 'TrendingUp',
-    description: 'Project the future value of a Systematic Investment Plan â€” see how a fixed monthly contribution compounds over years.',
+    description: 'Project the future value of a Systematic Investment Plan — see how a fixed monthly contribution compounds over years.',
     trending: true,
     chartType: 'donut',
     inputs: [
@@ -179,13 +179,13 @@ export const financeCalculators: CalculatorConfig[] = [
       return { futureValue, invested, gains: futureValue - invested };
     },
     seo: {
-      title: 'SIP Calculator â€” Mutual Fund SIP Returns Over Time',
+      title: 'SIP Calculator — Mutual Fund SIP Returns Over Time',
       description:
         'Free SIP calculator. Project your mutual fund corpus from monthly contribution, expected return, and tenure. See total invested vs total gains side-by-side.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'compound-interest-calculator',
@@ -219,14 +219,14 @@ export const financeCalculators: CalculatorConfig[] = [
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'mortgage-calculator',
     name: 'Mortgage Calculator',
     category: 'finance',
     icon: 'Home',
-    description: 'Calculate monthly mortgage payments â€” principal and interest split, total interest paid, and full payment schedule.',
+    description: 'Calculate monthly mortgage payments — principal and interest split, total interest paid, and full payment schedule.',
     trending: true,
     chartType: 'donut',
     inputs: [
@@ -248,13 +248,13 @@ export const financeCalculators: CalculatorConfig[] = [
       return { monthlyPayment: pmt, totalInterest: pmt * n - loan, loanAmount: loan };
     },
     seo: {
-      title: 'Mortgage Calculator â€” Monthly Payment, Interest & Term',
+      title: 'Mortgage Calculator — Monthly Payment, Interest & Term',
       description:
         'Free mortgage calculator. See your monthly payment, total interest, and principal split for any home price, down payment, rate, and loan term.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'loan-eligibility-calculator',
@@ -287,7 +287,7 @@ export const financeCalculators: CalculatorConfig[] = [
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'income-tax-calculator',
@@ -393,7 +393,7 @@ export const financeCalculators: CalculatorConfig[] = [
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-02-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'retirement-calculator',
@@ -424,11 +424,11 @@ export const financeCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Retirement Calculator: How Much You Need to Retire',
-      description: 'Free retirement corpus calculator. Project the savings you need to retire comfortably â€” adjusted for inflation and your expected return rate.',
+      description: 'Free retirement corpus calculator. Project the savings you need to retire comfortably — adjusted for inflation and your expected return rate.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'fd-calculator',
@@ -451,13 +451,13 @@ export const financeCalculators: CalculatorConfig[] = [
       return { maturity, interest: maturity - p };
     },
     seo: {
-      title: 'FD Calculator â€” Fixed Deposit Maturity & Interest',
+      title: 'FD Calculator — Fixed Deposit Maturity & Interest',
       description:
         'Free FD calculator with quarterly compounding. See your fixed deposit maturity value, total interest, and effective yield for any deposit, rate, and tenure.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'rd-calculator',
@@ -489,7 +489,7 @@ export const financeCalculators: CalculatorConfig[] = [
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'mutual-fund-returns',
@@ -517,7 +517,7 @@ export const financeCalculators: CalculatorConfig[] = [
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'stock-profit-loss',
@@ -549,7 +549,7 @@ export const financeCalculators: CalculatorConfig[] = [
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'dividend-yield-calculator',
@@ -576,7 +576,7 @@ export const financeCalculators: CalculatorConfig[] = [
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'credit-card-interest',
@@ -607,7 +607,7 @@ export const financeCalculators: CalculatorConfig[] = [
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'debt-payoff-calculator',
@@ -638,7 +638,7 @@ export const financeCalculators: CalculatorConfig[] = [
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'net-worth-calculator',
@@ -660,11 +660,11 @@ export const financeCalculators: CalculatorConfig[] = [
     }),
     seo: {
       title: 'Net Worth Calculator: Assets, Liabilities, Ratio',
-      description: 'Free net worth calculator. Subtract liabilities from assets to see your true net worth and asset/liability ratio â€” the simplest financial-health metric.',
+      description: 'Free net worth calculator. Subtract liabilities from assets to see your true net worth and asset/liability ratio — the simplest financial-health metric.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'salary-to-hourly',
@@ -695,18 +695,18 @@ export const financeCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Salary to Hourly Calculator: Annual to Hourly Rate',
-      description: 'Free salary-to-hourly converter. Turn any annual salary into hourly, daily, weekly, and monthly rates â€” based on your real hours and weeks worked.',
+      description: 'Free salary-to-hourly converter. Turn any annual salary into hourly, daily, weekly, and monthly rates — based on your real hours and weeks worked.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'tip-calculator',
     name: 'Tip Calculator',
     category: 'finance',
     icon: 'Utensils',
-    description: 'Split a restaurant bill fairly with tip â€” get tip amount, total, and per-person share for any group size.',
+    description: 'Split a restaurant bill fairly with tip — get tip amount, total, and per-person share for any group size.',
     trending: true,
     inputs: [
       { key: 'bill', label: 'Bill Amount', type: 'slider', min: 1, max: 5000, step: 0.5, default: 80, prefix: '$', color: 'primary' },
@@ -729,7 +729,7 @@ export const financeCalculators: CalculatorConfig[] = [
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'gst-calculator',
@@ -753,13 +753,13 @@ export const financeCalculators: CalculatorConfig[] = [
       return { gst, total: amt + gst, net: amt };
     },
     seo: {
-      title: 'GST Calculator India â€” Inclusive & Exclusive GST Amount',
+      title: 'GST Calculator India — Inclusive & Exclusive GST Amount',
       description:
         'Free GST calculator for India. Add GST to a base amount or extract GST from an inclusive price. Supports all current slabs (5%, 12%, 18%, 28%).',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'ppf-calculator',
@@ -785,13 +785,13 @@ export const financeCalculators: CalculatorConfig[] = [
       return { maturity, invested: p * n, interest: maturity - p * n };
     },
     seo: {
-      title: 'PPF Calculator â€” Public Provident Fund Maturity Value',
+      title: 'PPF Calculator — Public Provident Fund Maturity Value',
       description:
         'Free PPF calculator. Project your Public Provident Fund maturity for any yearly contribution and tenure. Tax-free returns at the current 7.1% PPF rate.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'nps-calculator',
@@ -817,13 +817,13 @@ export const financeCalculators: CalculatorConfig[] = [
       return { corpus, pension: (corpus * 0.06) / 12 };
     },
     seo: {
-      title: 'NPS Calculator â€” National Pension System Corpus & Pension',
+      title: 'NPS Calculator — National Pension System Corpus & Pension',
       description:
         'Free NPS calculator. Project your retirement corpus, monthly pension, and lump-sum withdrawal under the National Pension System for any monthly contribution.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'lumpsum-calculator',
@@ -849,20 +849,20 @@ export const financeCalculators: CalculatorConfig[] = [
       return { future, gain: future - p, multiplier: future / p };
     },
     seo: {
-      title: 'Lumpsum Calculator â€” One-Time Investment Future Value',
+      title: 'Lumpsum Calculator — One-Time Investment Future Value',
       description:
         'Free lumpsum calculator. Project the future value of a one-time mutual fund, equity, or fixed-income investment at any expected return rate and tenure.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'hra-calculator',
     name: 'HRA Calculator',
     category: 'finance',
     icon: 'Building2',
-    description: 'Calculate exempt and taxable HRA under Section 10(13A) â€” old regime tax saving on house rent.',
+    description: 'Calculate exempt and taxable HRA under Section 10(13A) — old regime tax saving on house rent.',
     inputs: [
       { key: 'basic', label: 'Annual Basic + DA', type: 'slider', min: 100000, max: 5000000, step: 1000, default: 600000, prefix: '$', color: 'primary' },
       { key: 'hra', label: 'Annual HRA Received', type: 'slider', min: 0, max: 2500000, step: 1000, default: 240000, prefix: '$', color: 'secondary' },
@@ -887,20 +887,20 @@ export const financeCalculators: CalculatorConfig[] = [
       return { exempt, taxable, savedAt30: exempt * 0.30 };
     },
     seo: {
-      title: 'HRA Calculator â€” House Rent Allowance Exemption (India)',
+      title: 'HRA Calculator — House Rent Allowance Exemption (India)',
       description:
-        'Free HRA calculator under Section 10(13A). Calculate your HRA exemption, taxable portion, and tax saved at the 30% slab â€” old regime only.',
+        'Free HRA calculator under Section 10(13A). Calculate your HRA exemption, taxable portion, and tax saved at the 30% slab — old regime only.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'cibil-calculator',
     name: 'CIBIL Score Estimator',
     category: 'finance',
     icon: 'Gauge',
-    description: 'Estimate where your CIBIL score sits based on credit habits â€” utilisation, payment history, account age, and inquiries.',
+    description: 'Estimate where your CIBIL score sits based on credit habits — utilisation, payment history, account age, and inquiries.',
     inputs: [
       { key: 'paymentScore', label: 'Payment History (0=many missed, 100=always on time)', type: 'slider', min: 0, max: 100, step: 5, default: 90, suffix: '/100', color: 'primary' },
       { key: 'utilisation', label: 'Credit Utilisation %', type: 'slider', min: 0, max: 100, step: 1, default: 30, suffix: '%', color: 'secondary' },
@@ -927,15 +927,15 @@ export const financeCalculators: CalculatorConfig[] = [
 
       const composite =
         payScore * 0.35 + utilScore * 0.30 + ageScore * 0.15 + inqScore * 0.10 + mixScore * 0.10;
-      // Map 0â€“100 composite to CIBIL 300â€“900
+      // Map 0–100 composite to CIBIL 300–900
       const score = 300 + composite * 6;
 
       const band =
-        score >= 800 ? 'Excellent (800â€“900)' :
-        score >= 750 ? 'Good (750â€“799)' :
-        score >= 700 ? 'Fair (700â€“749)' :
-        score >= 650 ? 'Poor (650â€“699)' :
-        'Very Poor (300â€“649)';
+        score >= 800 ? 'Excellent (800–900)' :
+        score >= 750 ? 'Good (750–799)' :
+        score >= 700 ? 'Fair (700–749)' :
+        score >= 650 ? 'Poor (650–699)' :
+        'Very Poor (300–649)';
 
       // Identify weakest lever
       const factors: { name: string; score: number }[] = [
@@ -949,12 +949,12 @@ export const financeCalculators: CalculatorConfig[] = [
       return { score, band, topAction };
     },
     seo: {
-      title: 'CIBIL Score Estimator â€” Estimate Your Credit Score',
+      title: 'CIBIL Score Estimator — Estimate Your Credit Score',
       description:
-        'Free CIBIL score estimator. Get a directional credit score from your payment history, utilisation, account age, inquiries, and credit mix â€” plus the biggest lever to improve it.',
+        'Free CIBIL score estimator. Get a directional credit score from your payment history, utilisation, account age, inquiries, and credit mix — plus the biggest lever to improve it.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
 ];

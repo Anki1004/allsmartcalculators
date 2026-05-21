@@ -14,6 +14,8 @@ interface SliderInputProps {
   suffix?: string;
   formatValue?: (v: number) => string;
   color?: 'primary' | 'secondary' | 'tertiary';
+  /** Pass 'en-IN' for Indian lakh / crore grouping in the readout. */
+  locale?: string;
 }
 
 export default function SliderInput({
@@ -27,6 +29,7 @@ export default function SliderInput({
   suffix,
   formatValue,
   color = 'primary',
+  locale = 'en-US',
 }: SliderInputProps) {
   const [raw, setRaw] = useState('');
   const fromSlider = useRef(false);
@@ -54,7 +57,7 @@ export default function SliderInput({
     ? ''
     : formatValue
       ? formatValue(value)
-      : `${prefix ?? ''}${formatNumber(value, 0)}${suffix ? ` ${suffix}` : ''}`;
+      : `${prefix ?? ''}${formatNumber(value, 0, locale)}${suffix ? ` ${suffix}` : ''}`;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const str = e.target.value.replace(/[^0-9.\-]/g, '');

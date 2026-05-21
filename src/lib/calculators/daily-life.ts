@@ -29,7 +29,7 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'travel-time-calculator',
@@ -53,11 +53,11 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Travel Time Calculator: Drive Time from Distance',
-      description: 'Free travel time calculator. Estimate trip duration in hours and minutes from any distance and average speed â€” useful for road trip planning.',
+      description: 'Free travel time calculator. Estimate trip duration in hours and minutes from any distance and average speed — useful for road trip planning.',
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'date-difference',
@@ -80,11 +80,11 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Date Difference Calculator: Days Between Two Dates',
-      description: 'Free date difference calculator. Get the exact number of days, weeks, and months between any two dates â€” handles leap years correctly.',
+      description: 'Free date difference calculator. Get the exact number of days, weeks, and months between any two dates — handles leap years correctly.',
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'split-bill-calculator',
@@ -109,11 +109,11 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Bill Splitter: Fairly Split Group Expenses',
-      description: 'Free bill splitter. Divide a total bill by any number of people, with optional tip and tax â€” perfect for restaurants, trips, and shared expenses.',
+      description: 'Free bill splitter. Divide a total bill by any number of people, with optional tip and tax — perfect for restaurants, trips, and shared expenses.',
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'cooking-conversion',
@@ -136,11 +136,11 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Cooking Conversion Calculator: Cups, Tbsp, Grams',
-      description: 'Free cooking measurement converter. Translate between cups, tablespoons, teaspoons, ounces, and grams â€” for recipes, baking, and meal prep.',
+      description: 'Free cooking measurement converter. Translate between cups, tablespoons, teaspoons, ounces, and grams — for recipes, baking, and meal prep.',
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'paint-calculator',
@@ -171,7 +171,7 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'carpet-tile-calculator',
@@ -200,7 +200,7 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'countdown-calculator',
@@ -222,11 +222,11 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Countdown Calculator: Days, Hours, Minutes Until Event',
-      description: 'Free countdown calculator. Get the precise time remaining until any future date â€” days, hours, minutes, and seconds. Useful for events and deadlines.',
+      description: 'Free countdown calculator. Get the precise time remaining until any future date — days, hours, minutes, and seconds. Useful for events and deadlines.',
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'gift-calculator',
@@ -244,11 +244,11 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     calculate: (i) => ({ perPerson: Number(i.budget) / Number(i.people) }),
     seo: {
       title: 'Gift Calculator: Per-Person Gift Budget',
-      description: 'Free gift budget calculator. Set a total gift budget and split equally among recipients, with optional per-person variance â€” for office gifting and group buys.',
+      description: 'Free gift budget calculator. Set a total gift budget and split equally among recipients, with optional per-person variance — for office gifting and group buys.',
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'tip-calculator-daily',
@@ -273,10 +273,10 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Quick Tip Calculator: Tip & Total in Seconds',
-      description: 'Free quick tip calculator. Drop in a bill and tip percentage to get the tip amount and final total instantly â€” no extras, just the math.',
+      description: 'Free quick tip calculator. Drop in a bill and tip percentage to get the tip amount and final total instantly — no extras, just the math.',
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
 ];

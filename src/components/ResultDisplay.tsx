@@ -12,6 +12,8 @@ interface ResultDisplayProps {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   color?: 'primary' | 'secondary' | 'tertiary' | 'white';
   animate?: boolean;
+  /** Pass 'en-IN' to format with Indian lakh / crore grouping. */
+  locale?: string;
 }
 
 export default function ResultDisplay({
@@ -23,6 +25,7 @@ export default function ResultDisplay({
   size = 'md',
   color = 'white',
   animate = true,
+  locale = 'en-US',
 }: ResultDisplayProps) {
   const [displayValue, setDisplayValue] = useState(typeof value === 'number' ? 0 : value);
 
@@ -65,7 +68,7 @@ export default function ResultDisplay({
 
   const formatted =
     typeof displayValue === 'number'
-      ? displayValue.toLocaleString('en-US', {
+      ? displayValue.toLocaleString(locale, {
           minimumFractionDigits: 0,
           maximumFractionDigits: decimals,
         })

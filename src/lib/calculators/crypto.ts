@@ -6,7 +6,7 @@ export const cryptoCalculators: CalculatorConfig[] = [
     name: 'Crypto Profit Calculator',
     category: 'crypto',
     icon: 'TrendingUp',
-    description: 'Calculate profit, loss, and percent return on any crypto trade â€” Bitcoin, Ethereum, or altcoins â€” from buy price, sell price, and quantity.',
+    description: 'Calculate profit, loss, and percent return on any crypto trade — Bitcoin, Ethereum, or altcoins — from buy price, sell price, and quantity.',
     trending: true,
     inputs: [
       { key: 'buyPrice', label: 'Buy Price', type: 'slider', min: 0.001, max: 100000, step: 0.01, default: 30000, prefix: '$', color: 'primary' },
@@ -34,7 +34,7 @@ export const cryptoCalculators: CalculatorConfig[] = [
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'bitcoin-mining-calculator',
@@ -69,7 +69,7 @@ export const cryptoCalculators: CalculatorConfig[] = [
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'ethereum-gas-calculator',
@@ -92,11 +92,11 @@ export const cryptoCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Ethereum Gas Calculator: Gwei to USD Fee',
-      description: 'Free Ethereum gas fee calculator. Convert gas units Ã— gwei Ã— ETH price into USD cost for any transaction â€” useful before signing on-chain actions.',
+      description: 'Free Ethereum gas fee calculator. Convert gas units Ã— gwei Ã— ETH price into USD cost for any transaction — useful before signing on-chain actions.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'staking-rewards-calculator',
@@ -120,11 +120,11 @@ export const cryptoCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Staking Rewards Calculator: APY Projections',
-      description: 'Free crypto staking rewards calculator. Project rewards earned and final balance from any stake amount, APY, and lock-up period â€” ETH, SOL, ADA, etc.',
+      description: 'Free crypto staking rewards calculator. Project rewards earned and final balance from any stake amount, APY, and lock-up period — ETH, SOL, ADA, etc.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'dca-calculator',
@@ -155,7 +155,7 @@ export const cryptoCalculators: CalculatorConfig[] = [
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'impermanent-loss-calculator',
@@ -177,11 +177,11 @@ export const cryptoCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Impermanent Loss Calculator: LP Position IL',
-      description: 'Free impermanent loss calculator for AMM liquidity providers. See your IL % for any token-pair price ratio change â€” Uniswap, Sushiswap, PancakeSwap.',
+      description: 'Free impermanent loss calculator for AMM liquidity providers. See your IL % for any token-pair price ratio change — Uniswap, Sushiswap, PancakeSwap.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'crypto-tax-calculator',
@@ -204,11 +204,11 @@ export const cryptoCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Crypto Tax Calculator: Capital Gains on BTC, ETH',
-      description: 'Free crypto capital-gains tax calculator. Estimate your tax liability on crypto sales â€” short-term vs long-term, with India 30% flat rate option.',
+      description: 'Free crypto capital-gains tax calculator. Estimate your tax liability on crypto sales — short-term vs long-term, with India 30% flat rate option.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'nft-roi-calculator',
@@ -236,11 +236,11 @@ export const cryptoCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'NFT ROI Calculator: Return After Fees & Royalties',
-      description: 'Free NFT ROI calculator. Net return after marketplace fees, creator royalties, and gas â€” tells you what you actually pocket from a flip.',
+      description: 'Free NFT ROI calculator. Net return after marketplace fees, creator royalties, and gas — tells you what you actually pocket from a flip.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'crypto-conversion-calculator',
@@ -258,11 +258,11 @@ export const cryptoCalculators: CalculatorConfig[] = [
     calculate: (i) => ({ usd: Number(i.amount) * Number(i.price) }),
     seo: {
       title: 'Crypto to USD Converter: BTC, ETH & Altcoin Value',
-      description: 'Free crypto-to-USD converter. Convert any coin amount into USD at current price â€” fast lookup for portfolio valuation and on-the-fly checks.',
+      description: 'Free crypto-to-USD converter. Convert any coin amount into USD at current price — fast lookup for portfolio valuation and on-the-fly checks.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'crypto-portfolio-calculator',
@@ -288,10 +288,10 @@ export const cryptoCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Crypto Portfolio Calculator: Total Value & Allocation',
-      description: 'Free crypto portfolio calculator. Track total USD value and percent allocation across multiple coins â€” set and adjust holdings on the fly.',
+      description: 'Free crypto portfolio calculator. Track total USD value and percent allocation across multiple coins — set and adjust holdings on the fly.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
 ];

@@ -6,7 +6,7 @@ export const educationCalculators: CalculatorConfig[] = [
     name: 'GPA Calculator',
     category: 'education',
     icon: 'GraduationCap',
-    description: 'Calculate your semester GPA on the 4.0 scale â€” weighted by credit hours, with the standard letter-to-GPA conversion table.',
+    description: 'Calculate your semester GPA on the 4.0 scale — weighted by credit hours, with the standard letter-to-GPA conversion table.',
     trending: true,
     inputs: [
       { key: 'g1', label: 'Course 1 Grade (0-4)', type: 'slider', min: 0, max: 4, step: 0.1, default: 3.5, color: 'primary' },
@@ -32,11 +32,11 @@ export const educationCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'GPA Calculator: Semester GPA on 4.0 Scale',
-      description: 'Free GPA calculator on the 4.0 scale. Add courses with grades and credit hours, get your semester GPA â€” handles A, A-, B+, B and standard variations.',
+      description: 'Free GPA calculator on the 4.0 scale. Add courses with grades and credit hours, get your semester GPA — handles A, A-, B+, B and standard variations.',
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'cgpa-calculator',
@@ -61,11 +61,11 @@ export const educationCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'CGPA Calculator: Cumulative GPA Across Semesters',
-      description: 'Free CGPA calculator. Combine multiple semester GPAs into your cumulative GPA, weighted by credits â€” supports 4.0, 10.0 (Indian), and percentage scales.',
+      description: 'Free CGPA calculator. Combine multiple semester GPAs into your cumulative GPA, weighted by credits — supports 4.0, 10.0 (Indian), and percentage scales.',
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'percentage-to-gpa',
@@ -92,11 +92,11 @@ export const educationCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Percentage to GPA Converter: % to 4.0 Scale',
-      description: 'Free percentage-to-GPA converter. Translate any percentage score (or Indian 10-point CGPA) into the standard US 4.0 GPA scale â€” for grad-school apps.',
+      description: 'Free percentage-to-GPA converter. Translate any percentage score (or Indian 10-point CGPA) into the standard US 4.0 GPA scale — for grad-school apps.',
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'grade-calculator',
@@ -138,7 +138,7 @@ export const educationCalculators: CalculatorConfig[] = [
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'exam-score-predictor',
@@ -167,11 +167,11 @@ export const educationCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Final Exam Calculator: Score Needed for Target Grade',
-      description: 'Free final exam grade calculator. Find the exact score you need on your final to lock in any target overall grade â€” given your current grade and final weight.',
+      description: 'Free final exam grade calculator. Find the exact score you need on your final to lock in any target overall grade — given your current grade and final weight.',
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'study-hours-calculator',
@@ -193,11 +193,11 @@ export const educationCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Study Hours Calculator: Weekly Hours per Course',
-      description: 'Free study hours calculator. Estimate weekly study time required across your course load using the standard 2â€“3 hours per credit-hour rule.',
+      description: 'Free study hours calculator. Estimate weekly study time required across your course load using the standard 2–3 hours per credit-hour rule.',
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'assignment-weight-calculator',
@@ -217,11 +217,11 @@ export const educationCalculators: CalculatorConfig[] = [
     }),
     seo: {
       title: 'Assignment Weight Calculator: Effect on Final Grade',
-      description: 'Free assignment weight calculator. See how much a single assignment moves your overall course grade â€” useful for prioritising effort across the term.',
+      description: 'Free assignment weight calculator. See how much a single assignment moves your overall course grade — useful for prioritising effort across the term.',
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'class-rank-calculator',
@@ -243,11 +243,11 @@ export const educationCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Class Rank Calculator: Percentile in Your Cohort',
-      description: 'Free class rank percentile calculator. From your rank and class size, get your percentile â€” useful for college applications and merit scholarships.',
+      description: 'Free class rank percentile calculator. From your rank and class size, get your percentile — useful for college applications and merit scholarships.',
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'attendance-calculator',
@@ -280,7 +280,7 @@ export const educationCalculators: CalculatorConfig[] = [
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'reading-speed-calculator',
@@ -310,6 +310,6 @@ export const educationCalculators: CalculatorConfig[] = [
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
 ];

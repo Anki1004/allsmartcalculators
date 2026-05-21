@@ -6,7 +6,7 @@ export const mathCalculators: CalculatorConfig[] = [
     name: 'Percentage Calculator',
     category: 'math',
     icon: 'Percent',
-    description: 'Find X% of a number, percentage increase, percentage decrease, and percent difference â€” all in one tool.',
+    description: 'Find X% of a number, percentage increase, percentage decrease, and percent difference — all in one tool.',
     trending: true,
     inputs: [
       { key: 'value', label: 'Value', type: 'slider', min: 0, max: 10000, step: 1, default: 250, color: 'primary' },
@@ -25,11 +25,11 @@ export const mathCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Percentage Calculator: % of, Increase, Decrease',
-      description: 'Free percentage calculator. Find X% of a number, percent change between two values, and percentage increase or decrease â€” fast and accurate.',
+      description: 'Free percentage calculator. Find X% of a number, percent change between two values, and percentage increase or decrease — fast and accurate.',
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'fraction-calculator',
@@ -59,7 +59,7 @@ export const mathCalculators: CalculatorConfig[] = [
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'quadratic-calculator',
@@ -73,8 +73,8 @@ export const mathCalculators: CalculatorConfig[] = [
       { key: 'c', label: 'Coefficient c', type: 'slider', min: -50, max: 50, step: 0.1, default: 6, color: 'tertiary' },
     ],
     outputs: [
-      { key: 'x1', label: 'Root 1 (xâ‚)', decimals: 4, primary: true },
-      { key: 'x2', label: 'Root 2 (xâ‚‚)', decimals: 4, color: 'secondary' },
+      { key: 'x1', label: 'Root 1 (x₁)', decimals: 4, primary: true },
+      { key: 'x2', label: 'Root 2 (x₂)', decimals: 4, color: 'secondary' },
       { key: 'discriminant', label: 'Discriminant', decimals: 4, color: 'tertiary' },
     ],
     calculate: (i) => {
@@ -89,11 +89,11 @@ export const mathCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Quadratic Equation Calculator: Solve axÂ² + bx + c = 0',
-      description: 'Free quadratic equation solver. Find both roots of any axÂ² + bx + c = 0 â€” handles real, repeated, and complex roots with full discriminant detail.',
+      description: 'Free quadratic equation solver. Find both roots of any axÂ² + bx + c = 0 — handles real, repeated, and complex roots with full discriminant detail.',
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'statistics-calculator',
@@ -129,11 +129,11 @@ export const mathCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Statistics Calculator: Mean, Median, Mode, Std Dev',
-      description: 'Free statistics calculator. Compute mean, median, mode, range, variance, and standard deviation for any list of numbers â€” paste data and go.',
+      description: 'Free statistics calculator. Compute mean, median, mode, range, variance, and standard deviation for any list of numbers — paste data and go.',
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'probability-calculator',
@@ -162,7 +162,7 @@ export const mathCalculators: CalculatorConfig[] = [
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'lcm-gcd-calculator',
@@ -187,11 +187,11 @@ export const mathCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'LCM and GCD Calculator: Least Common Multiple & GCF',
-      description: 'Free LCM and GCD calculator. Find the least common multiple and greatest common divisor (HCF) of any two integers â€” works with large numbers.',
+      description: 'Free LCM and GCD calculator. Find the least common multiple and greatest common divisor (HCF) of any two integers — works with large numbers.',
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'logarithm-calculator',
@@ -206,7 +206,7 @@ export const mathCalculators: CalculatorConfig[] = [
     outputs: [
       { key: 'log', label: 'log result', decimals: 6, primary: true },
       { key: 'ln', label: 'Natural log (ln)', decimals: 6, color: 'secondary' },
-      { key: 'log10', label: 'logâ‚â‚€', decimals: 6, color: 'tertiary' },
+      { key: 'log10', label: 'log₁₀', decimals: 6, color: 'tertiary' },
     ],
     calculate: (i) => ({
       log: Math.log(Number(i.value)) / Math.log(Number(i.base)),
@@ -214,12 +214,12 @@ export const mathCalculators: CalculatorConfig[] = [
       log10: Math.log10(Number(i.value)),
     }),
     seo: {
-      title: 'Logarithm Calculator: log, ln, logâ‚‚ â€” Any Base',
-      description: 'Free logarithm calculator. Compute log to any base â€” natural log (ln), log base 10, log base 2, or a custom base â€” for any positive number.',
+      title: 'Logarithm Calculator: log, ln, log₂ — Any Base',
+      description: 'Free logarithm calculator. Compute log to any base — natural log (ln), log base 10, log base 2, or a custom base — for any positive number.',
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'trigonometry-calculator',
@@ -246,11 +246,11 @@ export const mathCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Trigonometry Calculator: sin, cos, tan, csc, sec, cot',
-      description: 'Free trigonometry calculator. Compute sine, cosine, tangent and their reciprocals for any angle in degrees or radians â€” instant results.',
+      description: 'Free trigonometry calculator. Compute sine, cosine, tangent and their reciprocals for any angle in degrees or radians — instant results.',
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'binary-converter',
@@ -276,11 +276,11 @@ export const mathCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Binary Converter: Binary â†” Decimal â†” Hex â†” Octal',
-      description: 'Free binary, decimal, hex, and octal converter. Translate between number bases instantly â€” useful for programming, networking, and CS coursework.',
+      description: 'Free binary, decimal, hex, and octal converter. Translate between number bases instantly — useful for programming, networking, and CS coursework.',
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'ratio-calculator',
@@ -305,11 +305,11 @@ export const mathCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Ratio Calculator: Simplify, Scale, Compare Ratios',
-      description: 'Free ratio calculator. Simplify a ratio to lowest terms, scale it up or down, and compare two ratios â€” useful for recipes, plans, and design.',
+      description: 'Free ratio calculator. Simplify a ratio to lowest terms, scale it up or down, and compare two ratios — useful for recipes, plans, and design.',
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'average-calculator',
@@ -335,11 +335,11 @@ export const mathCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Average Calculator: Mean of a List of Numbers',
-      description: 'Free average (mean) calculator. Get the arithmetic mean, count, and sum of any list of numbers â€” supports decimals and negative values.',
+      description: 'Free average (mean) calculator. Get the arithmetic mean, count, and sum of any list of numbers — supports decimals and negative values.',
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'factorial-calculator',
@@ -361,11 +361,11 @@ export const mathCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Factorial Calculator: Compute n! Up to Large Numbers',
-      description: 'Free factorial calculator. Compute n! for any non-negative integer â€” useful for combinatorics, permutations, and probability problems.',
+      description: 'Free factorial calculator. Compute n! for any non-negative integer — useful for combinatorics, permutations, and probability problems.',
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'prime-checker',
@@ -393,7 +393,7 @@ export const mathCalculators: CalculatorConfig[] = [
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'power-calculator',
@@ -411,11 +411,11 @@ export const mathCalculators: CalculatorConfig[] = [
     calculate: (i) => ({ result: Math.pow(Number(i.base), Number(i.exponent)) }),
     seo: {
       title: 'Power Calculator: Compute base^exponent',
-      description: 'Free exponent calculator. Compute base raised to any power â€” supports negative and fractional exponents, integer and decimal bases.',
+      description: 'Free exponent calculator. Compute base raised to any power — supports negative and fractional exponents, integer and decimal bases.',
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'square-root-calculator',
@@ -436,10 +436,10 @@ export const mathCalculators: CalculatorConfig[] = [
     }),
     seo: {
       title: 'Square Root Calculator: âˆš, Â³âˆš, and nth Roots',
-      description: 'Free square and cube root calculator. Find âˆšx and Â³âˆšx for any positive number â€” instant decimal results, useful for algebra and geometry.',
+      description: 'Free square and cube root calculator. Find âˆšx and Â³âˆšx for any positive number — instant decimal results, useful for algebra and geometry.',
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
 ];

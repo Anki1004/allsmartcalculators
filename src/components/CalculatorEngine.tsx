@@ -9,6 +9,7 @@ import ResultDisplay from './ResultDisplay';
 import GlassCard from './GlassCard';
 import { Save, Share2, FileDown, Check, Sparkles } from 'lucide-react';
 import { useCurrency } from '@/lib/currency-context';
+import { localeForCurrency } from '@/lib/utils';
 import CalculatorIcon from './CalculatorIcon';
 
 // Defer recharts (~80KB gz) until the chart actually renders post-interaction.
@@ -23,7 +24,8 @@ interface CalculatorEngineProps {
 
 export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
   const config = getCalculatorBySlug(slug);
-  const { symbol } = useCurrency();
+  const { symbol, currency } = useCurrency();
+  const locale = localeForCurrency(currency);
 
   // Calculator math is currency-agnostic — switching currency only swaps the
   // symbol on inputs/outputs. Whatever number the user enters is treated as
@@ -124,7 +126,7 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
         const val = cvtVal(out.prefix, raw);
         const prefix = cvtPfx(out.prefix) ?? '';
         const suffix = out.suffix ?? '';
-        return `${out.label}: ${prefix}${typeof val === 'number' ? val.toLocaleString() : val}${suffix}`;
+        return `${out.label}: ${prefix}${typeof val === 'number' ? val.toLocaleString(locale) : val}${suffix}`;
       }),
       '',
       'allsmartcalculators.com',
@@ -200,6 +202,7 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
                 suffix={input.suffix}
                 color={input.color ?? 'primary'}
                 formatValue={input.formatValue}
+                locale={locale}
               />
             );
           })}
@@ -223,6 +226,7 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
                     decimals={primaryOutput.decimals ?? 2}
                     size="xl"
                     color="white"
+                    locale={locale}
                   />
                 </div>
 
@@ -239,6 +243,7 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
                         decimals={out.decimals ?? 2}
                         size="sm"
                         color={out.color ?? 'white'}
+                        locale={locale}
                       />
                     ))}
                   </div>
