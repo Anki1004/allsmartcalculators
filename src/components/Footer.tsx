@@ -6,9 +6,9 @@ export default function Footer() {
   return (
     <footer className="relative z-10 mt-12 sm:mt-16 md:mt-20 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-8 py-8 sm:py-10 md:py-12">
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8 mb-8 sm:mb-10">
+        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-6 sm:gap-8 mb-8 sm:mb-10">
           {/* Brand */}
-          <div className="col-span-2 sm:col-span-3 md:col-span-2">
+          <div className="col-span-2 sm:col-span-4 md:col-span-2">
             <Link href="/" aria-label="AllSmartCalculators home" className="inline-block mb-4">
               {/* Light theme */}
               <Image
@@ -48,12 +48,22 @@ export default function Footer() {
             {
               title: 'Explore',
               links: [
-                { label: 'Trending',    href: '/trending' },
-                { label: 'Categories',  href: '/categories' },
-                { label: 'Blog',        href: '/blog' },
-                { label: 'About',       href: '/about' },
-                { label: 'Methodology', href: '/methodology' },
-                { label: 'Contact',     href: '/contact' },
+                { label: 'Trending',         href: '/trending' },
+                { label: 'Categories',       href: '/categories' },
+                { label: 'Blog',             href: '/blog' },
+                { label: 'HTML sitemap',     href: '/sitemap.html' },
+                { label: 'FAQ',              href: '/faq' },
+                { label: 'Contact',          href: '/contact' },
+              ],
+            },
+            {
+              title: 'About',
+              links: [
+                { label: 'About',            href: '/about' },
+                { label: 'Author',           href: '/author/ankit-gupta' },
+                { label: 'Methodology',      href: '/methodology' },
+                { label: 'Editorial policy', href: '/editorial-policy' },
+                { label: 'Corrections',      href: '/corrections' },
               ],
             },
             {
@@ -62,7 +72,7 @@ export default function Footer() {
                 { label: 'Privacy Policy',   href: '/privacy' },
                 { label: 'Terms of Service', href: '/terms' },
                 { label: 'Disclaimer',       href: '/disclaimer' },
-                { label: 'Author',           href: '/author/ankit-gupta' },
+                { label: 'Accessibility',    href: '/accessibility-statement' },
               ],
             },
           ].map((col) => (

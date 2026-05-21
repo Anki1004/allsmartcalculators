@@ -3,6 +3,7 @@ import Link from 'next/link';
 import GlassCard from '@/components/GlassCard';
 import CmsRichText from '@/components/CmsRichText';
 import { getMethodologyPage } from '@/lib/strapi';
+import { lastUpdatedLabel } from '@/lib/policy-dates';
 import {
   ChevronRight,
   BookCheck,
@@ -134,7 +135,7 @@ export default async function MethodologyPage() {
             tell you when we can&apos;t.
           </p>
           <p className="text-[11px] sm:text-xs text-on-surface-variant/50 mt-3 sm:mt-4 font-mono">
-            Last updated April 26, 2026
+            {lastUpdatedLabel('methodology')}
           </p>
         </div>
 

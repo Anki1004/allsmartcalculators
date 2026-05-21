@@ -53,7 +53,6 @@ export interface CalculatorConfig {
   description: string;
   longDescription?: string;
   trending?: boolean;
-  usageCount?: number;
   inputs: CalculatorInput[];
   outputs: CalculatorOutput[];
   calculate: (inputs: Record<string, number | string>) => Record<string, number | string>;

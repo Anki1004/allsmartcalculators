@@ -6,9 +6,8 @@ export const healthCalculators: CalculatorConfig[] = [
     name: 'BMI Calculator',
     category: 'health',
     icon: 'Activity',
-    description: 'Calculate your Body Mass Index in seconds — with WHO categories and Asian-specific cutoffs.',
+    description: 'Calculate your Body Mass Index in seconds â€” with WHO categories and Asian-specific cutoffs.',
     trending: true,
-    usageCount: 298000,
     inputs: [
       { key: 'weight', label: 'Weight', type: 'slider', min: 20, max: 300, step: 0.5, default: 70, suffix: 'kg', color: 'primary' },
       { key: 'height', label: 'Height', type: 'slider', min: 100, max: 250, step: 1, default: 170, suffix: 'cm', color: 'secondary' },
@@ -30,21 +29,20 @@ export const healthCalculators: CalculatorConfig[] = [
       return { bmi, category, idealWeight: `${idealMin.toFixed(1)} - ${idealMax.toFixed(1)}` };
     },
     seo: {
-      title: 'BMI Calculator — Body Mass Index for Adults (with Asian Cutoffs)',
+      title: 'BMI Calculator â€” Body Mass Index for Adults (with Asian Cutoffs)',
       description:
         'Free BMI calculator with WHO categories and Asian-specific cutoffs for Indian adults. See your ideal weight range, healthy BMI, and what the result really means.',
       applicationCategory: 'HealthApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'bmr-calculator',
     name: 'BMR Calculator',
     category: 'health',
     icon: 'Flame',
-    description: 'Calculate your Basal Metabolic Rate — the calories your body burns at complete rest.',
-    usageCount: 87000,
+    description: 'Calculate your Basal Metabolic Rate â€” the calories your body burns at complete rest.',
     inputs: [
       { key: 'weight', label: 'Weight', type: 'slider', min: 30, max: 200, step: 0.5, default: 70, suffix: 'kg', color: 'primary' },
       { key: 'height', label: 'Height', type: 'slider', min: 120, max: 220, step: 1, default: 170, suffix: 'cm', color: 'secondary' },
@@ -60,22 +58,21 @@ export const healthCalculators: CalculatorConfig[] = [
       return { bmr, sedentary: bmr * 1.2, active: bmr * 1.55 };
     },
     seo: {
-      title: 'BMR Calculator — Basal Metabolic Rate (Mifflin-St Jeor)',
+      title: 'BMR Calculator â€” Basal Metabolic Rate (Mifflin-St Jeor)',
       description:
         'Free BMR calculator using the Mifflin-St Jeor equation. See your basal metabolic rate, TDEE for 5 activity levels, and how many calories your body burns at rest.',
       applicationCategory: 'HealthApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'calorie-calculator',
     name: 'Calorie Calculator',
     category: 'health',
     icon: 'Apple',
-    description: 'Daily calorie needs to maintain, lose, or gain weight — based on your BMR and activity level.',
+    description: 'Daily calorie needs to maintain, lose, or gain weight â€” based on your BMR and activity level.',
     trending: true,
-    usageCount: 145000,
     inputs: [
       { key: 'weight', label: 'Weight', type: 'slider', min: 30, max: 200, step: 0.5, default: 70, suffix: 'kg', color: 'primary' },
       { key: 'height', label: 'Height', type: 'slider', min: 120, max: 220, step: 1, default: 170, suffix: 'cm', color: 'secondary' },
@@ -94,13 +91,13 @@ export const healthCalculators: CalculatorConfig[] = [
       return { maintain, lose: maintain - 500, gain: maintain + 500 };
     },
     seo: {
-      title: 'Calorie Calculator — Daily Calories to Lose, Gain or Maintain',
+      title: 'Calorie Calculator â€” Daily Calories to Lose, Gain or Maintain',
       description:
-        'Free daily calorie calculator. See your TDEE, weight-loss target (TDEE − 500), and weight-gain target. Uses Mifflin-St Jeor BMR with 5 activity levels.',
+        'Free daily calorie calculator. See your TDEE, weight-loss target (TDEE âˆ’ 500), and weight-gain target. Uses Mifflin-St Jeor BMR with 5 activity levels.',
       applicationCategory: 'HealthApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'macro-calculator',
@@ -108,7 +105,6 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'PieChart',
     description: 'Calculate protein, carbs, and fat ratios.',
-    usageCount: 54000,
     chartType: 'donut',
     inputs: [
       { key: 'calories', label: 'Daily Calories', type: 'slider', min: 1000, max: 5000, step: 50, default: 2200, suffix: 'cal', color: 'primary' },
@@ -134,7 +130,7 @@ export const healthCalculators: CalculatorConfig[] = [
       applicationCategory: 'HealthApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'body-fat-calculator',
@@ -142,7 +138,6 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Heart',
     description: 'Estimate body fat percentage.',
-    usageCount: 42000,
     inputs: [
       { key: 'waist', label: 'Waist', type: 'slider', min: 50, max: 200, step: 0.5, default: 85, suffix: 'cm', color: 'primary' },
       { key: 'neck', label: 'Neck', type: 'slider', min: 25, max: 60, step: 0.5, default: 38, suffix: 'cm', color: 'secondary' },
@@ -166,11 +161,11 @@ export const healthCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Body Fat Calculator: U.S. Navy Method',
-      description: 'Free body fat percentage calculator using the U.S. Navy circumference method. Just waist, neck, and height — no calipers needed. Includes fitness band.',
+      description: 'Free body fat percentage calculator using the U.S. Navy circumference method. Just waist, neck, and height â€” no calipers needed. Includes fitness band.',
       applicationCategory: 'HealthApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'ideal-weight-calculator',
@@ -178,7 +173,6 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Scale',
     description: 'Find your ideal weight based on height.',
-    usageCount: 38000,
     inputs: [
       { key: 'height', label: 'Height', type: 'slider', min: 120, max: 220, step: 1, default: 170, suffix: 'cm', color: 'primary' },
     ],
@@ -198,11 +192,11 @@ export const healthCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Ideal Weight Calculator: Devine, Robinson & Miller',
-      description: 'Free ideal-weight calculator. Compare three classical formulas (Devine, Robinson, Miller) for healthy adult weight given height — useful for fitness goals.',
+      description: 'Free ideal-weight calculator. Compare three classical formulas (Devine, Robinson, Miller) for healthy adult weight given height â€” useful for fitness goals.',
       applicationCategory: 'HealthApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'water-intake-calculator',
@@ -211,7 +205,6 @@ export const healthCalculators: CalculatorConfig[] = [
     icon: 'Droplet',
     description: 'Daily water needs based on weight & activity.',
     trending: true,
-    usageCount: 112000,
     inputs: [
       { key: 'weight', label: 'Weight', type: 'slider', min: 30, max: 200, step: 0.5, default: 70, suffix: 'kg', color: 'primary' },
       { key: 'activity', label: 'Exercise Minutes', type: 'slider', min: 0, max: 300, step: 15, default: 30, suffix: 'min', color: 'secondary' },
@@ -227,11 +220,11 @@ export const healthCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Water Intake Calculator: Daily Hydration Goal',
-      description: 'Free water intake calculator. Get your daily hydration target in litres, glasses, and ounces — adjusted for body weight and exercise minutes.',
+      description: 'Free water intake calculator. Get your daily hydration target in litres, glasses, and ounces â€” adjusted for body weight and exercise minutes.',
       applicationCategory: 'HealthApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'pregnancy-due-date',
@@ -239,7 +232,6 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Baby',
     description: 'Estimate your baby\'s due date.',
-    usageCount: 76000,
     inputs: [
       { key: 'cycleDay', label: 'Days Since Last Period', type: 'slider', min: 0, max: 280, step: 1, default: 60, suffix: 'days', color: 'primary' },
     ],
@@ -264,7 +256,7 @@ export const healthCalculators: CalculatorConfig[] = [
       applicationCategory: 'HealthApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'ovulation-calculator',
@@ -272,7 +264,6 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Heart',
     description: 'Find your fertile window.',
-    usageCount: 65000,
     inputs: [
       { key: 'cycleLength', label: 'Cycle Length', type: 'slider', min: 21, max: 45, step: 1, default: 28, suffix: 'days', color: 'primary' },
       { key: 'lastPeriodDay', label: 'Days Since Period', type: 'slider', min: 0, max: 45, step: 1, default: 5, suffix: 'days', color: 'secondary' },
@@ -296,7 +287,7 @@ export const healthCalculators: CalculatorConfig[] = [
       applicationCategory: 'HealthApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'heart-rate-zone',
@@ -304,7 +295,6 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Heart',
     description: 'Training zones based on age.',
-    usageCount: 34000,
     inputs: [
       { key: 'age', label: 'Age', type: 'slider', min: 10, max: 100, step: 1, default: 30, suffix: 'yrs', color: 'primary' },
     ],
@@ -323,11 +313,11 @@ export const healthCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Heart Rate Zone Calculator: Max HR, Fat-Burn, Cardio',
-      description: 'Free heart rate zone calculator. Get your max heart rate and the BPM ranges for fat-burn (60–70%) and cardio (70–85%) training zones — by age.',
+      description: 'Free heart rate zone calculator. Get your max heart rate and the BPM ranges for fat-burn (60â€“70%) and cardio (70â€“85%) training zones â€” by age.',
       applicationCategory: 'HealthApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'vo2-max-calculator',
@@ -335,7 +325,6 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Zap',
     description: 'Estimate aerobic fitness capacity.',
-    usageCount: 21000,
     inputs: [
       { key: 'distance', label: '12-Min Run Distance', type: 'slider', min: 500, max: 5000, step: 50, default: 2400, suffix: 'm', color: 'primary' },
     ],
@@ -358,7 +347,7 @@ export const healthCalculators: CalculatorConfig[] = [
       applicationCategory: 'HealthApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'pace-calculator',
@@ -366,7 +355,6 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Timer',
     description: 'Calculate running pace per km/mile.',
-    usageCount: 48000,
     inputs: [
       { key: 'distance', label: 'Distance', type: 'slider', min: 0.5, max: 100, step: 0.5, default: 10, suffix: 'km', color: 'primary' },
       { key: 'minutes', label: 'Minutes', type: 'slider', min: 1, max: 600, step: 1, default: 50, suffix: 'min', color: 'secondary' },
@@ -390,7 +378,7 @@ export const healthCalculators: CalculatorConfig[] = [
       applicationCategory: 'HealthApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'one-rep-max',
@@ -398,7 +386,6 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Dumbbell',
     description: 'Calculate your 1RM for any lift.',
-    usageCount: 39000,
     inputs: [
       { key: 'weight', label: 'Weight Lifted', type: 'slider', min: 10, max: 500, step: 1, default: 80, suffix: 'kg', color: 'primary' },
       { key: 'reps', label: 'Reps Performed', type: 'slider', min: 1, max: 20, step: 1, default: 8, suffix: 'reps', color: 'secondary' },
@@ -418,7 +405,7 @@ export const healthCalculators: CalculatorConfig[] = [
       applicationCategory: 'HealthApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'sleep-cycle-calculator',
@@ -426,7 +413,6 @@ export const healthCalculators: CalculatorConfig[] = [
     category: 'health',
     icon: 'Moon',
     description: 'Best bedtime based on wake time.',
-    usageCount: 58000,
     inputs: [
       { key: 'wakeHour', label: 'Wake Hour', type: 'slider', min: 0, max: 23, step: 1, default: 7, suffix: ':00', color: 'primary' },
       { key: 'fallAsleepMin', label: 'Minutes to Fall Asleep', type: 'slider', min: 5, max: 60, step: 5, default: 15, suffix: 'min', color: 'secondary' },
@@ -454,16 +440,15 @@ export const healthCalculators: CalculatorConfig[] = [
       applicationCategory: 'HealthApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'age-calculator',
     name: 'Age Calculator',
     category: 'health',
     icon: 'Cake',
-    description: 'Calculate your exact age in years, total months, and total days from any date of birth — accurate down to the day.',
+    description: 'Calculate your exact age in years, total months, and total days from any date of birth â€” accurate down to the day.',
     trending: true,
-    usageCount: 189000,
     inputs: [
       { key: 'birthYear', label: 'Birth Year', type: 'slider', min: 1900, max: 2025, step: 1, default: 1995, color: 'primary' },
       { key: 'birthMonth', label: 'Birth Month', type: 'slider', min: 1, max: 12, step: 1, default: 6, color: 'secondary' },
@@ -484,10 +469,10 @@ export const healthCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Age Calculator: Exact Years, Months & Days',
-      description: 'Free age calculator. Get your exact age in years, total months, and total days from your date of birth — accurate down to the day.',
+      description: 'Free age calculator. Get your exact age in years, total months, and total days from your date of birth â€” accurate down to the day.',
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
 ];

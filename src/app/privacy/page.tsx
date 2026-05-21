@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import GlassCard from '@/components/GlassCard';
 import CmsRichText from '@/components/CmsRichText';
 import { getPrivacyPage } from '@/lib/strapi';
+import { lastUpdatedLabel } from '@/lib/policy-dates';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 
@@ -57,7 +58,7 @@ export default async function PrivacyPage() {
           <p className="text-sm sm:text-base md:text-lg text-on-surface-variant leading-relaxed max-w-2xl">
             Here's exactly what we do (and don't do) with any information you might share with us. Written in plain language, because privacy policies shouldn't require a law degree to understand.
           </p>
-          <p className="text-[11px] sm:text-xs text-on-surface-variant/50 mt-3 sm:mt-4 font-mono">Last updated May 20, 2026</p>
+          <p className="text-[11px] sm:text-xs text-on-surface-variant/50 mt-3 sm:mt-4 font-mono">{lastUpdatedLabel('privacy')}</p>
         </div>
 
         {cms?.body ? (
@@ -186,6 +187,45 @@ export default async function PrivacyPage() {
             <p className="text-sm text-on-surface-variant leading-relaxed">
               To exercise any of these rights, email us through the contact page. We don't ask for extensive verification — just tell us what you'd like and we'll handle it.
             </p>
+          </GlassCard>
+
+          {/* Processor list */}
+          <GlassCard className="p-5 sm:p-6 md:p-8">
+            <h2 className="font-headline font-bold text-lg text-on-surface mb-3">Specific third-party processors</h2>
+            <p className="text-sm text-on-surface-variant leading-relaxed mb-4">
+              These are the named services your data may pass through when you use AllSmartCalculators, and what each one is used for. Each links to that provider's own privacy policy.
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="text-left text-on-surface-variant/70 border-b border-white/10">
+                    <th className="py-2 pr-3 font-semibold">Processor</th>
+                    <th className="py-2 pr-3 font-semibold">Purpose</th>
+                    <th className="py-2 font-semibold">Policy</th>
+                  </tr>
+                </thead>
+                <tbody className="text-on-surface-variant">
+                  {[
+                    { name: 'Google AdSense', purpose: 'Serves the ads on the site; gated by Consent Mode v2.', url: 'https://policies.google.com/technologies/ads' },
+                    { name: 'Google Analytics 4', purpose: 'Aggregate page-view and behaviour analytics; gated by Consent Mode v2.', url: 'https://policies.google.com/privacy' },
+                    { name: 'Google Fonts', purpose: 'Serves the typography assets used across the site.', url: 'https://policies.google.com/privacy' },
+                    { name: 'Vercel', purpose: 'Hosts the frontend; standard server logs include IP and user agent.', url: 'https://vercel.com/legal/privacy-policy' },
+                    { name: 'Render', purpose: 'Hosts the Strapi CMS that stores the editorial content.', url: 'https://render.com/privacy' },
+                    { name: 'Resend', purpose: 'Delivers contact-form messages to our inbox.', url: 'https://resend.com/legal/privacy-policy' },
+                  ].map((p) => (
+                    <tr key={p.name} className="border-b border-white/5 last:border-b-0">
+                      <td className="py-2 pr-3 font-semibold text-on-surface align-top">{p.name}</td>
+                      <td className="py-2 pr-3 align-top">{p.purpose}</td>
+                      <td className="py-2 align-top">
+                        <a href={p.url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                          Privacy policy
+                        </a>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </GlassCard>
 
           {/* Children */}

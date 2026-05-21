@@ -3,6 +3,7 @@ import Link from 'next/link';
 import GlassCard from '@/components/GlassCard';
 import CmsRichText from '@/components/CmsRichText';
 import { getTermsPage } from '@/lib/strapi';
+import { lastUpdatedLabel } from '@/lib/policy-dates';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 
@@ -58,7 +59,7 @@ export default async function TermsPage() {
           <p className="text-sm sm:text-base md:text-lg text-on-surface-variant leading-relaxed max-w-2xl">
             These aren't written to protect us from you. They're written to be honest about what AllSmartCalculators is — and what it isn't. Plain language, no gotchas.
           </p>
-          <p className="text-[11px] sm:text-xs text-on-surface-variant/50 mt-3 sm:mt-4 font-mono">Last updated May 20, 2026</p>
+          <p className="text-[11px] sm:text-xs text-on-surface-variant/50 mt-3 sm:mt-4 font-mono">{lastUpdatedLabel('terms')}</p>
         </div>
 
         {cms?.body ? (

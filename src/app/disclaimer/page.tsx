@@ -3,6 +3,7 @@ import Link from 'next/link';
 import GlassCard from '@/components/GlassCard';
 import CmsRichText from '@/components/CmsRichText';
 import { getDisclaimerPage } from '@/lib/strapi';
+import { lastUpdatedLabel } from '@/lib/policy-dates';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 
@@ -58,7 +59,7 @@ export default async function DisclaimerPage() {
           <p className="text-sm sm:text-base md:text-lg text-on-surface-variant leading-relaxed max-w-2xl">
             Calculators are powerful thinking tools. Here's what ours can — and can't — do for you.
           </p>
-          <p className="text-[11px] sm:text-xs text-on-surface-variant/50 mt-3 sm:mt-4 font-mono">Last updated May 20, 2026</p>
+          <p className="text-[11px] sm:text-xs text-on-surface-variant/50 mt-3 sm:mt-4 font-mono">{lastUpdatedLabel('disclaimer')}</p>
         </div>
 
         {cms?.body ? (

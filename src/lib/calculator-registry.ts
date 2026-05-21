@@ -30,13 +30,13 @@ export function getCalculatorsByCategory(category: CalculatorCategory): Calculat
 export function getTrendingCalculators(limit = 10): CalculatorConfig[] {
   return [...allCalculators]
     .filter((c) => c.trending)
-    .sort((a, b) => (b.usageCount ?? 0) - (a.usageCount ?? 0))
+    .sort((a, b) => a.name.localeCompare(b.name))
     .slice(0, limit);
 }
 
 export function getPopularCalculators(limit = 10): CalculatorConfig[] {
   return [...allCalculators]
-    .sort((a, b) => (b.usageCount ?? 0) - (a.usageCount ?? 0))
+    .sort((a, b) => a.name.localeCompare(b.name))
     .slice(0, limit);
 }
 

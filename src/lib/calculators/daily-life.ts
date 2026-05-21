@@ -8,7 +8,6 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     icon: 'Fuel',
     description: 'Trip fuel cost from distance and MPG.',
     trending: true,
-    usageCount: 87000,
     inputs: [
       { key: 'distance', label: 'Distance', type: 'slider', min: 1, max: 10000, step: 1, default: 500, suffix: 'km', color: 'primary' },
       { key: 'efficiency', label: 'Fuel Efficiency', type: 'slider', min: 1, max: 30, step: 0.1, default: 12, suffix: 'km/L', color: 'secondary' },
@@ -30,7 +29,7 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'travel-time-calculator',
@@ -38,7 +37,6 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     category: 'daily-life',
     icon: 'Clock',
     description: 'Estimate travel time from distance & speed.',
-    usageCount: 54000,
     inputs: [
       { key: 'distance', label: 'Distance', type: 'slider', min: 1, max: 10000, step: 1, default: 500, suffix: 'km', color: 'primary' },
       { key: 'speed', label: 'Avg Speed', type: 'slider', min: 10, max: 200, step: 1, default: 80, suffix: 'km/h', color: 'secondary' },
@@ -55,11 +53,11 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Travel Time Calculator: Drive Time from Distance',
-      description: 'Free travel time calculator. Estimate trip duration in hours and minutes from any distance and average speed — useful for road trip planning.',
+      description: 'Free travel time calculator. Estimate trip duration in hours and minutes from any distance and average speed â€” useful for road trip planning.',
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'date-difference',
@@ -67,7 +65,6 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     category: 'daily-life',
     icon: 'Calendar',
     description: 'Days between two dates.',
-    usageCount: 73000,
     inputs: [
       { key: 'daysAgo1', label: 'Days Ago (Start)', type: 'slider', min: 0, max: 10000, step: 1, default: 365, suffix: 'days', color: 'primary' },
       { key: 'daysAgo2', label: 'Days Ago (End)', type: 'slider', min: 0, max: 10000, step: 1, default: 0, suffix: 'days', color: 'secondary' },
@@ -83,11 +80,11 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Date Difference Calculator: Days Between Two Dates',
-      description: 'Free date difference calculator. Get the exact number of days, weeks, and months between any two dates — handles leap years correctly.',
+      description: 'Free date difference calculator. Get the exact number of days, weeks, and months between any two dates â€” handles leap years correctly.',
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'split-bill-calculator',
@@ -95,7 +92,6 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     category: 'daily-life',
     icon: 'Users',
     description: 'Split expenses fairly between people.',
-    usageCount: 98000,
     inputs: [
       { key: 'total', label: 'Total Amount', type: 'slider', min: 1, max: 10000, step: 1, default: 250, prefix: '$', color: 'primary' },
       { key: 'people', label: 'Number of People', type: 'slider', min: 1, max: 50, step: 1, default: 4, color: 'secondary' },
@@ -113,11 +109,11 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Bill Splitter: Fairly Split Group Expenses',
-      description: 'Free bill splitter. Divide a total bill by any number of people, with optional tip and tax — perfect for restaurants, trips, and shared expenses.',
+      description: 'Free bill splitter. Divide a total bill by any number of people, with optional tip and tax â€” perfect for restaurants, trips, and shared expenses.',
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'cooking-conversion',
@@ -125,7 +121,6 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     category: 'daily-life',
     icon: 'ChefHat',
     description: 'Convert cups, tablespoons, grams.',
-    usageCount: 45000,
     inputs: [
       { key: 'cups', label: 'Cups', type: 'slider', min: 0, max: 20, step: 0.25, default: 1, suffix: 'cups', color: 'primary' },
     ],
@@ -141,11 +136,11 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Cooking Conversion Calculator: Cups, Tbsp, Grams',
-      description: 'Free cooking measurement converter. Translate between cups, tablespoons, teaspoons, ounces, and grams — for recipes, baking, and meal prep.',
+      description: 'Free cooking measurement converter. Translate between cups, tablespoons, teaspoons, ounces, and grams â€” for recipes, baking, and meal prep.',
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'paint-calculator',
@@ -153,7 +148,6 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     category: 'daily-life',
     icon: 'Palette',
     description: 'Gallons of paint needed for a room.',
-    usageCount: 29000,
     inputs: [
       { key: 'length', label: 'Room Length', type: 'slider', min: 1, max: 50, step: 0.5, default: 5, suffix: 'm', color: 'primary' },
       { key: 'width', label: 'Room Width', type: 'slider', min: 1, max: 50, step: 0.5, default: 4, suffix: 'm', color: 'secondary' },
@@ -161,14 +155,14 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
       { key: 'coats', label: 'Number of Coats', type: 'slider', min: 1, max: 4, step: 1, default: 2 },
     ],
     outputs: [
-      { key: 'area', label: 'Total Wall Area', suffix: 'm²', decimals: 1, primary: true },
+      { key: 'area', label: 'Total Wall Area', suffix: 'mÂ²', decimals: 1, primary: true },
       { key: 'liters', label: 'Paint Needed', suffix: 'L', decimals: 1, color: 'secondary' },
       { key: 'gallons', label: 'In Gallons', suffix: 'gal', decimals: 1, color: 'tertiary' },
     ],
     calculate: (i) => {
       const perimeter = 2 * (Number(i.length) + Number(i.width));
       const area = perimeter * Number(i.height) * Number(i.coats);
-      const liters = area / 10; // ~10 m² per liter
+      const liters = area / 10; // ~10 mÂ² per liter
       return { area, liters, gallons: liters * 0.264 };
     },
     seo: {
@@ -177,7 +171,7 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'carpet-tile-calculator',
@@ -185,15 +179,14 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     category: 'daily-life',
     icon: 'Square',
     description: 'Flooring area and boxes needed.',
-    usageCount: 18000,
     inputs: [
       { key: 'length', label: 'Room Length', type: 'slider', min: 0.1, max: 50, step: 0.1, default: 5, suffix: 'm', color: 'primary' },
       { key: 'width', label: 'Room Width', type: 'slider', min: 0.1, max: 50, step: 0.1, default: 4, suffix: 'm', color: 'secondary' },
-      { key: 'perBox', label: 'Coverage per Box', type: 'slider', min: 0.5, max: 10, step: 0.1, default: 2, suffix: 'm²/box', color: 'tertiary' },
+      { key: 'perBox', label: 'Coverage per Box', type: 'slider', min: 0.5, max: 10, step: 0.1, default: 2, suffix: 'mÂ²/box', color: 'tertiary' },
       { key: 'waste', label: 'Waste %', type: 'slider', min: 5, max: 25, step: 1, default: 10, suffix: '%' },
     ],
     outputs: [
-      { key: 'totalArea', label: 'Total Area', suffix: 'm²', decimals: 2, primary: true },
+      { key: 'totalArea', label: 'Total Area', suffix: 'mÂ²', decimals: 2, primary: true },
       { key: 'boxes', label: 'Boxes Needed', decimals: 0, color: 'secondary' },
     ],
     calculate: (i) => {
@@ -207,7 +200,7 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'countdown-calculator',
@@ -215,7 +208,6 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     category: 'daily-life',
     icon: 'Hourglass',
     description: 'Time remaining until an event.',
-    usageCount: 33000,
     inputs: [
       { key: 'daysAway', label: 'Days Until Event', type: 'slider', min: 0, max: 3650, step: 1, default: 100, suffix: 'days', color: 'primary' },
     ],
@@ -230,11 +222,11 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Countdown Calculator: Days, Hours, Minutes Until Event',
-      description: 'Free countdown calculator. Get the precise time remaining until any future date — days, hours, minutes, and seconds. Useful for events and deadlines.',
+      description: 'Free countdown calculator. Get the precise time remaining until any future date â€” days, hours, minutes, and seconds. Useful for events and deadlines.',
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'gift-calculator',
@@ -242,7 +234,6 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     category: 'daily-life',
     icon: 'Gift',
     description: 'Budget and split gift costs.',
-    usageCount: 12000,
     inputs: [
       { key: 'budget', label: 'Total Budget', type: 'slider', min: 10, max: 10000, step: 10, default: 500, prefix: '$', color: 'primary' },
       { key: 'people', label: 'People to Gift', type: 'slider', min: 1, max: 50, step: 1, default: 8, color: 'secondary' },
@@ -253,11 +244,11 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     calculate: (i) => ({ perPerson: Number(i.budget) / Number(i.people) }),
     seo: {
       title: 'Gift Calculator: Per-Person Gift Budget',
-      description: 'Free gift budget calculator. Set a total gift budget and split equally among recipients, with optional per-person variance — for office gifting and group buys.',
+      description: 'Free gift budget calculator. Set a total gift budget and split equally among recipients, with optional per-person variance â€” for office gifting and group buys.',
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'tip-calculator-daily',
@@ -265,7 +256,6 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     category: 'daily-life',
     icon: 'Coffee',
     description: 'Fast tip calculation for any bill.',
-    usageCount: 142000,
     inputs: [
       { key: 'bill', label: 'Bill Amount', type: 'slider', min: 1, max: 1000, step: 0.5, default: 50, prefix: '$', color: 'primary' },
       { key: 'service', label: 'Service Quality (1-5)', type: 'slider', min: 1, max: 5, step: 1, default: 4, color: 'secondary' },
@@ -283,10 +273,10 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Quick Tip Calculator: Tip & Total in Seconds',
-      description: 'Free quick tip calculator. Drop in a bill and tip percentage to get the tip amount and final total instantly — no extras, just the math.',
+      description: 'Free quick tip calculator. Drop in a bill and tip percentage to get the tip amount and final total instantly â€” no extras, just the math.',
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
 ];

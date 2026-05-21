@@ -6,9 +6,8 @@ export const businessCalculators: CalculatorConfig[] = [
     name: 'ROI Calculator',
     category: 'business',
     icon: 'TrendingUp',
-    description: 'Compute Return on Investment as a percentage from initial cost and gain — for marketing campaigns, real estate, or any business project.',
+    description: 'Compute Return on Investment as a percentage from initial cost and gain â€” for marketing campaigns, real estate, or any business project.',
     trending: true,
-    usageCount: 98000,
     inputs: [
       { key: 'gain', label: 'Investment Gain', type: 'slider', min: 0, max: 1000000, step: 100, default: 25000, prefix: '$', color: 'primary' },
       { key: 'cost', label: 'Investment Cost', type: 'slider', min: 1, max: 1000000, step: 100, default: 100000, prefix: '$', color: 'secondary' },
@@ -23,11 +22,11 @@ export const businessCalculators: CalculatorConfig[] = [
     }),
     seo: {
       title: 'ROI Calculator: Return on Investment Percentage',
-      description: 'Free ROI calculator. Compute return on investment as a percentage from initial cost and final value — works for marketing, real estate, or business projects.',
+      description: 'Free ROI calculator. Compute return on investment as a percentage from initial cost and final value â€” works for marketing, real estate, or business projects.',
       applicationCategory: 'BusinessApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'break-even-calculator',
@@ -35,7 +34,6 @@ export const businessCalculators: CalculatorConfig[] = [
     category: 'business',
     icon: 'Target',
     description: 'Units to sell to cover costs.',
-    usageCount: 42000,
     inputs: [
       { key: 'fixedCosts', label: 'Fixed Costs', type: 'slider', min: 100, max: 1000000, step: 100, default: 50000, prefix: '$', color: 'primary' },
       { key: 'price', label: 'Price per Unit', type: 'slider', min: 1, max: 10000, step: 1, default: 50, prefix: '$', color: 'secondary' },
@@ -57,7 +55,7 @@ export const businessCalculators: CalculatorConfig[] = [
       applicationCategory: 'BusinessApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'profit-margin-calculator',
@@ -66,7 +64,6 @@ export const businessCalculators: CalculatorConfig[] = [
     icon: 'Percent',
     description: 'Gross and net profit margins.',
     trending: true,
-    usageCount: 76000,
     inputs: [
       { key: 'revenue', label: 'Revenue', type: 'slider', min: 100, max: 10000000, step: 100, default: 500000, prefix: '$', color: 'primary' },
       { key: 'cogs', label: 'Cost of Goods Sold', type: 'slider', min: 0, max: 10000000, step: 100, default: 200000, prefix: '$', color: 'secondary' },
@@ -89,11 +86,11 @@ export const businessCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Profit Margin Calculator: Gross & Net %',
-      description: 'Free profit margin calculator. Compute gross margin, net margin, and absolute profit from revenue, COGS, and operating expenses — for any business model.',
+      description: 'Free profit margin calculator. Compute gross margin, net margin, and absolute profit from revenue, COGS, and operating expenses â€” for any business model.',
       applicationCategory: 'BusinessApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'markup-calculator',
@@ -101,7 +98,6 @@ export const businessCalculators: CalculatorConfig[] = [
     category: 'business',
     icon: 'TrendingUp',
     description: 'Selling price from cost and markup.',
-    usageCount: 38000,
     inputs: [
       { key: 'cost', label: 'Cost', type: 'slider', min: 0.01, max: 10000, step: 0.01, default: 50, prefix: '$', color: 'primary' },
       { key: 'markup', label: 'Markup %', type: 'slider', min: 0, max: 500, step: 1, default: 40, suffix: '%', color: 'secondary' },
@@ -116,20 +112,19 @@ export const businessCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Markup Calculator: Selling Price from Cost & Markup %',
-      description: 'Free markup calculator. Compute the selling price required to hit a target markup percentage on any cost basis — and the resulting profit margin.',
+      description: 'Free markup calculator. Compute the selling price required to hit a target markup percentage on any cost basis â€” and the resulting profit margin.',
       applicationCategory: 'BusinessApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'discount-calculator',
     name: 'Discount Calculator',
     category: 'business',
     icon: 'Tag',
-    description: 'Get the final price and amount saved after any percentage discount — also handles stacked discounts and reverse-calculates the original price.',
+    description: 'Get the final price and amount saved after any percentage discount â€” also handles stacked discounts and reverse-calculates the original price.',
     trending: true,
-    usageCount: 156000,
     inputs: [
       { key: 'original', label: 'Original Price', type: 'slider', min: 0.01, max: 10000, step: 0.01, default: 100, prefix: '$', color: 'primary' },
       { key: 'discount', label: 'Discount %', type: 'slider', min: 0, max: 90, step: 1, default: 25, suffix: '%', color: 'secondary' },
@@ -144,11 +139,11 @@ export const businessCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Discount Calculator: Final Price After % Off',
-      description: 'Free discount calculator. Get the final price and savings amount after any percentage discount — useful for shopping, sales, and pricing decisions.',
+      description: 'Free discount calculator. Get the final price and savings amount after any percentage discount â€” useful for shopping, sales, and pricing decisions.',
       applicationCategory: 'BusinessApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'cagr-calculator',
@@ -156,7 +151,6 @@ export const businessCalculators: CalculatorConfig[] = [
     category: 'business',
     icon: 'LineChart',
     description: 'Compound annual growth rate.',
-    usageCount: 31000,
     inputs: [
       { key: 'initial', label: 'Initial Value', type: 'slider', min: 1, max: 10000000, step: 1, default: 10000, prefix: '$', color: 'primary' },
       { key: 'final', label: 'Final Value', type: 'slider', min: 1, max: 10000000, step: 1, default: 18000, prefix: '$', color: 'secondary' },
@@ -173,11 +167,11 @@ export const businessCalculators: CalculatorConfig[] = [
     }),
     seo: {
       title: 'CAGR Calculator: Compound Annual Growth Rate',
-      description: 'Free CAGR calculator. Compute the compound annual growth rate from beginning value, ending value, and number of years — the standard return metric for investments.',
+      description: 'Free CAGR calculator. Compute the compound annual growth rate from beginning value, ending value, and number of years â€” the standard return metric for investments.',
       applicationCategory: 'BusinessApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'payroll-calculator',
@@ -185,7 +179,6 @@ export const businessCalculators: CalculatorConfig[] = [
     category: 'business',
     icon: 'Users',
     description: 'Net pay after taxes & deductions.',
-    usageCount: 52000,
     inputs: [
       { key: 'gross', label: 'Gross Pay', type: 'slider', min: 500, max: 200000, step: 100, default: 5000, prefix: '$', color: 'primary' },
       { key: 'taxRate', label: 'Tax Rate', type: 'slider', min: 0, max: 50, step: 0.5, default: 22, suffix: '%', color: 'secondary' },
@@ -205,7 +198,7 @@ export const businessCalculators: CalculatorConfig[] = [
       applicationCategory: 'BusinessApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'inventory-turnover',
@@ -213,7 +206,6 @@ export const businessCalculators: CalculatorConfig[] = [
     category: 'business',
     icon: 'Package',
     description: 'Efficiency of inventory management.',
-    usageCount: 14000,
     inputs: [
       { key: 'cogs', label: 'Cost of Goods Sold', type: 'slider', min: 1000, max: 10000000, step: 1000, default: 500000, prefix: '$', color: 'primary' },
       { key: 'avgInventory', label: 'Average Inventory', type: 'slider', min: 1000, max: 10000000, step: 1000, default: 100000, prefix: '$', color: 'secondary' },
@@ -228,11 +220,11 @@ export const businessCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Inventory Turnover Calculator: Times per Year',
-      description: 'Free inventory turnover ratio calculator. Compute how many times your inventory rotates annually — the core efficiency metric for retail and SaaS.',
+      description: 'Free inventory turnover ratio calculator. Compute how many times your inventory rotates annually â€” the core efficiency metric for retail and SaaS.',
       applicationCategory: 'BusinessApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'customer-ltv-calculator',
@@ -241,7 +233,6 @@ export const businessCalculators: CalculatorConfig[] = [
     icon: 'UserPlus',
     description: 'Lifetime value of a customer.',
     trending: true,
-    usageCount: 44000,
     inputs: [
       { key: 'avgPurchase', label: 'Avg Purchase Value', type: 'slider', min: 1, max: 10000, step: 1, default: 85, prefix: '$', color: 'primary' },
       { key: 'frequency', label: 'Purchases per Year', type: 'slider', min: 0.1, max: 100, step: 0.1, default: 4, color: 'secondary' },
@@ -257,11 +248,11 @@ export const businessCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Customer LTV Calculator: Lifetime Value & Payback',
-      description: 'Free customer LTV calculator. Get the lifetime value of a customer from ARPU, gross margin, and churn rate — the core SaaS unit-economics metric.',
+      description: 'Free customer LTV calculator. Get the lifetime value of a customer from ARPU, gross margin, and churn rate â€” the core SaaS unit-economics metric.',
       applicationCategory: 'BusinessApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'ad-roas-calculator',
@@ -269,7 +260,6 @@ export const businessCalculators: CalculatorConfig[] = [
     category: 'business',
     icon: 'Megaphone',
     description: 'Return on ad spend.',
-    usageCount: 37000,
     inputs: [
       { key: 'revenue', label: 'Revenue from Ads', type: 'slider', min: 0, max: 1000000, step: 100, default: 50000, prefix: '$', color: 'primary' },
       { key: 'adSpend', label: 'Ad Spend', type: 'slider', min: 1, max: 1000000, step: 100, default: 10000, prefix: '$', color: 'secondary' },
@@ -289,10 +279,10 @@ export const businessCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'ROAS Calculator: Return on Ad Spend',
-      description: 'Free ROAS calculator. Compute return on ad spend — the standard efficiency metric for paid marketing on Google, Meta, and any digital ad platform.',
+      description: 'Free ROAS calculator. Compute return on ad spend â€” the standard efficiency metric for paid marketing on Google, Meta, and any digital ad platform.',
       applicationCategory: 'BusinessApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
 ];

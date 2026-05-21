@@ -9,44 +9,44 @@ const EXCHANGE_RATES: Record<string, number> = {
 };
 
 const CURRENCY_SYMBOLS: Record<string, string> = {
-  USD: '$', EUR: '€', GBP: '£', JPY: '¥', CAD: 'CA$', AUD: 'A$',
-  CHF: 'CHF', CNY: '¥', INR: '₹', SGD: 'S$', HKD: 'HK$', NZD: 'NZ$',
+  USD: '$', EUR: 'â‚¬', GBP: 'Â£', JPY: 'Â¥', CAD: 'CA$', AUD: 'A$',
+  CHF: 'CHF', CNY: 'Â¥', INR: 'â‚¹', SGD: 'S$', HKD: 'HK$', NZD: 'NZ$',
   SEK: 'kr', NOK: 'kr', DKK: 'kr', MXN: '$', BRL: 'R$', ZAR: 'R',
-  AED: 'AED', SAR: 'SAR', KRW: '₩', THB: '฿', MYR: 'RM', IDR: 'Rp',
-  PHP: '₱', PKR: '₨', BDT: '৳', NGN: '₦', EGP: 'E£', TRY: '₺',
+  AED: 'AED', SAR: 'SAR', KRW: 'â‚©', THB: 'à¸¿', MYR: 'RM', IDR: 'Rp',
+  PHP: 'â‚±', PKR: 'â‚¨', BDT: 'à§³', NGN: 'â‚¦', EGP: 'EÂ£', TRY: 'â‚º',
 };
 
 const CURRENCY_OPTIONS = [
-  { label: 'USD — US Dollar', value: 'USD' },
-  { label: 'EUR — Euro', value: 'EUR' },
-  { label: 'GBP — British Pound', value: 'GBP' },
-  { label: 'JPY — Japanese Yen', value: 'JPY' },
-  { label: 'INR — Indian Rupee', value: 'INR' },
-  { label: 'CAD — Canadian Dollar', value: 'CAD' },
-  { label: 'AUD — Australian Dollar', value: 'AUD' },
-  { label: 'CHF — Swiss Franc', value: 'CHF' },
-  { label: 'CNY — Chinese Yuan', value: 'CNY' },
-  { label: 'SGD — Singapore Dollar', value: 'SGD' },
-  { label: 'HKD — Hong Kong Dollar', value: 'HKD' },
-  { label: 'NZD — New Zealand Dollar', value: 'NZD' },
-  { label: 'SEK — Swedish Krona', value: 'SEK' },
-  { label: 'NOK — Norwegian Krone', value: 'NOK' },
-  { label: 'DKK — Danish Krone', value: 'DKK' },
-  { label: 'MXN — Mexican Peso', value: 'MXN' },
-  { label: 'BRL — Brazilian Real', value: 'BRL' },
-  { label: 'ZAR — South African Rand', value: 'ZAR' },
-  { label: 'AED — UAE Dirham', value: 'AED' },
-  { label: 'SAR — Saudi Riyal', value: 'SAR' },
-  { label: 'KRW — South Korean Won', value: 'KRW' },
-  { label: 'THB — Thai Baht', value: 'THB' },
-  { label: 'MYR — Malaysian Ringgit', value: 'MYR' },
-  { label: 'IDR — Indonesian Rupiah', value: 'IDR' },
-  { label: 'PHP — Philippine Peso', value: 'PHP' },
-  { label: 'PKR — Pakistani Rupee', value: 'PKR' },
-  { label: 'BDT — Bangladeshi Taka', value: 'BDT' },
-  { label: 'NGN — Nigerian Naira', value: 'NGN' },
-  { label: 'EGP — Egyptian Pound', value: 'EGP' },
-  { label: 'TRY — Turkish Lira', value: 'TRY' },
+  { label: 'USD â€” US Dollar', value: 'USD' },
+  { label: 'EUR â€” Euro', value: 'EUR' },
+  { label: 'GBP â€” British Pound', value: 'GBP' },
+  { label: 'JPY â€” Japanese Yen', value: 'JPY' },
+  { label: 'INR â€” Indian Rupee', value: 'INR' },
+  { label: 'CAD â€” Canadian Dollar', value: 'CAD' },
+  { label: 'AUD â€” Australian Dollar', value: 'AUD' },
+  { label: 'CHF â€” Swiss Franc', value: 'CHF' },
+  { label: 'CNY â€” Chinese Yuan', value: 'CNY' },
+  { label: 'SGD â€” Singapore Dollar', value: 'SGD' },
+  { label: 'HKD â€” Hong Kong Dollar', value: 'HKD' },
+  { label: 'NZD â€” New Zealand Dollar', value: 'NZD' },
+  { label: 'SEK â€” Swedish Krona', value: 'SEK' },
+  { label: 'NOK â€” Norwegian Krone', value: 'NOK' },
+  { label: 'DKK â€” Danish Krone', value: 'DKK' },
+  { label: 'MXN â€” Mexican Peso', value: 'MXN' },
+  { label: 'BRL â€” Brazilian Real', value: 'BRL' },
+  { label: 'ZAR â€” South African Rand', value: 'ZAR' },
+  { label: 'AED â€” UAE Dirham', value: 'AED' },
+  { label: 'SAR â€” Saudi Riyal', value: 'SAR' },
+  { label: 'KRW â€” South Korean Won', value: 'KRW' },
+  { label: 'THB â€” Thai Baht', value: 'THB' },
+  { label: 'MYR â€” Malaysian Ringgit', value: 'MYR' },
+  { label: 'IDR â€” Indonesian Rupiah', value: 'IDR' },
+  { label: 'PHP â€” Philippine Peso', value: 'PHP' },
+  { label: 'PKR â€” Pakistani Rupee', value: 'PKR' },
+  { label: 'BDT â€” Bangladeshi Taka', value: 'BDT' },
+  { label: 'NGN â€” Nigerian Naira', value: 'NGN' },
+  { label: 'EGP â€” Egyptian Pound', value: 'EGP' },
+  { label: 'TRY â€” Turkish Lira', value: 'TRY' },
 ];
 
 export const financeCalculators: CalculatorConfig[] = [
@@ -56,9 +56,8 @@ export const financeCalculators: CalculatorConfig[] = [
     shortName: 'Currency',
     category: 'finance',
     icon: 'ArrowLeftRight',
-    description: 'Convert between 30 major world currencies instantly with reference rates — see the converted amount, exchange rate, and inverse rate.',
+    description: 'Convert between 30 major world currencies instantly with reference rates â€” see the converted amount, exchange rate, and inverse rate.',
     trending: true,
-    usageCount: 198400,
     inputs: [
       {
         key: 'amount',
@@ -116,16 +115,15 @@ export const financeCalculators: CalculatorConfig[] = [
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'emi-calculator',
     name: 'EMI Calculator',
     category: 'finance',
     icon: 'Landmark',
-    description: 'Calculate Equated Monthly Instalments for home, personal, car, and education loans — with interest split and total payable.',
+    description: 'Calculate Equated Monthly Instalments for home, personal, car, and education loans â€” with interest split and total payable.',
     trending: true,
-    usageCount: 124580,
     chartType: 'donut',
     inputs: [
       { key: 'principal', label: 'Loan Amount', type: 'slider', min: 1000, max: 10000000, step: 1000, default: 250000, prefix: '$', color: 'primary' },
@@ -146,22 +144,21 @@ export const financeCalculators: CalculatorConfig[] = [
       return { emi, totalInterest: totalPayment - p, totalPayment };
     },
     seo: {
-      title: 'EMI Calculator — Home, Personal, Car & Education Loan EMIs',
+      title: 'EMI Calculator â€” Home, Personal, Car & Education Loan EMIs',
       description:
         'Free EMI calculator for home, personal, car, and education loans. See your monthly EMI, total interest, and full payment split with the standard reducing-balance formula.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'sip-calculator',
     name: 'SIP Calculator',
     category: 'finance',
     icon: 'TrendingUp',
-    description: 'Project the future value of a Systematic Investment Plan — see how a fixed monthly contribution compounds over years.',
+    description: 'Project the future value of a Systematic Investment Plan â€” see how a fixed monthly contribution compounds over years.',
     trending: true,
-    usageCount: 98420,
     chartType: 'donut',
     inputs: [
       { key: 'monthly', label: 'Monthly Investment', type: 'slider', min: 500, max: 200000, step: 500, default: 10000, prefix: '$', color: 'primary' },
@@ -182,13 +179,13 @@ export const financeCalculators: CalculatorConfig[] = [
       return { futureValue, invested, gains: futureValue - invested };
     },
     seo: {
-      title: 'SIP Calculator — Mutual Fund SIP Returns Over Time',
+      title: 'SIP Calculator â€” Mutual Fund SIP Returns Over Time',
       description:
         'Free SIP calculator. Project your mutual fund corpus from monthly contribution, expected return, and tenure. See total invested vs total gains side-by-side.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'compound-interest-calculator',
@@ -197,7 +194,6 @@ export const financeCalculators: CalculatorConfig[] = [
     icon: 'Percent',
     description: 'See how a one-time principal grows under compound interest at any rate, tenure, and compounding frequency (daily, monthly, quarterly, yearly).',
     trending: true,
-    usageCount: 87530,
     chartType: 'line',
     inputs: [
       { key: 'principal', label: 'Principal', type: 'slider', min: 100, max: 1000000, step: 100, default: 10000, prefix: '$', color: 'primary' },
@@ -223,16 +219,15 @@ export const financeCalculators: CalculatorConfig[] = [
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'mortgage-calculator',
     name: 'Mortgage Calculator',
     category: 'finance',
     icon: 'Home',
-    description: 'Calculate monthly mortgage payments — principal and interest split, total interest paid, and full payment schedule.',
+    description: 'Calculate monthly mortgage payments â€” principal and interest split, total interest paid, and full payment schedule.',
     trending: true,
-    usageCount: 156200,
     chartType: 'donut',
     inputs: [
       { key: 'homePrice', label: 'Home Price', type: 'slider', min: 50000, max: 5000000, step: 5000, default: 450000, prefix: '$', color: 'primary' },
@@ -253,13 +248,13 @@ export const financeCalculators: CalculatorConfig[] = [
       return { monthlyPayment: pmt, totalInterest: pmt * n - loan, loanAmount: loan };
     },
     seo: {
-      title: 'Mortgage Calculator — Monthly Payment, Interest & Term',
+      title: 'Mortgage Calculator â€” Monthly Payment, Interest & Term',
       description:
         'Free mortgage calculator. See your monthly payment, total interest, and principal split for any home price, down payment, rate, and loan term.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'loan-eligibility-calculator',
@@ -267,7 +262,6 @@ export const financeCalculators: CalculatorConfig[] = [
     category: 'finance',
     icon: 'BadgeCheck',
     description: 'Find out how much loan you can qualify for.',
-    usageCount: 62100,
     inputs: [
       { key: 'income', label: 'Monthly Income', type: 'slider', min: 500, max: 200000, step: 100, default: 8000, prefix: '$', color: 'primary' },
       { key: 'obligations', label: 'Existing EMIs', type: 'slider', min: 0, max: 50000, step: 100, default: 1000, prefix: '$', color: 'secondary' },
@@ -293,59 +287,113 @@ export const financeCalculators: CalculatorConfig[] = [
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'income-tax-calculator',
     name: 'Income Tax Calculator',
     category: 'finance',
     icon: 'Receipt',
-    description: 'Estimate your annual income tax using US federal brackets.',
-    usageCount: 73400,
+    description: 'Estimate your Indian income tax under the new and old regimes for FY 2025-26 (AY 2026-27).',
     inputs: [
-      { key: 'income', label: 'Annual Income', type: 'slider', min: 10000, max: 10000000, step: 1000, default: 75000, prefix: '$', color: 'primary' },
-      { key: 'deductions', label: 'Total Deductions', type: 'slider', min: 0, max: 500000, step: 500, default: 12000, prefix: '$', color: 'secondary' },
+      {
+        key: 'regime',
+        label: 'Tax regime',
+        type: 'select',
+        default: 'new',
+        options: [
+          { label: 'New regime (default)', value: 'new' },
+          { label: 'Old regime', value: 'old' },
+        ],
+        color: 'primary',
+      },
+      { key: 'income', label: 'Annual gross income', type: 'slider', min: 100000, max: 10000000, step: 10000, default: 1200000, prefix: '₹', color: 'primary' },
+      { key: 'deductions', label: 'Deductions (80C + 80D + HRA, old regime only)', type: 'slider', min: 0, max: 500000, step: 5000, default: 150000, prefix: '₹', color: 'secondary' },
     ],
     outputs: [
-      { key: 'tax', label: 'Estimated Tax', prefix: '$', primary: true },
-      { key: 'takeHome', label: 'Take Home', prefix: '$', color: 'tertiary' },
-      { key: 'effectiveRate', label: 'Effective Rate', suffix: '%', color: 'secondary' },
+      { key: 'tax', label: 'Tax payable (incl. 4% cess)', prefix: '₹', primary: true },
+      { key: 'takeHome', label: 'In-hand income', prefix: '₹', color: 'tertiary' },
+      { key: 'effectiveRate', label: 'Effective tax rate', suffix: '%', color: 'secondary' },
     ],
     calculate: (i) => {
-      const taxable = Math.max(0, Number(i.income) - Number(i.deductions));
-      let tax = 0;
-      const brackets = [
-        [11600, 0.10],
-        [47150, 0.12],
-        [100525, 0.22],
-        [191950, 0.24],
-        [243725, 0.32],
-        [609350, 0.35],
-        [Infinity, 0.37],
-      ] as [number, number][];
-      let prev = 0;
-      for (const [limit, rate] of brackets) {
-        if (taxable > limit) {
-          tax += (limit - prev) * rate;
-          prev = limit;
-        } else {
-          tax += (taxable - prev) * rate;
-          break;
+      const regime = String(i.regime);
+      const income = Math.max(0, Number(i.income));
+      const userDeductions = Math.max(0, Number(i.deductions));
+
+      let taxable = 0;
+      let baseTax = 0;
+      let rebate = 0;
+
+      const applySlabs = (amount: number, slabs: [number, number][]): number => {
+        let prev = 0;
+        let tax = 0;
+        for (const [cap, rate] of slabs) {
+          if (amount > cap) {
+            tax += (cap - prev) * rate;
+            prev = cap;
+          } else {
+            tax += Math.max(0, amount - prev) * rate;
+            break;
+          }
         }
+        return tax;
+      };
+
+      if (regime === 'new') {
+        // FY 2025-26 new regime (Union Budget 2025)
+        const standardDeduction = 75000;
+        taxable = Math.max(0, income - standardDeduction);
+        baseTax = applySlabs(taxable, [
+          [400000, 0],
+          [800000, 0.05],
+          [1200000, 0.10],
+          [1600000, 0.15],
+          [2000000, 0.20],
+          [2400000, 0.25],
+          [Infinity, 0.30],
+        ]);
+        // Section 87A: full rebate if taxable income <= 12L
+        if (taxable <= 1200000) rebate = baseTax;
+      } else {
+        // FY 2025-26 old regime (resident individual, below 60)
+        const standardDeduction = 50000;
+        taxable = Math.max(0, income - standardDeduction - userDeductions);
+        baseTax = applySlabs(taxable, [
+          [250000, 0],
+          [500000, 0.05],
+          [1000000, 0.20],
+          [Infinity, 0.30],
+        ]);
+        // Section 87A: rebate up to 12,500 if taxable income <= 5L
+        if (taxable <= 500000) rebate = Math.min(12500, baseTax);
       }
+
+      const afterRebate = Math.max(0, baseTax - rebate);
+
+      // Surcharge on tax (taxable-income-driven)
+      let surchargeRate = 0;
+      if (taxable > 20000000) surchargeRate = 0.25;       // > 2 crore
+      else if (taxable > 10000000) surchargeRate = 0.15;  // > 1 crore
+      else if (taxable > 5000000) surchargeRate = 0.10;   // > 50 lakh
+      const surcharge = afterRebate * surchargeRate;
+
+      // 4% Health & Education Cess
+      const cess = (afterRebate + surcharge) * 0.04;
+      const totalTax = afterRebate + surcharge + cess;
+
       return {
-        tax,
-        takeHome: Number(i.income) - tax,
-        effectiveRate: Number(i.income) > 0 ? (tax / Number(i.income)) * 100 : 0,
+        tax: totalTax,
+        takeHome: income - totalTax,
+        effectiveRate: income > 0 ? (totalTax / income) * 100 : 0,
       };
     },
     seo: {
-      title: 'Income Tax Calculator: Estimate Your Annual Tax',
-      description: 'Free income tax calculator using 2024 US federal brackets. Estimate annual tax, take-home, and effective rate from any salary and deduction amount.',
+      title: 'Income Tax Calculator FY 2025-26 (Old vs New Regime) — India',
+      description: 'Free Indian income tax calculator for FY 2025-26 / AY 2026-27. Compare new regime (full rebate up to ₹12L) and old regime (with 80C / 80D / HRA). Includes 4% cess and surcharge.',
       applicationCategory: 'FinanceApplication',
     },
-    lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    lastUpdated: '2026-02-15',
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'retirement-calculator',
@@ -353,7 +401,6 @@ export const financeCalculators: CalculatorConfig[] = [
     category: 'finance',
     icon: 'PiggyBank',
     description: 'Plan how much you need to retire comfortably.',
-    usageCount: 54200,
     chartType: 'line',
     inputs: [
       { key: 'currentAge', label: 'Current Age', type: 'slider', min: 18, max: 65, step: 1, default: 30, suffix: 'Years', color: 'primary' },
@@ -377,11 +424,11 @@ export const financeCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Retirement Calculator: How Much You Need to Retire',
-      description: 'Free retirement corpus calculator. Project the savings you need to retire comfortably — adjusted for inflation and your expected return rate.',
+      description: 'Free retirement corpus calculator. Project the savings you need to retire comfortably â€” adjusted for inflation and your expected return rate.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'fd-calculator',
@@ -389,7 +436,6 @@ export const financeCalculators: CalculatorConfig[] = [
     category: 'finance',
     icon: 'Lock',
     description: 'Calculate maturity value of fixed deposits.',
-    usageCount: 41200,
     inputs: [
       { key: 'principal', label: 'Deposit Amount', type: 'slider', min: 1000, max: 5000000, step: 1000, default: 50000, prefix: '$', color: 'primary' },
       { key: 'rate', label: 'Interest Rate', type: 'slider', min: 1, max: 15, step: 0.1, default: 6.5, suffix: '%', color: 'secondary' },
@@ -405,13 +451,13 @@ export const financeCalculators: CalculatorConfig[] = [
       return { maturity, interest: maturity - p };
     },
     seo: {
-      title: 'FD Calculator — Fixed Deposit Maturity & Interest',
+      title: 'FD Calculator â€” Fixed Deposit Maturity & Interest',
       description:
         'Free FD calculator with quarterly compounding. See your fixed deposit maturity value, total interest, and effective yield for any deposit, rate, and tenure.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'rd-calculator',
@@ -419,7 +465,6 @@ export const financeCalculators: CalculatorConfig[] = [
     category: 'finance',
     icon: 'Calendar',
     description: 'Calculate returns on monthly recurring deposits.',
-    usageCount: 28100,
     inputs: [
       { key: 'monthly', label: 'Monthly Deposit', type: 'slider', min: 100, max: 100000, step: 100, default: 5000, prefix: '$', color: 'primary' },
       { key: 'rate', label: 'Interest Rate', type: 'slider', min: 1, max: 12, step: 0.1, default: 6.5, suffix: '%', color: 'secondary' },
@@ -444,7 +489,7 @@ export const financeCalculators: CalculatorConfig[] = [
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'mutual-fund-returns',
@@ -452,7 +497,6 @@ export const financeCalculators: CalculatorConfig[] = [
     category: 'finance',
     icon: 'LineChart',
     description: 'Calculate returns on lump sum MF investments.',
-    usageCount: 52300,
     inputs: [
       { key: 'lumpSum', label: 'Investment Amount', type: 'slider', min: 500, max: 10000000, step: 500, default: 100000, prefix: '$', color: 'primary' },
       { key: 'rate', label: 'Expected Return', type: 'slider', min: 1, max: 30, step: 0.5, default: 12, suffix: '% p.a.', color: 'secondary' },
@@ -473,7 +517,7 @@ export const financeCalculators: CalculatorConfig[] = [
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'stock-profit-loss',
@@ -481,7 +525,6 @@ export const financeCalculators: CalculatorConfig[] = [
     category: 'finance',
     icon: 'CandlestickChart',
     description: 'Calculate gains or losses on stock trades.',
-    usageCount: 38900,
     inputs: [
       { key: 'buyPrice', label: 'Buy Price', type: 'slider', min: 0.01, max: 10000, step: 0.01, default: 100, prefix: '$', color: 'primary' },
       { key: 'sellPrice', label: 'Sell Price', type: 'slider', min: 0.01, max: 10000, step: 0.01, default: 125, prefix: '$', color: 'secondary' },
@@ -506,7 +549,7 @@ export const financeCalculators: CalculatorConfig[] = [
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'dividend-yield-calculator',
@@ -514,7 +557,6 @@ export const financeCalculators: CalculatorConfig[] = [
     category: 'finance',
     icon: 'Coins',
     description: 'Calculate annual dividend yield on a stock.',
-    usageCount: 21400,
     inputs: [
       { key: 'dividend', label: 'Annual Dividend / Share', type: 'slider', min: 0, max: 100, step: 0.01, default: 2.5, prefix: '$', color: 'primary' },
       { key: 'price', label: 'Share Price', type: 'slider', min: 1, max: 10000, step: 0.01, default: 50, prefix: '$', color: 'secondary' },
@@ -534,7 +576,7 @@ export const financeCalculators: CalculatorConfig[] = [
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'credit-card-interest',
@@ -542,7 +584,6 @@ export const financeCalculators: CalculatorConfig[] = [
     category: 'finance',
     icon: 'CreditCard',
     description: 'How much credit card interest will cost you.',
-    usageCount: 45000,
     inputs: [
       { key: 'balance', label: 'Balance', type: 'slider', min: 100, max: 50000, step: 100, default: 5000, prefix: '$', color: 'primary' },
       { key: 'apr', label: 'APR', type: 'slider', min: 5, max: 40, step: 0.1, default: 24, suffix: '%', color: 'secondary' },
@@ -566,7 +607,7 @@ export const financeCalculators: CalculatorConfig[] = [
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'debt-payoff-calculator',
@@ -574,7 +615,6 @@ export const financeCalculators: CalculatorConfig[] = [
     category: 'finance',
     icon: 'TrendingDown',
     description: 'Plan when you will be debt-free.',
-    usageCount: 32100,
     inputs: [
       { key: 'debt', label: 'Total Debt', type: 'slider', min: 100, max: 500000, step: 100, default: 20000, prefix: '$', color: 'primary' },
       { key: 'rate', label: 'Interest Rate', type: 'slider', min: 1, max: 30, step: 0.1, default: 12, suffix: '%', color: 'secondary' },
@@ -598,7 +638,7 @@ export const financeCalculators: CalculatorConfig[] = [
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'net-worth-calculator',
@@ -606,7 +646,6 @@ export const financeCalculators: CalculatorConfig[] = [
     category: 'finance',
     icon: 'Wallet',
     description: 'Calculate your total net worth.',
-    usageCount: 22500,
     inputs: [
       { key: 'assets', label: 'Total Assets', type: 'slider', min: 0, max: 10000000, step: 500, default: 150000, prefix: '$', color: 'primary' },
       { key: 'liabilities', label: 'Total Liabilities', type: 'slider', min: 0, max: 10000000, step: 500, default: 50000, prefix: '$', color: 'secondary' },
@@ -621,11 +660,11 @@ export const financeCalculators: CalculatorConfig[] = [
     }),
     seo: {
       title: 'Net Worth Calculator: Assets, Liabilities, Ratio',
-      description: 'Free net worth calculator. Subtract liabilities from assets to see your true net worth and asset/liability ratio — the simplest financial-health metric.',
+      description: 'Free net worth calculator. Subtract liabilities from assets to see your true net worth and asset/liability ratio â€” the simplest financial-health metric.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'salary-to-hourly',
@@ -633,7 +672,6 @@ export const financeCalculators: CalculatorConfig[] = [
     category: 'finance',
     icon: 'Clock',
     description: 'Convert annual salary to hourly rate.',
-    usageCount: 67800,
     inputs: [
       { key: 'salary', label: 'Annual Salary', type: 'slider', min: 10000, max: 1000000, step: 500, default: 75000, prefix: '$', color: 'primary' },
       { key: 'hoursWeek', label: 'Hours/Week', type: 'slider', min: 1, max: 80, step: 1, default: 40, suffix: 'hrs', color: 'secondary' },
@@ -657,20 +695,19 @@ export const financeCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Salary to Hourly Calculator: Annual to Hourly Rate',
-      description: 'Free salary-to-hourly converter. Turn any annual salary into hourly, daily, weekly, and monthly rates — based on your real hours and weeks worked.',
+      description: 'Free salary-to-hourly converter. Turn any annual salary into hourly, daily, weekly, and monthly rates â€” based on your real hours and weeks worked.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'tip-calculator',
     name: 'Tip Calculator',
     category: 'finance',
     icon: 'Utensils',
-    description: 'Split a restaurant bill fairly with tip — get tip amount, total, and per-person share for any group size.',
+    description: 'Split a restaurant bill fairly with tip â€” get tip amount, total, and per-person share for any group size.',
     trending: true,
-    usageCount: 203400,
     inputs: [
       { key: 'bill', label: 'Bill Amount', type: 'slider', min: 1, max: 5000, step: 0.5, default: 80, prefix: '$', color: 'primary' },
       { key: 'tipPct', label: 'Tip %', type: 'slider', min: 0, max: 40, step: 1, default: 18, suffix: '%', color: 'secondary' },
@@ -692,7 +729,7 @@ export const financeCalculators: CalculatorConfig[] = [
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'gst-calculator',
@@ -700,7 +737,6 @@ export const financeCalculators: CalculatorConfig[] = [
     category: 'finance',
     icon: 'FileText',
     description: 'Calculate GST inclusive & exclusive amounts.',
-    usageCount: 49200,
     inputs: [
       { key: 'amount', label: 'Amount', type: 'slider', min: 1, max: 1000000, step: 10, default: 1000, prefix: '$', color: 'primary' },
       { key: 'rate', label: 'GST Rate', type: 'slider', min: 0, max: 30, step: 0.5, default: 18, suffix: '%', color: 'secondary' },
@@ -717,13 +753,13 @@ export const financeCalculators: CalculatorConfig[] = [
       return { gst, total: amt + gst, net: amt };
     },
     seo: {
-      title: 'GST Calculator India — Inclusive & Exclusive GST Amount',
+      title: 'GST Calculator India â€” Inclusive & Exclusive GST Amount',
       description:
         'Free GST calculator for India. Add GST to a base amount or extract GST from an inclusive price. Supports all current slabs (5%, 12%, 18%, 28%).',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'ppf-calculator',
@@ -731,7 +767,6 @@ export const financeCalculators: CalculatorConfig[] = [
     category: 'finance',
     icon: 'Shield',
     description: 'Calculate Public Provident Fund maturity.',
-    usageCount: 31000,
     inputs: [
       { key: 'yearly', label: 'Yearly Deposit', type: 'slider', min: 500, max: 150000, step: 500, default: 100000, prefix: '$', color: 'primary' },
       { key: 'rate', label: 'Interest Rate', type: 'slider', min: 5, max: 10, step: 0.1, default: 7.1, suffix: '%', color: 'secondary' },
@@ -750,13 +785,13 @@ export const financeCalculators: CalculatorConfig[] = [
       return { maturity, invested: p * n, interest: maturity - p * n };
     },
     seo: {
-      title: 'PPF Calculator — Public Provident Fund Maturity Value',
+      title: 'PPF Calculator â€” Public Provident Fund Maturity Value',
       description:
         'Free PPF calculator. Project your Public Provident Fund maturity for any yearly contribution and tenure. Tax-free returns at the current 7.1% PPF rate.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'nps-calculator',
@@ -764,7 +799,6 @@ export const financeCalculators: CalculatorConfig[] = [
     category: 'finance',
     icon: 'Umbrella',
     description: 'Plan your National Pension Scheme returns.',
-    usageCount: 18900,
     inputs: [
       { key: 'monthly', label: 'Monthly Contribution', type: 'slider', min: 500, max: 100000, step: 500, default: 5000, prefix: '$', color: 'primary' },
       { key: 'rate', label: 'Expected Return', type: 'slider', min: 5, max: 15, step: 0.5, default: 10, suffix: '%', color: 'secondary' },
@@ -783,13 +817,13 @@ export const financeCalculators: CalculatorConfig[] = [
       return { corpus, pension: (corpus * 0.06) / 12 };
     },
     seo: {
-      title: 'NPS Calculator — National Pension System Corpus & Pension',
+      title: 'NPS Calculator â€” National Pension System Corpus & Pension',
       description:
         'Free NPS calculator. Project your retirement corpus, monthly pension, and lump-sum withdrawal under the National Pension System for any monthly contribution.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'lumpsum-calculator',
@@ -797,7 +831,6 @@ export const financeCalculators: CalculatorConfig[] = [
     category: 'finance',
     icon: 'Coins',
     description: 'Project the future value of a one-time mutual fund or equity lumpsum investment.',
-    usageCount: 21000,
     inputs: [
       { key: 'amount', label: 'Investment Amount', type: 'slider', min: 1000, max: 10000000, step: 1000, default: 100000, prefix: '$', color: 'primary' },
       { key: 'rate', label: 'Expected Return', type: 'slider', min: 1, max: 30, step: 0.5, default: 12, suffix: '% p.a.', color: 'secondary' },
@@ -816,21 +849,20 @@ export const financeCalculators: CalculatorConfig[] = [
       return { future, gain: future - p, multiplier: future / p };
     },
     seo: {
-      title: 'Lumpsum Calculator — One-Time Investment Future Value',
+      title: 'Lumpsum Calculator â€” One-Time Investment Future Value',
       description:
         'Free lumpsum calculator. Project the future value of a one-time mutual fund, equity, or fixed-income investment at any expected return rate and tenure.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'hra-calculator',
     name: 'HRA Calculator',
     category: 'finance',
     icon: 'Building2',
-    description: 'Calculate exempt and taxable HRA under Section 10(13A) — old regime tax saving on house rent.',
-    usageCount: 67000,
+    description: 'Calculate exempt and taxable HRA under Section 10(13A) â€” old regime tax saving on house rent.',
     inputs: [
       { key: 'basic', label: 'Annual Basic + DA', type: 'slider', min: 100000, max: 5000000, step: 1000, default: 600000, prefix: '$', color: 'primary' },
       { key: 'hra', label: 'Annual HRA Received', type: 'slider', min: 0, max: 2500000, step: 1000, default: 240000, prefix: '$', color: 'secondary' },
@@ -855,21 +887,20 @@ export const financeCalculators: CalculatorConfig[] = [
       return { exempt, taxable, savedAt30: exempt * 0.30 };
     },
     seo: {
-      title: 'HRA Calculator — House Rent Allowance Exemption (India)',
+      title: 'HRA Calculator â€” House Rent Allowance Exemption (India)',
       description:
-        'Free HRA calculator under Section 10(13A). Calculate your HRA exemption, taxable portion, and tax saved at the 30% slab — old regime only.',
+        'Free HRA calculator under Section 10(13A). Calculate your HRA exemption, taxable portion, and tax saved at the 30% slab â€” old regime only.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
     slug: 'cibil-calculator',
     name: 'CIBIL Score Estimator',
     category: 'finance',
     icon: 'Gauge',
-    description: 'Estimate where your CIBIL score sits based on credit habits — utilisation, payment history, account age, and inquiries.',
-    usageCount: 38000,
+    description: 'Estimate where your CIBIL score sits based on credit habits â€” utilisation, payment history, account age, and inquiries.',
     inputs: [
       { key: 'paymentScore', label: 'Payment History (0=many missed, 100=always on time)', type: 'slider', min: 0, max: 100, step: 5, default: 90, suffix: '/100', color: 'primary' },
       { key: 'utilisation', label: 'Credit Utilisation %', type: 'slider', min: 0, max: 100, step: 1, default: 30, suffix: '%', color: 'secondary' },
@@ -896,15 +927,15 @@ export const financeCalculators: CalculatorConfig[] = [
 
       const composite =
         payScore * 0.35 + utilScore * 0.30 + ageScore * 0.15 + inqScore * 0.10 + mixScore * 0.10;
-      // Map 0–100 composite to CIBIL 300–900
+      // Map 0â€“100 composite to CIBIL 300â€“900
       const score = 300 + composite * 6;
 
       const band =
-        score >= 800 ? 'Excellent (800–900)' :
-        score >= 750 ? 'Good (750–799)' :
-        score >= 700 ? 'Fair (700–749)' :
-        score >= 650 ? 'Poor (650–699)' :
-        'Very Poor (300–649)';
+        score >= 800 ? 'Excellent (800â€“900)' :
+        score >= 750 ? 'Good (750â€“799)' :
+        score >= 700 ? 'Fair (700â€“749)' :
+        score >= 650 ? 'Poor (650â€“699)' :
+        'Very Poor (300â€“649)';
 
       // Identify weakest lever
       const factors: { name: string; score: number }[] = [
@@ -918,12 +949,12 @@ export const financeCalculators: CalculatorConfig[] = [
       return { score, band, topAction };
     },
     seo: {
-      title: 'CIBIL Score Estimator — Estimate Your Credit Score',
+      title: 'CIBIL Score Estimator â€” Estimate Your Credit Score',
       description:
-        'Free CIBIL score estimator. Get a directional credit score from your payment history, utilisation, account age, inquiries, and credit mix — plus the biggest lever to improve it.',
+        'Free CIBIL score estimator. Get a directional credit score from your payment history, utilisation, account age, inquiries, and credit mix â€” plus the biggest lever to improve it.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
-    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
+    reviewedBy: { name: 'Ankit Gupta', credential: 'Builder Â· AllSmartCalculators', href: '/author/ankit-gupta' },
   },
 ];

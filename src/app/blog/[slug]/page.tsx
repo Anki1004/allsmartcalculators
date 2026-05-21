@@ -5,6 +5,7 @@ import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { getPostBySlug, getAllPosts, getStrapiImageUrl } from '@/lib/strapi';
+import { breadcrumbSchema } from '@/lib/structured-data';
 import GlassCard from '@/components/GlassCard';
 import { Clock, User, ArrowLeft, Calendar } from 'lucide-react';
 
@@ -91,9 +92,17 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     ...(imgUrl && { image: imgUrl }),
   };
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
+  const crumbs = breadcrumbSchema([
+    { name: 'Home', url: siteUrl },
+    { name: 'Blog', url: `${siteUrl}/blog` },
+    { name: post.title, url: `${siteUrl}/blog/${post.slug}` },
+  ]);
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }} />
     <div className="pt-24 sm:pt-28 pb-12 sm:pb-20 px-4 sm:px-5 md:px-8">
       <div className="max-w-3xl mx-auto">
 

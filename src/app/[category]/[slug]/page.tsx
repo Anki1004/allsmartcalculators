@@ -119,7 +119,7 @@ export default async function CalculatorPage({
       'UtilitiesApplication',
     operatingSystem: 'Any (web browser)',
     isAccessibleForFree: true,
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },
     dateModified: lastUpdated,
     publisher: {
       '@type': 'Organization',

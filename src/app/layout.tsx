@@ -8,6 +8,7 @@ import Footer from '@/components/Footer';
 import { CurrencyProvider } from '@/lib/currency-context';
 import { ThemeProvider } from '@/lib/theme-context';
 import { TOTAL_CALCULATORS } from '@/lib/calculator-registry';
+import { organizationSchema, websiteSchema } from '@/lib/structured-data';
 
 // Lazy-load components that are interactive but not part of the critical
 // above-the-fold render path. Saves ~15-20% off the main bundle on mobile,
@@ -15,6 +16,7 @@ import { TOTAL_CALCULATORS } from '@/lib/calculator-registry';
 const SearchModal = dynamic(() => import('@/components/SearchModal'), { ssr: false });
 const CookieConsent = dynamic(() => import('@/components/CookieConsent'), { ssr: false });
 const ConsentGatedAnalytics = dynamic(() => import('@/components/ConsentGatedAnalytics'), { ssr: false });
+const BackToTop = dynamic(() => import('@/components/BackToTop'), { ssr: false });
 
 const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
@@ -59,7 +61,10 @@ export const metadata: Metadata = {
       url: 'https://www.linkedin.com/in/ankit-gupta-data-analyst',
     },
   ],
-  alternates: { canonical: SITE_URL },
+  alternates: {
+    canonical: SITE_URL,
+    languages: { 'en-IN': SITE_URL },
+  },
   openGraph: {
     title: `AllSmartCalculators — ${TOTAL_CALCULATORS} Calculators`,
     description: 'Calculate anything. Beautifully.',
@@ -87,8 +92,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`dark ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en-IN" className={`dark ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
       <head>
+        {/* Site-wide structured data — Organization + WebSite (with SearchAction) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([organizationSchema(), websiteSchema()]),
+          }}
+        />
         {/* Google Consent Mode v2 — defaults MUST run before any Google scripts.
             Restores prior choice from localStorage so returning users don't see a denied flash. */}
         <script
@@ -116,6 +128,7 @@ export default function RootLayout({
           <CurrencyProvider>
             <SearchModal />
             <CookieConsent />
+            <BackToTop />
             <div className="relative z-10">
               <Navbar />
               <main className="min-h-screen">{children}</main>

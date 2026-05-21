@@ -278,7 +278,7 @@ export default async function HomePage() {
             {CATEGORIES.map((cat) => {
               const catCalcs = allCalculators
                 .filter((c) => c.category === cat.id)
-                .sort((a, b) => (b.usageCount ?? 0) - (a.usageCount ?? 0))
+                .sort((a, b) => a.name.localeCompare(b.name))
                 .slice(0, 4);
               return (
                 <div key={cat.id}>
