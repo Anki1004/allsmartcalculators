@@ -161,9 +161,10 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     ],
     calculate: (i) => {
       const perimeter = 2 * (Number(i.length) + Number(i.width));
-      const area = perimeter * Number(i.height) * Number(i.coats);
-      const liters = area / 10; // ~10 mÂ² per liter
-      return { area, liters, gallons: liters * 0.264 };
+      const wallArea = perimeter * Number(i.height);
+      const paintArea = wallArea * Number(i.coats);
+      const liters = paintArea / 10; // ~10 m² per liter per coat
+      return { area: wallArea, liters, gallons: liters * 0.264 };
     },
     seo: {
       title: 'Paint Calculator: Gallons of Paint for a Room',

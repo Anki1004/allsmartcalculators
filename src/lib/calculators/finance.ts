@@ -477,10 +477,12 @@ export const financeCalculators: CalculatorConfig[] = [
     ],
     calculate: (i) => {
       const p = Number(i.monthly);
-      const r = Number(i.rate) / 400;
-      const n = Number(i.years) * 4;
-      const invested = p * Number(i.years) * 12;
-      const maturity = p * 12 * Number(i.years) * Math.pow(1 + r, n);
+      const im = Number(i.rate) / 12 / 100; // monthly rate
+      const N = Number(i.years) * 12; // number of monthly deposits
+      const invested = p * N;
+      // Each installment compounds monthly for its remaining tenure (annuity-due)
+      const maturity =
+        im === 0 ? invested : p * ((Math.pow(1 + im, N) - 1) / im) * (1 + im);
       return { maturity, invested, interest: maturity - invested };
     },
     seo: {

@@ -46,6 +46,8 @@ export const cryptoCalculators: CalculatorConfig[] = [
       { key: 'hashRate', label: 'Hash Rate', type: 'slider', min: 1, max: 500, step: 1, default: 100, suffix: 'TH/s', color: 'primary' },
       { key: 'power', label: 'Power Consumption', type: 'slider', min: 100, max: 5000, step: 50, default: 3000, suffix: 'W', color: 'secondary' },
       { key: 'cost', label: 'Electricity Cost', type: 'slider', min: 0.01, max: 1, step: 0.01, default: 0.12, prefix: '$/kWh', color: 'tertiary' },
+      { key: 'btcPrice', label: 'BTC Price', type: 'slider', min: 10000, max: 200000, step: 1000, default: 95000, prefix: '$', color: 'primary' },
+      { key: 'network', label: 'Network Hashrate', type: 'slider', min: 100, max: 1500, step: 10, default: 800, suffix: 'EH/s', color: 'secondary' },
     ],
     outputs: [
       { key: 'dailyProfit', label: 'Est. Daily Profit', prefix: '$', primary: true },
@@ -53,9 +55,12 @@ export const cryptoCalculators: CalculatorConfig[] = [
       { key: 'monthlyProfit', label: 'Monthly Profit', prefix: '$', color: 'tertiary' },
     ],
     calculate: (i) => {
-      const btcPerDay = Number(i.hashRate) * 0.00004;
-      const btcPrice = 65000;
-      const dailyRevenue = btcPerDay * btcPrice;
+      const BLOCK_REWARD = 3.125; // BTC per block after the 2024 halving
+      const BLOCKS_PER_DAY = 144;
+      const networkThs = Number(i.network) * 1e6; // EH/s -> TH/s
+      const share = Number(i.hashRate) / networkThs;
+      const btcPerDay = share * BLOCK_REWARD * BLOCKS_PER_DAY;
+      const dailyRevenue = btcPerDay * Number(i.btcPrice);
       const dailyCost = (Number(i.power) / 1000) * 24 * Number(i.cost);
       return {
         dailyProfit: dailyRevenue - dailyCost,

@@ -83,12 +83,20 @@ export const educationCalculators: CalculatorConfig[] = [
     ],
     calculate: (i) => {
       const p = Number(i.percentage);
+      // Standard US college percentage -> 4.0 GPA (+/- scale)
+      let gpa4 = 0;
       let letter = 'F';
-      if (p >= 90) letter = 'A';
-      else if (p >= 80) letter = 'B';
-      else if (p >= 70) letter = 'C';
-      else if (p >= 60) letter = 'D';
-      return { gpa4: (p / 100) * 4, gpa10: p / 9.5, letter };
+      if (p >= 93) { gpa4 = 4.0; letter = 'A'; }
+      else if (p >= 90) { gpa4 = 3.7; letter = 'A-'; }
+      else if (p >= 87) { gpa4 = 3.3; letter = 'B+'; }
+      else if (p >= 83) { gpa4 = 3.0; letter = 'B'; }
+      else if (p >= 80) { gpa4 = 2.7; letter = 'B-'; }
+      else if (p >= 77) { gpa4 = 2.3; letter = 'C+'; }
+      else if (p >= 73) { gpa4 = 2.0; letter = 'C'; }
+      else if (p >= 70) { gpa4 = 1.7; letter = 'C-'; }
+      else if (p >= 67) { gpa4 = 1.3; letter = 'D+'; }
+      else if (p >= 65) { gpa4 = 1.0; letter = 'D'; }
+      return { gpa4, gpa10: p / 9.5, letter };
     },
     seo: {
       title: 'Percentage to GPA Converter: % to 4.0 Scale',
