@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { FALLBACK_EXCHANGE_RATES } from './exchange-rates';
 
 export const SUPPORTED_CURRENCIES = [
   { code: 'USD', symbol: '$',   name: 'US Dollar',          flag: '🇺🇸' },
@@ -25,14 +26,7 @@ export const SUPPORTED_CURRENCIES = [
   { code: 'SEK', symbol: 'kr',  name: 'Swedish Krona',      flag: '🇸🇪' },
 ];
 
-const FALLBACK_RATES: Record<string, number> = {
-  USD: 1, EUR: 0.921, GBP: 0.780, JPY: 153.8, INR: 84.47, CAD: 1.383,
-  AUD: 1.582, CHF: 0.888, CNY: 7.291, SGD: 1.330, AED: 3.672, SAR: 3.751,
-  MXN: 20.18, BRL: 5.75, KRW: 1363, ZAR: 18.47, TRY: 38.05, NZD: 1.728,
-  HKD: 7.780, SEK: 10.36,
-};
-
-const CACHE_KEY = 'cv-rates';
+const CACHE_KEY = 'cv-rates-v2';
 const CACHE_TTL = 60 * 60 * 1000; // 1 hour in ms
 
 function getCachedRates(): Record<string, number> | null {
@@ -59,6 +53,7 @@ interface CurrencyContextType {
   rate: number;
   symbol: string;
   flag: string;
+  rates: Record<string, number>;
   ratesReady: boolean;
 }
 
@@ -73,18 +68,19 @@ const CurrencyContext = createContext<CurrencyContextType>({
   rate: 1,
   symbol: '₹',
   flag: '🇮🇳',
+  rates: FALLBACK_EXCHANGE_RATES,
   ratesReady: false,
 });
 
 export function CurrencyProvider({ children }: { children: ReactNode }) {
   const [currency, setCurrencyState] = useState(DEFAULT_CURRENCY);
-  const [rates, setRates] = useState<Record<string, number>>(FALLBACK_RATES);
+  const [rates, setRates] = useState<Record<string, number>>(FALLBACK_EXCHANGE_RATES);
   const [ratesReady, setRatesReady] = useState(false);
 
   useEffect(() => {
     // Restore saved currency preference
     const saved = localStorage.getItem('cv-currency');
-    if (saved && FALLBACK_RATES[saved]) setCurrencyState(saved);
+    if (saved && FALLBACK_EXCHANGE_RATES[saved]) setCurrencyState(saved);
 
     // Try cache first, then fetch live
     const cached = getCachedRates();
@@ -119,6 +115,7 @@ export function CurrencyProvider({ children }: { children: ReactNode }) {
         rate: rates[currency] ?? 1,
         symbol: info.symbol,
         flag: info.flag,
+        rates,
         ratesReady,
       }}
     >

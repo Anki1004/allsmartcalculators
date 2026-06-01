@@ -24,7 +24,7 @@ interface CalculatorEngineProps {
 
 export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
   const config = getCalculatorBySlug(slug);
-  const { symbol, currency } = useCurrency();
+  const { symbol, currency, rates } = useCurrency();
   const locale = localeForCurrency(currency);
 
   // Calculator math is currency-agnostic — switching currency only swaps the
@@ -48,11 +48,11 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
   const results = useMemo(() => {
     if (!config) return {};
     try {
-      return config.calculate(values);
+      return config.calculate(values, { currencyRates: rates });
     } catch (e) {
       return {};
     }
-  }, [values, config]);
+  }, [values, config, rates]);
 
   if (!config) {
     return (

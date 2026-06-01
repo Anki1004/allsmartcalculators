@@ -44,6 +44,10 @@ export interface CalculatorSeo {
   rating?: { value: number; count: number };
 }
 
+export interface CalculatorRuntimeContext {
+  currencyRates?: Record<string, number>;
+}
+
 export interface CalculatorConfig {
   slug: string;
   name: string;
@@ -55,7 +59,10 @@ export interface CalculatorConfig {
   trending?: boolean;
   inputs: CalculatorInput[];
   outputs: CalculatorOutput[];
-  calculate: (inputs: Record<string, number | string>) => Record<string, number | string>;
+  calculate: (
+    inputs: Record<string, number | string>,
+    context?: CalculatorRuntimeContext,
+  ) => Record<string, number | string>;
   chartType?: 'donut' | 'bar' | 'line' | 'none';
 
   // Page content (intro, tips, how-it-works, formula, FAQs, ranges,

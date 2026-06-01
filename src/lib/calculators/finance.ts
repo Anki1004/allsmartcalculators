@@ -1,12 +1,5 @@
 import { CalculatorConfig } from '../calculator-types';
-
-const EXCHANGE_RATES: Record<string, number> = {
-  USD: 1, EUR: 0.921, GBP: 0.780, JPY: 153.8, CAD: 1.383, AUD: 1.582,
-  CHF: 0.888, CNY: 7.291, INR: 84.47, SGD: 1.330, HKD: 7.780, NZD: 1.728,
-  SEK: 10.36, NOK: 10.59, DKK: 6.88, MXN: 20.18, BRL: 5.75, ZAR: 18.47,
-  AED: 3.672, SAR: 3.751, KRW: 1363, THB: 33.59, MYR: 4.368, IDR: 16393,
-  PHP: 55.76, PKR: 278.5, BDT: 110.5, NGN: 1590, EGP: 50.42, TRY: 38.05,
-};
+import { FALLBACK_EXCHANGE_RATES } from '../exchange-rates';
 
 const CURRENCY_SYMBOLS: Record<string, string> = {
   USD: '$', EUR: '€', GBP: '£', JPY: '¥', CAD: 'CA$', AUD: 'A$',
@@ -91,12 +84,13 @@ export const financeCalculators: CalculatorConfig[] = [
       { key: 'rateDisplay', label: 'Exchange Rate', color: 'secondary' },
       { key: 'inverseDisplay', label: 'Inverse Rate', color: 'tertiary' },
     ],
-    calculate: (i) => {
+    calculate: (i, context) => {
       const amount = Number(i.amount);
       const from = String(i.from || 'USD');
       const to = String(i.to || 'EUR');
-      const fromRate = EXCHANGE_RATES[from] ?? 1;
-      const toRate = EXCHANGE_RATES[to] ?? 1;
+      const exchangeRates = context?.currencyRates ?? FALLBACK_EXCHANGE_RATES;
+      const fromRate = exchangeRates[from] ?? FALLBACK_EXCHANGE_RATES[from] ?? 1;
+      const toRate = exchangeRates[to] ?? FALLBACK_EXCHANGE_RATES[to] ?? 1;
       const converted = (amount / fromRate) * toRate;
       const rate = toRate / fromRate;
       const sym = CURRENCY_SYMBOLS[to] ?? to;
@@ -114,7 +108,7 @@ export const financeCalculators: CalculatorConfig[] = [
       description: 'Free currency converter for 30 major world currencies including USD, EUR, GBP, INR, JPY, AUD. See live conversion, exchange rate, and inverse rate.',
       applicationCategory: 'FinanceApplication',
     },
-    lastUpdated: '2026-04-26',
+    lastUpdated: '2026-06-01',
     reviewedBy: { name: 'Ankit Gupta', credential: 'Builder · AllSmartCalculators', href: '/author/ankit-gupta' },
   },
   {
