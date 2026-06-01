@@ -2,7 +2,7 @@
 // falling back to the known publisher ID so /ads.txt always verifies even before the env var is set.
 // Google requires the publisher ID without the "ca-" prefix in ads.txt.
 
-const RAW = process.env.NEXT_PUBLIC_ADSENSE_CLIENT || 'ca-pub-4038748014813222';
+const RAW = (process.env.NEXT_PUBLIC_ADSENSE_CLIENT || 'ca-pub-4038748014813222').trim();
 const PUBLISHER_ID = RAW.startsWith('ca-') ? RAW.slice(3) : RAW;
 
 export const revalidate = 3600;

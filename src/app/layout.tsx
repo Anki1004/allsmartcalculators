@@ -18,7 +18,7 @@ const CookieConsent = dynamic(() => import('@/components/CookieConsent'), { ssr:
 const ConsentGatedAnalytics = dynamic(() => import('@/components/ConsentGatedAnalytics'), { ssr: false });
 const BackToTop = dynamic(() => import('@/components/BackToTop'), { ssr: false });
 
-const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
+const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT?.trim();
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 const inter = Inter({
