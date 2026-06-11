@@ -43,12 +43,31 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
 
 const hasText = (s?: string | null): s is string => !!s && s.trim().length > 0;
 
-export default async function CalculatorCMS({ slug }: { slug: string }) {
-  const cms: StrapiCalcContent | null = await getCalcContent(slug);
-  if (!cms) return null;
+interface CalculatorCMSProps {
+  slug: string;
+  /** Markdown article rendered when Strapi has no content for this slug. */
+  fallbackContent?: string;
+  /** FAQs rendered when Strapi has none for this slug. */
+  fallbackFaqs?: { question: string; answer: string }[];
+}
 
-  const contentText = hasText(cms.content) ? cms.content : null;
-  const faqs = cms.faqs ?? [];
+export default async function CalculatorCMS({
+  slug,
+  fallbackContent,
+  fallbackFaqs,
+}: CalculatorCMSProps) {
+  const cms: StrapiCalcContent | null = await getCalcContent(slug);
+
+  // Strapi always wins; config-level fallbacks fill in until content is seeded.
+  const contentText = hasText(cms?.content)
+    ? cms!.content
+    : hasText(fallbackContent)
+      ? fallbackContent
+      : null;
+  const faqs: { id: number | string; question: string; answer: string }[] =
+    cms?.faqs?.length
+      ? cms.faqs
+      : (fallbackFaqs ?? []).map((f, i) => ({ id: `fallback-${i}`, ...f }));
 
   if (!contentText && faqs.length === 0) return null;
 

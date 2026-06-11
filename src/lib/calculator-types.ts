@@ -11,7 +11,9 @@ export type CalculatorCategory =
 export interface CalculatorInput {
   key: string;
   label: string;
-  type: 'slider' | 'number' | 'select' | 'date';
+  type: 'slider' | 'number' | 'select' | 'date' | 'text';
+  /** Placeholder for type: 'text' inputs. */
+  placeholder?: string;
   min?: number;
   max?: number;
   step?: number;
@@ -73,6 +75,23 @@ export interface CalculatorConfig {
   lastUpdated?: string;
   /** "Reviewed by" attribution for YMYL pages. */
   reviewedBy?: { name: string; credential: string; href?: string };
+
+  // NOTE: fallback article/FAQ content lives in src/lib/calculator-content/*
+  // (server-only) so the long markdown strings stay out of the client bundle —
+  // the 'use client' engine imports the whole registry.
+  /** Hand-picked related calculator slugs (cross-category allowed).
+      Falls back to first 4 of the same category when omitted. */
+  relatedSlugs?: string[];
+  /** Render a bespoke component instead of the config-driven engine
+      (for UIs that don't fit sliders/selects). */
+  custom?: 'scientific' | 'time-card' | 'random-number';
+  /** Optional detail table (e.g. amortization schedule) rendered below the
+      results once the user has interacted. Return null to hide. */
+  buildTable?: (inputs: Record<string, number | string>) => {
+    title: string;
+    headers: string[];
+    rows: (string | number)[][];
+  } | null;
 }
 
 export const CATEGORIES: {

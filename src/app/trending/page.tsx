@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 };
 
 export default function TrendingPage() {
-  const trending = getTrendingCalculators(20);
+  const trending = getTrendingCalculators(30);
   const featured = getPopularCalculators(20);
 
   return (

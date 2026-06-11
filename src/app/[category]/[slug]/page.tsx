@@ -9,9 +9,11 @@ import {
 } from '@/lib/calculator-registry';
 import { CATEGORIES, CalculatorCategory } from '@/lib/calculator-types';
 import { getCalcContent } from '@/lib/strapi';
+import { CALC_INLINE_CONTENT } from '@/lib/calculator-content';
 import CalculatorEngine from '@/components/CalculatorEngine';
 import CalculatorCard from '@/components/CalculatorCard';
 import CalculatorCMS from '@/components/CalculatorCMS';
+import CustomCalculator from '@/components/custom/CustomCalculator';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 
@@ -90,9 +92,16 @@ export default async function CalculatorPage({
   if (!calc || calc.category !== params.category) notFound();
 
   const categoryInfo = CATEGORIES.find((c) => c.id === calc.category);
-  const related = getCalculatorsByCategory(calc.category as CalculatorCategory)
-    .filter((c) => c.slug !== calc.slug)
-    .slice(0, 4);
+  // Hand-picked related slugs win (cross-category allowed); otherwise the
+  // first 4 calculators from the same category.
+  const handPicked = (calc.relatedSlugs ?? [])
+    .map((s) => getCalculatorBySlug(s))
+    .filter((c): c is NonNullable<typeof c> => !!c && c.slug !== calc.slug);
+  const related = handPicked.length
+    ? handPicked.slice(0, 5)
+    : getCalculatorsByCategory(calc.category as CalculatorCategory)
+        .filter((c) => c.slug !== calc.slug)
+        .slice(0, 4);
 
   const cms = await getCalcContent(params.slug);
   const pageUrl = `${SITE_URL}/${params.category}/${params.slug}`;
@@ -104,8 +113,12 @@ export default async function CalculatorPage({
   });
 
   // ── JSON-LD: WebApplication + BreadcrumbList + (FAQPage if FAQs exist) ──
-  // FAQs come from Strapi only.
-  const allFaqs = (cms?.faqs ?? []).map((f) => ({ q: f.question, a: f.answer }));
+  // Strapi FAQs win; inline fallback FAQs fill in until content is seeded.
+  const inlineContent = CALC_INLINE_CONTENT[calc.slug];
+  const allFaqs = (cms?.faqs?.length ? cms.faqs : inlineContent?.faqs ?? []).map((f) => ({
+    q: f.question,
+    a: f.answer,
+  }));
 
   const webAppSchema = cms?.customSchema ?? {
     '@context': 'https://schema.org',
@@ -254,12 +267,20 @@ export default async function CalculatorPage({
           </div>
 
           {/* CALCULATOR — first thing the user sees so they can act immediately */}
-          <CalculatorEngine slug={calc.slug} />
+          {calc.custom ? (
+            <CustomCalculator type={calc.custom} />
+          ) : (
+            <CalculatorEngine slug={calc.slug} />
+          )}
 
           {/* All page content (long-form article + FAQ accordion) is authored
-             in Strapi as a single `content` markdown field. CalculatorCMS
-             renders nothing when the field is empty. */}
-          <CalculatorCMS slug={calc.slug} />
+             in Strapi as a single `content` markdown field; inline
+             article/faqs render as fallback until Strapi content is seeded. */}
+          <CalculatorCMS
+            slug={calc.slug}
+            fallbackContent={inlineContent?.article}
+            fallbackFaqs={inlineContent?.faqs}
+          />
 
           {/* Related calculators */}
           {related.length > 0 && (

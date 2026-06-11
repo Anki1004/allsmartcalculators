@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import { getCalculatorBySlug } from '@/lib/calculator-registry';
 import SliderInput from './SliderInput';
 import SelectInput from './SelectInput';
+import TextInput from './TextInput';
 import ResultDisplay from './ResultDisplay';
 import GlassCard from './GlassCard';
 import { Save, Share2, FileDown, Check, Sparkles } from 'lucide-react';
@@ -53,6 +54,16 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
       return {};
     }
   }, [values, config, rates]);
+
+  // Optional detail table (e.g. amortization schedule)
+  const detailTable = useMemo(() => {
+    if (!config?.buildTable) return null;
+    try {
+      return config.buildTable(values);
+    } catch {
+      return null;
+    }
+  }, [values, config]);
 
   if (!config) {
     return (
@@ -159,6 +170,7 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
       : [];
 
   return (
+    <>
     <div className="grid grid-cols-1 lg:grid-cols-5 gap-5 md:gap-8">
       {/* INPUT PANEL */}
       <GlassCard className="lg:col-span-3 p-4 sm:p-6 md:p-8">
@@ -187,6 +199,21 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
                     if (!hasInteracted) setHasInteracted(true);
                   }}
                   options={input.options ?? []}
+                  color={input.color ?? 'primary'}
+                />
+              );
+            }
+            if (input.type === 'text') {
+              return (
+                <TextInput
+                  key={input.key}
+                  label={input.label}
+                  value={String(values[input.key] ?? '')}
+                  onChange={(v) => {
+                    setValues((prev) => ({ ...prev, [input.key]: v }));
+                    if (!hasInteracted) setHasInteracted(true);
+                  }}
+                  placeholder={input.placeholder}
                   color={input.color ?? 'primary'}
                 />
               );
@@ -312,5 +339,44 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
         </div>
       </div>
     </div>
+
+    {/* Detail table (amortization / year-by-year schedules) */}
+    {hasInteracted && detailTable && detailTable.rows.length > 0 && (
+      <GlassCard className="mt-5 md:mt-8 p-4 sm:p-6">
+        <h3 className="font-headline font-bold text-base sm:text-lg text-on-surface mb-4">
+          {detailTable.title}
+        </h3>
+        <div className="overflow-x-auto max-h-[420px] overflow-y-auto">
+          <table className="w-full text-xs sm:text-sm font-mono">
+            <thead className="sticky top-0">
+              <tr>
+                {detailTable.headers.map((h) => (
+                  <th
+                    key={h}
+                    className="text-left px-3 py-2 font-semibold text-on-surface bg-surface-container-lowest border-b border-white/10 whitespace-nowrap"
+                  >
+                    {h}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {detailTable.rows.map((row, ri) => (
+                <tr key={ri} className="border-b border-white/5 last:border-0">
+                  {row.map((cell, ci) => (
+                    <td key={ci} className="px-3 py-2 text-on-surface-variant whitespace-nowrap">
+                      {typeof cell === 'number'
+                        ? cell.toLocaleString(locale, { maximumFractionDigits: 2 })
+                        : cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </GlassCard>
+    )}
+    </>
   );
 }
