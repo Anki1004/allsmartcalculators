@@ -63,12 +63,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
-  let post;
-  try {
-    post = await getPostBySlug(params.slug);
-  } catch {
-    notFound();
-  }
+  // No try/catch: if Strapi is unreachable the error must propagate so ISR
+  // keeps the stale page instead of replacing it with a cached 404.
+  const post = await getPostBySlug(params.slug);
 
   if (!post) notFound();
 

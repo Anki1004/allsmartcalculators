@@ -155,7 +155,7 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
       { key: 'coats', label: 'Number of Coats', type: 'slider', min: 1, max: 4, step: 1, default: 2 },
     ],
     outputs: [
-      { key: 'area', label: 'Total Wall Area', suffix: 'mÂ²', decimals: 1, primary: true },
+      { key: 'area', label: 'Total Wall Area', suffix: 'm²', decimals: 1, primary: true },
       { key: 'liters', label: 'Paint Needed', suffix: 'L', decimals: 1, color: 'secondary' },
       { key: 'gallons', label: 'In Gallons', suffix: 'gal', decimals: 1, color: 'tertiary' },
     ],
@@ -183,17 +183,18 @@ export const dailyLifeCalculators: CalculatorConfig[] = [
     inputs: [
       { key: 'length', label: 'Room Length', type: 'slider', min: 0.1, max: 50, step: 0.1, default: 5, suffix: 'm', color: 'primary' },
       { key: 'width', label: 'Room Width', type: 'slider', min: 0.1, max: 50, step: 0.1, default: 4, suffix: 'm', color: 'secondary' },
-      { key: 'perBox', label: 'Coverage per Box', type: 'slider', min: 0.5, max: 10, step: 0.1, default: 2, suffix: 'mÂ²/box', color: 'tertiary' },
+      { key: 'perBox', label: 'Coverage per Box', type: 'slider', min: 0.5, max: 10, step: 0.1, default: 2, suffix: 'm²/box', color: 'tertiary' },
       { key: 'waste', label: 'Waste %', type: 'slider', min: 5, max: 25, step: 1, default: 10, suffix: '%' },
     ],
     outputs: [
-      { key: 'totalArea', label: 'Total Area', suffix: 'mÂ²', decimals: 2, primary: true },
+      { key: 'totalArea', label: 'Room Area', suffix: 'm²', decimals: 2, primary: true },
+      { key: 'areaWithWaste', label: 'Area incl. Waste', suffix: 'm²', decimals: 2, color: 'tertiary' },
       { key: 'boxes', label: 'Boxes Needed', decimals: 0, color: 'secondary' },
     ],
     calculate: (i) => {
       const area = Number(i.length) * Number(i.width);
       const withWaste = area * (1 + Number(i.waste) / 100);
-      return { totalArea: withWaste, boxes: Math.ceil(withWaste / Number(i.perBox)) };
+      return { totalArea: area, areaWithWaste: withWaste, boxes: Math.ceil(withWaste / Number(i.perBox)) };
     },
     seo: {
       title: 'Carpet & Tile Calculator: Boxes Needed for Flooring',

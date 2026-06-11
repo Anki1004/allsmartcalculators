@@ -44,6 +44,17 @@ export const healthCalculators: CalculatorConfig[] = [
     icon: 'Flame',
     description: 'Calculate your Basal Metabolic Rate — the calories your body burns at complete rest.',
     inputs: [
+      {
+        key: 'sex',
+        label: 'Sex',
+        type: 'select',
+        default: 'male',
+        options: [
+          { label: 'Male', value: 'male' },
+          { label: 'Female', value: 'female' },
+        ],
+        color: 'primary',
+      },
       { key: 'weight', label: 'Weight', type: 'slider', min: 30, max: 200, step: 0.5, default: 70, suffix: 'kg', color: 'primary' },
       { key: 'height', label: 'Height', type: 'slider', min: 120, max: 220, step: 1, default: 170, suffix: 'cm', color: 'secondary' },
       { key: 'age', label: 'Age', type: 'slider', min: 10, max: 100, step: 1, default: 30, suffix: 'yrs', color: 'tertiary' },
@@ -54,7 +65,9 @@ export const healthCalculators: CalculatorConfig[] = [
       { key: 'active', label: 'Active TDEE', suffix: 'cal', decimals: 0, color: 'tertiary' },
     ],
     calculate: (i) => {
-      const bmr = 10 * Number(i.weight) + 6.25 * Number(i.height) - 5 * Number(i.age) + 5;
+      // Mifflin-St Jeor: +5 for males, −161 for females
+      const sexConstant = String(i.sex) === 'female' ? -161 : 5;
+      const bmr = 10 * Number(i.weight) + 6.25 * Number(i.height) - 5 * Number(i.age) + sexConstant;
       return { bmr, sedentary: bmr * 1.2, active: bmr * 1.55 };
     },
     seo: {
@@ -74,6 +87,17 @@ export const healthCalculators: CalculatorConfig[] = [
     description: 'Daily calorie needs to maintain, lose, or gain weight — based on your BMR and activity level.',
     trending: true,
     inputs: [
+      {
+        key: 'sex',
+        label: 'Sex',
+        type: 'select',
+        default: 'male',
+        options: [
+          { label: 'Male', value: 'male' },
+          { label: 'Female', value: 'female' },
+        ],
+        color: 'primary',
+      },
       { key: 'weight', label: 'Weight', type: 'slider', min: 30, max: 200, step: 0.5, default: 70, suffix: 'kg', color: 'primary' },
       { key: 'height', label: 'Height', type: 'slider', min: 120, max: 220, step: 1, default: 170, suffix: 'cm', color: 'secondary' },
       { key: 'age', label: 'Age', type: 'slider', min: 10, max: 100, step: 1, default: 30, suffix: 'yrs' },
@@ -85,7 +109,9 @@ export const healthCalculators: CalculatorConfig[] = [
       { key: 'gain', label: 'Gain Weight', suffix: 'cal', decimals: 0, color: 'tertiary' },
     ],
     calculate: (i) => {
-      const bmr = 10 * Number(i.weight) + 6.25 * Number(i.height) - 5 * Number(i.age) + 5;
+      // Mifflin-St Jeor: +5 for males, −161 for females
+      const sexConstant = String(i.sex) === 'female' ? -161 : 5;
+      const bmr = 10 * Number(i.weight) + 6.25 * Number(i.height) - 5 * Number(i.age) + sexConstant;
       const multipliers = [1.2, 1.375, 1.55, 1.725, 1.9];
       const maintain = bmr * multipliers[Number(i.activity) - 1];
       return { maintain, lose: maintain - 500, gain: maintain + 500 };
@@ -93,7 +119,7 @@ export const healthCalculators: CalculatorConfig[] = [
     seo: {
       title: 'Calorie Calculator — Daily Calories to Lose, Gain or Maintain',
       description:
-        'Free daily calorie calculator. See your TDEE, weight-loss target (TDEE âˆ’ 500), and weight-gain target. Uses Mifflin-St Jeor BMR with 5 activity levels.',
+        'Free daily calorie calculator. See your TDEE, weight-loss target (TDEE − 500), and weight-gain target. Uses Mifflin-St Jeor BMR with 5 activity levels.',
       applicationCategory: 'HealthApplication',
     },
     lastUpdated: '2026-04-26',
@@ -151,6 +177,8 @@ export const healthCalculators: CalculatorConfig[] = [
       const w = Number(i.waist);
       const n = Number(i.neck);
       const h = Number(i.height);
+      // Navy formula needs waist > neck; log10 of <= 0 returns NaN/-Infinity
+      if (w <= n) return { bodyFat: 'N/A', category: 'Waist must be larger than neck' };
       const bodyFat = 495 / (1.0324 - 0.19077 * Math.log10(w - n) + 0.15456 * Math.log10(h)) - 450;
       let category = 'Average';
       if (bodyFat < 14) category = 'Athletes';
@@ -272,6 +300,7 @@ export const healthCalculators: CalculatorConfig[] = [
       { key: 'ovulationDay', label: 'Ovulation Day', suffix: 'day of cycle', decimals: 0, primary: true },
       { key: 'fertileStart', label: 'Fertile Window Start', suffix: 'day', decimals: 0, color: 'secondary' },
       { key: 'fertileEnd', label: 'Fertile Window End', suffix: 'day', decimals: 0, color: 'tertiary' },
+      { key: 'daysToOvulation', label: 'Days Until Ovulation', suffix: 'days', decimals: 0 },
     ],
     calculate: (i) => {
       const ovulationDay = Number(i.cycleLength) - 14;
@@ -279,6 +308,7 @@ export const healthCalculators: CalculatorConfig[] = [
         ovulationDay,
         fertileStart: Math.max(1, ovulationDay - 5),
         fertileEnd: ovulationDay + 1,
+        daysToOvulation: Math.max(0, ovulationDay - Number(i.lastPeriodDay)),
       };
     },
     seo: {
@@ -462,10 +492,12 @@ export const healthCalculators: CalculatorConfig[] = [
     calculate: (i) => {
       const birth = new Date(Number(i.birthYear), Number(i.birthMonth) - 1, Number(i.birthDay));
       const now = new Date();
-      const ms = now.getTime() - birth.getTime();
-      const days = ms / (1000 * 60 * 60 * 24);
-      const years = days / 365.25;
-      return { years: Math.floor(years), months: Math.floor(years * 12), days: Math.floor(days) };
+      // Calendar arithmetic — dividing by 365.25 is off by one around birthdays
+      let months = (now.getFullYear() - birth.getFullYear()) * 12 + (now.getMonth() - birth.getMonth());
+      if (now.getDate() < birth.getDate()) months--;
+      months = Math.max(0, months);
+      const days = Math.max(0, Math.floor((now.getTime() - birth.getTime()) / (1000 * 60 * 60 * 24)));
+      return { years: Math.floor(months / 12), months, days };
     },
     seo: {
       title: 'Age Calculator: Exact Years, Months & Days',

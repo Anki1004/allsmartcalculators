@@ -15,7 +15,7 @@ export const mathCalculators: CalculatorConfig[] = [
     outputs: [
       { key: 'result', label: 'Percent of Value', decimals: 2, primary: true },
       { key: 'increased', label: 'Value + %', decimals: 2, color: 'tertiary' },
-      { key: 'decreased', label: 'Value âˆ’ %', decimals: 2, color: 'secondary' },
+      { key: 'decreased', label: 'Value − %', decimals: 2, color: 'secondary' },
     ],
     calculate: (i) => {
       const v = Number(i.value);
@@ -51,7 +51,7 @@ export const mathCalculators: CalculatorConfig[] = [
     calculate: (i) => {
       const f1 = Number(i.num1) / Number(i.den1);
       const f2 = Number(i.num2) / Number(i.den2);
-      return { sum: f1 + f2, product: f1 * f2, quotient: f2 !== 0 ? f1 / f2 : 0 };
+      return { sum: f1 + f2, product: f1 * f2, quotient: f2 !== 0 ? f1 / f2 : 'Undefined (÷ by 0)' };
     },
     seo: {
       title: 'Fraction Calculator: Add, Subtract, Multiply, Divide',
@@ -66,7 +66,7 @@ export const mathCalculators: CalculatorConfig[] = [
     name: 'Quadratic Equation',
     category: 'math',
     icon: 'FunctionSquare',
-    description: 'Solve axÂ² + bx + c = 0.',
+    description: 'Solve ax² + bx + c = 0.',
     inputs: [
       { key: 'a', label: 'Coefficient a', type: 'slider', min: -20, max: 20, step: 0.1, default: 1, color: 'primary' },
       { key: 'b', label: 'Coefficient b', type: 'slider', min: -50, max: 50, step: 0.1, default: -5, color: 'secondary' },
@@ -88,8 +88,8 @@ export const mathCalculators: CalculatorConfig[] = [
       return { x1: (-b + sqrtD) / (2 * a), x2: (-b - sqrtD) / (2 * a), discriminant: d };
     },
     seo: {
-      title: 'Quadratic Equation Calculator: Solve axÂ² + bx + c = 0',
-      description: 'Free quadratic equation solver. Find both roots of any axÂ² + bx + c = 0 — handles real, repeated, and complex roots with full discriminant detail.',
+      title: 'Quadratic Equation Calculator: Solve ax² + bx + c = 0',
+      description: 'Free quadratic equation solver. Find both roots of any ax² + bx + c = 0 — handles real, repeated, and complex roots with full discriminant detail.',
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-05-15',
@@ -151,8 +151,9 @@ export const mathCalculators: CalculatorConfig[] = [
       { key: 'odds', label: 'Odds', color: 'tertiary' },
     ],
     calculate: (i) => {
-      const f = Number(i.favorable);
       const t = Number(i.total);
+      // Favorable outcomes can't exceed total outcomes
+      const f = Math.min(Number(i.favorable), t);
       const p = t > 0 ? f / t : 0;
       return { probability: p, percentage: p * 100, odds: `${f}:${t - f}` };
     },
@@ -228,7 +229,7 @@ export const mathCalculators: CalculatorConfig[] = [
     icon: 'Compass',
     description: 'sin, cos, tan for any angle.',
     inputs: [
-      { key: 'angle', label: 'Angle', type: 'slider', min: 0, max: 360, step: 0.5, default: 45, suffix: 'Â°', color: 'primary' },
+      { key: 'angle', label: 'Angle', type: 'slider', min: 0, max: 360, step: 0.5, default: 45, suffix: '°', color: 'primary' },
     ],
     outputs: [
       { key: 'sin', label: 'sin', decimals: 6, primary: true },
@@ -408,7 +409,13 @@ export const mathCalculators: CalculatorConfig[] = [
     outputs: [
       { key: 'result', label: 'Result', decimals: 4, primary: true },
     ],
-    calculate: (i) => ({ result: Math.pow(Number(i.base), Number(i.exponent)) }),
+    calculate: (i) => {
+      const base = Number(i.base);
+      const exp = Number(i.exponent);
+      // Negative base with fractional exponent has no real result
+      if (base < 0 && !Number.isInteger(exp)) return { result: 'No real result' };
+      return { result: Math.pow(base, exp) };
+    },
     seo: {
       title: 'Power Calculator: Compute base^exponent',
       description: 'Free exponent calculator. Compute base raised to any power — supports negative and fractional exponents, integer and decimal bases.',
@@ -435,8 +442,8 @@ export const mathCalculators: CalculatorConfig[] = [
       cbrt: Math.cbrt(Number(i.value)),
     }),
     seo: {
-      title: 'Square Root Calculator: âˆš, Â³âˆš, and nth Roots',
-      description: 'Free square and cube root calculator. Find âˆšx and Â³âˆšx for any positive number — instant decimal results, useful for algebra and geometry.',
+      title: 'Square Root Calculator: √, ³√, and nth Roots',
+      description: 'Free square and cube root calculator. Find √x and ³√x for any positive number — instant decimal results, useful for algebra and geometry.',
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-05-15',

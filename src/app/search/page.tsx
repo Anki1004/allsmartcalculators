@@ -25,7 +25,7 @@ export function generateMetadata({ searchParams }: SearchPageProps): Metadata {
     description,
     alternates: { canonical: `${SITE_URL}/search` },
     // Don't index empty/duplicated search result pages
-    robots: q ? 'noindex, follow' : 'noindex, follow',
+    robots: 'noindex, follow',
     openGraph: {
       title,
       description,

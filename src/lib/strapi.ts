@@ -52,7 +52,9 @@ async function strapiGet<T>(path: string): Promise<T> {
   const res = await fetch(`${STRAPI_URL}/api${path}`, {
     next: { revalidate: 60 },
     headers: { 'Content-Type': 'application/json' },
-    signal: AbortSignal.timeout(8000),
+    // Render free tier cold-starts can take ~30s — a short timeout makes
+    // every fetch fail while Strapi wakes up
+    signal: AbortSignal.timeout(30000),
   });
   if (!res.ok) throw new Error(`Strapi fetch failed: ${res.status}`);
   return res.json();
@@ -76,13 +78,12 @@ export async function getAllPosts(): Promise<StrapiPost[]> {
 
 export async function getPostBySlug(slug: string): Promise<StrapiPost | null> {
   const path = `/posts?filters[slug][$eq]=${encodeURIComponent(slug)}&populate=coverImage`;
-  try {
-    const data = await strapiGet<StrapiResponse<StrapiPost[]>>(path);
-    return data.data?.[0] ?? null;
-  } catch (err) {
-    logStrapiError(path, err);
-    return null;
-  }
+  // Deliberately NOT swallowed: a thrown error during ISR revalidation keeps
+  // the stale page being served, whereas returning null would notFound() the
+  // post and cache a 404 every time Strapi is asleep/cold-starting on Render.
+  // Only a real 200-with-empty-result returns null (genuinely missing post).
+  const data = await strapiGet<StrapiResponse<StrapiPost[]>>(path);
+  return data.data?.[0] ?? null;
 }
 
 export async function getFeaturedPosts(): Promise<StrapiPost[]> {

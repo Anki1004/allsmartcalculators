@@ -97,7 +97,7 @@ export const cryptoCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Ethereum Gas Calculator: Gwei to USD Fee',
-      description: 'Free Ethereum gas fee calculator. Convert gas units Ã— gwei Ã— ETH price into USD cost for any transaction — useful before signing on-chain actions.',
+      description: 'Free Ethereum gas fee calculator. Convert gas units × gwei × ETH price into USD cost for any transaction — useful before signing on-chain actions.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-05-15',

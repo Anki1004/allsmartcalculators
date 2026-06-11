@@ -61,10 +61,9 @@ export const metadata: Metadata = {
       url: 'https://www.linkedin.com/in/ankit-gupta-data-analyst',
     },
   ],
-  alternates: {
-    canonical: SITE_URL,
-    languages: { 'en-IN': SITE_URL },
-  },
+  // No site-wide `alternates.canonical` here: every page sets its own, and a
+  // layout-level homepage canonical would silently deindex any future page
+  // that forgets to override it. metadataBase makes relative canonicals work.
   openGraph: {
     title: `AllSmartCalculators — ${TOTAL_CALCULATORS} Calculators`,
     description: 'Calculate anything. Beautifully.',
@@ -92,7 +91,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en-IN" className={`dark ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en-IN" suppressHydrationWarning className={`dark ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
       <head>
         {/* Site-wide structured data — Organization + WebSite (with SearchAction) */}
         <script

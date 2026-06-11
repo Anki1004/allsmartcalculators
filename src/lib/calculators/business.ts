@@ -9,7 +9,7 @@ export const businessCalculators: CalculatorConfig[] = [
     description: 'Compute Return on Investment as a percentage from initial cost and gain — for marketing campaigns, real estate, or any business project.',
     trending: true,
     inputs: [
-      { key: 'gain', label: 'Investment Gain', type: 'slider', min: 0, max: 1000000, step: 100, default: 25000, prefix: '$', color: 'primary' },
+      { key: 'gain', label: 'Net Profit (Gain − Cost)', type: 'slider', min: 0, max: 1000000, step: 100, default: 25000, prefix: '$', color: 'primary' },
       { key: 'cost', label: 'Investment Cost', type: 'slider', min: 1, max: 1000000, step: 100, default: 100000, prefix: '$', color: 'secondary' },
     ],
     outputs: [
@@ -22,7 +22,7 @@ export const businessCalculators: CalculatorConfig[] = [
     }),
     seo: {
       title: 'ROI Calculator: Return on Investment Percentage',
-      description: 'Free ROI calculator. Compute return on investment as a percentage from initial cost and final value — works for marketing, real estate, or business projects.',
+      description: 'Free ROI calculator. Compute return on investment as a percentage from investment cost and net profit — works for marketing, real estate, or business projects.',
       applicationCategory: 'BusinessApplication',
     },
     lastUpdated: '2026-04-26',

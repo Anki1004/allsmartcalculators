@@ -21,8 +21,8 @@ export const engineeringCalculators: CalculatorConfig[] = [
       return { resistance: a > 0 ? v / a : 0, power: v * a };
     },
     seo: {
-      title: 'Ohm\'s Law Calculator: V = I Ã— R for Circuits',
-      description: 'Free Ohm\'s Law calculator. Solve V = I Ã— R for voltage, current, or resistance — also returns power (P = VI). Useful for any DC circuit analysis.',
+      title: 'Ohm\'s Law Calculator: V = I × R for Circuits',
+      description: 'Free Ohm\'s Law calculator. Solve V = I × R for voltage, current, or resistance — also returns power (P = VI). Useful for any DC circuit analysis.',
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
@@ -52,7 +52,7 @@ export const engineeringCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Voltage Divider Calculator: Output Voltage Formula',
-      description: 'Free voltage divider calculator. Compute Vout from Vin, R1, R2 using Vout = Vin Ã— R2 / (R1+R2). Useful for sensor circuits and reference rails.',
+      description: 'Free voltage divider calculator. Compute Vout from Vin, R1, R2 using Vout = Vin × R2 / (R1+R2). Useful for sensor circuits and reference rails.',
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',
@@ -78,7 +78,7 @@ export const engineeringCalculators: CalculatorConfig[] = [
       return { realPower: va * Number(i.pf), apparentPower: va };
     },
     seo: {
-      title: 'Electrical Power Calculator: P = V Ã— I in Watts',
+      title: 'Electrical Power Calculator: P = V × I in Watts',
       description: 'Free electrical power calculator. Compute power in watts from voltage and current — supports DC and single-phase AC with power-factor adjustment.',
       applicationCategory: 'UtilitiesApplication',
     },
@@ -94,7 +94,7 @@ export const engineeringCalculators: CalculatorConfig[] = [
     inputs: [
       { key: 'force', label: 'Force', type: 'slider', min: 0, max: 10000, step: 1, default: 100, suffix: 'N', color: 'primary' },
       { key: 'distance', label: 'Lever Arm', type: 'slider', min: 0.01, max: 5, step: 0.01, default: 0.5, suffix: 'm', color: 'secondary' },
-      { key: 'angle', label: 'Angle', type: 'slider', min: 0, max: 180, step: 1, default: 90, suffix: 'Â°', color: 'tertiary' },
+      { key: 'angle', label: 'Angle', type: 'slider', min: 0, max: 180, step: 1, default: 90, suffix: '°', color: 'tertiary' },
     ],
     outputs: [
       { key: 'torque', label: 'Torque', suffix: 'N·m', decimals: 3, primary: true },
@@ -103,7 +103,7 @@ export const engineeringCalculators: CalculatorConfig[] = [
       torque: Number(i.force) * Number(i.distance) * Math.sin((Number(i.angle) * Math.PI) / 180),
     }),
     seo: {
-      title: 'Torque Calculator: Ï„ = Force Ã— Lever Arm',
+      title: 'Torque Calculator: τ = Force × Lever Arm',
       description: 'Free torque calculator. Compute rotational torque from any applied force and lever-arm length — supports N·m and lb·ft units.',
       applicationCategory: 'UtilitiesApplication',
     },
@@ -155,7 +155,7 @@ export const engineeringCalculators: CalculatorConfig[] = [
       { key: 'depth', label: 'Depth', type: 'slider', min: 0.01, max: 2, step: 0.01, default: 0.15, suffix: 'm', color: 'tertiary' },
     ],
     outputs: [
-      { key: 'volume', label: 'Volume', suffix: 'mÂ³', decimals: 3, primary: true },
+      { key: 'volume', label: 'Volume', suffix: 'm³', decimals: 3, primary: true },
       { key: 'bags', label: 'Bags of Cement', suffix: 'bags', decimals: 0, color: 'secondary' },
     ],
     calculate: (i) => {
@@ -163,7 +163,7 @@ export const engineeringCalculators: CalculatorConfig[] = [
       return { volume, bags: Math.ceil(volume * 7.5) };
     },
     seo: {
-      title: 'Concrete Calculator: Slab Volume in mÂ³ & Yards',
+      title: 'Concrete Calculator: Slab Volume in m³ & Yards',
       description: 'Free concrete volume calculator for slabs. Get cubic metres, cubic yards, and number of bags needed from length, width, and slab thickness.',
       applicationCategory: 'UtilitiesApplication',
     },
@@ -182,7 +182,7 @@ export const engineeringCalculators: CalculatorConfig[] = [
     ],
     outputs: [
       { key: 'flowRate', label: 'Flow Rate', suffix: 'L/s', decimals: 3, primary: true },
-      { key: 'area', label: 'Cross-Section Area', suffix: 'mmÂ²', decimals: 1, color: 'secondary' },
+      { key: 'area', label: 'Cross-Section Area', suffix: 'mm²', decimals: 1, color: 'secondary' },
     ],
     calculate: (i) => {
       const r = Number(i.diameter) / 2 / 1000;
@@ -192,7 +192,7 @@ export const engineeringCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Pipe Flow Calculator: Volume Flow Rate in Pipes',
-      description: 'Free pipe flow rate calculator. Compute volume flow (Q = A Ã— v) through a circular pipe from diameter and fluid velocity — mÂ³/s and L/min.',
+      description: 'Free pipe flow rate calculator. Compute volume flow (Q = A × v) through a circular pipe from diameter and fluid velocity — m³/s and L/min.',
       applicationCategory: 'UtilitiesApplication',
     },
     lastUpdated: '2026-05-15',

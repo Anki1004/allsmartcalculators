@@ -52,7 +52,7 @@ export const educationCalculators: CalculatorConfig[] = [
     ],
     outputs: [
       { key: 'cgpa', label: 'CGPA', decimals: 2, primary: true },
-      { key: 'percentage', label: 'Percentage (CGPA Ã— 9.5)', suffix: '%', decimals: 2, color: 'secondary' },
+      { key: 'percentage', label: 'Percentage (CGPA × 9.5)', suffix: '%', decimals: 2, color: 'secondary' },
     ],
     calculate: (i) => {
       const gpas = [i.s1, i.s2, i.s3, i.s4].map(Number);

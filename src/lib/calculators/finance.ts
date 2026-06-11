@@ -235,7 +235,7 @@ export const financeCalculators: CalculatorConfig[] = [
       { key: 'loanAmount', label: 'Loan Amount', prefix: '$' },
     ],
     calculate: (i) => {
-      const loan = Number(i.homePrice) - Number(i.downPayment);
+      const loan = Math.max(0, Number(i.homePrice) - Number(i.downPayment));
       const r = Number(i.rate) / 12 / 100;
       const n = Number(i.years) * 12;
       const pmt = r === 0 ? loan / n : (loan * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
@@ -317,6 +317,7 @@ export const financeCalculators: CalculatorConfig[] = [
       let taxable = 0;
       let baseTax = 0;
       let rebate = 0;
+      let slabs: [number, number][] = [];
 
       const applySlabs = (amount: number, slabs: [number, number][]): number => {
         let prev = 0;
@@ -337,7 +338,7 @@ export const financeCalculators: CalculatorConfig[] = [
         // FY 2025-26 new regime (Union Budget 2025)
         const standardDeduction = 75000;
         taxable = Math.max(0, income - standardDeduction);
-        baseTax = applySlabs(taxable, [
+        slabs = [
           [400000, 0],
           [800000, 0.05],
           [1200000, 0.10],
@@ -345,31 +346,47 @@ export const financeCalculators: CalculatorConfig[] = [
           [2000000, 0.20],
           [2400000, 0.25],
           [Infinity, 0.30],
-        ]);
+        ];
+        baseTax = applySlabs(taxable, slabs);
         // Section 87A: full rebate if taxable income <= 12L
         if (taxable <= 1200000) rebate = baseTax;
       } else {
         // FY 2025-26 old regime (resident individual, below 60)
         const standardDeduction = 50000;
         taxable = Math.max(0, income - standardDeduction - userDeductions);
-        baseTax = applySlabs(taxable, [
+        slabs = [
           [250000, 0],
           [500000, 0.05],
           [1000000, 0.20],
           [Infinity, 0.30],
-        ]);
+        ];
+        baseTax = applySlabs(taxable, slabs);
         // Section 87A: rebate up to 12,500 if taxable income <= 5L
         if (taxable <= 500000) rebate = Math.min(12500, baseTax);
       }
 
-      const afterRebate = Math.max(0, baseTax - rebate);
+      let afterRebate = Math.max(0, baseTax - rebate);
+
+      // Section 87A marginal relief (new regime): tax just above the 12L
+      // rebate threshold can't exceed the income above it
+      if (regime === 'new' && taxable > 1200000) {
+        afterRebate = Math.min(afterRebate, taxable - 1200000);
+      }
 
       // Surcharge on tax (taxable-income-driven)
       let surchargeRate = 0;
-      if (taxable > 20000000) surchargeRate = 0.25;       // > 2 crore
-      else if (taxable > 10000000) surchargeRate = 0.15;  // > 1 crore
-      else if (taxable > 5000000) surchargeRate = 0.10;   // > 50 lakh
-      const surcharge = afterRebate * surchargeRate;
+      let surchargeThreshold = 0;
+      let prevSurchargeRate = 0;
+      if (taxable > 20000000) { surchargeRate = 0.25; surchargeThreshold = 20000000; prevSurchargeRate = 0.15; }       // > 2 crore
+      else if (taxable > 10000000) { surchargeRate = 0.15; surchargeThreshold = 10000000; prevSurchargeRate = 0.10; }  // > 1 crore
+      else if (taxable > 5000000) { surchargeRate = 0.10; surchargeThreshold = 5000000; }                              // > 50 lakh
+      let surcharge = afterRebate * surchargeRate;
+      if (surchargeThreshold > 0) {
+        // Surcharge marginal relief: tax + surcharge can't exceed the tax
+        // payable at the threshold plus the income above it
+        const cap = applySlabs(surchargeThreshold, slabs) * (1 + prevSurchargeRate) + (taxable - surchargeThreshold);
+        if (afterRebate + surcharge > cap) surcharge = Math.max(0, cap - afterRebate);
+      }
 
       // 4% Health & Education Cess
       const cess = (afterRebate + surcharge) * 0.04;
@@ -408,9 +425,10 @@ export const financeCalculators: CalculatorConfig[] = [
       { key: 'monthlySaving', label: 'Monthly SIP Required', prefix: '$', color: 'secondary' },
     ],
     calculate: (i) => {
-      const years = Number(i.retireAge) - Number(i.currentAge);
+      const years = Math.max(0, Number(i.retireAge) - Number(i.currentAge));
       const futureExpense = Number(i.monthlyExpense) * Math.pow(1 + Number(i.inflation) / 100, years) * 12;
       const corpus = futureExpense * 25;
+      if (years === 0) return { corpus, monthlySaving: 0 };
       const r = Number(i.returnRate) / 12 / 100;
       const n = years * 12;
       const monthlySaving = r === 0 ? corpus / n : corpus / (((Math.pow(1 + r, n) - 1) / r) * (1 + r));
@@ -593,7 +611,8 @@ export const financeCalculators: CalculatorConfig[] = [
       const b = Number(i.balance);
       const r = Number(i.apr) / 12 / 100;
       const pmt = Number(i.payment);
-      if (pmt <= b * r) return { months: 9999, totalInterest: 9999 };
+      // Payment doesn't even cover monthly interest — balance never shrinks
+      if (pmt <= b * r) return { months: 'Never — payment too low', totalInterest: 'Grows forever' };
       const months = Math.log(pmt / (pmt - b * r)) / Math.log(1 + r);
       return { months, totalInterest: pmt * months - b };
     },
@@ -624,7 +643,8 @@ export const financeCalculators: CalculatorConfig[] = [
       const b = Number(i.debt);
       const r = Number(i.rate) / 12 / 100;
       const pmt = Number(i.payment);
-      if (pmt <= b * r) return { months: 9999, interestPaid: 0 };
+      // Payment doesn't even cover monthly interest — balance never shrinks
+      if (pmt <= b * r) return { months: 'Never — payment too low', interestPaid: 'Grows forever' };
       const months = Math.log(pmt / (pmt - b * r)) / Math.log(1 + r);
       return { months, interestPaid: pmt * months - b };
     },
@@ -734,6 +754,17 @@ export const financeCalculators: CalculatorConfig[] = [
     icon: 'FileText',
     description: 'Calculate GST inclusive & exclusive amounts.',
     inputs: [
+      {
+        key: 'mode',
+        label: 'Amount is',
+        type: 'select',
+        default: 'exclusive',
+        options: [
+          { label: 'Excluding GST (add GST)', value: 'exclusive' },
+          { label: 'Including GST (extract GST)', value: 'inclusive' },
+        ],
+        color: 'primary',
+      },
       { key: 'amount', label: 'Amount', type: 'slider', min: 1, max: 1000000, step: 10, default: 1000, prefix: '$', color: 'primary' },
       { key: 'rate', label: 'GST Rate', type: 'slider', min: 0, max: 30, step: 0.5, default: 18, suffix: '%', color: 'secondary' },
     ],
@@ -745,6 +776,11 @@ export const financeCalculators: CalculatorConfig[] = [
     calculate: (i) => {
       const amt = Number(i.amount);
       const rate = Number(i.rate);
+      if (String(i.mode) === 'inclusive') {
+        // Extract GST from a price that already includes it
+        const gst = amt * (rate / (100 + rate));
+        return { gst, total: amt, net: amt - gst };
+      }
       const gst = amt * (rate / 100);
       return { gst, total: amt + gst, net: amt };
     },

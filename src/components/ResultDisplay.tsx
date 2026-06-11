@@ -93,9 +93,11 @@ export default function ResultDisplay({
             : undefined
         }
       >
-        {prefix}
+        {typeof displayValue === 'number' && prefix}
         {formatted}
-        {suffix && <span className="text-on-surface-variant ml-1 text-[0.6em]">{suffix}</span>}
+        {typeof displayValue === 'number' && suffix && (
+          <span className="text-on-surface-variant ml-1 text-[0.6em]">{suffix}</span>
+        )}
       </div>
     </div>
   );

@@ -124,9 +124,11 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
       ...config.outputs.map((out) => {
         const raw = results[out.key] ?? 0;
         const val = cvtVal(out.prefix, raw);
+        // String results are pre-formatted messages — don't wrap them in prefix/suffix
+        if (typeof val !== 'number') return `${out.label}: ${val}`;
         const prefix = cvtPfx(out.prefix) ?? '';
         const suffix = out.suffix ?? '';
-        return `${out.label}: ${prefix}${typeof val === 'number' ? val.toLocaleString(locale) : val}${suffix}`;
+        return `${out.label}: ${prefix}${val.toLocaleString(locale)}${suffix}`;
       }),
       '',
       'allsmartcalculators.com',
