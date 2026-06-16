@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next';
 import { allCalculators } from '@/lib/calculator-registry';
 import { CATEGORIES } from '@/lib/calculator-types';
 import { getAllPosts } from '@/lib/strapi';
+import { INDEXABLE_CALCULATORS } from '@/lib/indexable-calculators';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 
@@ -37,12 +38,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
-  const calculatorRoutes: MetadataRoute.Sitemap = allCalculators.map((calc) => ({
-    url: `${BASE_URL}/${calc.category}/${calc.slug}`,
-    ...(calc.lastUpdated && { lastModified: new Date(calc.lastUpdated) }),
-    changeFrequency: 'monthly',
-    priority: calc.trending ? 0.8 : 0.6,
-  }));
+  // Only list indexable (rewritten, high-quality) calculators. Pages set to
+  // noindex are excluded so we don't advertise them to Google or trip the
+  // "submitted URL marked noindex" warning in Search Console.
+  const calculatorRoutes: MetadataRoute.Sitemap = allCalculators
+    .filter((calc) => INDEXABLE_CALCULATORS.has(calc.slug))
+    .map((calc) => ({
+      url: `${BASE_URL}/${calc.category}/${calc.slug}`,
+      ...(calc.lastUpdated && { lastModified: new Date(calc.lastUpdated) }),
+      changeFrequency: 'monthly',
+      priority: calc.trending ? 0.8 : 0.6,
+    }));
 
   let blogRoutes: MetadataRoute.Sitemap = [];
   try {

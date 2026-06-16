@@ -10,6 +10,7 @@ import {
 import { CATEGORIES, CalculatorCategory } from '@/lib/calculator-types';
 import { getCalcContent } from '@/lib/strapi';
 import { CALC_INLINE_CONTENT } from '@/lib/calculator-content';
+import { INDEXABLE_CALCULATORS } from '@/lib/indexable-calculators';
 import CalculatorEngine from '@/components/CalculatorEngine';
 import CalculatorCard from '@/components/CalculatorCard';
 import CalculatorCMS from '@/components/CalculatorCMS';
@@ -63,7 +64,12 @@ export async function generateMetadata({
       : calc.reviewedBy?.name
         ? [{ name: calc.reviewedBy.name }]
         : [{ name: 'Ankit Gupta', url: 'https://www.linkedin.com/in/ankit-gupta-data-analyst' }],
-    robots: cms?.metaRobots ?? 'index, follow',
+    // Only the rewritten, high-quality pages are indexable. Everything else is
+    // noindex,follow until its content is brought up to standard — keeps Google
+    // judging the site on its strong subset.
+    robots: INDEXABLE_CALCULATORS.has(params.slug)
+      ? (cms?.metaRobots ?? 'index, follow')
+      : 'noindex, follow',
     alternates: { canonical: canonicalUrl },
     openGraph: {
       title: cms?.metaOgTitle ?? title,
