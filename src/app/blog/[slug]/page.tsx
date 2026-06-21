@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         type: (post.metaOgType as 'article') ?? 'article',
         url: post.metaOgUrl ?? canonicalUrl,
         siteName: post.metaOgSiteName ?? 'AllSmartCalculators',
-        publishedTime: post.publishedAt,
+        publishedTime: post.publishedOn ?? post.publishedAt,
         ...(ogImg && { images: [{ url: ogImg, width: 1200, height: 630, alt: title }] }),
       },
       twitter: {
@@ -85,7 +85,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       name: post.metaAuthor ?? 'Ankit Gupta',
       ...(post.metaAuthor ? {} : { url: 'https://www.linkedin.com/in/ankit-gupta-data-analyst' }),
     },
-    datePublished: post.publishedAt,
+    datePublished: post.publishedOn ?? post.publishedAt,
     ...(imgUrl && { image: imgUrl }),
   };
 

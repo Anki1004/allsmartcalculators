@@ -66,7 +66,10 @@ function logStrapiError(path: string, err: unknown) {
 }
 
 export async function getAllPosts(): Promise<StrapiPost[]> {
-  const path = '/posts?populate=coverImage&sort=publishedAt:desc';
+  // Sort by publishedOn (the editorial display date we control) first, since
+  // Strapi-managed publishedAt resets to "now" on every write and can't be
+  // back-dated via the API. Fall back to publishedAt when publishedOn is unset.
+  const path = '/posts?populate=coverImage&sort[0]=publishedOn:desc&sort[1]=publishedAt:desc';
   try {
     const data = await strapiGet<StrapiResponse<StrapiPost[]>>(path);
     return data.data ?? [];
@@ -87,7 +90,7 @@ export async function getPostBySlug(slug: string): Promise<StrapiPost | null> {
 }
 
 export async function getFeaturedPosts(): Promise<StrapiPost[]> {
-  const path = '/posts?filters[showOnHome][$eq]=true&populate=coverImage&sort=publishedAt:desc';
+  const path = '/posts?filters[showOnHome][$eq]=true&populate=coverImage&sort[0]=publishedOn:desc&sort[1]=publishedAt:desc';
   try {
     const data = await strapiGet<StrapiResponse<StrapiPost[]>>(path);
     return data.data ?? [];

@@ -37,7 +37,7 @@ const CATEGORY_COLORS: Record<string, string> = {
 function PostCard({ post }: { post: StrapiPost }) {
   const imgUrl = post.coverImage ? getStrapiImageUrl(post.coverImage.url) : null;
   const categoryStyle = CATEGORY_COLORS[post.category] ?? CATEGORY_COLORS.General;
-  const date = new Date(post.publishedAt).toLocaleDateString('en-US', {
+  const date = new Date(post.publishedOn ?? post.publishedAt).toLocaleDateString('en-US', {
     month: 'short', day: 'numeric', year: 'numeric',
   });
 
