@@ -4,7 +4,7 @@
 // "May 21, 2026" style without each page reformatting itself.
 
 export const POLICY_DATES = {
-  privacy: '2026-05-21',
+  privacy: '2026-06-28',
   terms: '2026-05-21',
   disclaimer: '2026-05-21',
   methodology: '2026-05-21',
