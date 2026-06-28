@@ -7,7 +7,7 @@ import remarkGfm from 'remark-gfm';
 import { getPostBySlug, getAllPosts, getStrapiImageUrl } from '@/lib/strapi';
 import { breadcrumbSchema } from '@/lib/structured-data';
 import GlassCard from '@/components/GlassCard';
-import { Clock, User, ArrowLeft, Calendar } from 'lucide-react';
+import { Clock, User, ArrowLeft, Calendar, Linkedin } from 'lucide-react';
 
 export async function generateStaticParams() {
   try {
@@ -75,6 +75,9 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     month: 'long', day: 'numeric', year: 'numeric',
   });
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
+  const AUTHOR_LINKEDIN = 'https://www.linkedin.com/in/ankit-gupta-data-analyst';
+
   const jsonLd = post.customSchema ?? {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -83,13 +86,12 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     author: {
       '@type': 'Person',
       name: post.metaAuthor ?? 'Ankit Gupta',
-      ...(post.metaAuthor ? {} : { url: 'https://www.linkedin.com/in/ankit-gupta-data-analyst' }),
+      url: `${siteUrl}/author/ankit-gupta`,
+      sameAs: [AUTHOR_LINKEDIN],
     },
     datePublished: post.publishedOn ?? post.publishedAt,
     ...(imgUrl && { image: imgUrl }),
   };
-
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
   const crumbs = breadcrumbSchema([
     { name: 'Home', url: siteUrl },
     { name: 'Blog', url: `${siteUrl}/blog` },
@@ -147,7 +149,9 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           <div className="flex items-center gap-3 sm:gap-5 text-xs sm:text-sm text-on-surface-variant/60 pb-5 sm:pb-6 border-b border-white/5 flex-wrap">
             <span className="flex items-center gap-1.5">
               <User className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              {post.metaAuthor ?? 'Ankit Gupta'}
+              <Link href="/author/ankit-gupta" className="hover:text-primary transition-colors">
+                {post.metaAuthor ?? 'Ankit Gupta'}
+              </Link>
             </span>
             <span className="flex items-center gap-1.5">
               <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -181,6 +185,47 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             </ReactMarkdown>
           </div>
         </GlassCard>
+
+        {/* Author bio — E-E-A-T: real, identifiable author with a LinkedIn link */}
+        <div className="mt-8 sm:mt-10">
+          <GlassCard className="p-5 sm:p-6 flex items-start gap-4">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-primary-dim to-primary flex items-center justify-center text-lg sm:text-xl font-headline font-black text-white shrink-0">
+              A
+            </div>
+            <div className="min-w-0">
+              <p className="text-[10px] uppercase tracking-[0.15em] text-on-surface-variant/60 mb-0.5">
+                Written by
+              </p>
+              <Link
+                href="/author/ankit-gupta"
+                className="font-headline font-bold text-base sm:text-lg text-on-surface hover:text-primary transition-colors"
+              >
+                Ankit Gupta
+              </Link>
+              <p className="text-xs sm:text-sm text-on-surface-variant leading-relaxed mt-1 mb-2.5">
+                Solo developer and data analyst. Builds and reviews every calculator and guide on
+                AllSmartCalculators.
+              </p>
+              <div className="flex items-center gap-4">
+                <a
+                  href={AUTHOR_LINKEDIN}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline"
+                >
+                  <Linkedin className="w-3.5 h-3.5" />
+                  LinkedIn
+                </a>
+                <Link
+                  href="/author/ankit-gupta"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-on-surface-variant hover:text-primary transition-colors"
+                >
+                  More from Ankit →
+                </Link>
+              </div>
+            </div>
+          </GlassCard>
+        </div>
 
         {/* Footer CTA */}
         <div className="mt-8 sm:mt-10 text-center">
