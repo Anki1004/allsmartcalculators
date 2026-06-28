@@ -70,6 +70,12 @@ export default async function HomePage() {
   // strongest standalone content, so they belong above the fold-adjacent area,
   // not buried under a nav link.
   const recentPosts = (await getAllPosts()).slice(0, 3);
+  // On the homepage "Browse by Category" highlight, only show categories with
+  // enough tools to fill a row — keeps it from looking sparse (a lone card in a
+  // 4-up grid). Thin categories stay reachable via the chips and /categories.
+  const browseCategories = ACTIVE_CATEGORIES.filter(
+    (cat) => allCalculators.filter((c) => c.category === cat.id).length >= 4,
+  );
 
   // Keyword-led H1 (default). Front-loads the count and names the high-volume
   // calculators users actually search for; "Free Online Calculators" alone is
@@ -280,9 +286,9 @@ export default async function HomePage() {
           </div>
 
           <div className="flex flex-col gap-8 sm:gap-10">
-            {ACTIVE_CATEGORIES.map((cat) => {
-              const catCalcs = allCalculators
-                .filter((c) => c.category === cat.id)
+            {browseCategories.map((cat) => {
+              const catAll = allCalculators.filter((c) => c.category === cat.id);
+              const catCalcs = [...catAll]
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .slice(0, 4);
               return (
@@ -306,8 +312,8 @@ export default async function HomePage() {
                       href={`/${cat.id}`}
                       className="flex items-center gap-1 sm:gap-1.5 text-[11px] sm:text-xs font-semibold text-primary hover:gap-2.5 transition-all whitespace-nowrap shrink-0 mt-1 sm:mt-0"
                     >
-                      <span className="hidden sm:inline">All {allCalculators.filter((c) => c.category === cat.id).length} tools</span>
-                      <span className="sm:hidden">{allCalculators.filter((c) => c.category === cat.id).length}</span>
+                      <span className="hidden sm:inline">All {catAll.length} tool{catAll.length === 1 ? '' : 's'}</span>
+                      <span className="sm:hidden">{catAll.length}</span>
                       <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                     </Link>
                   </div>

@@ -66,7 +66,7 @@ export default function CategoriesPage() {
                     {cat.name}
                   </h2>
                   <p className="text-xs sm:text-sm text-on-surface-variant">
-                    {cat.description} · {calcs.length} tools
+                    {cat.description} · {calcs.length} tool{calcs.length === 1 ? '' : 's'}
                   </p>
                 </div>
               </div>

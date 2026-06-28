@@ -131,7 +131,7 @@ export default async function CategoryPage({ params }: { params: { category: str
               {cat.name} Calculators
             </h1>
             <p className="text-sm sm:text-base text-on-surface-variant mt-1">
-              {cat.description} · {calcs.length} free tools
+              {cat.description} · {calcs.length} free tool{calcs.length === 1 ? '' : 's'}
             </p>
           </div>
         </div>
