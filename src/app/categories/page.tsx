@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import { allCalculators, TOTAL_CALCULATORS } from '@/lib/calculator-registry';
-import { CATEGORIES } from '@/lib/calculator-types';
+import { allCalculators, ACTIVE_CATEGORIES, TOTAL_CALCULATORS } from '@/lib/calculator-registry';
 import CalculatorCard from '@/components/CalculatorCard';
 import GlassCard from '@/components/GlassCard';
 
@@ -10,11 +9,11 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator
 
 export const metadata: Metadata = {
   title: 'All Categories — AllSmartCalculators',
-  description: `Browse ${TOTAL_CALCULATORS} free calculators across ${CATEGORIES.length} categories — Finance, Health, Math, Crypto, Engineering, Daily Life, Education & Business. Always free.`,
+  description: `Browse ${TOTAL_CALCULATORS} free calculators across ${ACTIVE_CATEGORIES.length} categories — Finance, Health, Math & Education. Always free.`,
   alternates: { canonical: `${SITE_URL}/categories` },
   openGraph: {
     title: 'All Categories — AllSmartCalculators',
-    description: `${TOTAL_CALCULATORS} free calculators across Finance, Health, Math, Crypto, Engineering, Daily Life, Education & Business.`,
+    description: `${TOTAL_CALCULATORS} free calculators across Finance, Health, Math & Education.`,
     url: `${SITE_URL}/categories`,
     type: 'website',
     siteName: 'AllSmartCalculators',
@@ -38,7 +37,7 @@ export default function CategoriesPage() {
         {/* Category jump links — horizontal scroll on mobile, wrap on tablet+ */}
         <div className="mb-10 sm:mb-12 sticky top-16 sm:top-20 z-30 -mx-4 sm:-mx-5 md:-mx-8 px-4 sm:px-5 md:px-8 py-3 bg-surface/80 backdrop-blur-xl border-y border-white/5">
           <div className="flex sm:flex-wrap gap-2 overflow-x-auto sm:overflow-visible -mx-4 sm:mx-0 px-4 sm:px-0 pb-1 sm:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-            {CATEGORIES.map((cat) => (
+            {ACTIVE_CATEGORIES.map((cat) => (
               <Link
                 key={cat.id}
                 href={`/${cat.id}`}
@@ -52,7 +51,7 @@ export default function CategoriesPage() {
         </div>
 
         {/* Category sections */}
-        {CATEGORIES.map((cat) => {
+        {ACTIVE_CATEGORIES.map((cat) => {
           const calcs = allCalculators.filter((c) => c.category === cat.id);
           return (
             <section key={cat.id} id={cat.id} className="mb-12 sm:mb-16 scroll-mt-32 sm:scroll-mt-36">

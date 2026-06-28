@@ -1,18 +1,19 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   allCalculators,
   getTrendingCalculators,
   getPopularCalculators,
+  ACTIVE_CATEGORIES,
   TOTAL_CALCULATORS,
 } from '@/lib/calculator-registry';
-import { CATEGORIES } from '@/lib/calculator-types';
 import CalculatorCard from '@/components/CalculatorCard';
 import GlassCard from '@/components/GlassCard';
 import HomeSearchBar from '@/components/HomeSearchBar';
 import CmsRichText from '@/components/CmsRichText';
-import { ArrowRight, Flame, TrendingUp } from 'lucide-react';
-import { getHomepage } from '@/lib/strapi';
+import { ArrowRight, Flame, TrendingUp, Clock, BookOpen } from 'lucide-react';
+import { getHomepage, getAllPosts, getStrapiImageUrl } from '@/lib/strapi';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 
@@ -65,6 +66,10 @@ export default async function HomePage() {
   const trending = getTrendingCalculators(8);
   const popular = getPopularCalculators(4);
   const hp = await getHomepage();
+  // Surface the blog on the homepage — the long-form articles are the site's
+  // strongest standalone content, so they belong above the fold-adjacent area,
+  // not buried under a nav link.
+  const recentPosts = (await getAllPosts()).slice(0, 3);
 
   // Keyword-led H1 (default). Front-loads the count and names the high-volume
   // calculators users actually search for; "Free Online Calculators" alone is
@@ -127,7 +132,7 @@ export default async function HomePage() {
     { name: 'Calorie Calculator', path: '/health/calorie-calculator' },
     { name: 'Age Calculator', path: '/health/age-calculator' },
     { name: 'Tip Calculator', path: '/finance/tip-calculator' },
-    { name: 'Discount Calculator', path: '/business/discount-calculator' },
+    { name: 'SIP Calculator', path: '/finance/sip-calculator' },
   ];
 
   const itemListSchema = {
@@ -201,7 +206,7 @@ export default async function HomePage() {
 
           {/* Category chips */}
           <div className="flex flex-wrap gap-2 sm:gap-3 animate-fade-up" style={{ animationDelay: '0.3s' }}>
-            {CATEGORIES.map((cat) => (
+            {ACTIVE_CATEGORIES.map((cat) => (
               <Link
                 key={cat.id}
                 href={`/${cat.id}`}
@@ -261,7 +266,7 @@ export default async function HomePage() {
                 Browse by Category
               </h2>
               <p className="text-xs sm:text-sm text-on-surface-variant mt-0.5 sm:mt-1">
-                {TOTAL_CALCULATORS} calculators across {CATEGORIES.length} categories
+                {TOTAL_CALCULATORS} calculators across {ACTIVE_CATEGORIES.length} categories
               </p>
             </div>
             <Link
@@ -275,7 +280,7 @@ export default async function HomePage() {
           </div>
 
           <div className="flex flex-col gap-8 sm:gap-10">
-            {CATEGORIES.map((cat) => {
+            {ACTIVE_CATEGORIES.map((cat) => {
               const catCalcs = allCalculators
                 .filter((c) => c.category === cat.id)
                 .sort((a, b) => a.name.localeCompare(b.name))
@@ -344,6 +349,81 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* FROM THE BLOG — the long-form articles are the site's strongest
+          standalone content, so they get a first-class slot on the homepage. */}
+      {recentPosts.length > 0 && (
+        <section className="py-8 sm:py-10 md:py-12 px-4 sm:px-5 md:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex items-start sm:items-center justify-between gap-3 mb-6 sm:mb-8">
+              <div className="flex items-center gap-3 min-w-0">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-tertiary-dim to-tertiary flex items-center justify-center shadow-glow-secondary shrink-0">
+                  <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                </div>
+                <div className="min-w-0">
+                  <h2 className="font-headline font-black text-2xl sm:text-3xl md:text-4xl tracking-tighter">
+                    From the Blog
+                  </h2>
+                  <p className="text-xs sm:text-sm text-on-surface-variant mt-0.5 sm:mt-1">
+                    Practical guides behind the numbers
+                  </p>
+                </div>
+              </div>
+              <Link
+                href="/blog"
+                className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm font-semibold text-primary hover:gap-3 transition-all whitespace-nowrap shrink-0 mt-1 sm:mt-0"
+              >
+                <span className="hidden sm:inline">All articles</span>
+                <span className="sm:hidden">All</span>
+                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+              {recentPosts.map((post) => {
+                const imgUrl = post.coverImage ? getStrapiImageUrl(post.coverImage.url) : null;
+                const date = new Date(post.publishedOn ?? post.publishedAt).toLocaleDateString(
+                  'en-US',
+                  { month: 'short', day: 'numeric', year: 'numeric' },
+                );
+                return (
+                  <Link key={post.id} href={`/blog/${post.slug}`} className="group block">
+                    <GlassCard className="h-full overflow-hidden hover:border-primary/20 transition-all duration-300">
+                      {imgUrl && (
+                        <div className="relative w-full h-40 overflow-hidden">
+                          <Image
+                            src={imgUrl}
+                            alt={post.coverImage?.alternativeText ?? post.title}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-surface/80 to-transparent" />
+                        </div>
+                      )}
+                      <div className="p-4 sm:p-5">
+                        <div className="flex items-center gap-2 mb-2 text-[10px] sm:text-xs text-on-surface-variant/70">
+                          <span className="font-bold text-primary">{post.category}</span>
+                          <span className="flex items-center gap-1">
+                            <Clock className="w-3 h-3" />
+                            {post.readTime} min
+                          </span>
+                          <span className="ml-auto">{date}</span>
+                        </div>
+                        <h3 className="font-headline font-bold text-base sm:text-lg text-on-surface leading-snug mb-1.5 group-hover:text-primary transition-colors line-clamp-2">
+                          {post.title}
+                        </h3>
+                        <p className="text-xs sm:text-sm text-on-surface-variant leading-relaxed line-clamp-2">
+                          {post.excerpt}
+                        </p>
+                      </div>
+                    </GlassCard>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
       <section className="py-8 sm:py-10 md:py-14 px-4 sm:px-5 md:px-8">

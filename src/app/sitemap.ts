@@ -1,6 +1,5 @@
 import { MetadataRoute } from 'next';
-import { allCalculators } from '@/lib/calculator-registry';
-import { CATEGORIES } from '@/lib/calculator-types';
+import { allCalculators, ACTIVE_CATEGORIES } from '@/lib/calculator-registry';
 import { getAllPosts } from '@/lib/strapi';
 import { INDEXABLE_CALCULATORS } from '@/lib/indexable-calculators';
 
@@ -32,7 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/sitemap.html`,         changeFrequency: 'weekly',  priority: 0.3 },
   ];
 
-  const categoryRoutes: MetadataRoute.Sitemap = CATEGORIES.map((cat) => ({
+  const categoryRoutes: MetadataRoute.Sitemap = ACTIVE_CATEGORIES.map((cat) => ({
     url: `${BASE_URL}/${cat.id}`,
     changeFrequency: 'weekly',
     priority: 0.8,

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
-import { allCalculators, getCalculatorsByCategory } from '@/lib/calculator-registry';
+import { getCalculatorsByCategory, ACTIVE_CATEGORIES } from '@/lib/calculator-registry';
 import { CATEGORIES, CalculatorCategory } from '@/lib/calculator-types';
 import { getCategoryContent } from '@/lib/strapi';
 import CalculatorCard from '@/components/CalculatorCard';
@@ -10,7 +10,9 @@ import GlassCard from '@/components/GlassCard';
 import CmsRichText from '@/components/CmsRichText';
 
 export function generateStaticParams() {
-  return CATEGORIES.map((cat) => ({ category: cat.id }));
+  // Only categories that still have live calculators get prerendered; empty
+  // ones (pruned for AdSense) 404 via the calcs-length guard in the page.
+  return ACTIVE_CATEGORIES.map((cat) => ({ category: cat.id }));
 }
 
 // Per-category meta descriptions — front-loads the category keyword, names the
@@ -84,6 +86,10 @@ export default async function CategoryPage({ params }: { params: { category: str
   if (!cat) notFound();
 
   const calcs = getCalculatorsByCategory(cat.id as CalculatorCategory);
+  // A known category with no live calculators (pruned for AdSense) 404s rather
+  // than rendering an empty "0 tools" page.
+  if (calcs.length === 0) notFound();
+
   const trending = calcs.filter((c) => c.trending);
   const rest = calcs.filter((c) => !c.trending);
   const cms = await getCategoryContent(cat.id);
@@ -173,7 +179,7 @@ export default async function CategoryPage({ params }: { params: { category: str
             Browse other categories
           </h2>
           <div className="flex flex-wrap gap-2 sm:gap-3">
-            {CATEGORIES.filter((c) => c.id !== cat.id).map((c) => (
+            {ACTIVE_CATEGORIES.filter((c) => c.id !== cat.id).map((c) => (
               <Link
                 key={c.id}
                 href={`/${c.id}`}

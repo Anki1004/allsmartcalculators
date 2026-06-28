@@ -9,7 +9,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator
 export const metadata: Metadata = {
   title: 'Sitemap — AllSmartCalculators',
   description:
-    'Human-readable sitemap of every page on AllSmartCalculators — all 104+ calculators grouped by category, plus content and legal pages.',
+    'Human-readable sitemap of every page on AllSmartCalculators — calculators grouped by category, plus content and legal pages.',
   alternates: { canonical: `${SITE_URL}/sitemap.html` },
   robots: { index: true, follow: true },
 };
