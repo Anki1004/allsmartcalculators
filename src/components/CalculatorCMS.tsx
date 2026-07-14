@@ -49,12 +49,15 @@ interface CalculatorCMSProps {
   fallbackContent?: string;
   /** FAQs rendered when Strapi has none for this slug. */
   fallbackFaqs?: { question: string; answer: string }[];
+  /** Calculator's display name, used to contextualize the FAQ heading. */
+  calcName?: string;
 }
 
 export default async function CalculatorCMS({
   slug,
   fallbackContent,
   fallbackFaqs,
+  calcName,
 }: CalculatorCMSProps) {
   const cms: StrapiCalcContent | null = await getCalcContent(slug);
 
@@ -86,7 +89,7 @@ export default async function CalculatorCMS({
               <HelpCircle className="w-4 h-4" />
             </div>
             <h2 className="font-headline font-bold text-base sm:text-lg text-on-surface">
-              Frequently asked questions
+              {calcName ? `${calcName} — frequently asked questions` : 'Frequently asked questions'}
             </h2>
           </div>
           <div className="divide-y divide-white/5">

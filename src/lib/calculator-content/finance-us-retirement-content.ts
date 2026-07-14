@@ -4,7 +4,7 @@ export const financeUsRetirementContent: Record<string, CalcInlineContent> = {
   '401k-calculator': {
     article: `A 401(k) is the workhorse of American retirement saving: you defer part of each paycheck pre-tax, your employer often matches a portion, and the whole pot compounds tax-deferred until you withdraw it. This calculator projects your balance year by year from today until your chosen retirement age, applying the 2026 IRS contribution limits at every age along the way.
 
-## How it's calculated
+## How this projects your balance
 
 The projection runs one loop per year of work remaining:
 
@@ -19,7 +19,7 @@ The employer match is modeled the way most US plans describe it: your employer c
 
 For 2026, per IRS Notice 2025-67 and Rev. Proc. 2025-32, the employee deferral limit is $24,500. Savers aged 50 and older may add an $8,000 catch-up, and SECURE 2.0's enhanced catch-up lets workers aged 60–63 add $11,250 instead (the limit returns to the $8,000 catch-up at 64+). The combined employee-plus-employer limit is $72,000. The calculator caps your deferral at the age-appropriate limit each year as your salary grows.
 
-## Assumptions and limitations
+## What the projection leaves out
 
 - Contributions are made once per year and returns are credited at year-end, which slightly understates intra-year compounding.
 - The 2026 limits are held constant for all future years; in reality the IRS indexes them to inflation annually.
@@ -53,7 +53,7 @@ Use the year-by-year table to see exactly when catch-up eligibility kicks in and
   'roth-ira-calculator': {
     article: `A Roth IRA flips the usual retirement-tax deal: you contribute money you've already paid income tax on, and in exchange, qualified withdrawals in retirement — both your contributions and decades of investment growth — are completely tax-free. This calculator compounds your current balance and annual contributions to your chosen retirement age under the 2026 IRS limits.
 
-## How it's calculated
+## Compounding your contributions
 
 The model adds one contribution per year, then applies your expected return:
 
@@ -69,7 +69,7 @@ For 2026, per IRS Notice 2025-67 and Rev. Proc. 2025-32, the IRA contribution li
 
 Because qualified Roth withdrawals are excluded from gross income, the entire "Total Growth" figure shown above is money you never pay federal income tax on — unlike a traditional 401(k) or IRA, where withdrawals are taxed as ordinary income. Qualified means you're at least 59½ and your first Roth contribution was made at least five years earlier (the 5-year rule). Roth IRAs also have no required minimum distributions during the owner's lifetime.
 
-## Assumptions and limitations
+## A few caveats
 
 - Contributions are annual with year-end compounding; monthly contributions would grow slightly more.
 - 2026 limits are held flat for all future years rather than indexed for inflation.
@@ -103,7 +103,7 @@ Pair this with the 401(k) calculator to see how a workplace plan plus a maxed Ro
   'social-security-calculator': {
     article: `**This is a simplified estimate**, not an official benefit statement. The Social Security Administration computes your real benefit from your top 35 years of inflation-indexed earnings; this calculator approximates that history with a single career-average number so you can explore claiming strategies in seconds. For your official projection, create a *my Social Security* account at SSA.gov.
 
-## How it's calculated
+## The AIME-to-benefit formula
 
 Social Security converts career earnings into a monthly benefit in two steps — an earnings average (AIME) and a progressive benefit formula (PIA):
 
@@ -122,7 +122,7 @@ The $1,287 and $7,758 figures are the 2026 "bend points," which track the nation
 
 Claiming age then scales the result. For workers born in 1960 or later, full retirement age (FRA) is 67. Claiming at 62 permanently cuts the check by about 30%; waiting until 70 earns delayed retirement credits of 8% per year, a permanent 24% raise.
 
-## Assumptions and limitations
+## Where this simplifies reality
 
 - A flat career-average stands in for the SSA's top-35 indexed earning years; uneven careers (gaps, late peak earnings) will diverge from this estimate.
 - Bend points and the wage base are 2026 values; both rise most years with wage growth, and annual COLA increases after claiming are not modeled.

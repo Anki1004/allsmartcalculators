@@ -4,7 +4,7 @@ export const financeUsLoansContent: Record<string, CalcInlineContent> = {
   'sales-tax-calculator': {
     article: `Sales tax in the United States is set at the state level: 45 states plus the District of Columbia charge a statewide rate in 2026, and most allow counties and cities to add their own local taxes on top. This calculator works in two directions — add tax to a pre-tax price to see what you'll pay at the register, or start from a receipt total and extract how much of it was tax.
 
-## How it's calculated
+## Adding tax or backing it out
 
 \`\`\`
 Add tax:   tax = price × rate ÷ 100
@@ -46,7 +46,7 @@ Other limitations to keep in mind: many states exempt or reduce the rate on groc
   'auto-loan-calculator': {
     article: `An auto loan is a fixed-payment amortizing loan: every month you pay the same amount, with the early payments mostly covering interest and the later ones mostly paying down principal. This calculator builds the loan from the deal itself — vehicle price, sales tax, down payment, and trade-in — then computes your payment and a month-by-month amortization schedule.
 
-## How it's calculated
+## Building the payment from the deal
 
 \`\`\`
 Loan amount  P = price + price × tax% ÷ 100 − down payment − trade-in
@@ -88,7 +88,7 @@ A common affordability rule of thumb is 20/4/10: put at least 20% down, finance 
   'student-loan-calculator': {
     article: `Federal student loans on the Standard Repayment Plan amortize over 120 months (10 years), while consolidation and many private loans stretch to 15, 20, or 25 years. This calculator computes the required monthly payment for your balance, rate, and term — then simulates what happens when you add an extra amount to every payment: how many months you shave off, and how much interest you never have to pay.
 
-## How it's calculated
+## Payoff math, with and without extra payments
 
 \`\`\`
 Monthly rate r = APR ÷ 1200,  n = term in months
@@ -103,7 +103,7 @@ For example, a $30,000 balance at 6.5% over 10 years requires $340.64 per month 
 
 Why extra payments are so effective: every extra dollar goes straight to principal, and student loan interest accrues daily on the outstanding principal. Shrinking the principal early in the loan eliminates all the future interest that principal would have generated. Federal student loans (and nearly all private ones) have **no prepayment penalty**, but you should tell your servicer in writing to apply overpayments to principal immediately rather than advancing your due date.
 
-Assumptions and limitations: this tool models a single fixed-rate loan with monthly compounding. If you hold several loans at different rates, run them separately — and if you're choosing where to send extra money, the "avalanche" method (highest rate first) minimizes total interest. Income-driven repayment plans (IBR, and the plans that replaced SAVE under the 2025 reconciliation law) set payments from your income rather than amortization, so this calculator doesn't apply to them. Interest that capitalizes after deferment or forbearance should be included in the balance you enter.`,
+A few things this doesn't model: this tool assumes a single fixed-rate loan with monthly compounding. If you hold several loans at different rates, run them separately — and if you're choosing where to send extra money, the "avalanche" method (highest rate first) minimizes total interest. Income-driven repayment plans (IBR, and the plans that replaced SAVE under the 2025 reconciliation law) set payments from your income rather than amortization, so this calculator doesn't apply to them. Interest that capitalizes after deferment or forbearance should be included in the balance you enter.`,
     faqs: [
       {
         question: 'What is the standard repayment term for federal student loans?',
@@ -130,7 +130,7 @@ Assumptions and limitations: this tool models a single fixed-rate loan with mont
   'house-affordability-calculator': {
     article: `How much house you can afford depends less on the sticker price and more on the monthly payment your income can support. US lenders typically screen mortgage applications with the **28/36 rule**: housing costs (principal, interest, taxes, insurance — PITI) shouldn't exceed 28% of gross monthly income, and total debt payments — housing plus car loans, student loans, and credit-card minimums — shouldn't exceed 36%. This calculator applies both limits, takes the tighter one, and solves backwards for the home price that fits.
 
-## How it's calculated
+## Solving backwards for a home price
 
 \`\`\`
 Front-end cap = income/12 × 0.28
@@ -146,7 +146,7 @@ Home price = L + down payment
 
 Property tax is modeled as a percentage of the full home value (loan plus down payment), which is why the down payment appears inside the algebra — a bigger house means a bigger tax bill, even on the portion you paid cash for. The US average effective property tax rate is roughly 1.1% of home value per year, but it ranges from about 0.3% in Hawaii to over 2% in New Jersey and Illinois.
 
-Assumptions and limitations: the 28/36 rule is a conservative guideline, not a hard limit — conventional loans routinely close at back-end DTIs up to 45%, and FHA loans can go higher, so a lender may approve you for more than this tool shows. Private mortgage insurance (PMI), typically required when the down payment is below 20% of the price, is **not** modeled and would reduce your affordable price somewhat. Closing costs (commonly 2–5% of the loan) and ongoing maintenance are also excluded. Treat the result as a sustainable budget, then get a formal pre-approval before house hunting.`,
+Worth knowing before you rely on this: the 28/36 rule is a conservative guideline, not a hard limit — conventional loans routinely close at back-end DTIs up to 45%, and FHA loans can go higher, so a lender may approve you for more than this tool shows. Private mortgage insurance (PMI), typically required when the down payment is below 20% of the price, is **not** modeled and would reduce your affordable price somewhat. Closing costs (commonly 2–5% of the loan) and ongoing maintenance are also excluded. Treat the result as a sustainable budget, then get a formal pre-approval before house hunting.`,
     faqs: [
       {
         question: 'What is the 28/36 rule?',

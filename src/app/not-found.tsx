@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import GlassCard from '@/components/GlassCard';
 import { Search } from 'lucide-react';
-import { getPopularCalculators } from '@/lib/calculator-registry';
+import { getPopularCalculators, TOTAL_CALCULATORS } from '@/lib/calculator-registry';
 
 export default function NotFound() {
   const popular = getPopularCalculators(8);
@@ -32,7 +32,7 @@ export default function NotFound() {
                 <input
                   type="search"
                   name="q"
-                  placeholder="Search 104 calculators…"
+                  placeholder={`Search ${TOTAL_CALCULATORS} calculators…`}
                   className="w-full bg-white/[0.04] border border-white/10 rounded-xl pl-10 pr-3 py-3 text-sm text-on-surface placeholder:text-on-surface-variant/40 focus:outline-none focus:border-primary/50"
                   aria-label="Search calculators"
                 />

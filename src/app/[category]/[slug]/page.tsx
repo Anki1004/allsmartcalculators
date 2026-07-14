@@ -286,6 +286,7 @@ export default async function CalculatorPage({
             slug={calc.slug}
             fallbackContent={inlineContent?.article}
             fallbackFaqs={inlineContent?.faqs}
+            calcName={calc.shortName ?? calc.name}
           />
 
           {/* Related calculators */}

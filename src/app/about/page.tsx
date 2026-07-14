@@ -3,7 +3,7 @@ import Link from 'next/link';
 import GlassCard from '@/components/GlassCard';
 import CmsRichText from '@/components/CmsRichText';
 import { getAboutPage } from '@/lib/strapi';
-import { TOTAL_CALCULATORS } from '@/lib/calculator-registry';
+import { TOTAL_CALCULATORS, ACTIVE_CATEGORIES } from '@/lib/calculator-registry';
 import {
   Sparkles,
   Zap,
@@ -138,16 +138,16 @@ export default async function AboutPage() {
           Every calculator site on the internet looks like it was built in 2008 —
           cluttered, ugly, and painful to use on a phone. AllSmartCalculators
           is the opposite: clean, fast, free, and honest about its limits.
-          {TOTAL_CALCULATORS}+ calculators across 8 categories, all built and
+          {TOTAL_CALCULATORS}+ calculators across {ACTIVE_CATEGORIES.length} categories, all built and
           reviewed by one person, in public.
         </p>
         <p className="text-xs sm:text-sm md:text-base text-on-surface-variant/80 max-w-3xl mb-10 sm:mb-12 leading-relaxed">
           The site has a particular focus on India-specific finance tools —
           EMI, SIP, GST, HRA, income tax, PPF, NPS — where most existing
           options are bank aggregators with cluttered interfaces and pop-up clutter.
-          For everything else (health, math, crypto, engineering, daily life),
-          the bar is the same: the right formula, a clear explanation, an
-          honest limitations section, and zero friction.
+          For everything else (health, math, education), the bar is the
+          same: the right formula, a clear explanation, an honest
+          limitations section, and zero friction.
         </p>
 
         {cms?.body ? (
@@ -160,7 +160,7 @@ export default async function AboutPage() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-12 sm:mb-20">
           {[
             { v: `${TOTAL_CALCULATORS}+`, l: 'Calculators' },
-            { v: '8', l: 'Categories' },
+            { v: `${ACTIVE_CATEGORIES.length}`, l: 'Categories' },
             { v: '$0', l: 'Cost to use' },
             { v: '1', l: 'Author behind every page' },
           ].map((s) => (

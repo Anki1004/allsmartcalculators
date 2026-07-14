@@ -4,7 +4,7 @@ export const financeUsTaxContent: Record<string, CalcInlineContent> = {
   'paycheck-calculator': {
     article: `Your salary and the number that actually lands in your bank account are two different things. Between federal income tax, Social Security, Medicare, state tax, and pre-tax benefits like a 401(k) or health insurance, a $65,000 salary in the US typically becomes roughly $2,090 per biweekly paycheck. This calculator estimates that take-home number for 2026 using the official IRS inflation-adjusted figures.
 
-## How it's calculated
+## What comes out of your paycheck
 
 \`\`\`
 annual gross   = salary  (or hourly rate × hours/week × 52)
@@ -18,7 +18,7 @@ take-home       = gross − federal − FICA − state − pre-tax deductions
 
 The 2026 standard deduction is $16,100 (single), $32,200 (married filing jointly), and $24,150 (head of household), per IRS Rev. Proc. 2025-32. The Social Security wage base of $184,500 comes from the SSA's 2026 announcement.
 
-## Assumptions and limitations
+## Where this estimate can be off
 
 This is an estimate of annual tax liability spread evenly across paychecks — not a simulation of your employer's W-4 withholding tables, so your actual stub may differ. We apply the standard deduction only (no credits like the Child Tax Credit), and FICA is computed on full gross pay as a simplification. In reality, Section 125 health premiums reduce FICA wages while 401(k) deferrals do not — so if your pre-tax deductions are mostly health insurance, your real FICA bill is slightly lower than shown.
 
@@ -49,7 +49,7 @@ State tax is modeled as a single flat percentage. Nine states — Alaska, Florid
   'federal-income-tax-calculator': {
     article: `The US federal income tax is progressive: income is sliced into brackets, and each slice is taxed at its own rate — 10%, 12%, 22%, 24%, 32%, 35%, and 37% for 2026. A single filer earning $85,000 does not pay 22% on everything; only the dollars above $50,400 of taxable income are taxed at 22%. This calculator applies the official 2026 brackets from IRS Rev. Proc. 2025-32 and shows the exact tax generated in each bracket.
 
-## How it's calculated
+## The bracket math
 
 \`\`\`
 taxable income = max(0, gross income − deduction)
@@ -65,7 +65,7 @@ Worked example: a single filer with $85,000 gross and the $16,100 standard deduc
 
 Standard deductions: $16,100 single or married filing separately, $32,200 married filing jointly, $24,150 head of household. The single-filer 22% bracket starts at $50,400 of taxable income and the 24% bracket at $105,700; married-filing-jointly thresholds are roughly double.
 
-## Assumptions and limitations
+## What this doesn't cover
 
 This estimates federal income tax on ordinary income only. It excludes FICA payroll taxes, state and local income taxes, the Alternative Minimum Tax, self-employment tax, and tax credits such as the Child Tax Credit or Earned Income Tax Credit — credits reduce your bill dollar-for-dollar after this calculation. Long-term capital gains and qualified dividends use separate preferential rates (see our capital gains calculator). If you itemize, enter your total Schedule A deductions; most filers take the standard deduction since it is larger than their itemizable expenses.`,
     faqs: [

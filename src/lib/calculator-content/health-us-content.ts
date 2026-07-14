@@ -4,7 +4,7 @@ export const healthUsContent: Record<string, CalcInlineContent> = {
   'tdee-calculator': {
     article: `Your Total Daily Energy Expenditure (TDEE) is the number of calories you burn in a full day — not just at rest, but including work, walking, workouts, and even digestion. It is the single most useful number for planning weight loss, maintenance, or muscle gain, because eating below your TDEE produces a deficit and eating above it produces a surplus.
 
-## How it's calculated
+## Where the TDEE number comes from
 
 This calculator starts with your Basal Metabolic Rate (BMR) — the calories your body burns at complete rest — using the Mifflin-St Jeor equation, the formula the Academy of Nutrition and Dietetics found most accurate for the general population:
 
@@ -24,7 +24,7 @@ Pounds and feet/inches are converted internally (1 lb = 0.45359237 kg; 1 in = 2.
 
 The cutting and bulking targets subtract or add 500 calories per day. Because one pound of body fat stores roughly 3,500 calories, a 500-calorie daily deficit works out to about 1 lb of weight loss per week — a pace most US dietary guidance considers sustainable. The cutting target never drops below 1,200 calories per day, a common floor for safe self-directed dieting; if your TDEE is low enough that TDEE − 500 would fall under it, talk to a professional before cutting further.
 
-**Assumptions and limitations:** Mifflin-St Jeor is a population-average formula and is typically accurate within about ±10%. It does not account for body composition, so very muscular or very lean people may burn more than predicted, and metabolic adaptation can lower real-world expenditure during a long diet. Most people also overestimate their activity level — when in doubt, pick the lower multiplier and adjust based on 2-3 weeks of real scale data. Metric users can enter kg and cm directly in our BMR calculator.`,
+**Where this can be off:** Mifflin-St Jeor is a population-average formula and is typically accurate within about ±10%. It does not account for body composition, so very muscular or very lean people may burn more than predicted, and metabolic adaptation can lower real-world expenditure during a long diet. Most people also overestimate their activity level — when in doubt, pick the lower multiplier and adjust based on 2-3 weeks of real scale data. Metric users can enter kg and cm directly in our BMR calculator.`,
     faqs: [
       {
         question: 'What is the difference between BMR and TDEE?',
@@ -51,7 +51,7 @@ The cutting and bulking targets subtract or add 500 calories per day. Because on
   'calories-burned-calculator': {
     article: `How many calories does a 30-minute run actually burn? Exercise scientists answer that question with METs — Metabolic Equivalents of Task. One MET is the energy you burn sitting quietly, defined as 3.5 mL of oxygen per kilogram of body weight per minute. An activity rated at 7 METs burns seven times that resting rate. This calculator uses MET values consistent with the Compendium of Physical Activities, the standard reference used in US exercise research.
 
-## How it's calculated
+## The MET formula behind this number
 
 \`\`\`
 Calories = MET × 3.5 × weight(kg) ÷ 200 × minutes
@@ -61,7 +61,7 @@ Your weight in pounds is converted to kilograms (1 lb = 0.45359237 kg). The 3.5 
 
 Two things follow directly from the formula. First, heavier people burn more calories doing the same workout, because moving more mass costs more energy. Second, intensity matters more than activity type: running at 8 mph (11.8 METs) burns roughly 20% more per minute than running at 6 mph (9.8 METs), and jump rope (11.0 METs) rivals both.
 
-**Assumptions and limitations:** MET values are population averages measured at a standard pace. Your true burn depends on fitness level, body composition, terrain, and technique — a hilly hike or an aggressive HIIT session can exceed the listed value, while a leisurely version falls short. The estimate is also a gross figure: it includes the calories you would have burned at rest during that time. Finally, MET research assumes steady-state effort, so it understates the small afterburn (EPOC) that follows very intense intervals. Treat results as a solid planning estimate, not a lab measurement, and pair them with the TDEE calculator to set daily targets.`,
+**What can throw this off:** MET values are population averages measured at a standard pace. Your true burn depends on fitness level, body composition, terrain, and technique — a hilly hike or an aggressive HIIT session can exceed the listed value, while a leisurely version falls short. The estimate is also a gross figure: it includes the calories you would have burned at rest during that time. Finally, MET research assumes steady-state effort, so it understates the small afterburn (EPOC) that follows very intense intervals. Treat results as a solid planning estimate, not a lab measurement, and pair them with the TDEE calculator to set daily targets.`,
     faqs: [
       {
         question: 'What is a MET?',
@@ -88,7 +88,7 @@ Two things follow directly from the formula. First, heavier people burn more cal
   'protein-intake-calculator': {
     article: `How much protein you need each day depends far more on what you ask your body to do than on any single magic number. The US Recommended Dietary Allowance (RDA) is 0.8 grams per kilogram of body weight per day — about 0.36 g per pound — but that figure is the minimum to prevent deficiency in sedentary adults, not an optimal target for people who train. Sports-nutrition research, including the International Society of Sports Nutrition position stand, supports substantially higher intakes for active people.
 
-## How it's calculated
+## Turning body weight into a gram target
 
 \`\`\`
 weight(kg) = weight(lb) × 0.45359237
@@ -102,7 +102,7 @@ Your weight in pounds is converted to kilograms, then multiplied by the range fo
 
 Worked example: a 170 lb (77.1 kg) lifter on the muscle-building setting gets a range of 123-170 g/day with a 147 g midpoint — about 37 g per meal across four meals. A handy rule of thumb at the top of that range is roughly 1 g per pound of body weight.
 
-**Assumptions and limitations:** the calculation uses total body weight, which overshoots for people carrying significant excess fat — in that case, many dietitians base the target on goal weight or lean mass instead. Higher intakes within these ranges are most useful during a calorie deficit, when extra protein helps preserve muscle. These are general fitness guidelines, not medical advice; people with kidney disease or other conditions should confirm targets with a physician or registered dietitian.`,
+**Worth knowing:** the calculation uses total body weight, which overshoots for people carrying significant excess fat — in that case, many dietitians base the target on goal weight or lean mass instead. Higher intakes within these ranges are most useful during a calorie deficit, when extra protein helps preserve muscle. These are general fitness guidelines, not medical advice; people with kidney disease or other conditions should confirm targets with a physician or registered dietitian.`,
     faqs: [
       {
         question: 'How much protein does the average person need per day?',

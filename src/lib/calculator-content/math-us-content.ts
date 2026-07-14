@@ -4,7 +4,7 @@ export const mathUsContent: Record<string, CalcInlineContent> = {
   'scientific-calculator': {
     article: `This free online scientific calculator works like a TI or Casio handheld, right in your browser. It handles everything a basic calculator can't: trigonometry, logarithms, exponents, roots, factorials, and constants like π and e — with a memory bank and a clear running display of your expression.
 
-## How it's calculated
+## Order of operations, applied
 
 The calculator evaluates your expression using the standard order of operations (PEMDAS): parentheses first, then exponents, then multiplication and division left to right, then addition and subtraction.
 
@@ -23,7 +23,7 @@ log(1000)    =  3            ln(e) = 1
 - **Factorial (n!)** multiplies all whole numbers from n down to 1. It is defined here for non-negative integers; 170! is the largest value double-precision math can hold (~7.26 × 10³⁰⁶), so this calculator rejects anything above 170 with an error.
 - **Memory keys:** M+ adds the displayed value to memory, M− subtracts it, MR recalls it, and MC clears it — handy for multi-step problems.
 
-**Assumptions and limitations:** all arithmetic uses IEEE-754 double-precision floating point, which is accurate to roughly 15–17 significant digits. Tiny rounding artifacts (like 0.1 + 0.2 showing 0.30000000000000004 on naive calculators) are cleaned up in the display, but extremely large or small intermediate values can still lose precision. For symbolic math (exact fractions, algebra), use a CAS instead.`,
+**Where precision runs out:** all arithmetic uses IEEE-754 double-precision floating point, which is accurate to roughly 15–17 significant digits. Tiny rounding artifacts (like 0.1 + 0.2 showing 0.30000000000000004 on naive calculators) are cleaned up in the display, but extremely large or small intermediate values can still lose precision. For symbolic math (exact fractions, algebra), use a CAS instead.`,
     faqs: [
       {
         question: 'Why does sin(30) show 0.5 in degree mode but something else in radian mode?',
@@ -54,7 +54,7 @@ log(1000)    =  3            ln(e) = 1
   'random-number-generator': {
     article: `Need to pick a raffle winner, roll a virtual die, sample a list, or just settle a debate? This random number generator produces fair, uniformly distributed numbers in any range you set — and every number in the range, including both the minimum and the maximum, has exactly the same chance of being picked.
 
-## How it's calculated
+## How the random draw works
 
 A random integer between min and max (inclusive on both ends) is produced like this:
 
@@ -68,7 +68,7 @@ The "+ 1" is what makes the top of the range reachable — a detail many homemad
 
 **What counts as a fair pick?** Fairness means uniformity: in a 1–100 draw, every integer has exactly a 1-in-100 chance. This generator does not weight, repeat-avoid, or bias results unless you ask it to. Over a small number of draws, streaks and repeats are normal and expected — true randomness is lumpier than most people intuit. The "law of averages" only smooths things out over thousands of draws.
 
-**Assumptions and limitations:** results are independent, so previous draws never influence the next one (no "due" numbers). Duplicates can occur across multiple draws unless you specifically generate a non-repeating set. And while the output is more than random enough for raffles, classroom picks, and games, you should not use any general-purpose generator to create passwords or cryptographic keys — use a dedicated password manager for that.`,
+**Before you rely on it for anything high-stakes:** results are independent, so previous draws never influence the next one (no "due" numbers). Duplicates can occur across multiple draws unless you specifically generate a non-repeating set. And while the output is more than random enough for raffles, classroom picks, and games, you should not use any general-purpose generator to create passwords or cryptographic keys — use a dedicated password manager for that.`,
     faqs: [
       {
         question: 'Are the numbers truly random?',
@@ -95,7 +95,7 @@ The "+ 1" is what makes the top of the range reachable — a detail many homemad
   'percentage-change-calculator': {
     article: `Percentage change measures how much a value has grown or shrunk relative to where it started. It is the standard way to express a price increase, a stock's move, a salary raise, a weight loss, or a traffic jump — anything where "how big is the change compared to the original?" is the real question.
 
-## How it's calculated
+## The formula, and why it uses absolute value
 
 \`\`\`
 % change  = (new − old) ÷ |old| × 100
@@ -106,7 +106,7 @@ A positive result is an increase, a negative result is a decrease, and zero mean
 
 **Why the absolute value in the denominator?** When the old value is negative — say a company's earnings move from −$50 to +$25 — dividing by the raw negative number flips the sign and makes a clear improvement look like a decline. Dividing by |old| keeps the direction intuitive: −50 → 25 reads as a +150% increase, which matches what actually happened. Some finance textbooks simply call percentage change "not meaningful" across sign flips, so treat those cases with care.
 
-**Assumptions and limitations:** percentage change is undefined when the old value is 0, because you cannot divide by zero — there is no baseline to compare against (this calculator says so explicitly instead of returning an error). Also keep two cousins straight: *percentage points* measure the simple arithmetic gap between two percentages (4% → 6% is +2 points but a +50% change), and *percentage difference* compares two values symmetrically using their average as the base, with no "before" and "after."`,
+**One thing to watch for:** percentage change is undefined when the old value is 0, because you cannot divide by zero — there is no baseline to compare against (this calculator says so explicitly instead of returning an error). Also keep two cousins straight: *percentage points* measure the simple arithmetic gap between two percentages (4% → 6% is +2 points but a +50% change), and *percentage difference* compares two values symmetrically using their average as the base, with no "before" and "after."`,
     faqs: [
       {
         question: 'What is the formula for percentage change?',
