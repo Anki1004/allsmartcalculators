@@ -9,6 +9,12 @@ import CalculatorCard from '@/components/CalculatorCard';
 import GlassCard from '@/components/GlassCard';
 import CmsRichText from '@/components/CmsRichText';
 
+// Reads CMS copy and SEO fields from Strapi. Without a revalidate window those
+// values freeze at build time, so a CMS edit needs a redeploy to appear — the
+// stale-robots incident of 2026-07-31. /api/revalidate is still the instant path.
+export const revalidate = 3600;
+
+
 export function generateStaticParams() {
   // Every category holding at least one calculator gets prerendered. Whether a
   // category is *indexable* is a separate question, answered by

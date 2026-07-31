@@ -15,6 +15,12 @@ import CmsRichText from '@/components/CmsRichText';
 import { ArrowRight, Flame, TrendingUp, Clock, BookOpen } from 'lucide-react';
 import { getHomepage, getAllPosts, getStrapiImageUrl } from '@/lib/strapi';
 
+// Reads CMS copy and SEO fields from Strapi. Without a revalidate window those
+// values freeze at build time, so a CMS edit needs a redeploy to appear — the
+// stale-robots incident of 2026-07-31. /api/revalidate is still the instant path.
+export const revalidate = 3600;
+
+
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 
 export async function generateMetadata(): Promise<Metadata> {
