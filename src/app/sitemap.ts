@@ -1,7 +1,6 @@
 import { MetadataRoute } from 'next';
-import { allCalculators, ACTIVE_CATEGORIES } from '@/lib/calculator-registry';
+import { indexableCalculators, INDEXED_CATEGORIES } from '@/lib/calculator-registry';
 import { getAllPosts } from '@/lib/strapi';
-import { INDEXABLE_CALCULATORS } from '@/lib/indexable-calculators';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 
@@ -31,17 +30,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/sitemap.html`,         changeFrequency: 'weekly',  priority: 0.3 },
   ];
 
-  const categoryRoutes: MetadataRoute.Sitemap = ACTIVE_CATEGORIES.map((cat) => ({
+  // Only categories that contain at least one indexable calculator. Categories
+  // that exist only to serve noindex pages stay out of the sitemap.
+  const categoryRoutes: MetadataRoute.Sitemap = INDEXED_CATEGORIES.map((cat) => ({
     url: `${BASE_URL}/${cat.id}`,
     changeFrequency: 'weekly',
     priority: 0.8,
   }));
 
-  // Only list indexable (rewritten, high-quality) calculators. Pages set to
-  // noindex are excluded so we don't advertise them to Google or trip the
-  // "submitted URL marked noindex" warning in Search Console.
-  const calculatorRoutes: MetadataRoute.Sitemap = allCalculators
-    .filter((calc) => INDEXABLE_CALCULATORS.has(calc.slug))
+  // Only the rewritten, high-quality calculators. Pages served as noindex are
+  // excluded so we don't advertise them to Google or trip the "submitted URL
+  // marked noindex" warning in Search Console.
+  const calculatorRoutes: MetadataRoute.Sitemap = indexableCalculators
     .map((calc) => ({
       url: `${BASE_URL}/${calc.category}/${calc.slug}`,
       ...(calc.lastUpdated && { lastModified: new Date(calc.lastUpdated) }),

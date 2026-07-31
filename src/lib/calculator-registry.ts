@@ -35,21 +35,38 @@ const ALL_DEFINED_CALCULATORS: CalculatorConfig[] = [
   ...businessCalculators,
 ];
 
-// AdSense hard-prune (2026-06-28): only the de-templatized, genuinely original
-// calculators are live. A pruned slug's page 404s (getCalculatorBySlug returns
-// undefined), and it drops out of nav, listings, the sitemap and every count
-// (all derived from `allCalculators`). Fully reversible: once a page's content
-// is rewritten to standard, add its slug to INDEXABLE_CALCULATORS and it
-// returns automatically — no other change needed.
-export const allCalculators: CalculatorConfig[] = ALL_DEFINED_CALCULATORS.filter(
+// Two independent questions, deliberately kept apart:
+//   1. Is this page SERVED to visitors?  -> `allCalculators` (everything)
+//   2. May Google INDEX it?              -> `indexableCalculators`
+//
+// The 2026-06-28 AdSense prune answered both with one flag: non-allowlisted
+// slugs were filtered out of `allCalculators`, so their pages 404'd. That broke
+// 30 internal links from the Strapi blog posts (which still point at the older,
+// larger calculator set) and fed Googlebot a steady diet of 404s from our own
+// internal links. A `noindex, follow` page still returns 200, still serves
+// humans arriving from a blog post, and still passes link equity — which is
+// what the not-yet-rewritten calculators actually need.
+export const allCalculators: CalculatorConfig[] = ALL_DEFINED_CALCULATORS;
+
+// The rewritten, de-templatized subset Google is allowed to index. Drives the
+// sitemap and the robots meta in [category]/[slug]/page.tsx. Everything not in
+// here is served as `noindex, follow` until its content is brought up to
+// standard — add the slug to INDEXABLE_CALCULATORS and it starts ranking.
+export const indexableCalculators: CalculatorConfig[] = ALL_DEFINED_CALCULATORS.filter(
   (c) => INDEXABLE_CALCULATORS.has(c.slug),
 );
 
-// Categories that still have at least one live calculator. Empty categories are
-// hidden from nav/listings and their routes 404, so the pruned site never shows
-// a bare "0 tools" section.
+// Categories with at least one served calculator — drives nav, listings and
+// which category routes exist.
 export const ACTIVE_CATEGORIES = CATEGORIES.filter((cat) =>
   allCalculators.some((c) => c.category === cat.id),
+);
+
+// Categories with at least one *indexable* calculator — drives the sitemap and
+// the category page's robots meta, so reviving a category for humans doesn't
+// silently push a thin hub page into the index.
+export const INDEXED_CATEGORIES = CATEGORIES.filter((cat) =>
+  indexableCalculators.some((c) => c.category === cat.id),
 );
 
 export function getCalculatorBySlug(slug: string): CalculatorConfig | undefined {

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
-import { getCalculatorsByCategory, ACTIVE_CATEGORIES } from '@/lib/calculator-registry';
+import { getCalculatorsByCategory, ACTIVE_CATEGORIES, INDEXED_CATEGORIES } from '@/lib/calculator-registry';
 import { CATEGORIES, CalculatorCategory } from '@/lib/calculator-types';
 import { getCategoryContent } from '@/lib/strapi';
 import CalculatorCard from '@/components/CalculatorCard';
@@ -10,8 +10,9 @@ import GlassCard from '@/components/GlassCard';
 import CmsRichText from '@/components/CmsRichText';
 
 export function generateStaticParams() {
-  // Only categories that still have live calculators get prerendered; empty
-  // ones (pruned for AdSense) 404 via the calcs-length guard in the page.
+  // Every category holding at least one calculator gets prerendered. Whether a
+  // category is *indexable* is a separate question, answered by
+  // INDEXED_CATEGORIES in generateMetadata.
   return ACTIVE_CATEGORIES.map((cat) => ({ category: cat.id }));
 }
 
@@ -61,7 +62,13 @@ export async function generateMetadata({
     authors: cms?.metaAuthor
       ? [{ name: cms.metaAuthor }]
       : [{ name: 'Ankit Gupta', url: 'https://www.linkedin.com/in/ankit-gupta-data-analyst' }],
-    robots: cms?.metaRobots ?? 'index, follow',
+    // A category whose calculators are all still awaiting a content rewrite is
+    // served (so blog links and nav work) but kept out of the index — an
+    // indexable hub listing only noindex pages is exactly the thin-content
+    // pattern the AdSense review flagged.
+    robots:
+      cms?.metaRobots ??
+      (INDEXED_CATEGORIES.some((c) => c.id === cat.id) ? 'index, follow' : 'noindex, follow'),
     alternates: { canonical },
     openGraph: {
       title: cms?.metaOgTitle ?? title,
@@ -86,8 +93,8 @@ export default async function CategoryPage({ params }: { params: { category: str
   if (!cat) notFound();
 
   const calcs = getCalculatorsByCategory(cat.id as CalculatorCategory);
-  // A known category with no live calculators (pruned for AdSense) 404s rather
-  // than rendering an empty "0 tools" page.
+  // Guard against a category defined in CATEGORIES but holding no calculators —
+  // render a 404 rather than an empty "0 tools" page.
   if (calcs.length === 0) notFound();
 
   const trending = calcs.filter((c) => c.trending);

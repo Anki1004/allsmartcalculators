@@ -1,4 +1,8 @@
-import { allCalculators, ACTIVE_CATEGORIES } from '@/lib/calculator-registry';
+// Lists the indexable subset only. /llms.txt is a discovery surface for AI
+// engines, so advertising pages we tell Googlebot to skip would contradict the
+// robots meta — and those pages are the not-yet-rewritten ones we don't want
+// cited yet.
+import { indexableCalculators, INDEXED_CATEGORIES } from '@/lib/calculator-registry';
 import { getAllPosts } from '@/lib/strapi';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
@@ -10,7 +14,7 @@ export async function GET() {
   const lines: string[] = [
     `# AllSmartCalculators — Free Online Calculators`,
     ``,
-    `> AllSmartCalculators is a free collection of ${allCalculators.length} interactive calculators covering finance, health, math, and education. All calculators are instant, mobile-friendly, and require no signup.`,
+    `> AllSmartCalculators is a free collection of ${indexableCalculators.length} interactive calculators covering finance, health, math, and education. All calculators are instant, mobile-friendly, and require no signup.`,
     ``,
     `## URL`,
     ``,
@@ -22,8 +26,8 @@ export async function GET() {
     ``,
     `## Key Pages`,
     ``,
-    `- [Home](${BASE_URL}/): Browse all ${allCalculators.length} calculators`,
-    `- [Categories](${BASE_URL}/categories): All ${ACTIVE_CATEGORIES.length} calculator categories`,
+    `- [Home](${BASE_URL}/): Browse all ${indexableCalculators.length} calculators`,
+    `- [Categories](${BASE_URL}/categories): All ${INDEXED_CATEGORIES.length} calculator categories`,
     `- [Trending](${BASE_URL}/trending): Most-used calculators`,
     `- [Blog](${BASE_URL}/blog): Calculator guides and long-form explainers`,
     `- [About](${BASE_URL}/about): About AllSmartCalculators`,
@@ -35,7 +39,7 @@ export async function GET() {
     ``,
   ];
 
-  for (const cat of ACTIVE_CATEGORIES) {
+  for (const cat of INDEXED_CATEGORIES) {
     lines.push(`- [${cat.name}](${BASE_URL}/${cat.id}): ${cat.description}`);
   }
   lines.push(``);
@@ -43,8 +47,8 @@ export async function GET() {
   lines.push(`## Calculators by Category`);
   lines.push(``);
 
-  for (const cat of ACTIVE_CATEGORIES) {
-    const calcs = allCalculators.filter((c) => c.category === cat.id);
+  for (const cat of INDEXED_CATEGORIES) {
+    const calcs = indexableCalculators.filter((c) => c.category === cat.id);
     if (calcs.length === 0) continue;
     lines.push(`### ${cat.name} (${calcs.length} calculators)`);
     lines.push(``);
