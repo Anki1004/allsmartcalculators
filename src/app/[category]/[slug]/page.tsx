@@ -29,6 +29,14 @@ const APPLICATION_CATEGORY_BY_CATEGORY: Record<string, string> = {
   business: 'BusinessApplication',
 };
 
+// These pages read title, description, robots and body copy from Strapi, but
+// without a revalidate window those values are frozen at build time — a CMS
+// edit needed a full redeploy to appear. That bit us on 2026-07-31: the robots
+// meta served `noindex` from a stale build for 30 pages the allowlist had
+// already promoted. /api/revalidate still gives Strapi a webhook for instant
+// purges; this is the safety net for when the webhook doesn't fire.
+export const revalidate = 3600;
+
 export function generateStaticParams() {
   return allCalculators.map((calc) => ({
     category: calc.category,
