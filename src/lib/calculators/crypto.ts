@@ -9,9 +9,9 @@ export const cryptoCalculators: CalculatorConfig[] = [
     description: 'Calculate profit, loss, and percent return on any crypto trade — Bitcoin, Ethereum, or altcoins — from buy price, sell price, and quantity.',
     trending: true,
     inputs: [
-      { key: 'buyPrice', label: 'Buy Price', type: 'slider', min: 0.001, max: 100000, step: 0.01, default: 30000, prefix: '$', color: 'primary' },
-      { key: 'sellPrice', label: 'Sell Price', type: 'slider', min: 0.001, max: 200000, step: 0.01, default: 45000, prefix: '$', color: 'secondary' },
-      { key: 'quantity', label: 'Quantity', type: 'slider', min: 0.0001, max: 100, step: 0.01, default: 0.5, suffix: 'units', color: 'tertiary' },
+      { key: 'buyPrice', label: 'Buy Price', type: 'slider', min: 0, max: 100000, step: 0.01, default: 30000, prefix: '$', color: 'primary' },
+      { key: 'sellPrice', label: 'Sell Price', type: 'slider', min: 0, max: 200000, step: 0.01, default: 45000, prefix: '$', color: 'secondary' },
+      { key: 'quantity', label: 'Quantity', type: 'slider', min: 0, max: 100, step: 0.01, default: 0.5, suffix: 'units', color: 'tertiary' },
     ],
     outputs: [
       { key: 'profit', label: 'Profit / Loss', prefix: '$', primary: true },
@@ -254,8 +254,8 @@ export const cryptoCalculators: CalculatorConfig[] = [
     icon: 'Repeat',
     description: 'Convert crypto to USD.',
     inputs: [
-      { key: 'amount', label: 'Amount', type: 'slider', min: 0.0001, max: 1000, step: 0.01, default: 1, suffix: 'coin', color: 'primary' },
-      { key: 'price', label: 'Coin Price', type: 'slider', min: 0.001, max: 200000, step: 0.01, default: 65000, prefix: '$', color: 'secondary' },
+      { key: 'amount', label: 'Amount', type: 'slider', min: 0, max: 1000, step: 0.01, default: 1, suffix: 'coin', color: 'primary' },
+      { key: 'price', label: 'Coin Price', type: 'slider', min: 0, max: 200000, step: 0.01, default: 65000, prefix: '$', color: 'secondary' },
     ],
     outputs: [
       { key: 'usd', label: 'USD Value', prefix: '$', primary: true },

@@ -185,7 +185,7 @@ export const financeUsTaxCalculators: CalculatorConfig[] = [
         default: 'standard',
         color: 'tertiary',
       },
-      { key: 'itemized', label: 'Itemized deduction (if selected)', type: 'slider', min: 0, max: 200000, step: 500, default: 16100, prefix: '$', color: 'primary' },
+      { key: 'itemized', label: 'Itemized deduction (if selected)', type: 'slider', min: 0, max: 200000, step: 100, default: 16100, prefix: '$', color: 'primary' },
     ],
     outputs: [
       { key: 'tax', label: 'Federal Tax Owed', prefix: '$', decimals: 2, primary: true },

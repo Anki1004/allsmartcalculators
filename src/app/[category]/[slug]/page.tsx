@@ -15,6 +15,7 @@ import CalculatorEngine from '@/components/CalculatorEngine';
 import CalculatorCard from '@/components/CalculatorCard';
 import CalculatorCMS from '@/components/CalculatorCMS';
 import CustomCalculator from '@/components/custom/CustomCalculator';
+import EmbedSnippet from '@/components/EmbedSnippet';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 
@@ -295,6 +296,15 @@ export default async function CalculatorPage({
             fallbackContent={inlineContent?.article}
             fallbackFaqs={inlineContent?.faqs}
             calcName={calc.shortName ?? calc.name}
+          />
+
+          {/* Embed snippet — the attribution anchor inside it is the site's
+             only scalable source of backlinks. See EmbedSnippet. */}
+          <EmbedSnippet
+            category={calc.category}
+            slug={calc.slug}
+            name={calc.name}
+            siteUrl={SITE_URL}
           />
 
           {/* Related calculators */}

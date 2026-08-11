@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { allCalculators, ACTIVE_CATEGORIES, TOTAL_CALCULATORS } from '@/lib/calculator-registry';
+import { listedCalculators, ACTIVE_CATEGORIES, TOTAL_CALCULATORS } from '@/lib/calculator-registry';
 import CalculatorCard from '@/components/CalculatorCard';
 import GlassCard from '@/components/GlassCard';
 
@@ -30,7 +30,7 @@ export default function CategoriesPage() {
             <span className="text-gradient">All Calculators</span>
           </h1>
           <p className="text-sm sm:text-base md:text-lg text-on-surface-variant max-w-2xl">
-            {allCalculators.length} tools organized by category. Jump to any section.
+            {listedCalculators.length} tools organized by category. Jump to any section.
           </p>
         </div>
 
@@ -52,7 +52,7 @@ export default function CategoriesPage() {
 
         {/* Category sections */}
         {ACTIVE_CATEGORIES.map((cat) => {
-          const calcs = allCalculators.filter((c) => c.category === cat.id);
+          const calcs = listedCalculators.filter((c) => c.category === cat.id);
           return (
             <section key={cat.id} id={cat.id} className="mb-12 sm:mb-16 scroll-mt-32 sm:scroll-mt-36">
               <div className="flex items-center gap-3 sm:gap-4 mb-5 sm:mb-6">

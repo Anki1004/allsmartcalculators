@@ -4,6 +4,7 @@
 // cited yet.
 import { indexableCalculators, INDEXED_CATEGORIES } from '@/lib/calculator-registry';
 import { getAllPosts } from '@/lib/strapi';
+import { US_DELISTED_POSTS } from '@/lib/market-delist';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 
@@ -60,7 +61,7 @@ export async function GET() {
 
   // Blog posts (dynamic from Strapi). Skipped silently if Strapi is unreachable.
   try {
-    const posts = await getAllPosts();
+    const posts = (await getAllPosts()).filter((p) => !US_DELISTED_POSTS.has(p.slug));
     if (posts.length > 0) {
       lines.push(`## Blog Posts`);
       lines.push(``);

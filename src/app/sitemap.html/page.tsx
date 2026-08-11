@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { allCalculators } from '@/lib/calculator-registry';
+import { listedCalculators } from '@/lib/calculator-registry';
 import { CATEGORIES } from '@/lib/calculator-types';
 import GlassCard from '@/components/GlassCard';
 
@@ -103,7 +103,7 @@ export default function SitemapHtmlPage() {
         </h2>
         <div className="flex flex-col gap-5 sm:gap-6">
           {CATEGORIES.map((cat) => {
-            const calcs = allCalculators
+            const calcs = listedCalculators
               .filter((c) => c.category === cat.id)
               .sort((a, b) => a.name.localeCompare(b.name));
             if (calcs.length === 0) return null;

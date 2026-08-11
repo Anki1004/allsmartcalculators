@@ -5,6 +5,7 @@ import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { getPostBySlug, getAllPosts, getStrapiImageUrl } from '@/lib/strapi';
+import { US_DELISTED_POSTS } from '@/lib/market-delist';
 import { breadcrumbSchema } from '@/lib/structured-data';
 import GlassCard from '@/components/GlassCard';
 import { Clock, User, ArrowLeft, Calendar, Linkedin } from 'lucide-react';
@@ -38,7 +39,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       authors: post.metaAuthor
         ? [{ name: post.metaAuthor }]
         : [{ name: 'Ankit Gupta', url: 'https://www.linkedin.com/in/ankit-gupta-data-analyst' }],
-      robots: post.metaRobots ?? 'index, follow',
+      // Code wins over the CMS here on purpose. In 2026-06 a stale Strapi
+      // metaRobots value silently overrode the code allowlist and kept pages
+      // noindex after they had been re-approved; the delist must not be
+      // defeatable by a CMS row nobody remembers editing.
+      robots: US_DELISTED_POSTS.has(params.slug)
+        ? 'noindex, follow'
+        : post.metaRobots ?? 'index, follow',
       alternates: { canonical: canonicalUrl },
       openGraph: {
         title: post.metaOgTitle ?? title,

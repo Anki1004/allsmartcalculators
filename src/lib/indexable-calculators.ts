@@ -4,7 +4,36 @@
 // sitemap, so Google judges the site on its strong subset while the rest are
 // improved over time. Add a slug here once its page has genuine, original
 // long-form content — and keep it in sync with scripts/set-noindex.ts.
-export const INDEXABLE_CALCULATORS = new Set<string>([
+import { DOCUMENTED_UNIVERSITY_SLUGS } from './calculators/education-cgpa-universities';
+import { US_DELISTED_CALCULATORS } from './market-delist';
+
+const ALLOWLIST = new Set<string>([
+  // ── Added 2026-08-11 ──────────────────────────────────────────────────────
+  // Long-tail finance tools built around a feature the base calculator lacks.
+  // Each ships ~4k chars of inline article + 6 FAQs, so none is thin.
+  'emi-prepayment-calculator', 'sip-step-up-calculator', 'xirr-calculator',
+
+  // India salary/CTC + regime set. Replaces the ground the delisted US payroll
+  // and federal-income-tax calculators used to occupy.
+  'in-hand-salary-calculator', 'gratuity-calculator', 'hra-exemption-calculator',
+  'leave-encashment-calculator', 'notice-period-buyout-calculator',
+  'old-vs-new-tax-regime-calculator',
+
+  // India loan/property set. Replaces the delisted US mortgage, auto-loan and
+  // house-affordability ground.
+  'loan-against-property-calculator', 'home-loan-balance-transfer-calculator',
+  'home-loan-tax-benefit-calculator', 'rent-vs-buy-calculator',
+
+  // Exam/semester set — the category where the domain already ranks top-5.
+  'percentile-to-rank-calculator', 'sgpa-calculator',
+
+  // University CGPA conversions. Only the slugs whose formula is confirmed
+  // against the university's own documentation are listed — the rest carry
+  // formulaConfidence: 'verify' in education-cgpa-universities.ts and are
+  // served noindex until someone checks the ordinance. Keeping this derived
+  // from the data means flipping one field there flips indexability here.
+  ...DOCUMENTED_UNIVERSITY_SLUGS,
+
   'emi-calculator', 'sip-calculator', 'gst-calculator', 'income-tax-calculator', 'ppf-calculator',
   'fd-calculator', 'rd-calculator', 'mortgage-calculator', 'nps-calculator', 'hra-calculator',
   'cibil-calculator', 'compound-interest-calculator', 'lumpsum-calculator', 'mutual-fund-returns',
@@ -58,3 +87,14 @@ export const INDEXABLE_CALCULATORS = new Set<string>([
   'roi-calculator', 'profit-margin-calculator',
   'crypto-portfolio-calculator', 'reading-speed-calculator',
 ]);
+
+// The allowlist above is the historical record of what was judged good enough
+// to index. The US delisting is applied on top of it rather than by deleting
+// lines, so the reason a slug stopped being indexed stays visible in one place
+// (market-delist.ts) instead of vanishing into a diff. Ten US slugs the
+// 2026-07-14 wave added — paycheck, federal income tax, sales tax, capital
+// gains, 401k, Roth IRA, social security, student loan, house affordability,
+// auto loan — plus mortgage drop out here.
+export const INDEXABLE_CALCULATORS = new Set<string>(
+  [...ALLOWLIST].filter((slug) => !US_DELISTED_CALCULATORS.has(slug)),
+);

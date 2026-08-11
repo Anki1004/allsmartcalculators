@@ -9,7 +9,7 @@ export const engineeringCalculators: CalculatorConfig[] = [
     description: 'V = IR, find voltage, current, or resistance.',
     inputs: [
       { key: 'voltage', label: 'Voltage', type: 'slider', min: 0, max: 240, step: 0.1, default: 12, suffix: 'V', color: 'primary' },
-      { key: 'current', label: 'Current', type: 'slider', min: 0.001, max: 100, step: 0.01, default: 2, suffix: 'A', color: 'secondary' },
+      { key: 'current', label: 'Current', type: 'slider', min: 0, max: 100, step: 0.01, default: 2, suffix: 'A', color: 'secondary' },
     ],
     outputs: [
       { key: 'resistance', label: 'Resistance', suffix: 'Î©', decimals: 3, primary: true },
@@ -36,8 +36,8 @@ export const engineeringCalculators: CalculatorConfig[] = [
     description: 'Calculate output voltage for a divider.',
     inputs: [
       { key: 'vin', label: 'Input Voltage', type: 'slider', min: 0, max: 50, step: 0.1, default: 12, suffix: 'V', color: 'primary' },
-      { key: 'r1', label: 'R1', type: 'slider', min: 1, max: 100000, step: 10, default: 1000, suffix: 'Î©', color: 'secondary' },
-      { key: 'r2', label: 'R2', type: 'slider', min: 1, max: 100000, step: 10, default: 2000, suffix: 'Î©', color: 'tertiary' },
+      { key: 'r1', label: 'R1', type: 'slider', min: 10, max: 100000, step: 10, default: 1000, suffix: 'Î©', color: 'secondary' },
+      { key: 'r2', label: 'R2', type: 'slider', min: 10, max: 100000, step: 10, default: 2000, suffix: 'Î©', color: 'tertiary' },
     ],
     outputs: [
       { key: 'vout', label: 'Output Voltage', suffix: 'V', decimals: 4, primary: true },
@@ -47,7 +47,7 @@ export const engineeringCalculators: CalculatorConfig[] = [
       const vin = Number(i.vin);
       const r1 = Number(i.r1);
       const r2 = Number(i.r2);
-      const vout = vin * (r2 / (r1 + r2));
+      const vout = r1 + r2 > 0 ? vin * (r2 / (r1 + r2)) : 0;
       return { vout, current: r1 + r2 > 0 ? (vin / (r1 + r2)) * 1000 : 0 };
     },
     seo: {

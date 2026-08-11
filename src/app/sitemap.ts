@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { indexableCalculators, INDEXED_CATEGORIES } from '@/lib/calculator-registry';
 import { getAllPosts } from '@/lib/strapi';
+import { US_DELISTED_POSTS } from '@/lib/market-delist';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 
@@ -52,7 +53,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let blogRoutes: MetadataRoute.Sitemap = [];
   try {
     const posts = await getAllPosts();
-    blogRoutes = posts.map((p) => ({
+    // US-market posts are served but not advertised — same treatment as the
+    // delisted calculators. Listing a noindex URL here would also trip the
+    // "submitted URL marked noindex" warning in Search Console.
+    blogRoutes = posts.filter((p) => !US_DELISTED_POSTS.has(p.slug)).map((p) => ({
       url: `${BASE_URL}/blog/${p.slug}`,
       ...((p.publishedOn ?? p.publishedAt) && { lastModified: new Date(p.publishedOn ?? p.publishedAt) }),
       changeFrequency: 'monthly',

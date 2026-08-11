@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getAllPosts, getStrapiImageUrl, StrapiPost } from '@/lib/strapi';
+import { US_DELISTED_POSTS } from '@/lib/market-delist';
 import GlassCard from '@/components/GlassCard';
 import { Clock, User, ArrowRight, BookOpen } from 'lucide-react';
 
@@ -100,7 +101,7 @@ function PostCard({ post }: { post: StrapiPost }) {
 export default async function BlogPage() {
   let posts: StrapiPost[] = [];
   try {
-    posts = await getAllPosts();
+    posts = (await getAllPosts()).filter((p) => !US_DELISTED_POSTS.has(p.slug));
   } catch {
     // Strapi offline or no posts yet
   }

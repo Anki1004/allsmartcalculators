@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
-  allCalculators,
+  listedCalculators,
   getTrendingCalculators,
   getPopularCalculators,
   ACTIVE_CATEGORIES,
@@ -80,7 +80,7 @@ export default async function HomePage() {
   // enough tools to fill a row — keeps it from looking sparse (a lone card in a
   // 4-up grid). Thin categories stay reachable via the chips and /categories.
   const browseCategories = ACTIVE_CATEGORIES.filter(
-    (cat) => allCalculators.filter((c) => c.category === cat.id).length >= 4,
+    (cat) => listedCalculators.filter((c) => c.category === cat.id).length >= 4,
   );
 
   // Keyword-led H1 (default). Front-loads the count and names the high-volume
@@ -293,7 +293,7 @@ export default async function HomePage() {
 
           <div className="flex flex-col gap-8 sm:gap-10">
             {browseCategories.map((cat) => {
-              const catAll = allCalculators.filter((c) => c.category === cat.id);
+              const catAll = listedCalculators.filter((c) => c.category === cat.id);
               const catCalcs = [...catAll]
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .slice(0, 4);

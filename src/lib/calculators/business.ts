@@ -10,7 +10,7 @@ export const businessCalculators: CalculatorConfig[] = [
     trending: true,
     inputs: [
       { key: 'gain', label: 'Net Profit (Gain − Cost)', type: 'slider', min: 0, max: 1000000, step: 100, default: 25000, prefix: '$', color: 'primary' },
-      { key: 'cost', label: 'Investment Cost', type: 'slider', min: 1, max: 1000000, step: 100, default: 100000, prefix: '$', color: 'secondary' },
+      { key: 'cost', label: 'Investment Cost', type: 'slider', min: 0, max: 1000000, step: 100, default: 100000, prefix: '$', color: 'secondary' },
     ],
     outputs: [
       { key: 'roi', label: 'ROI', suffix: '%', decimals: 2, primary: true },
@@ -262,7 +262,7 @@ export const businessCalculators: CalculatorConfig[] = [
     description: 'Return on ad spend.',
     inputs: [
       { key: 'revenue', label: 'Revenue from Ads', type: 'slider', min: 0, max: 1000000, step: 100, default: 50000, prefix: '$', color: 'primary' },
-      { key: 'adSpend', label: 'Ad Spend', type: 'slider', min: 1, max: 1000000, step: 100, default: 10000, prefix: '$', color: 'secondary' },
+      { key: 'adSpend', label: 'Ad Spend', type: 'slider', min: 100, max: 1000000, step: 100, default: 10000, prefix: '$', color: 'secondary' },
     ],
     outputs: [
       { key: 'roas', label: 'ROAS', decimals: 2, primary: true },
@@ -270,7 +270,10 @@ export const businessCalculators: CalculatorConfig[] = [
       { key: 'profit', label: 'Gross Profit', prefix: '$', color: 'tertiary' },
     ],
     calculate: (i) => {
-      const roas = Number(i.revenue) / Number(i.adSpend);
+      const spend = Number(i.adSpend);
+      // Guarded even though the slider cannot reach 0 — the divisor should not
+      // depend on a UI range staying where it is.
+      const roas = spend > 0 ? Number(i.revenue) / spend : 0;
       return {
         roas,
         roasX: `${roas.toFixed(2)}x`,

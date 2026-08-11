@@ -5,6 +5,10 @@ import { financeUsRetirementContent } from './finance-us-retirement-content';
 import { healthUsContent } from './health-us-content';
 import { dailyLifeUsContent } from './daily-life-us-content';
 import { mathUsContent } from './math-us-content';
+import { financeLongtailContent } from './finance-longtail-content';
+import { educationCgpaContent } from './education-cgpa-content';
+import { indiaSalaryContent } from './india-salary-content';
+import { indiaPropertyContent } from './india-property-content';
 
 export type { CalcInlineContent } from './types';
 
@@ -17,4 +21,8 @@ export const CALC_INLINE_CONTENT: Record<string, CalcInlineContent> = {
   ...healthUsContent,
   ...dailyLifeUsContent,
   ...mathUsContent,
+  ...financeLongtailContent,
+  ...educationCgpaContent,
+  ...indiaSalaryContent,
+  ...indiaPropertyContent,
 };

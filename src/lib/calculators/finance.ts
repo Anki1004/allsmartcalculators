@@ -120,9 +120,13 @@ export const financeCalculators: CalculatorConfig[] = [
     trending: true,
     chartType: 'donut',
     inputs: [
-      { key: 'principal', label: 'Loan Amount', type: 'slider', min: 1000, max: 10000000, step: 1000, default: 250000, prefix: '$', color: 'primary' },
-      { key: 'rate', label: 'Interest Rate', type: 'slider', min: 0.1, max: 30, step: 0.1, default: 6.5, suffix: '%', color: 'secondary' },
-      { key: 'tenure', label: 'Tenure', type: 'slider', min: 1, max: 40, step: 1, default: 15, suffix: 'Years', color: 'tertiary' },
+      // Defaults describe a typical Indian home loan (₹25L at 8.75% over 20
+      // years). They were previously $250,000 at 6.5% over 15 — US mortgage
+      // shape on a page whose entire audience is Indian, and the first thing a
+      // visitor sees before touching a slider.
+      { key: 'principal', label: 'Loan Amount', type: 'slider', min: 1000, max: 10000000, step: 1000, default: 2500000, prefix: '$', color: 'primary' },
+      { key: 'rate', label: 'Interest Rate', type: 'slider', min: 0.1, max: 30, step: 0.1, default: 8.8, suffix: '%', color: 'secondary' },
+      { key: 'tenure', label: 'Tenure', type: 'slider', min: 1, max: 40, step: 1, default: 20, suffix: 'Years', color: 'tertiary' },
     ],
     outputs: [
       { key: 'emi', label: 'Monthly EMI', prefix: '$', primary: true, color: 'white' },
@@ -765,7 +769,7 @@ export const financeCalculators: CalculatorConfig[] = [
         ],
         color: 'primary',
       },
-      { key: 'amount', label: 'Amount', type: 'slider', min: 1, max: 1000000, step: 10, default: 1000, prefix: '$', color: 'primary' },
+      { key: 'amount', label: 'Amount', type: 'slider', min: 0, max: 1000000, step: 10, default: 1000, prefix: '$', color: 'primary' },
       { key: 'rate', label: 'GST Rate', type: 'slider', min: 0, max: 30, step: 0.5, default: 18, suffix: '%', color: 'secondary' },
     ],
     outputs: [
