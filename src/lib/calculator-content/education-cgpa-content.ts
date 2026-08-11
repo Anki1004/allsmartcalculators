@@ -26,6 +26,8 @@ The deduction surprises people, and it is worth understanding why it exists. VTU
 
 Your SGPA for a semester is the credit-weighted average of these points; your CGPA is the credit-weighted average across all semesters.
 
+VTU states the conversion formula on its own site: [vtu.ac.in/en/cgpa-standard-formula](https://vtu.ac.in/en/cgpa-standard-formula/).
+
 ## Where you will be asked for this
 
 Almost every campus placement form, every PSU application, and every foreign university application asks for a percentage, not a CGPA. So does the "aggregate marks" field on most Indian job portals. If you enter your CGPA into a percentage field — 8.5 where 77.5 was expected — you will be screened out by an automated filter before a human ever reads the application.
@@ -34,7 +36,7 @@ The safest practice is to write the percentage and add the CGPA in brackets: **7
 
 ## Which scheme applies to you
 
-VTU has run several schemes — the 2015, 2017, 2018 and 2021 CBCS variants among them. The letter grades and credit distribution have shifted across them, but the 0.75 conversion has been the constant. If your marks card was issued by VTU under any CBCS scheme, the formula above is the one printed alongside your CGPA.
+VTU publishes this formula for the **2015, 2017 and 2018 schemes**, and says so explicitly on its own page. Later schemes are not covered by that page. If your marks card is from a 2021 or later scheme, check what it prints alongside your CGPA rather than assuming the 0.75 deduction carried over — VTU has not published the same statement for those years.
 
 Diploma and lateral-entry students should note that their CGPA is computed only over the semesters they actually studied at VTU. The conversion rule is unchanged.
 
@@ -45,7 +47,7 @@ The class or division shown here uses the conventional Indian cut-offs — disti
       {
         question: 'What is the official VTU CGPA to percentage formula?',
         answer:
-          'Percentage = (CGPA − 0.75) × 10. A CGPA of 8.5 converts to 77.5%, a 9.0 to 82.5%, and a 7.2 to 64.5%. This formula is printed on the VTU transcript itself and applies across the CBCS schemes. It is the figure VTU expects you to quote when an application asks for percentage rather than CGPA.',
+          'Percentage = (CGPA − 0.75) × 10. A CGPA of 8.5 converts to 77.5%, a 9.0 to 82.5%, and a 7.2 to 64.5%. VTU publishes this on its own site as the standard formula for the 2015, 2017 and 2018 schemes. It is the figure to quote when an application asks for percentage rather than CGPA.',
       },
       {
         question: 'Why does VTU subtract 0.75 from the CGPA?',
@@ -60,7 +62,7 @@ The class or division shown here uses the conventional Indian cut-offs — disti
       {
         question: 'Does the 0.75 deduction apply to all VTU schemes?',
         answer:
-          'It has been the constant across VTU’s CBCS schemes, including the 2015, 2017, 2018 and 2021 variants, even though the letter grades and credit distribution changed between them. If your marks card was issued under CBCS, the formula applies. If you hold a much older non-CBCS VTU marks card that already states percentage directly, no conversion is needed — use the printed figure.',
+          'VTU states this formula for the 2015, 2017 and 2018 schemes specifically, and does not extend it to later schemes on the same page. If your marks card is from a 2021 or later scheme, check what it prints alongside your CGPA rather than assuming the deduction carried over. If you hold a much older non-CBCS marks card that already states a percentage, no conversion is needed — use the printed figure.',
       },
       {
         question: 'How do I convert a single semester SGPA to percentage at VTU?',
@@ -134,11 +136,11 @@ Government application forms almost universally ask for percentage of marks. Whe
 
 The three universities were originally one, split in 2008, and they have kept the conversion rule in common even as their regulations diverged. Whether your marks card says JNTUH, JNTUK or JNTUA, and whether you studied under R16, R18, R19 or R20, the deduction is the same.
 
-## Osmania is not the same, and people get this wrong
+## Do not borrow a formula from another Telangana university
 
-The most common error among Telangana students is applying the JNTU rule to an Osmania University marks card, or the reverse. Osmania deducts **0.5**, not 0.75. On a CGPA of 8.0 that is the difference between 75.0% and 72.5% — a 2.5 point gap that straddles the distinction cut-off.
+Osmania University, in the same state, has **not approved any official conversion formula** — the three rules in circulation for it (× 10, × 10 − 7.5 and × 9.5) disagree by up to 25 percentage points. Whatever number a friend at OU is quoting, it did not come from a university notification, and it does not apply to your JNTU marks card.
 
-Since both universities operate in the same state and students frequently compare notes, this mistake propagates quickly. Check which university issued your marks card, not which city you studied in.
+Check which university issued your marks card, not which city you studied in.
 
 ## Regulation changes and what stayed constant
 
@@ -156,9 +158,9 @@ If a form asks separately for "percentage as per university conversion formula" 
           'Percentage = (CGPA − 0.75) × 10, and it is the same for JNTU Hyderabad, JNTU Kakinada and JNTU Anantapur. A CGPA of 8.2 converts to 74.5%, an 8.5 to 77.5% and a 7.0 to 62.5%. The rule holds across the R16, R18, R19 and R20 regulations.',
       },
       {
-        question: 'Is the JNTU formula the same as the Osmania University formula?',
+        question: 'Can I use another Telangana university’s formula?',
         answer:
-          'No, and confusing the two is the most common error among Telangana students. JNTU deducts 0.75; Osmania deducts 0.5. On a CGPA of 8.0 that is 72.5% under JNTU versus 75.0% under Osmania — a gap that crosses the distinction threshold. Use the rule of the university that issued your marks card, not the one your friends at another college use.',
+          'No. Osmania University, the other large Telangana institution, has not approved any official conversion formula at all — the three rules in circulation for it disagree by up to 25 percentage points, and none comes from a university notification. Use the rule of the university that actually issued your marks card, not one a friend at another college is quoting.',
       },
       {
         question: 'Does the conversion differ between JNTUH, JNTUK and JNTUA?',
@@ -186,7 +188,7 @@ If a form asks separately for "percentage as per university conversion formula" 
   'anna-university-cgpa-to-percentage': {
     article: `Anna University multiplies CGPA by 10 with no deduction. A CGPA of 8.5 is 85%.
 
-This is the single most important thing to know about the Anna University conversion, because almost every neighbouring technical university deducts something. VTU takes off 0.75. JNTU takes off 0.75. Osmania takes off 0.5. Anna University takes off nothing.
+This is the single most important thing to know about the Anna University conversion, because several neighbouring technical universities deduct something first. VTU takes off 0.75. JNTU takes off 0.75. GTU takes off 0.5. Anna University takes off nothing.
 
 ## Why students get this wrong in both directions
 
@@ -211,7 +213,7 @@ The class shown here uses the conventional Indian thresholds. Anna University it
       {
         question: 'What is the Anna University CGPA to percentage formula?',
         answer:
-          'Percentage = CGPA × 10, with no deduction. A CGPA of 8.5 is 85%, a 7.2 is 72% and a 6.0 is 60%. Anna University differs from VTU, JNTU and Osmania here — all of those subtract a fraction before multiplying, and Anna University does not.',
+          'Percentage = CGPA × 10, with no deduction, per the R2021 regulations. A CGPA of 8.5 is 85%, a 7.2 is 72% and a 6.0 is 60%. Anna University differs from VTU, AKTU and JNTU here — all of those subtract 0.75 before multiplying, and Anna University does not. The (CGPA − 0.5) × 10 rule often applied to Anna University is the Pondicherry/CENTAC default and does not belong here.',
       },
       {
         question: 'Do I need to subtract 0.75 from my Anna University CGPA?',
@@ -237,64 +239,6 @@ The class shown here uses the conventional Indian thresholds. Anna University it
         question: 'How do I convert a single semester GPA at Anna University?',
         answer:
           'The same rule applies — multiply the semester GPA by 10. But nearly every application wants the cumulative figure across all semesters, so compute your CGPA first and convert that. A single strong semester is not what a percentage field is asking for, and quoting one where a cumulative figure was expected creates problems at verification.',
-      },
-    ],
-  },
-
-  'osmania-cgpa-to-percentage': {
-    article: `Osmania University converts CGPA to percentage as (CGPA − 0.5) × 10. A CGPA of 8.0 becomes 75%.
-
-Note the deduction: **0.5, not 0.75**. This is the detail that trips up Telangana students most often, because JNTU — operating in the same state, recruiting into the same companies — uses 0.75. On a CGPA of 8.0 the two rules differ by 2.5 percentage points, and 75% is precisely the distinction threshold, so the error can change the class you report.
-
-## Which marks card is yours
-
-Osmania University and its affiliated colleges cover a large share of Hyderabad's older institutions, while JNTUH covers most of the newer technical colleges. Students frequently do not know which university issued their degree until they look. The university name is printed at the top of the marks card and on the degree certificate — check there rather than assuming based on where the campus is.
-
-If your college is affiliated to Osmania, the 0.5 rule applies regardless of which department or programme you were in.
-
-## Where the number matters
-
-Telangana state government recruitment, TSPSC notifications and most PSU applications ask for aggregate percentage. Osmania students should convert with the 0.5 rule and be ready to show a conversion certificate at verification. The examination branch and affiliated colleges will issue one; it states the university formula explicitly, which is what a verification officer wants to see.
-
-For private-sector campus placements the practical threshold is usually 60%, which under the Osmania rule corresponds to a CGPA of 6.5 — a slightly easier bar than the 6.75 a JNTU student needs for the same percentage.
-
-## Postgraduate and professional programmes
-
-Osmania runs a wide range of programmes beyond engineering — arts, science, commerce, law, medicine and management — and not all of them have historically used the same 10-point CGPA system. Older marks cards from some faculties report percentage directly, in which case no conversion is needed. If your marks card shows a percentage, use it as printed; converting a percentage that is already a percentage is a surprisingly common mistake on application forms.
-
-## Verify before a formal declaration
-
-The 0.5 rule is the figure in general use for Osmania, but examination regulations are revised periodically and can differ by faculty. Before entering a number on a legal declaration — a government form, an affidavit, a visa application — confirm against your own marks card or a conversion certificate from the examination branch. Use this calculator to plan and to fill in ordinary job applications.`,
-    faqs: [
-      {
-        question: 'What is the Osmania University CGPA to percentage formula?',
-        answer:
-          'Percentage = (CGPA − 0.5) × 10. A CGPA of 8.0 gives 75%, an 8.5 gives 80% and a 6.5 gives exactly 60%. The deduction is 0.5 — half of what JNTU applies — which is the single most common source of error for students in Telangana.',
-      },
-      {
-        question: 'Is the Osmania formula the same as JNTU?',
-        answer:
-          'No. Osmania deducts 0.5 and JNTU deducts 0.75. On a CGPA of 8.0 that is 75% versus 72.5%, which straddles the distinction cut-off. Both universities operate in Telangana and recruit into the same companies, so the two rules get mixed up constantly. Check which university is printed on your marks card.',
-      },
-      {
-        question: 'What CGPA do I need for 60% at Osmania?',
-        answer:
-          'A CGPA of 6.5 converts to exactly 60.0% under the Osmania rule. That is a slightly lower bar than at JNTU, where 6.75 is needed for the same percentage. Most campus recruiters set the floor at 60% with no active backlogs, so 6.5 is the number to aim for.',
-      },
-      {
-        question: 'Do I need a conversion certificate for a government job application?',
-        answer:
-          'It is strongly advisable. TSPSC and PSU document verification frequently query self-converted percentages. The Osmania examination branch and affiliated colleges issue a conversion certificate stating the university formula and your resulting percentage — one page that settles the question. Obtain it before verification rather than during it.',
-      },
-      {
-        question: 'My Osmania marks card shows a percentage already. Do I still convert?',
-        answer:
-          'No. If your marks card reports percentage directly — as older marks cards from several Osmania faculties do — use the printed figure as-is. Converting a number that is already a percentage is a common and costly mistake on application forms. The conversion applies only where the marks card reports a CGPA on the 10-point scale.',
-      },
-      {
-        question: 'Does the same rule apply to all Osmania faculties?',
-        answer:
-          'The 0.5 deduction is the figure in general use across the university, but Osmania runs arts, science, commerce, law, medicine and management alongside engineering, and examination regulations are revised periodically. Before entering a percentage on a legal declaration, confirm against your own marks card or a conversion certificate from the examination branch.',
       },
     ],
   },
@@ -360,40 +304,47 @@ The 0.5 deduction is the rule in general circulation for GTU. Academic circulars
   },
 
   'ipu-cgpa-to-percentage': {
-    article: `GGSIPU — Guru Gobind Singh Indraprastha University, widely called IP University or IPU — converts CGPA to percentage as (CGPA − 0.75) × 10. A CGPA of 8.0 becomes 72.5%.
+    article: `GGSIPU has **two** conversion formulas, and which one applies to you depends on the year you were admitted.
 
-IPU affiliates colleges across Delhi covering engineering, management, law, medicine, journalism and education, so the same conversion question arrives from students on very different programmes.
+- **Admitted before 2024:** Percentage = CGPA × 10
+- **Admitted 2024 onwards:** Percentage = (CGPA − 0.75) × 10
 
-## The Delhi cross-university problem
+Notification GGSIPU/COE/2024/11150124, dated 15.01.2024, introduced the deduction for students admitted from 2024. Earlier batches continue under Ordinance 11 with the straight × 10.
 
-IPU students compete for the same jobs and postgraduate seats as students from Delhi University, and DU's conversion is different — DU has historically used a straight CGPA × 9.5 for its CBCS programmes. An IPU student with a CGPA of 8.0 reports 72.5%; a DU student with the same 8.0 reports 76%.
+## The gap is 7.5 points
 
-Neither is wrong. They are different universities with different rules, and the gap is a feature of the two systems rather than a judgement about the students. But it does mean you should never apply a formula you found on a page about a different Delhi university.
+| CGPA | Admitted before 2024 | Admitted 2024 onwards |
+|---|---|---|
+| 6.75 | 67.5% | 60.0% |
+| 8.00 | 80.0% | 72.5% |
+| 9.00 | 90.0% | 82.5% |
 
-## What IPU's own paperwork says
+Seven and a half percentage points is not a rounding difference. It straddles the 75% distinction threshold and, at the lower end, the 60% placement filter. Using the wrong one costs you a job screen or overstates your degree — both are bad in different ways.
 
-Your IPU marks sheet reports the semester GPA and the cumulative CGPA. The conversion rule is applied when the university or your college issues a percentage certificate, which is the document to request when an employer or a foreign institution insists on a percentage rather than a CGPA.
+Most guidance online, including most CGPA calculators, applies only one of the two. Check your admission year before trusting any of them, including this page.
 
-Programmes at IPU differ substantially in credit structure — a B.Tech, a BBA and a five-year LLB have little in common — but the cumulative CGPA is reported on the same 10-point scale across them.
+## Which one is yours
 
-## For CAT, GATE and government forms
+Your admission year is on your enrolment number and your first-semester marksheet. If you were admitted in 2023 and graduated in 2027, you are a pre-2024 batch and use × 10 — the rule follows admission, not graduation.
 
-Management and government applications generally ask for "percentage of marks in graduation". Use the converted figure, and where the form offers a field for the university conversion formula, state it. IPU is well known to Delhi-NCR recruiters, less so elsewhere, so naming the university and the formula is worth the extra line.
+## The Delhi University comparison
 
-## Verify before a formal declaration
+DU, in the same city and competing for the same jobs, also changed its rule — CBCS batches use × 9.5 and NEP/UGCF batches from 2022-23 use × 10.
 
-The 0.75 deduction is the figure in general use for IPU. The university's examination division issues notifications that are revised periodically and can differ by programme. For anything going onto a government form, an affidavit or a visa application, confirm against your own marks sheet or request a percentage certificate from your college. Use this calculator for planning and ordinary applications.`,
+So a CGPA of 8.0 in Delhi could legitimately be 80% (IPU pre-2024, or DU NEP), 76% (DU CBCS) or 72.5% (IPU 2024 onwards), depending entirely on which institution and which batch. Never apply a formula from a page about a different Delhi university, and never apply one from a different batch.
+
+## Getting an official certificate
+
+Request a percentage certificate through your affiliated college, which routes it to the university examination division. It states the conversion rule applied to your batch and your resulting percentage on university letterhead.
+
+Given that IPU has two live formulas, this certificate is worth more than usual — it removes any argument at document verification about which rule applied to you.
+
+## Confirm before a legal declaration
+
+The two rules above are what we can establish from the notification references in circulation; we were not able to open the notification itself. Before entering a percentage on a government form, an affidavit or a visa application, confirm against your own marks sheet or the examination division.`,
     faqs: [
-      {
-        question: 'What is the IPU (GGSIPU) CGPA to percentage formula?',
-        answer:
-          'Percentage = (CGPA − 0.75) × 10. A CGPA of 8.0 converts to 72.5%, an 8.5 to 77.5% and a 6.75 to exactly 60%. GGSIPU applies the same 0.75 deduction used by VTU, AKTU and the JNTU campuses.',
-      },
-      {
-        question: 'Why does a Delhi University student with the same CGPA get a higher percentage?',
-        answer:
-          'Because DU and IPU use different rules. DU has historically applied a straight CGPA × 9.5 for its CBCS programmes, while IPU deducts 0.75 first. A CGPA of 8.0 is 76% at DU and 72.5% at IPU. Neither figure is wrong — they are different universities. Never apply a formula from a page about a different Delhi university to your IPU marks sheet.',
-      },
+      { question: "What is the IPU (GGSIPU) CGPA to percentage formula?", answer: "It depends on your admission year. Students admitted before 2024 use Percentage = CGPA × 10 under Ordinance 11. Students admitted from 2024 onwards use (CGPA − 0.75) × 10, introduced by notification GGSIPU/COE/2024/11150124 dated 15.01.2024. At a CGPA of 8.0 that is 80% against 72.5% — a 7.5 point gap." },
+      { question: "Which IPU formula applies to me?", answer: "The one for the year you were admitted, not the year you graduate. Your admission year appears on your enrolment number and your first-semester marksheet. Admitted in 2023 and graduating in 2027 means you are a pre-2024 batch and use the straight × 10. Most online calculators apply only one of the two formulas, so check before trusting any of them." },
       {
         question: 'How do I get an official percentage certificate from IPU?',
         answer:
@@ -404,11 +355,7 @@ The 0.75 deduction is the figure in general use for IPU. The university's examin
         answer:
           'The cumulative CGPA is reported on the same 10-point scale across IPU programmes, and the 0.75 deduction is the rule in general use. Credit structures differ substantially between a B.Tech, a BBA and a five-year LLB, but that affects how the CGPA is computed, not how it converts. Check your own marks sheet if anything appears inconsistent.',
       },
-      {
-        question: 'What CGPA do I need for 60% at IPU?',
-        answer:
-          'A CGPA of 6.75 converts to exactly 60.0%. Many campus recruiters and most government notifications set 60% as the floor for general category candidates, so 6.75 is the practical threshold. Reserved-category floors are commonly 55%, corresponding to a CGPA of 6.25.',
-      },
+      { question: "What CGPA do I need for 60% at IPU?", answer: "It depends on your batch. Admitted before 2024, a CGPA of 6.0 gives exactly 60%. Admitted from 2024 onwards, you need 6.75 for the same 60% because of the 0.75 deduction. Most government notifications and campus recruiters set 60% as the general-category floor, so this difference matters directly." },
       {
         question: 'Should I quote CGPA or percentage on a CAT or GATE form?',
         answer:
@@ -418,79 +365,99 @@ The 0.75 deduction is the figure in general use for IPU. The university's examin
   },
 
   'du-cgpa-to-percentage': {
-    article: `Delhi University converts CGPA to percentage by multiplying by 9.5. A CGPA of 8.0 is 76%.
+    article: `Delhi University has **two** conversion rules, split by when you were admitted.
 
-DU adopted the same 9.5 multiplier CBSE uses, which makes the conversion familiar to anyone who came through a CBSE school. It also makes DU's rule noticeably more generous than that of the other large Delhi university.
+- **CBCS — admitted before 2022-23:** Percentage = CGPA × 9.5
+- **NEP / UGCF — admitted 2022-23 onwards:** Percentage = CGPA × 10
 
-## DU and IPU are not the same, and the gap is real
+The CBCS rule comes from DU notification Dean (Exams)/2017/9126 dated 20.12.2017, which states "Final Percentage of marks = C.G.P.A. based on all six semesters × 9.5", effective from the May/June 2018 examinations. Students entering under the NEP/UGCF framework from 2022-23 moved to the straight × 10.
 
-GGSIPU — IP University, in the same city, competing for the same jobs — subtracts 0.75 before multiplying by 10.
+## What the difference costs
 
-| CGPA | Delhi University | GGSIPU |
+| CGPA | CBCS (× 9.5) | NEP / UGCF (× 10) |
 |---|---|---|
-| 7.0 | 66.5% | 62.5% |
-| 8.0 | 76.0% | 72.5% |
-| 9.0 | 85.5% | 82.5% |
+| 7.0 | 66.5% | 70.0% |
+| 8.0 | 76.0% | 80.0% |
+| 9.0 | 85.5% | 90.0% |
 
-Four percentage points at the same CGPA. Neither university is wrong; they simply use different rules. Applying an IPU formula to a DU marksheet, or the reverse, is the mistake to avoid — and it happens constantly because students at both compare notes.
+Half a point of CGPA is worth roughly five percentage points here, so applying the wrong rule is not a rounding error. Almost every "DU CGPA to percentage" page online gives only the × 9.5 figure, which has been wrong for every student admitted since 2022-23 — by now, most current undergraduates.
 
-## Where DU asks you for which figure
+## Which rule is yours
 
-DU's own **admission** processes work on actual marks, not on converted percentages. Undergraduate cut-offs and the CUET-based admission system use subject marks; postgraduate admission generally uses the CGPA as printed.
+It follows your **admission year**, not your graduation year. A student admitted in 2021 who graduated in 2024 is still CBCS and uses × 9.5. Check your first-semester marksheet or your admission letter; the framework is usually named on it.
 
-The conversion matters for what comes after: campus placements, government application forms, and foreign university applications that insist on a percentage field. Write the converted figure and name the rule — "76% (CGPA 8.0, DU conversion × 9.5)" — so nobody has to guess.
+If your marksheet says UGCF or NEP anywhere, you are on the × 10 rule.
 
-## Across DU's faculties
+## DU admission does not use this at all
 
-DU runs the CBCS structure across a very wide range of programmes, from B.A. and B.Com to B.Sc. and professional courses, and credit structures differ between them. The conversion rule does not: the multiplier applies to the cumulative CGPA on your marksheet regardless of programme.
+Undergraduate admission to DU runs on CUET scores and actual subject marks, not on converted percentages. Postgraduate admission generally uses the CGPA as printed.
 
-Students from the School of Open Learning and NCWEB should check their own marksheet, as reporting formats have varied across years — where a percentage is printed directly, use the printed figure rather than converting anything.
+The conversion matters afterwards — campus placements, government application forms, and foreign university applications that insist on a percentage field.
+
+## IPU is different again
+
+GGSIPU, in the same city, also changed its rule: batches before 2024 use × 10 and those from 2024 onwards use (CGPA − 0.75) × 10.
+
+Between the two universities and their two eras, a CGPA of 8.0 in Delhi can legitimately be 90%, 80%, 76% or 72.5%. There is no single "Delhi formula", and anyone quoting one has not checked.
+
+## How to write it on a form
+
+> **76% (CGPA 8.0, University of Delhi CBCS — conversion × 9.5)**
+
+Naming both the framework and the multiplier costs one line and prevents the question. Recruiters who hire from DU regularly will recognise which era you are from.
 
 ## Before a formal declaration
 
-Where the number is going onto a government form, an affidavit or a visa application, request a conversion certificate from your college. It states the university rule and your resulting percentage on letterhead, and it removes any argument at document verification. Use this calculator for planning and ordinary applications.`,
+Where the number goes onto a government form, an affidavit or a visa application, request a conversion certificate from your college. It states the rule applied to your batch on letterhead and removes any argument at document verification.`,
     faqs: [
-      { question: 'What is the DU CGPA to percentage formula?', answer: 'Percentage = CGPA × 9.5. A CGPA of 8.0 converts to 76%, a 9.0 to 85.5% and a 7.2 to 68.4%. Delhi University uses the same 9.5 multiplier CBSE applies to Class 10 and 12 results.' },
-      { question: 'Why does an IPU student with my CGPA report a lower percentage?', answer: 'Because GGSIPU deducts 0.75 before multiplying by 10, while DU multiplies by 9.5 with no deduction. At a CGPA of 8.0 that is 76% at DU against 72.5% at IPU — four points apart at the same CGPA. Both are correct for their own university. Never apply one Delhi university’s formula to another’s marksheet.' },
+      { question: "What is the DU CGPA to percentage formula?", answer: "There are two, split by admission year. CBCS batches admitted before 2022-23 use Percentage = CGPA × 9.5, per DU notification Dean (Exams)/2017/9126. Students admitted from 2022-23 under NEP/UGCF use CGPA × 10. At a CGPA of 8.0 that is 76% against 80%." },
+      { question: "Which DU formula applies to me?", answer: "The one for your admission year, not your graduation year. A student admitted in 2021 who graduated in 2024 is still CBCS and uses × 9.5. Check your first-semester marksheet or admission letter — if it names UGCF or NEP anywhere, you are on the × 10 rule. Most DU conversion pages online give only the × 9.5 figure, which has been wrong for every student admitted since 2022-23." },
       { question: 'Does DU use CGPA or marks for admission?', answer: 'Undergraduate admission works on actual subject marks through the CUET-based process, not on converted percentages. Postgraduate admission generally uses the CGPA as printed. The conversion matters afterwards — for placements, government forms and foreign applications that require a percentage field.' },
       { question: 'Does the same formula apply to all DU courses?', answer: 'Yes. Credit structures differ across B.A., B.Com, B.Sc. and professional programmes under CBCS, but the × 9.5 multiplier applies to the cumulative CGPA printed on your marksheet regardless of programme. If your marksheet reports a percentage directly, use that figure and do not convert.' },
       { question: 'How do I get an official conversion certificate from DU?', answer: 'Request it through your college, which issues it on letterhead stating the university rule and your resulting percentage. It is worth obtaining before document verification for a government post or a visa application, because verification officers routinely query self-converted figures.' },
-      { question: 'Is 76% from DU a first class?', answer: 'Under the conventional Indian cut-offs used here, 60% and above is first class and 75% and above is first class with distinction, so a CGPA of 8.0 at 76% falls in the distinction range. Your degree certificate states the division DU actually awarded, and that document is authoritative for any formal declaration.' },
+      { question: "Is there a single \"Delhi formula\" I can use?", answer: "No. DU has two rules depending on batch (× 9.5 for CBCS, × 10 for NEP/UGCF), and GGSIPU in the same city has two of its own (× 10 before 2024, (CGPA − 0.75) × 10 from 2024). A CGPA of 8.0 in Delhi can legitimately be 90%, 80%, 76% or 72.5%. Always use the rule for your own university and your own admission year." },
     ],
   },
 
   'ktu-cgpa-to-percentage': {
-    article: `KTU converts CGPA to percentage as (CGPA − 0.5) × 10. A CGPA of 8.0 becomes 75%.
+    article: `KTU converts CGPA to percentage by multiplying by 10, with no deduction. A CGPA of 8.0 is 80%.
 
-APJ Abdul Kalam Technological University affiliates the great majority of engineering colleges in Kerala, so nearly every B.Tech graduate in the state needs this conversion at some point — usually the week a placement form asks for a percentage and the marksheet only shows a CGPA.
+This changed. KTU U.O. No. 1584/2023, dated 29.06.2023, replaced the older deduction-based rule with a straight × 10, and a subsequent circular applied the new formula back to the 2015 scheme so that every batch is treated the same way.
 
-## The deduction is 0.5, not 0.75
+## If you have read an older guide, it was probably wrong
 
-This is worth stating plainly because the 0.75 deduction is far more widely written about online, being the rule at VTU, AKTU and the JNTU campuses. On a CGPA of 8.0 the difference is 75% against 72.5% — and 75% is precisely the distinction threshold under the conventional cut-offs.
+The obsolete KTU formula was (10 × CGPA) − 2.5. On a CGPA of 8.0 that gives 77.5% against the current 80% — two and a half points, at exactly the level where the 75% distinction threshold sits.
 
-If you have read a generic "CGPA to percentage" article and applied 0.75 to a KTU marksheet, you have understated yourself by two and a half points at exactly the level where it changes the class you report.
+Plenty of third-party calculators still apply the old rule, and some apply a 0.5 deduction that was never KTU's formula at all. If a number you have been given does not match the straight × 10, check which rule produced it.
 
-## Where the number is used
+| CGPA | Current rule (× 10) | Obsolete rule (× 10 − 2.5) |
+|---|---|---|
+| 6.5 | 65.0% | 62.5% |
+| 7.5 | 75.0% | 72.5% |
+| 8.5 | 85.0% | 82.5% |
+| 9.0 | 90.0% | 87.5% |
 
-**Campus placements.** Most recruiters at Kerala engineering colleges set a 60% floor, which under the KTU rule corresponds to a CGPA of 6.5.
+## Where the number gets used
 
-**PSU and government applications.** These almost always ask for aggregate percentage across all semesters — the converted CGPA, not the final year alone. Lateral-entry students compute over the semesters actually studied at KTU, typically six rather than eight.
+**Campus placements.** Most recruiters at Kerala engineering colleges set a 60% floor, which under the current rule is a CGPA of exactly 6.0.
 
-**Study abroad.** Credential evaluators generally perform their own conversion from the official transcript and will not accept a self-calculated figure. Send the transcript.
+**PSU and government applications.** These ask for aggregate percentage across all semesters — the converted cumulative CGPA, not the final year alone. Lateral-entry students compute over the semesters actually studied at KTU, typically six rather than eight.
+
+**Study abroad.** Credential evaluators perform their own conversion from the official transcript and will not accept a self-calculated percentage. Send the transcript.
 
 ## Supplementary papers
 
-KTU's regulations have been revised several times since the university was established, and the treatment of supplementary and improvement examinations has changed with them. A cleared supplementary paper normally contributes the grade earned on the successful attempt, with its credits counting in the cumulative average — so a semester you initially failed keeps weighing on the CGPA afterwards.
+A cleared supplementary paper contributes the grade earned on the successful attempt, and its credits count in the cumulative average. A semester you initially failed therefore keeps weighing on your CGPA after you clear it.
 
-Work from your consolidated grade card rather than adding semester GPAs yourself. Students with supplementary papers routinely compute a CGPA higher than the one KTU issues.
+Work from your consolidated grade card rather than adding semester GPAs yourself — students with supplementary papers routinely compute a CGPA higher than the one KTU issues.
 
 ## Confirm before a legal declaration
 
-The 0.5 deduction is the figure in general use for KTU. Academic regulations are revised periodically and can differ by scheme and by programme. Before entering a percentage on a government form, an affidavit or a visa application, confirm against your own grade card or ask your college for a conversion certificate.`,
+The 2023 University Order is the current rule as far as we can establish, but the order itself is a scanned PDF we could not read directly. Before entering a percentage on a government form, an affidavit or a visa application, confirm against your own grade card or ask your college for a conversion certificate.`,
     faqs: [
-      { question: 'What is the KTU CGPA to percentage formula?', answer: 'Percentage = (CGPA − 0.5) × 10. A CGPA of 8.0 gives 75%, an 8.5 gives 80% and a 6.5 gives exactly 60%. KTU deducts 0.5, not the 0.75 used by VTU, AKTU and JNTU.' },
-      { question: 'Should I subtract 0.75 from my KTU CGPA?', answer: 'No. The 0.75 deduction belongs to VTU, AKTU and the JNTU campuses, and it is far more widely written about online, which is why the mistake is common. Applying it to a KTU marksheet understates you by 2.5 points — 72.5% instead of 75% at a CGPA of 8.0, which is exactly the distinction threshold.' },
-      { question: 'What CGPA do I need for a 60% placement cut-off?', answer: 'A CGPA of 6.5 converts to exactly 60.0% under the KTU rule. Most recruiters at Kerala engineering colleges set 60% as the floor, usually paired with a no-active-backlog condition that is checked separately.' },
+      { question: "What is the KTU CGPA to percentage formula?", answer: "Percentage = CGPA × 10, with no deduction. A CGPA of 8.0 is 80% and a 6.0 is exactly 60%. KTU U.O. No. 1584/2023 dated 29.06.2023 replaced the earlier deduction-based rule with this straight multiplier, and a later circular applied it back to the 2015 scheme so all batches match." },
+      { question: "Why do some calculators give me a lower KTU percentage?", answer: "Because they are still applying the obsolete rule. KTU previously used (10 × CGPA) − 2.5, and some third-party tools apply a 0.5 deduction that was never KTU’s formula at all. On a CGPA of 8.0 the old rule gives 77.5% against the current 80% — two and a half points, right at the 75% distinction threshold. Use the straight × 10." },
+      { question: "What CGPA do I need for a 60% placement cut-off?", answer: "A CGPA of exactly 6.0, under the current × 10 rule. Most recruiters at Kerala engineering colleges set 60% as the floor, usually paired with a no-active-backlog condition that is checked separately. Under the obsolete formula you would have needed 6.25, which is why older guidance quotes a higher number." },
       { question: 'How do supplementary papers affect my KTU CGPA?', answer: 'A cleared supplementary paper normally contributes the grade earned on the successful attempt, and its credits count in the cumulative average — so a semester you initially failed continues to weigh on your CGPA after you clear it. Work from the consolidated grade card rather than adding semester GPAs yourself; students with supplementary papers routinely compute a figure higher than the one KTU issues.' },
       { question: 'Will a foreign university accept my calculated percentage?', answer: 'Generally no. Credential evaluators perform their own conversion directly from your official transcript rather than accepting a self-calculated figure. Send the transcript. The formula here is for Indian job applications and government forms where a percentage field must be filled in.' },
       { question: 'What percentage should a lateral entry student report?', answer: 'Compute the CGPA over the semesters actually studied at KTU — normally six rather than eight — and convert that with the same 0.5 rule. Your diploma result stays a separate figure and is reported separately where the form asks for it. Your KTU consolidated grade card already reflects only the semesters completed there.' },
@@ -504,7 +471,7 @@ Biju Patnaik University of Technology affiliates most of the engineering, pharma
 
 ## The 0.5 deduction
 
-BPUT uses a 0.5 deduction, the same as GTU and Osmania, rather than the 0.75 that VTU, AKTU and JNTU apply. The distinction matters because the 0.75 rule dominates search results and gets applied to marksheets it does not belong to.
+BPUT uses a 0.5 deduction, the same as GTU, rather than the 0.75 that VTU, AKTU and JNTU apply. The distinction matters because the 0.75 rule dominates search results and gets applied to marksheets it does not belong to.
 
 | CGPA | BPUT (−0.5) | If you wrongly used −0.75 |
 |---|---|---|
@@ -534,7 +501,7 @@ BPUT runs B.Tech alongside pharmacy, architecture, MCA and MBA programmes with d
 
 The 0.5 deduction is the figure in general use for BPUT. Examination regulations are revised periodically. Before entering a percentage on a government form, an affidavit or a visa application, confirm against your grade card or request a conversion certificate from your college.`,
     faqs: [
-      { question: 'What is the BPUT CGPA to percentage formula?', answer: 'Percentage = (CGPA − 0.5) × 10. A CGPA of 7.5 converts to 70%, an 8.5 to 80% and a 6.5 to exactly 60%. BPUT uses a 0.5 deduction, the same as GTU and Osmania, rather than the 0.75 applied by VTU, AKTU and JNTU.' },
+      { question: 'What is the BPUT CGPA to percentage formula?', answer: 'Percentage = (CGPA − 0.5) × 10. A CGPA of 7.5 converts to 70%, an 8.5 to 80% and a 6.5 to exactly 60%. BPUT uses a 0.5 deduction, the same as GTU, rather than the 0.75 applied by VTU, AKTU and JNTU.' },
       { question: 'What CGPA do I need for 60% at BPUT?', answer: 'A CGPA of 6.5 converts to exactly 60.0%. Most campus recruiters in Odisha set 60% as the floor together with a no-active-backlog condition. Because your grade card reports CGPA rather than percentage, 6.5 is the more useful number to keep in mind.' },
       { question: 'Why do some sites tell me to subtract 0.75?', answer: 'Because the 0.75 rule belongs to VTU, AKTU and the JNTU campuses, which are much more widely written about. Applied to a BPUT grade card it understates you by 2.5 points consistently — 57.5% instead of 60.0% at a CGPA of 6.5, which is the difference between clearing a placement filter and failing it.' },
       { question: 'How do back papers affect my BPUT CGPA?', answer: 'The credits of every paper count in the cumulative average, and a cleared back paper contributes the grade earned on the successful attempt. A semester you initially failed therefore keeps affecting your CGPA after you clear it. This is the usual reason a self-computed CGPA comes out higher than the one BPUT issues — work from the consolidated grade card.' },
@@ -550,7 +517,7 @@ There is no deduction. This puts VIT in the same camp as Anna University and mak
 
 ## What this means when you compare with friends
 
-| CGPA | VIT / Anna (×10) | Osmania / GTU (−0.5) | VTU / JNTU (−0.75) |
+| CGPA | VIT / Anna (×10) | GTU / BPUT (−0.5) | VTU / JNTU (−0.75) |
 |---|---|---|---|
 | 7.0 | 70.0% | 65.0% | 62.5% |
 | 8.0 | 80.0% | 75.0% | 72.5% |
@@ -574,7 +541,7 @@ The practical consequence is the same as elsewhere: a poor grade in a four-credi
 
 The straight ×10 conversion is the rule in general use for VIT. Academic regulations are revised periodically and can differ between campuses and programmes. Before entering a percentage on a government form, an affidavit or a visa application, confirm against your own grade sheet or request a conversion certificate from the university. Use this calculator for planning and ordinary job applications.`,
     faqs: [
-      { question: 'What is the VIT CGPA to percentage formula?', answer: 'Percentage = CGPA × 10, with no deduction. A CGPA of 8.5 is 85%, a 7.2 is 72% and a 6.0 is 60%. VIT applies a straight multiplication, like Anna University and unlike VTU, JNTU, Osmania or GTU, all of which deduct something first.' },
+      { question: 'What is the VIT CGPA to percentage formula?', answer: 'Percentage = CGPA × 10, with no deduction. A CGPA of 8.5 is 85%, a 7.2 is 72% and a 6.0 is 60%. VIT applies a straight multiplication, like Anna University and unlike VTU, JNTU or GTU, all of which deduct something first.' },
       { question: 'Do I need to subtract anything from my VIT CGPA?', answer: 'No. Deductions of 0.5 or 0.75 belong to other universities. Applying a 0.75 deduction to a VIT CGPA of 8.0 would give 72.5% instead of the correct 80% — a 7.5 point understatement, enough to fail a 75% distinction threshold you actually clear.' },
       { question: 'Will recruiters believe a percentage that high?', answer: 'State the formula alongside the figure: "85% (CGPA 8.5, VIT — conversion CGPA × 10)". Recruiters who hire from VIT regularly know the rule, and naming it costs one line while removing any suggestion of inflation. If a recruiter still applies a deduction, a conversion certificate from the university settles the matter.' },
       { question: 'How does FFCS affect my CGPA?', answer: 'VIT’s fully flexible credit system means two students in the same batch can carry very different credit loads. Your CGPA is credit-weighted across everything you have taken, so a heavy semester of four-credit core courses moves it far more than a light one of two-credit electives — and a poor grade in a core subject costs correspondingly more.' },
