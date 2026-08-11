@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "indexnow": "node scripts/indexnow.mjs",
+    "indexnow:new": "node scripts/indexnow.mjs scripts/new-urls-2026-08-11.txt"
   },
   "browserslist": [
     ">0.5%",
