@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { Search, X, ArrowRight } from 'lucide-react';
-import { searchCalculators } from '@/lib/calculator-registry';
 import { CATEGORIES } from '@/lib/calculator-types';
 import type { CalculatorConfig } from '@/lib/calculator-types';
 
@@ -13,24 +12,17 @@ function getCategoryIcon(cat: string) {
   return CATEGORIES.find((c) => c.id === cat)?.icon ?? '🔢';
 }
 
-export default function SearchModal() {
-  const [open, setOpen] = useState(false);
+interface SearchModalProps {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}
+
+export default function SearchModal({ open, onOpenChange }: SearchModalProps) {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<CalculatorConfig[]>([]);
   const [active, setActive] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
-
-  /* open via event or Ctrl+K */
-  useEffect(() => {
-    const onOpen = () => setOpen(true);
-    const onKey = (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); setOpen(true); }
-    };
-    window.addEventListener('open-search', onOpen);
-    window.addEventListener('keydown', onKey);
-    return () => { window.removeEventListener('open-search', onOpen); window.removeEventListener('keydown', onKey); };
-  }, []);
 
   /* focus on open, reset on close */
   useEffect(() => {
@@ -40,19 +32,24 @@ export default function SearchModal() {
 
   /* live search */
   useEffect(() => {
+    let cancelled = false;
     const q = query.trim();
     if (!q) { setResults([]); setActive(0); return; }
-    setResults(searchCalculators(q).slice(0, 9));
-    setActive(0);
+    import('@/lib/calculator-registry').then(({ searchCalculators }) => {
+      if (cancelled) return;
+      setResults(searchCalculators(q).slice(0, 9));
+      setActive(0);
+    });
+    return () => { cancelled = true; };
   }, [query]);
 
   const go = (calc: CalculatorConfig) => {
     router.push(`/${calc.category}/${calc.slug}`);
-    setOpen(false);
+    onOpenChange(false);
   };
 
   const handleKey = (e: React.KeyboardEvent) => {
-    if (e.key === 'Escape') { setOpen(false); return; }
+    if (e.key === 'Escape') { onOpenChange(false); return; }
     if (e.key === 'ArrowDown') { e.preventDefault(); setActive((a) => Math.min(a + 1, results.length - 1)); }
     if (e.key === 'ArrowUp')   { e.preventDefault(); setActive((a) => Math.max(a - 1, 0)); }
     if (e.key === 'Enter' && results[active]) go(results[active]);
@@ -63,7 +60,7 @@ export default function SearchModal() {
   return (
     <div
       className="fixed inset-0 z-[9999] flex items-start justify-center px-3 sm:px-4 pt-[5vh] sm:pt-[8vh]"
-      onClick={() => setOpen(false)}
+      onClick={() => onOpenChange(false)}
     >
       {/* Backdrop */}
       <div className="absolute inset-0 bg-surface/75 backdrop-blur-2xl" />
@@ -89,7 +86,7 @@ export default function SearchModal() {
             <kbd className="hidden sm:block px-2 py-0.5 rounded-md bg-surface-container text-[10px] font-mono text-on-surface-variant border border-outline-variant/30">
               ESC
             </kbd>
-            <button onClick={() => setOpen(false)} className="p-1 rounded-lg hover:bg-white/5 transition-colors">
+            <button onClick={() => onOpenChange(false)} className="p-1 rounded-lg hover:bg-white/5 transition-colors">
               <X className="w-4 h-4 text-on-surface-variant" />
             </button>
           </div>

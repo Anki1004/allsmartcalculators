@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from 'react';
 import { FALLBACK_EXCHANGE_RATES } from './exchange-rates';
 
 export const SUPPORTED_CURRENCIES = [
@@ -50,6 +50,7 @@ function setCachedRates(rates: Record<string, number>) {
 interface CurrencyContextType {
   currency: string;
   setCurrency: (c: string) => void;
+  loadRates: () => void;
   rate: number;
   symbol: string;
   flag: string;
@@ -65,6 +66,7 @@ const DEFAULT_CURRENCY = 'INR';
 const CurrencyContext = createContext<CurrencyContextType>({
   currency: DEFAULT_CURRENCY,
   setCurrency: () => {},
+  loadRates: () => {},
   rate: 1,
   symbol: '₹',
   flag: '🇮🇳',
@@ -81,7 +83,10 @@ export function CurrencyProvider({ children }: { children: ReactNode }) {
     // Restore saved currency preference
     const saved = localStorage.getItem('cv-currency');
     if (saved && FALLBACK_EXCHANGE_RATES[saved]) setCurrencyState(saved);
+  }, []);
 
+  const loadRates = useCallback(() => {
+    if (ratesReady) return;
     // Try cache first, then fetch live
     const cached = getCachedRates();
     if (cached) {
@@ -98,7 +103,7 @@ export function CurrencyProvider({ children }: { children: ReactNode }) {
         setRatesReady(true);
       })
       .catch(() => setRatesReady(true)); // use fallback silently
-  }, []);
+  }, [ratesReady]);
 
   const setCurrency = (c: string) => {
     setCurrencyState(c);
@@ -112,6 +117,7 @@ export function CurrencyProvider({ children }: { children: ReactNode }) {
       value={{
         currency,
         setCurrency,
+        loadRates,
         rate: rates[currency] ?? 1,
         symbol: info.symbol,
         flag: info.flag,

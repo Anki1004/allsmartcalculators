@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Material Symbols — only external font remaining (not available via next/font) */
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap');
-
 /* ===== DARK THEME (default) ===== */
 :root, .dark {
   --color-surface: #080c25;
@@ -230,13 +227,6 @@ body {
   border: none;
   box-shadow: 0 0 15px rgba(189, 157, 255, 0.6);
 }
-
-/* ----- Material Symbols ----- */
-.material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-  user-select: none;
-}
-.material-symbols-outlined.filled { font-variation-settings: 'FILL' 1; }
 
 /* ----- Button press ----- */
 .press:active { transform: scale(0.98); }

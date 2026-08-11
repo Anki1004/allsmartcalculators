@@ -5,6 +5,7 @@ import Script from 'next/script';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import SearchModalLoader from '@/components/SearchModalLoader';
 import { CurrencyProvider } from '@/lib/currency-context';
 import { ThemeProvider } from '@/lib/theme-context';
 import { TOTAL_CALCULATORS } from '@/lib/calculator-registry';
@@ -13,7 +14,6 @@ import { organizationSchema, websiteSchema } from '@/lib/structured-data';
 // Lazy-load components that are interactive but not part of the critical
 // above-the-fold render path. Saves ~15-20% off the main bundle on mobile,
 // which is the biggest contributor to TBT on slow devices.
-const SearchModal = dynamic(() => import('@/components/SearchModal'), { ssr: false });
 const CookieConsent = dynamic(() => import('@/components/CookieConsent'), { ssr: false });
 const ConsentGatedAnalytics = dynamic(() => import('@/components/ConsentGatedAnalytics'), { ssr: false });
 const BackToTop = dynamic(() => import('@/components/BackToTop'), { ssr: false });
@@ -110,14 +110,7 @@ export default function RootLayout({
         {/* Prevent flash of wrong theme */}
         <script dangerouslySetInnerHTML={{ __html: `(function(){var t=localStorage.getItem('cv-theme');document.documentElement.classList.remove('dark','light');document.documentElement.classList.add(t||'dark');})()` }} />
         {ADSENSE_CLIENT && (
-          <>
-            <meta name="google-adsense-account" content={ADSENSE_CLIENT} />
-            <script
-              async
-              src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
-              crossOrigin="anonymous"
-            />
-          </>
+          <meta name="google-adsense-account" content={ADSENSE_CLIENT} />
         )}
       </head>
       <body className="bg-surface text-on-surface font-body antialiased min-h-screen overflow-x-hidden">
@@ -125,7 +118,7 @@ export default function RootLayout({
         <div className="cosmic-grain" />
         <ThemeProvider>
           <CurrencyProvider>
-            <SearchModal />
+            <SearchModalLoader />
             <CookieConsent />
             <BackToTop />
             <div className="relative z-10">
@@ -136,6 +129,14 @@ export default function RootLayout({
           </CurrencyProvider>
         </ThemeProvider>
         <ConsentGatedAnalytics />
+        {ADSENSE_CLIENT && (
+          <Script
+            id="adsense-loader"
+            strategy="lazyOnload"
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
+            crossOrigin="anonymous"
+          />
+        )}
         {/* Google Analytics 4 — loaded after window-load to keep it off the
             critical path. Consent Mode v2 defaults already ran in <head>
             (modeled pings when denied, full tracking on accept). */}

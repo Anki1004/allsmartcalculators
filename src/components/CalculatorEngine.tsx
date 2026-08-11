@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { getCalculatorBySlug } from '@/lib/calculator-registry';
 import SliderInput from './SliderInput';
@@ -25,7 +25,7 @@ interface CalculatorEngineProps {
 
 export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
   const config = getCalculatorBySlug(slug);
-  const { symbol, currency, rates } = useCurrency();
+  const { symbol, currency, rates, loadRates } = useCurrency();
   const locale = localeForCurrency(currency);
 
   // Calculator math is currency-agnostic — switching currency only swaps the
@@ -44,6 +44,10 @@ export default function CalculatorEngine({ slug }: CalculatorEngineProps) {
     return initial;
   });
   const [hasInteracted, setHasInteracted] = useState(false);
+
+  useEffect(() => {
+    if (config?.slug === 'currency-converter') loadRates();
+  }, [config?.slug, loadRates]);
 
   // Recompute outputs whenever inputs change
   const results = useMemo(() => {
