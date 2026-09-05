@@ -14,6 +14,9 @@ export const revalidate = 3600;
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
 const AUTHOR_URL = `${SITE_URL}/author/ankit-gupta`;
 const LINKEDIN_FALLBACK = 'https://www.linkedin.com/in/ankit-gupta-data-analyst';
+// Ankit's other live project. Linked from the "Also by Ankit" card below and listed in the
+// Person schema's sameAs so both sites resolve to the same author entity.
+const PLAYZONE_URL = 'https://360playzone.com/';
 
 export async function generateMetadata(): Promise<Metadata> {
   const cms = await getAuthorPage();
@@ -80,7 +83,7 @@ export default async function AuthorPage() {
     url: AUTHOR_URL,
     jobTitle: 'Founder & Builder',
     worksFor: { '@type': 'Organization', name: 'AllSmartCalculators', url: SITE_URL },
-    sameAs: [linkedinUrl],
+    sameAs: [linkedinUrl, PLAYZONE_URL],
     ...(profileImageUrl && { image: profileImageUrl }),
     knowsAbout: [
       'Personal finance calculators',
@@ -292,6 +295,23 @@ export default async function AuthorPage() {
           </div>
             </>
           )}
+
+          {/* Other projects — outside the CMS/fallback branch so it renders either way */}
+          <GlassCard className="p-5 sm:p-6 md:p-8 mt-6 sm:mt-8">
+            <h2 className="font-headline font-bold text-lg sm:text-xl md:text-2xl text-on-surface mb-3 sm:mb-4">
+              Also by Ankit
+            </h2>
+            <p className="text-sm md:text-base text-on-surface-variant leading-relaxed">
+              Outside the calculators, I build and maintain{' '}
+              <a href={PLAYZONE_URL} className="text-primary hover:underline font-semibold">
+                360 PlayZone
+              </a>
+              , a free browser-games site: classic puzzle, card and arcade games —
+              Solitaire, Sudoku, 2048, Mahjong — that run in the tab with no download
+              and no sign-up. It follows the same rules as this site: fast pages, no
+              walls, and every game tested before it ships.
+            </p>
+          </GlassCard>
         </div>
       </div>
     </>
