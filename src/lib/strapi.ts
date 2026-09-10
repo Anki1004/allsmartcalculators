@@ -69,12 +69,27 @@ export async function getAllPosts(): Promise<StrapiPost[]> {
   // Sort by publishedOn (the editorial display date we control) first, since
   // Strapi-managed publishedAt resets to "now" on every write and can't be
   // back-dated via the API. Fall back to publishedAt when publishedOn is unset.
-  const path = '/posts?populate=coverImage&sort[0]=publishedOn:desc&sort[1]=publishedAt:desc';
+  //
+  // Paginate explicitly. Strapi answers an unpaginated query with its default
+  // page of 25 rows, and this function feeds the sitemap, the /blog listing,
+  // llms.txt, the homepage strip and generateStaticParams. Measured 2026-09-10:
+  // 47 published posts, 25 returned — so 16 indexable posts (among them
+  // compound-interest-formula-examples, the site's best query source) had
+  // silently dropped out of the sitemap and the listing, and every new post
+  // pushed one more old post out. 100 is Strapi's default maxLimit; the loop
+  // covers growth past it.
+  const base = '/posts?populate=coverImage&sort[0]=publishedOn:desc&sort[1]=publishedAt:desc&pagination[pageSize]=100';
   try {
-    const data = await strapiGet<StrapiResponse<StrapiPost[]>>(path);
-    return data.data ?? [];
+    const all: StrapiPost[] = [];
+    for (let page = 1; page <= 20; page++) {
+      const data = await strapiGet<StrapiResponse<StrapiPost[]>>(`${base}&pagination[page]=${page}`);
+      all.push(...(data.data ?? []));
+      const pg = data.meta?.pagination;
+      if (!pg || page >= pg.pageCount) break;
+    }
+    return all;
   } catch (err) {
-    logStrapiError(path, err);
+    logStrapiError(base, err);
     return [];
   }
 }

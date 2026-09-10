@@ -791,7 +791,7 @@ export const financeCalculators: CalculatorConfig[] = [
     seo: {
       title: 'GST Calculator India — Inclusive & Exclusive GST Amount',
       description:
-        'Free GST calculator for India. Add GST to a base amount or extract GST from an inclusive price. Supports all current slabs (5%, 12%, 18%, 28%).',
+        'Free GST calculator for India. Add GST to a base amount or extract GST from an inclusive price at the 5%, 18% and 40% rates in force since 22 September 2025.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
