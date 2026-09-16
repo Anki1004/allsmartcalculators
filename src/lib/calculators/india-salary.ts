@@ -102,7 +102,7 @@ export const indiaSalaryCalculators: CalculatorConfig[] = [
     relatedSlugs: ['old-vs-new-tax-regime-calculator', 'hra-exemption-calculator', 'gratuity-calculator', 'income-tax-calculator'],
     seo: {
       title: 'In-Hand Salary Calculator: CTC to Take-Home Pay',
-      description: `Convert CTC to in-hand salary for ${FY_LABEL}. Accounts for PF, state professional tax and income tax under both the old and new regimes, with a monthly take-home figure.`,
+      description: `CTC to in-hand salary for ${FY_LABEL}: PF, state professional tax and income tax under both regimes, with your monthly take-home figure.`,
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-08-11',
@@ -218,7 +218,7 @@ export const indiaSalaryCalculators: CalculatorConfig[] = [
     relatedSlugs: ['in-hand-salary-calculator', 'old-vs-new-tax-regime-calculator', 'hra-calculator', 'income-tax-calculator'],
     seo: {
       title: 'HRA Exemption Calculator: Section 10(13A) Three-Way Rule',
-      description: 'Calculate your tax-free HRA under Section 10(13A). Shows all three limits — HRA received, rent minus 10% of basic, and 50%/40% of basic — and which one binds.',
+      description: 'Calculate your tax-free HRA under Section 10(13A): all three limits, HRA received, rent minus 10% of basic and 50%/40% of basic, and which one binds.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-08-11',
@@ -369,7 +369,7 @@ export const indiaSalaryCalculators: CalculatorConfig[] = [
     relatedSlugs: ['in-hand-salary-calculator', 'hra-exemption-calculator', 'income-tax-calculator', 'ppf-calculator'],
     seo: {
       title: 'Old vs New Tax Regime Calculator: Which Saves You More?',
-      description: `Compare the old and new tax regimes for ${FY_LABEL}. Enter your salary and deductions to see the tax under each, the saving, and the break-even deduction figure.`,
+      description: `Old vs new tax regime for ${FY_LABEL}: enter salary and deductions to see the tax under each, the saving and the break-even deduction figure.`,
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-08-11',
