@@ -9,7 +9,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator
 export const metadata: Metadata = {
   title: 'Editorial Policy — AllSmartCalculators',
   description:
-    'How AllSmartCalculators researches, fact-checks, reviews, and corrects every calculator and article — including independence, sources, and AI-assistance disclosure.',
+    'How AllSmartCalculators researches, fact-checks, reviews and corrects every calculator and article: independence, sources and AI-assistance disclosure.',
   alternates: { canonical: `${SITE_URL}/editorial-policy` },
 };
 

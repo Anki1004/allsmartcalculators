@@ -11,6 +11,7 @@ import { CATEGORIES, CalculatorCategory } from '@/lib/calculator-types';
 import { getCalcContent } from '@/lib/strapi';
 import { CALC_INLINE_CONTENT } from '@/lib/calculator-content';
 import { INDEXABLE_CALCULATORS } from '@/lib/indexable-calculators';
+import { seoTitle } from '@/lib/seo-title';
 import CalculatorEngine from '@/components/CalculatorEngine';
 import CalculatorCard from '@/components/CalculatorCard';
 import CalculatorCMS from '@/components/CalculatorCMS';
@@ -56,11 +57,9 @@ export async function generateMetadata({
   const cms = await getCalcContent(params.slug);
   const pageUrl = `${SITE_URL}/${params.category}/${params.slug}`;
 
-  // Title precedence: CMS > seo override > sensible default ("X Calculator | AllSmartCalculators")
-  const baseTitle = cms?.pageTitle ?? calc.seo?.title ?? `${calc.name} — Free Online Tool`;
-  const title = baseTitle.includes('AllSmartCalculators')
-    ? baseTitle
-    : `${baseTitle} | AllSmartCalculators`;
+  // Title precedence: CMS > seo override > sensible default. The brand suffix is
+  // added only while the whole title stays under 60 chars — see lib/seo-title.ts.
+  const title = seoTitle(cms?.pageTitle ?? calc.seo?.title ?? `${calc.name} — Free Online Tool`);
   const description = cms?.metaDescription ?? calc.seo?.description ?? calc.description;
   const canonicalUrl = cms?.linkCanonical ?? pageUrl;
 

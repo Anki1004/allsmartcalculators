@@ -167,7 +167,7 @@ export const businessCalculators: CalculatorConfig[] = [
     }),
     seo: {
       title: 'CAGR Calculator: Compound Annual Growth Rate',
-      description: 'Free CAGR calculator. Compute the compound annual growth rate from beginning value, ending value, and number of years — the standard return metric for investments.',
+      description: 'Free CAGR calculator: compound annual growth rate from beginning value, ending value and number of years, the standard way to compare investment returns.',
       applicationCategory: 'BusinessApplication',
     },
     lastUpdated: '2026-05-15',

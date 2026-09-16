@@ -31,7 +31,7 @@ export const healthCalculators: CalculatorConfig[] = [
     seo: {
       title: 'BMI Calculator — Body Mass Index for Adults (with Asian Cutoffs)',
       description:
-        'Free BMI calculator with WHO categories and Asian-specific cutoffs for Indian adults. See your ideal weight range, healthy BMI, and what the result really means.',
+        'Free BMI calculator with WHO categories and Asian cut-offs for Indian adults: your ideal weight range, healthy BMI and what the result really means.',
       applicationCategory: 'HealthApplication',
     },
     lastUpdated: '2026-04-26',
@@ -73,7 +73,7 @@ export const healthCalculators: CalculatorConfig[] = [
     seo: {
       title: 'BMR Calculator — Basal Metabolic Rate (Mifflin-St Jeor)',
       description:
-        'Free BMR calculator using the Mifflin-St Jeor equation. See your basal metabolic rate, TDEE for 5 activity levels, and how many calories your body burns at rest.',
+        'Free BMR calculator using the Mifflin-St Jeor equation: your basal metabolic rate, TDEE for 5 activity levels and how many calories your body burns at rest.',
       applicationCategory: 'HealthApplication',
     },
     lastUpdated: '2026-04-26',

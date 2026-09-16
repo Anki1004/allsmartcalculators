@@ -91,7 +91,7 @@ export const indiaPropertyCalculators: CalculatorConfig[] = [
     seo: {
       title: 'Loan Against Property Calculator: LAP EMI and Eligibility',
       description:
-        'Free loan against property calculator. Enter your property value and the LTV offered to see how much you can borrow, the LAP EMI, total interest and processing fee.',
+        'Loan against property calculator: enter property value and the LTV offered to see how much you can borrow, the LAP EMI, total interest and processing fee.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-08-11',
@@ -189,7 +189,7 @@ export const indiaPropertyCalculators: CalculatorConfig[] = [
     seo: {
       title: 'Home Loan Balance Transfer Calculator: Is Switching Worth It?',
       description:
-        'Calculate the real saving from a home loan balance transfer after processing fees, legal and valuation charges — with the number of months it takes to recover the cost.',
+        'The real saving from a home loan balance transfer after processing, legal and valuation charges, and how many months it takes to recover the cost.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-08-11',
@@ -265,7 +265,7 @@ export const indiaPropertyCalculators: CalculatorConfig[] = [
     seo: {
       title: 'Home Loan Tax Benefit Calculator: Section 24(b) and 80C',
       description:
-        'Calculate the tax your home loan actually saves under Section 24(b) and 80C, year by year, and see your effective post-tax interest rate. Handles both tax regimes.',
+        'The tax your home loan actually saves under Section 24(b) and 80C, year by year, and your effective post-tax interest rate. Handles both tax regimes.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-08-11',
@@ -372,7 +372,7 @@ export const indiaPropertyCalculators: CalculatorConfig[] = [
     seo: {
       title: 'Rent vs Buy Calculator India: Which Leaves You Richer?',
       description:
-        'Compare renting against buying a home in India by net worth after N years — EMI, property appreciation, rent increases and the return on investing the difference.',
+        'Rent vs buy in India, compared by net worth after N years: EMI, property appreciation, rent increases and the return on investing the difference.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-08-11',

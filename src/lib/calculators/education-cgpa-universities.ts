@@ -91,7 +91,7 @@ export const UNIVERSITY_CGPA_RULES: UniversityRule[] = [
       'Stated on VTU’s own site as the standard formula for the 2015, 2017 and 2018 schemes. Confirm your scheme on your marks card — VTU has not published the same page for later schemes.',
     sourceUrl: 'https://vtu.ac.in/en/cgpa-standard-formula/',
     description:
-      'Convert your VTU CGPA to a percentage using the (CGPA − 0.75) × 10 rule VTU publishes for the 2015, 2017 and 2018 schemes — with the CBCS grade table and your class.',
+      'Convert VTU CGPA to percentage with the (CGPA − 0.75) × 10 rule VTU publishes for the 2015, 2017 and 2018 schemes, with the CBCS grade table and your class.',
     seoTitle: 'VTU CGPA to Percentage Calculator (Official Formula)',
     seoDescription:
       'Convert VTU CGPA to percentage with the (CGPA − 0.75) × 10 formula published by VTU for the 2015, 2017 and 2018 schemes. Includes grade table and division cut-offs.',

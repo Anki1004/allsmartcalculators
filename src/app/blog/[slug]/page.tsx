@@ -7,6 +7,7 @@ import remarkGfm from 'remark-gfm';
 import { getPostBySlug, getAllPosts, getStrapiImageUrl } from '@/lib/strapi';
 import { US_DELISTED_POSTS } from '@/lib/market-delist';
 import { breadcrumbSchema } from '@/lib/structured-data';
+import { seoTitle } from '@/lib/seo-title';
 import GlassCard from '@/components/GlassCard';
 import { Clock, User, ArrowLeft, Calendar, Linkedin } from 'lucide-react';
 
@@ -33,7 +34,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     const twitterImg = post.metaTwitterImage ?? coverImg;
 
     return {
-      title: `${title} — AllSmartCalculators`,
+      // Brand suffix only while the title stays under 60 chars — see lib/seo-title.ts.
+      title: seoTitle(title),
       description,
       keywords: post.metaKeywords ?? undefined,
       authors: post.metaAuthor

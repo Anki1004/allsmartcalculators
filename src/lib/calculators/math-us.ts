@@ -6,7 +6,7 @@ export const mathUsCalculators: CalculatorConfig[] = [
     name: 'Scientific Calculator',
     category: 'math',
     icon: 'Calculator',
-    description: 'A full scientific calculator in your browser — trig in degrees or radians, logarithms, powers, roots, factorials, and memory keys with proper order of operations.',
+    description: 'A full scientific calculator in your browser: trig in degrees or radians, logs, powers, roots, factorials and memory keys, with correct order of operations.',
     trending: true,
     custom: 'scientific',
     inputs: [],

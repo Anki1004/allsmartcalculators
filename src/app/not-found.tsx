@@ -1,7 +1,15 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import GlassCard from '@/components/GlassCard';
 import { Search } from 'lucide-react';
 import { getPopularCalculators, TOTAL_CALCULATORS } from '@/lib/calculator-registry';
+
+// Without its own metadata the 404 page inherited the homepage <title>, so every
+// dead URL a crawler hit looked like a copy of the homepage in its reports.
+export const metadata: Metadata = {
+  title: 'Page not found | AllSmartCalculators',
+  robots: { index: false, follow: true },
+};
 
 export default function NotFound() {
   const popular = getPopularCalculators(8);

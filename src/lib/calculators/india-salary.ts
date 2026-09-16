@@ -155,7 +155,7 @@ export const indiaSalaryCalculators: CalculatorConfig[] = [
     relatedSlugs: ['in-hand-salary-calculator', 'leave-encashment-calculator', 'retirement-calculator', 'nps-calculator'],
     seo: {
       title: 'Gratuity Calculator: Payment of Gratuity Act Formula',
-      description: 'Free gratuity calculator using the official 15/26 formula. Includes the five-year eligibility rule, the six-month rounding rule, and the ₹20 lakh tax exemption cap.',
+      description: 'Gratuity calculator using the official 15/26 formula, with the five-year eligibility rule, six-month rounding and the ₹20 lakh tax-exemption cap.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-08-11',

@@ -5,6 +5,7 @@ import { ChevronRight } from 'lucide-react';
 import { getCalculatorsByCategory, ACTIVE_CATEGORIES, INDEXED_CATEGORIES } from '@/lib/calculator-registry';
 import { CATEGORIES, CalculatorCategory } from '@/lib/calculator-types';
 import { getCategoryContent } from '@/lib/strapi';
+import { seoTitle } from '@/lib/seo-title';
 import CalculatorCard from '@/components/CalculatorCard';
 import GlassCard from '@/components/GlassCard';
 import CmsRichText from '@/components/CmsRichText';
@@ -55,7 +56,8 @@ export async function generateMetadata({
   const cms = await getCategoryContent(cat.id);
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculators.com';
   const url = `${siteUrl}/${cat.id}`;
-  const title = cms?.pageTitle ?? `${cat.name} Calculators — AllSmartCalculators`;
+  // Brand suffix only while the title stays under 60 chars — see lib/seo-title.ts.
+  const title = seoTitle(cms?.pageTitle ?? `${cat.name} Calculators`);
   const description =
     cms?.metaDescription ??
     CATEGORY_META_DESCRIPTION[cat.id] ??

@@ -9,7 +9,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://allsmartcalculator
 export const metadata: Metadata = {
   title: 'FAQ — AllSmartCalculators',
   description:
-    'Frequently asked questions about AllSmartCalculators — how the calculators work, are they accurate, do they store your data, do they cost anything, and how to suggest one.',
+    'FAQ about AllSmartCalculators: how the calculators work, how accurate they are, whether they store your data, what they cost and how to suggest a new one.',
   alternates: { canonical: `${SITE_URL}/faq` },
 };
 

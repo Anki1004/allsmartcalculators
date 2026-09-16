@@ -61,7 +61,7 @@ export const indiaEducationCalculators: CalculatorConfig[] = [
     seo: {
       title: 'Percentile to Rank Calculator: JEE Main, CAT and CUET',
       description:
-        'Convert an exam percentile to an approximate All India Rank. Enter your percentile and the number of candidates who appeared to see your rank and where you sit in the field.',
+        'Convert an exam percentile to an approximate All India Rank: enter your percentile and the number of candidates to see your rank and where you stand.',
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-08-11',
@@ -123,7 +123,7 @@ export const indiaEducationCalculators: CalculatorConfig[] = [
     seo: {
       title: 'SGPA Calculator: Credit-Weighted Semester GPA',
       description:
-        'Free SGPA calculator that weights each subject by its credits, the way Indian universities actually compute it. Handles up to six subjects and shows the unweighted average too.',
+        'SGPA calculator that weights each subject by its credits, the way Indian universities compute it. Up to six subjects, with the unweighted average shown too.',
       applicationCategory: 'EducationalApplication',
     },
     lastUpdated: '2026-08-11',

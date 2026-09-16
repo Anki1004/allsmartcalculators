@@ -129,7 +129,7 @@ export const financeLongtailCalculators: CalculatorConfig[] = [
     seo: {
       title: 'EMI Prepayment Calculator: Interest Saved & Tenure Cut',
       description:
-        'Free EMI calculator with prepayment. Enter an extra monthly amount or a yearly lump sum and see the exact interest saved and how many months come off your home loan.',
+        'EMI prepayment calculator: add an extra monthly amount or a yearly lump sum and see the exact interest saved and how many months come off your home loan.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-08-11',
@@ -233,7 +233,7 @@ export const financeLongtailCalculators: CalculatorConfig[] = [
     category: 'finance',
     icon: 'Percent',
     description:
-      'Work out the true annualised return on a SIP, where every instalment was invested for a different length of time — and see why the simpler CAGR number overstates it.',
+      'The true annualised return on a SIP, where each instalment was invested for a different length of time, and why the simpler CAGR figure overstates it.',
     chartType: 'none',
     inputs: [
       { key: 'monthly', label: 'Monthly Investment', type: 'slider', min: 500, max: 200000, step: 500, default: 10000, prefix: '$', color: 'primary' },
@@ -301,7 +301,7 @@ export const financeLongtailCalculators: CalculatorConfig[] = [
     seo: {
       title: 'XIRR Calculator for SIP: Your True Annualised Return',
       description:
-        'Free XIRR calculator for mutual fund SIPs. Enter your monthly amount, years and current value to get the real annualised return — and see how it differs from CAGR.',
+        'Free XIRR calculator for mutual fund SIPs: enter your monthly amount, years and current value to get the real annualised return and how it differs from CAGR.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-08-11',

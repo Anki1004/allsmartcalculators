@@ -144,7 +144,7 @@ export const financeCalculators: CalculatorConfig[] = [
     seo: {
       title: 'EMI Calculator — Home, Personal, Car & Education Loan EMIs',
       description:
-        'Free EMI calculator for home, personal, car, and education loans. See your monthly EMI, total interest, and full payment split with the standard reducing-balance formula.',
+        'Free EMI calculator for home, personal, car and education loans: monthly EMI, total interest and the full payment split with the reducing-balance formula.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
@@ -404,7 +404,7 @@ export const financeCalculators: CalculatorConfig[] = [
     },
     seo: {
       title: 'Income Tax Calculator FY 2025-26 (Old vs New Regime) — India',
-      description: 'Free Indian income tax calculator for FY 2025-26 / AY 2026-27. Compare new regime (full rebate up to ₹12L) and old regime (with 80C / 80D / HRA). Includes 4% cess and surcharge.',
+      description: 'Indian income tax calculator FY 2025-26 / AY 2026-27: new regime (full rebate up to ₹12L) vs old regime with 80C, 80D and HRA, plus 4% cess and surcharge.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-02-15',
@@ -987,7 +987,7 @@ export const financeCalculators: CalculatorConfig[] = [
     seo: {
       title: 'CIBIL Score Estimator — Estimate Your Credit Score',
       description:
-        'Free CIBIL score estimator. Get a directional credit score from your payment history, utilisation, account age, inquiries, and credit mix — plus the biggest lever to improve it.',
+        'CIBIL score estimator: a directional score from payment history, utilisation, account age, inquiries and credit mix, plus the biggest lever to improve it.',
       applicationCategory: 'FinanceApplication',
     },
     lastUpdated: '2026-04-26',
