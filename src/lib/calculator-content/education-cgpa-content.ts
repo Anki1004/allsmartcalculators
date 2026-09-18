@@ -132,55 +132,63 @@ Government application forms almost universally ask for percentage of marks. Whe
   },
 
   'jntu-cgpa-to-percentage': {
-    article: `All three JNTU campuses — Hyderabad, Kakinada and Anantapur — convert CGPA to percentage as (CGPA − 0.75) × 10. A CGPA of 8.2 becomes 74.5%.
+    article: `JNTU Hyderabad and JNTU Kakinada do **not** use the same conversion rule, even though both descend from the single JNTU that was split in 2008. JNTUH subtracts 0.5 before multiplying by 10; JNTUK subtracts 0.75. A CGPA of 8.2 is therefore 77.0% on a JNTUH marks memo and 74.5% on a JNTUK one — a 2.5-point gap that matters at every 60% and 65% eligibility cut-off.
 
-The three universities were originally one, split in 2008, and they have kept the conversion rule in common even as their regulations diverged. Whether your marks card says JNTUH, JNTUK or JNTUA, and whether you studied under R16, R18, R19 or R20, the deduction is the same.
+## Where each rule comes from
+
+**JNTUH.** The B.Tech Academic Regulations (R22), clause 11.2, read: "For final percentage of marks equivalent to the computed final CGPA, the following formula may be used. % of Marks = (final CGPA − 0.5) × 10." The R16 and R18 booklets carry the same clause, so the rule holds for every JNTUH batch admitted since 2016.
+
+**JNTUK.** The conversion certificate JNTUK issues through its examination section states Percentage = (CGPA − 0.75) × 10, and that is the figure every JNTUK source agrees on for R16, R19, R20 and R23. We have not yet been able to read the R20 regulation booklet itself, which is why the JNTUK figure is labelled as certificate-based rather than clause-based above.
+
+**JNTUA (Anantapur)** is not offered in this calculator. Sources disagree on whether Anantapur follows the Hyderabad or the Kakinada deduction, and its regulation booklets were not reachable when this page was checked. Use the clause on "percentage equivalent to CGPA" in your own R20 or R23 booklet, or ask your examination section for the conversion certificate.
+
+## Check the issuing university, not the city
+
+Colleges affiliated to JNTUH sit across Telangana and colleges affiliated to JNTUK across coastal Andhra, but what decides the rule is the university named on your consolidated marks memo. A student who moved between the two states still converts under the university that issued the memo.
 
 ## Do not borrow a formula from another Telangana university
 
-Osmania University, in the same state, has **not approved any official conversion formula** — the three rules in circulation for it (× 10, × 10 − 7.5 and × 9.5) disagree by up to 25 percentage points. Whatever number a friend at OU is quoting, it did not come from a university notification, and it does not apply to your JNTU marks card.
-
-Check which university issued your marks card, not which city you studied in.
-
-## Regulation changes and what stayed constant
-
-JNTU has revised its regulations several times. R16 through R20 changed credit loads, the number of mid-term examinations, mandatory non-credit courses and the treatment of open electives. None of those revisions altered the CGPA-to-percentage conversion. If you are unsure which regulation you fall under, it is stated on your hall ticket and on the front of your consolidated marks memo — but for this calculation it does not matter.
+Osmania University, in the same state as JNTUH, has **not approved any official conversion formula** — the three rules in circulation for it (× 10, × 10 − 7.5 and × 9.5) disagree by up to 25 percentage points. Whatever number a friend at OU is quoting, it did not come from a university notification, and it does not apply to a JNTU marks memo.
 
 ## The aggregate percentage for PSU and GATE applications
 
-PSU recruitment through GATE almost always asks for aggregate percentage of all semesters. For JNTU students this means the converted CGPA figure, covering every semester of the programme — not the final year alone and not the best of the semesters. Lateral entry students compute over the semesters actually studied, typically six rather than eight.
+PSU recruitment through GATE almost always asks for the aggregate percentage of all semesters. For JNTU students this means the converted final CGPA, covering every semester of the programme — not the final year alone and not the best of the semesters. Lateral-entry students compute over the semesters actually studied, typically six rather than eight.
 
-If a form asks separately for "percentage as per university conversion formula" and "CGPA", fill both. Leaving the CGPA field blank when you have one invites a query at verification.`,
+If a form asks separately for "percentage as per university conversion formula" and "CGPA", fill both. Leaving the CGPA field blank when you have one invites a query at verification.
+
+## Correction
+
+Until 18 September 2026 this page said all three JNTU campuses use (CGPA − 0.75) × 10. That was wrong for JNTUH, whose regulation specifies 0.5. The entry is recorded on our corrections page.`,
     faqs: [
       {
-        question: 'What is the JNTU CGPA to percentage formula?',
+        question: 'What is the JNTUH CGPA to percentage formula?',
         answer:
-          'Percentage = (CGPA − 0.75) × 10, and it is the same for JNTU Hyderabad, JNTU Kakinada and JNTU Anantapur. A CGPA of 8.2 converts to 74.5%, an 8.5 to 77.5% and a 7.0 to 62.5%. The rule holds across the R16, R18, R19 and R20 regulations.',
+          'Percentage = (CGPA − 0.5) × 10, from clause 11.2 of the JNTUH B.Tech Academic Regulations (R16, R18 and R22). A CGPA of 8.2 converts to 77.0%, an 8.5 to 80.0% and a 7.0 to 65.0%.',
       },
       {
-        question: 'Can I use another Telangana university’s formula?',
+        question: 'What is the JNTUK CGPA to percentage formula?',
         answer:
-          'No. Osmania University, the other large Telangana institution, has not approved any official conversion formula at all — the three rules in circulation for it disagree by up to 25 percentage points, and none comes from a university notification. Use the rule of the university that actually issued your marks card, not one a friend at another college is quoting.',
+          'Percentage = (CGPA − 0.75) × 10, as printed on the conversion certificate JNTUK issues for R16, R19, R20 and R23 batches. A CGPA of 8.2 converts to 74.5%, an 8.5 to 77.5% and a 7.0 to 62.5%.',
       },
       {
         question: 'Does the conversion differ between JNTUH, JNTUK and JNTUA?',
         answer:
-          'No. The three universities were a single institution until the 2008 trifurcation and have retained the same conversion rule, even though their regulations, question paper patterns and academic calendars have diverged since. Whichever campus issued your marks card, subtract 0.75 and multiply by 10.',
+          'Yes. JNTUH subtracts 0.5 and JNTUK subtracts 0.75 before multiplying by 10, so the same CGPA reads 2.5 points higher on a JNTUH memo. JNTUA is not covered by this calculator because published sources disagree on its rule — use the clause in your own regulation booklet.',
       },
       {
-        question: 'Does my regulation (R18, R19, R20) change the conversion?',
+        question: 'Why did this page previously say all three campuses use 0.75?',
         answer:
-          'It does not. Successive JNTU regulations changed credit loads, mid-term examination structure, mandatory non-credit courses and elective rules, but the CGPA-to-percentage conversion was left untouched. Your regulation is printed on your hall ticket and consolidated marks memo if you need it for other purposes.',
+          'That was an error, corrected on 18 September 2026 after reading the JNTUH R22 regulation directly. The 0.75 deduction is JNTUK’s rule; JNTUH’s clause 11.2 specifies 0.5. If you copied a JNTUH percentage from this page before that date, recompute it.',
       },
       {
         question: 'What percentage should a lateral entry student report?',
         answer:
-          'Compute the CGPA over the semesters actually studied at JNTU — normally six rather than eight for a lateral entry B.Tech — and convert that with the same 0.75 rule. Do not average in your diploma marks; those are reported separately where the form asks for them. Your JNTU consolidated marks memo already reflects only the semesters you completed there.',
+          'Compute the CGPA over the semesters actually studied at JNTU — normally six rather than eight for a lateral-entry B.Tech — and convert it with your university’s rule. Do not average in your diploma marks; those are reported separately where the form asks for them. Your consolidated marks memo already reflects only the semesters you completed there.',
       },
       {
         question: 'What CGPA do I need for 60% for a PSU application?',
         answer:
-          'A CGPA of 6.75 converts to exactly 60.0% under the JNTU rule, so 6.75 is the threshold. Most PSU recruitment through GATE sets the floor at 60% for general category candidates and 55% for reserved categories, which corresponds to a CGPA of 6.75 and 6.25 respectively. Verify the exact cut-off in the notification, as it varies by organisation.',
+          'JNTUH: a CGPA of 6.5 converts to exactly 60.0%. JNTUK: 6.75. For a 55% floor the thresholds are 6.0 (JNTUH) and 6.25 (JNTUK). Most PSU recruitment through GATE sets 60% for general-category candidates and 55% for reserved categories; verify the exact cut-off in the notification, as it varies by organisation.',
       },
     ],
   },

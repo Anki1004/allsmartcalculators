@@ -116,19 +116,34 @@ export const UNIVERSITY_CGPA_RULES: UniversityRule[] = [
   {
     slug: 'jntu-cgpa-to-percentage',
     short: 'JNTU',
-    full: 'Jawaharlal Nehru Technological University (Hyderabad, Kakinada and Anantapur)',
-    formula: 'Percentage = (CGPA − 0.75) × 10',
-    convert: (c) => (c - 0.75) * 10,
+    full: 'Jawaharlal Nehru Technological University (Hyderabad and Kakinada)',
+    formula: 'Depends on which JNTU issued your marks memo — JNTUH (CGPA − 0.5) × 10, JNTUK (CGPA − 0.75) × 10',
+    convert: (c) => (c - 0.5) * 10,
+    schemes: [
+      {
+        label: 'JNTU Hyderabad (JNTUH) — R16, R18, R22',
+        value: 'jntuh',
+        convert: (c) => (c - 0.5) * 10,
+        formula: 'Percentage = (CGPA − 0.5) × 10',
+      },
+      {
+        label: 'JNTU Kakinada (JNTUK) — R16, R19, R20, R23',
+        value: 'jntuk',
+        convert: (c) => (c - 0.75) * 10,
+        formula: 'Percentage = (CGPA − 0.75) × 10',
+      },
+    ],
     scaleMax: 10,
     formulaConfidence: 'documented',
     classBands: STANDARD_CLASS_BANDS,
     basis:
-      'All three JNTU campuses (JNTUH, JNTUK, JNTUA) apply the 0.75 deduction under the R18/R19/R20 regulations.',
+      'JNTUH: B.Tech Academic Regulations R22, clause 11.2 — "% of Marks = (final CGPA − 0.5) x 10" — read from the PDF on jntuh.ac.in on 2026-09-18; the R16 and R18 booklets carry the same clause. JNTUK: (CGPA − 0.75) × 10 is the rule printed on the CGPA-to-percentage conversion certificate JNTUK issues through its examination section (jntuksdc) and is uncontested across every secondary source checked; the R20 regulation PDF on jntuk.edu.in refused non-browser fetches, so it has not been read directly. JNTUA (Anantapur) is deliberately NOT offered: secondary sources disagree (0.5 vs 0.75) and dap.jntua.ac.in was unreachable — add it only after reading the R20/R23 booklet. Until 2026-09-18 this page wrongly stated that all three campuses use 0.75; see /corrections.',
+    sourceUrl: 'https://jntuh.ac.in/uploads/academics/R22B.Tech.RevisedAcademicRegulations2.pdf',
     description:
-      'Convert JNTUH, JNTUK or JNTUA CGPA to a percentage with the (CGPA − 0.75) × 10 rule used across all three JNTU campuses.',
-    seoTitle: 'JNTU CGPA to Percentage Calculator (JNTUH/JNTUK/JNTUA)',
+      'Convert JNTUH or JNTUK CGPA to a percentage. The two universities use different rules — JNTUH subtracts 0.5, JNTUK subtracts 0.75 — so pick the one that issued your marks memo.',
+    seoTitle: 'JNTU CGPA to Percentage Calculator (JNTUH vs JNTUK)',
     seoDescription:
-      'Convert JNTU CGPA to percentage using the (CGPA − 0.75) × 10 formula. Works for JNTUH, JNTUK and JNTUA under R18, R19 and R20 regulations.',
+      'JNTUH uses (CGPA − 0.5) × 10 per regulation clause 11.2; JNTUK uses (CGPA − 0.75) × 10. Pick your university and convert your CGPA to the official percentage.',
   },
   {
     slug: 'anna-university-cgpa-to-percentage',

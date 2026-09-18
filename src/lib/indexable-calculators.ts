@@ -86,6 +86,42 @@ const ALLOWLIST = new Set<string>([
   'retirement-calculator', 'net-worth-calculator',
   'roi-calculator', 'profit-margin-calculator',
   'crypto-portfolio-calculator', 'reading-speed-calculator',
+
+  // Wave 2, 2026-09-18 — the "control group" above was held for seven weeks,
+  // not the three-to-four planned. Measured on the live pages that day: every
+  // slug below serves 1,133-1,537 words of India-specific copy (intro, who it
+  // is for, tips, formula with a worked example, reference table, named
+  // example, limitations, 9 H2s, FAQ + FAQPage) — the same shape and length as
+  // the indexable set (emi 1,091, bmi 1,119, study-hours 1,621). Bing was
+  // already serving several of them from category-page links despite the
+  // noindex (concrete 72 impressions, gift 28, salary-to-hourly 18 in the
+  // 09-16 pull), and 17 blog posts link into this set — so the noindex was
+  // costing Bing traffic and making every category page point at pages Google
+  // is told to discard. Owner decision 2026-09-18 after the AdSense "Low value
+  // content" verdict: index everything that carries real copy.
+  // Still held: love-calculator (novelty), tip-calculator-daily (cannibalises
+  // finance/tip-calculator), the three ~750-word daily-life-us pages
+  // (square-footage, date-calculator, hours-calculator) and the six university
+  // CGPA pages whose formula is formulaConfidence: 'verify'.
+  'concrete-calculator', 'power-calculator-electrical',
+  'salary-to-hourly', 'stock-profit-loss', 'debt-payoff-calculator',
+  'credit-card-interest', 'dividend-yield-calculator',
+  'crypto-profit-calculator', 'crypto-tax-calculator', 'dca-calculator',
+  'staking-rewards-calculator', 'bitcoin-mining-calculator',
+  'ethereum-gas-calculator', 'impermanent-loss-calculator',
+  'crypto-conversion-calculator', 'nft-roi-calculator',
+  'bmr-calculator', 'body-fat-calculator', 'ideal-weight-calculator',
+  'macro-calculator', 'heart-rate-zone', 'sleep-cycle-calculator',
+  'fraction-calculator', 'statistics-calculator', 'probability-calculator',
+  'lcm-gcd-calculator', 'logarithm-calculator', 'binary-converter',
+  'average-calculator', 'factorial-calculator', 'prime-checker',
+  'power-calculator', 'square-root-calculator',
+  'date-difference', 'split-bill-calculator', 'cooking-conversion',
+  'carpet-tile-calculator', 'countdown-calculator', 'gift-calculator',
+  'grade-calculator', 'exam-score-predictor', 'assignment-weight-calculator',
+  'class-rank-calculator', 'attendance-calculator',
+  'break-even-calculator', 'markup-calculator', 'inventory-turnover',
+  'customer-ltv-calculator', 'ad-roas-calculator', 'discount-calculator',
 ]);
 
 // The allowlist above is the historical record of what was judged good enough

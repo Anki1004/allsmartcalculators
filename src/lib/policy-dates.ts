@@ -9,7 +9,7 @@ export const POLICY_DATES = {
   disclaimer: '2026-05-21',
   methodology: '2026-05-21',
   editorialPolicy: '2026-05-21',
-  corrections: '2026-05-21',
+  corrections: '2026-09-18',
   accessibility: '2026-05-21',
   faq: '2026-05-21',
 } as const;

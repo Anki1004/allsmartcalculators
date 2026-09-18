@@ -23,7 +23,22 @@ type Correction = {
 
 // Add a new entry at the top of this array each time a correction ships.
 // Keep entries short and factual. Link to the affected page in `pageHref`.
-const CORRECTIONS: Correction[] = [];
+const CORRECTIONS: Correction[] = [
+  {
+    date: "2026-09-18",
+    page: "JNTU CGPA to Percentage Calculator",
+    pageHref: "/education/jntu-cgpa-to-percentage",
+    what: "The page stated that JNTU Hyderabad, Kakinada and Anantapur all convert CGPA with (CGPA − 0.75) × 10. JNTUH's own B.Tech Academic Regulations (R22, clause 11.2) specify (CGPA − 0.5) × 10, so every JNTUH percentage the page produced was 2.5 points too low.",
+    fix: "The calculator now asks which university issued the marks memo: JNTUH uses (CGPA − 0.5) × 10 and JNTUK (CGPA − 0.75) × 10. JNTUA was removed until its regulation has been read, because published sources disagree on its rule.",
+  },
+  {
+    date: "2026-09-10",
+    page: "GST Calculator",
+    pageHref: "/finance/gst-calculator",
+    what: "The page title, meta description and social preview still advertised the 5%, 12%, 18% and 28% GST slabs. The 12% and 28% slabs were abolished from 22 September 2025, when the structure moved to 5%, 18% and a 40% de-merit rate.",
+    fix: "All four fields now describe the 5% / 18% / 40% structure. The calculator itself already carried the current rates; only the descriptive copy was out of date.",
+  },
+];
 
 export default function CorrectionsPage() {
   return (
